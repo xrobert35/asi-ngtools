@@ -1,0 +1,4 @@
+<label class="input-label" *ngIf="label != null">{{label | translate}}</label>
+<button type="button" [disabled]="disabled" (click)="switch()" class="switch asi-focus-error" [ngClass]="{ 'checked': value }">
+  <span class="switch-button"></span>
+</button>

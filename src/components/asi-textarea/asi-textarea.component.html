@@ -1,0 +1,2 @@
+<label class="input-label" *ngIf="label != null">{{label | translate}}</label>
+<textarea #textarea [attr.rows]="rows" class="asi-focus-error" [attr.disabled]="disabled ? '' : null" [placeholder]="placeholder" [formControl]="textareaControl"></textarea>

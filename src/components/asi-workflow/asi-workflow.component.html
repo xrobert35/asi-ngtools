@@ -1,0 +1,17 @@
+<div class="asi-workflow-header-container">
+  <ng-container *ngFor="let state of states; let last = last">
+    <div class="asi-workflow-header" (click)="setState(state)" [ngClass]="{'complete' : state.complete , 'active' : isCurrentState(state), 'enable' : state.enabled}">
+      <div class="header-container">
+        <div class="header">
+          {{state.step}}
+          <asi-fa-icon [label]="state.name" labelPosition="bottom-center" *ngIf="state.complete" icon="fa-check-circle" size="lg"></asi-fa-icon>
+        </div>
+      </div>
+      <span>{{state.name}}</span>
+    </div>
+  </ng-container>
+</div>
+
+<div class="asi-workflow-contenu">
+  <router-outlet (activate)="onRouteChanged($event)"></router-outlet>
+</div>

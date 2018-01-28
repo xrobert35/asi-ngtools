@@ -1,0 +1,60 @@
+asi-button, .asi-button {
+  .base-component;
+  flex: 0 0 auto;
+  button {
+    display: flex;
+    justify-content: center;
+    align-items : center;
+    flex: 1 0 auto;
+    .clean-button;
+    font-size: 0.9em;
+    min-height: 35px;
+    border: @asi-button-border;
+    background-color: @asi-button-background-color;
+    color: @asi-button-label-color;
+    border-radius: @asi-button-border-radius;
+    padding: 5px 15px 5px 15px;
+    box-sizing: border-box;
+    outline: none;
+    min-width: 150px;
+    text-align: center;
+    outline: none;
+    &:disabled{
+      background-color : lightgrey;
+      border-color: lightgrey;
+    }
+    &:focus {
+      border: @asi-button-outline-border;
+    }
+  }
+  &.button-raised {
+    button:not([disabled]) {
+      box-shadow: @asi-button-raised-box-shadow;
+      &:hover {
+        border: @asi-button-hover-border;
+        background-color: @asi-button-hover-background-color;
+      }
+      &:active {
+        box-shadow: inset 1px 1px 3px 1px grey;
+      }
+    }
+  }
+  &.button-flat {
+    button:not([disabled]) {
+      &:hover {
+        border: @asi-button-hover-border;
+        background-color: @asi-button-hover-background-color;
+      }
+    }
+  }
+  &.button-bordered {
+    button:not([disabled]) {
+      background-color: @asi-button-bordered-background-color;
+      color: @asi-button-bordered-label-color;
+      border: @asi-button-bordered-border;
+      &:hover {
+        border: @asi-button-hover-border;
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<button type="button" class="collapse-header" [disabled]="disabled" (click)="toggleCollapse()">
+  <span *ngIf="headerDef == null">
+    {{label | translate }}
+  </span>
+  <ng-template *ngIf="headerDef != null" [ngTemplateOutlet]="headerDef.template" [ngTemplateOutletContext]="{$implicit : {collapsed : collapsed, disabled : disabled}}"></ng-template>
+</button>
+<div class="collapse-panel" *ngIf="!collapsed" [@reveal]>
+  <ng-content></ng-content>
+</div>

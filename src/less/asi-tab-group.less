@@ -1,0 +1,67 @@
+asi-tab-group, .asi-tab-group {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  .asi-tab-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
+    .tab-header {
+      display: flex;
+      flex : 1 1 auto;
+      min-width: 0;
+      min-height: @asi-tab-height;
+      max-height: @asi-tab-height;
+      height: auto;
+      background-color: @asi-tab-background-color;
+
+      button {
+        outline: none;
+        &:focus {
+          border: @asi-tab-outline-border;
+        }
+
+        background: none;
+        border: @asi-tab-border;
+        color: @asi-tab-label-color;
+        text-decoration: none;
+        min-height: @asi-tab-height;
+        min-width: 100px;
+        box-shadow: @asi-tab-box-shadow;
+        &.active {
+          background-color: @asi-tab-active-background-color;
+          border : @asi-tab-active-border;
+          color: @asi-tab-active-label-color;
+          font-weight: bold;
+        }
+      }
+    }
+    .tab-content {
+      border-top: 1px solid grey;
+      background-color: white;
+      display: flex;
+      flex: inherit;
+      min-width: inherit;
+      asi-tab-content {
+        display: flex;
+        flex: inherit;
+        min-width: inherit;
+        asi-tab-element {
+          display: flex;
+          flex: inherit;
+          min-width: inherit;
+          .tab-element {
+            display: flex;
+            flex: inherit;
+            min-width: inherit;
+            overflow-y: auto;
+            height: auto;
+            flex-direction: column;
+          }
+        }
+      }
+    }
+  }
+}

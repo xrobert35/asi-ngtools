@@ -1,0 +1,8 @@
+<label class="input-label" *ngIf="label != null">{{label | translate}}</label>
+
+<asi-fa-icon    class="icon-checkbox"
+                [size] = "size"
+                [icon] = "icon"
+                [ngClass] = "{ 'checked': value }"
+                [disabled] = "disabled"
+                (onClick)="toggleCheck()"></asi-fa-icon>

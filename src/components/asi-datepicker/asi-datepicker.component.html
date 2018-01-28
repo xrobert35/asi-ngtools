@@ -1,0 +1,5 @@
+<label class="input-label" *ngIf="label != null">{{label | translate}}</label>
+<div class="asi-datepicker-container">
+  <input #input [attr.disabled]="disabled ? '' : null" class="asi-focus-error" [placeholder]="placeholder" (click)="openCalendar()" [formControl]="inputControl"/>
+  <asi-calendar #calendar [relativeTo]="inputElement" [(ngModel)]="value" [minDate]="minDate" [maxDate]="maxDate" (onDatePicked)="onDatePicked($event)"></asi-calendar>
+</div>

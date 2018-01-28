@@ -1,0 +1,129 @@
+@import './lessvars';
+@import './asi-checkbox';
+@import './asi-icon-checkbox';
+@import './asi-switch';
+@import './asi-select';
+@import './asi-autocomplete';
+@import './asi-image-chooser';
+@import './asi-file-chooser';
+@import './asi-menu';
+@import './asi-error-messages';
+@import './asi-dialog';
+@import './asi-notification';
+@import './asi-pagination';
+@import './asi-table';
+@import './asi-code-viewer';
+@import './asi-tab-group';
+@import './asi-tinymce';
+@import './asi-bind-html';
+@import './asi-collapse';
+@import './asi-fa-icon';
+@import './asi-input-number';
+@import './asi-input';
+@import './asi-icon-input';
+@import './asi-autocomplete-multiple';
+@import './asi-textarea';
+@import './asi-datepicker';
+@import './asi-calendar';
+@import './asi-radio-group';
+@import './asi-breadcrumb';
+@import './asi-button';
+@import './asi-link-button';
+@import './asi-dmypicker';
+@import './asi-dropdown';
+@import './asi-workflow';
+@import './asi-ibanfr-input';
+@import './asi-tree-view';
+
+.asi-container{
+  display: flex;
+  flex-direction: column;
+  flex : 1 0 auto;
+}
+
+.asi-component *::-moz-focus-inner {border:0;}
+
+.base-component {
+  display: flex;
+  margin: 5px;
+  flex: 1 0 auto;
+  &.label-top {
+    flex-direction: column;
+    .input-label {
+      margin: 0 0 5px;
+    }
+  }
+  &.label-top-center {
+    flex-direction: column;
+    align-items: center;
+    .input-label {
+      margin: 0 0 5px;
+    }
+  }
+  &.label-left {
+    flex-direction: row;
+    align-items: center;
+    .input-label {
+      margin: 0 10px 0 0;
+    }
+  }
+  &.label-bottom {
+    flex-direction: column;
+    .input-label {
+      margin: 10px 0 0;
+      order: 1;
+    }
+  }
+  &.label-bottom-center {
+    flex-direction: column;
+    align-items: center;
+    .input-label {
+      margin: 10px 0 0;
+      order: 1;
+    }
+  }
+  &.label-right {
+    flex-direction: row;
+    align-items: center;
+    .input-label {
+      margin: 0 0 0 10px;
+      order: 1;
+    }
+  }
+  button {
+    .clean-button;
+  }
+}
+
+.clean-button {
+  background: none;
+  border: none;
+  color: inherit;
+  text-decoration: none;
+  text-align: left;
+  user-select: none;
+  padding: 0;
+  line-height: initial;
+  &:enabled:hover {
+    cursor: pointer;
+  }
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+}
+
+.clean-a {
+  text-decoration: none;
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+.oneline {
+  margin: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

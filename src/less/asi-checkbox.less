@@ -1,0 +1,51 @@
+asi-checkbox, .asi-checkbox {
+  @asi-checkbox-size : 22px;
+  .base-component;
+  flex: 0 0 auto;
+  label.input-label {
+    color: @asi-checkbox-label-color;
+  }
+  .checkbox {
+    max-height: @asi-checkbox-size;
+    height: @asi-checkbox-size;
+    max-width: @asi-checkbox-size;
+    width: @asi-checkbox-size;
+    padding: 0 0 3px;
+    outline: none;
+    &:focus {
+      border: @asi-checkbox-outline-border;
+    }
+    &:enabled {
+      background-color: @asi-checkbox-background-color;
+    }
+    box-shadow: @asi-checkbox-box-shadow;
+    border: @asi-checkbox-border;
+    & > div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+    .checkbox-button {
+      width: 11px;
+      height: 6px;
+      display: block;
+      //On dessine la check grace au bordure
+      border: 3px solid @asi-checkbox-check-color;
+      border-top: none;
+      border-right: none;
+      background: transparent;
+      transform: rotate(-45deg);
+      opacity: 0;
+    }
+    &.checked {
+      background-color: @asi-checkbox-background-active-color;
+      .checkbox-button {
+        opacity: 1;
+      }
+    }
+    &.radio {
+      border-radius: @asi-checkbox-size;
+    }
+  }
+}

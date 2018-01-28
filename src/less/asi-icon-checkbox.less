@@ -1,0 +1,15 @@
+asi-icon-checkbox, .asi-icon-checkbox {
+  .base-component;
+  flex: 0 0 auto;
+  label.input-label {
+    color: @asi-icon-checkbox-label-color;
+  }
+  .icon-checkbox{
+    button:not([disabled]){
+      color: @asi-icon-checkbox-unchecked-color;
+    }
+    &.checked button{
+      color: @asi-icon-checkbox-checked-color;
+    }
+  }
+}

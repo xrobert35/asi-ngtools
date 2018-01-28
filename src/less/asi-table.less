@@ -1,0 +1,87 @@
+asi-table, .asi-table {
+  table {
+    width: 100%;
+    border: @asi-table-border ;
+    border-collapse: collapse;
+    thead {
+      tr {
+        height: @asi-table-header-height;
+        border: @asi-table-header-tr-border;
+        background-color: @asi-table-header-background-color;
+        box-shadow: @asi-table-header-box-shadow;
+        th {
+          padding: 0;
+          border: @asi-table-header-th-border;
+          color: @asi-table-header-text-color;
+          text-align: left;
+          padding-left: 6px;
+          .header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+          }
+          .sortItem {
+            width: 10px;
+          }
+          .sortIconAsc {
+            display: none;
+          }
+          .sortIconDesc {
+            display: none;
+          }
+          .sortIconUndefined {
+            display: none;
+          }
+          &.sortable {
+            &:hover {
+              cursor: pointer;
+            }
+            &.asc {
+              .sortIconAsc {
+                display: block;
+              }
+              .sortIconDesc {
+                display: none;
+              }
+            }
+            &.desc {
+              .sortIconAsc {
+                display: none;
+              }
+              .sortIconDesc {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+    tbody {
+      background-color: @asi-table-body-1-color;
+      &:nth-child(2n-1) {
+        background-color: @asi-table-body-2-color;
+      }
+      tr {
+        height: @asi-table-body-line-height;
+        border: @asi-table-body-tr-border;
+        background-color: @asi-table-body-line1-color;
+        &:nth-child(2n-1) {
+          background-color: @asi-table-body-line2-color;
+        }
+        td {
+          border: @asi-table-body-td-border;
+          color : @asi-table-body-td-text-color;
+          padding: 3px 3px 3px 6px;
+          height: 20px;
+        }
+      }
+      &.collapsed {
+        tr {
+          &.inlined {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+asi-radio-group, .asi-radio-group {
+  .base-component;
+  label.input-label {
+    color: @asi-radio-group-label-color;
+  }
+  .asi-radio-container {
+    display: flex;
+    flex-direction: row;
+    &.asi-vertical {
+      flex-direction: column;
+    }
+    .asi-radio-element {
+      display: flex;
+      padding : 5px;
+      &.asi-template-top {
+        flex-direction: column;
+        .asi-radio-template {
+          margin: 0 0 5px;
+        }
+      }
+      &.asi-template-right {
+        flex-direction: row;
+        align-items: center;
+        .asi-radio-template {
+          margin: 0 0 0 10px;
+          order: 1;
+        }
+      }
+      &.asi-template-bottom {
+        flex-direction: column;
+        .asi-radio-template {
+          margin: 10px 0 0;
+          order: 1;
+        }
+      }
+      &.asi-template-left {
+        flex-direction: row;
+        align-items: center;
+        .asi-radio-template {
+          margin: 0 10px 0 0;
+        }
+      }
+    }
+  }
+}

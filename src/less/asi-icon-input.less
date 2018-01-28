@@ -1,0 +1,61 @@
+asi-icon-input,
+.asi-icon-input {
+  .base-component;
+  label.input-label {
+    color: @asi-icon-input-label-color;
+  }
+  .input-panel {
+    display: flex;
+    flex-direction: row;
+    > * {
+      border-top: @asi-icon-input-border;
+      border-right: @asi-icon-input-border;
+      border-bottom: @asi-icon-input-border;
+      border-left: @asi-icon-input-border;
+    }
+    &.icon-right {
+      flex-direction: row-reverse;
+      .icon-container {
+        border-radius: 0px @asi-icon-input-border-radius @asi-icon-input-border-radius 0px;
+      }
+      input {
+        border-right: none;
+        border-radius: @asi-icon-input-border-radius 0px 0px @asi-icon-input-border-radius;
+      }
+    }
+    &.icon-left {
+      input {
+        border-left: none;
+        border-radius: 0px @asi-icon-input-border-radius @asi-icon-input-border-radius 0px;
+      }
+      .icon-container {
+        border-radius: @asi-icon-input-border-radius 0px 0px @asi-icon-input-border-radius;
+      }
+    }
+  }
+  .icon-container {
+    min-width: @asi-icon-input-height;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: @asi-icon-input-icon-background-color;
+    .asi-fa-icon {
+      color: @asi-icon-input-icon-color;
+    }
+  }
+  input {
+    flex: 1 0 auto;
+    outline: none;
+    height: @asi-icon-input-height;
+    padding: 0;
+    padding-left: 5px;
+    border: none;
+    border-radius: @asi-icon-input-border-radius;
+    &:focus {
+      border-top: @asi-icon-input-outline-border;
+      border-right: @asi-icon-input-outline-border;
+      border-bottom: @asi-icon-input-outline-border;
+      border-left: @asi-icon-input-outline-border;
+    }
+  }
+}

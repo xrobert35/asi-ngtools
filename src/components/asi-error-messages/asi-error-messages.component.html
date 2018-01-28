@@ -1,0 +1,4 @@
+<div class="errorPanel">
+  <ng-content select="message"></ng-content>
+  <div *ngFor="let message of errorMessages" class="asi-error-message">{{message.value | translate}}</div>
+</div>

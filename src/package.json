@@ -1,0 +1,40 @@
+{
+  "name": "@asi-ngtools/lib",
+  "version": "5.0.4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xrobert35/asi-ngtools"
+  },
+  "author": {
+    "name": "asi-ngtools",
+    "email": "xrobert@asi.fr"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xrobert35/asi-ngtools/issues"
+  },
+  "module": "asi-ngtools.js",
+  "typings": "asi-ngtools.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^5.0.0",
+    "@angular/router": "^5.0.0",
+    "@angular/forms": "^5.0.0",
+    "@angular/http": "^5.0.0",
+    "@angular/animations": "^5.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4",
+    "@ngx-translate/core": "^9.1.1",
+    "ng-dynamic": "^3.0.2",
+    "@ngrx/core": "^1.2.0",
+    "@ngrx/store": "^4.0.3",
+    "moment": "^2.18.1"
+  },
+  "dependencies": {
+    "moment": "^2.18.1",
+    "lodash": "4.17.4",
+    "@types/lodash": "4.14.66"
+  }
+}

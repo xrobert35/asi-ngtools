@@ -1,0 +1,81 @@
+.asi-calendar-picker {
+  display: flex;
+  flex-direction: column;
+  background-color: @asi-calendar-background-color;
+  box-shadow: 0px 0px 1px black;
+  max-width: 267px;
+  margin-top: 6px;
+  .calendar-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    asi-select {
+      flex: 1 1 auto;
+      border: none;
+      .select .select-header {
+        background-color: transparent;
+        border: none;
+      }
+      &.select-month {
+        min-width: 100px;
+      }
+      &.select-year {
+        max-width: 90px;
+      }
+    }
+  }
+  .day-list {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid @asi-calendar-border-color;
+  }
+  .calendar-panel {
+    display: block;
+  }
+  .day-str {
+    padding: 8px;
+    width: 22px;
+    min-width: 22px;
+    max-width: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: @asi-calendar-day-header-color;
+    box-sizing: content-box;
+  }
+  .day-item {
+    .clean-button;
+    padding: 7px;
+    width: 22px;
+    min-width: 22px;
+    max-width: 22px;
+    height: 22px;
+    min-height: 22px;
+    max-height: 22px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: content-box;
+    border: 1px solid transparent;
+    outline: none;
+    &:focus {
+      border: @asi-calendar-outline-border;
+      border-radius: 25px;
+    }
+    &.enabled {
+      cursor: pointer;
+    }
+    &.extra {
+      color: @asi-calendar-extra-day-color;
+    }
+    &.disabled {
+      color: @asi-calendar-disabled-day-color;
+    }
+    &.selected {
+      background-color: @asi-calendar-selected-day-background-color;
+      border-radius: 30px;
+      color: @asi-calendar-selected-day-color;
+      box-shadow: @asi-calendar-selected-day-boxshadow;
+    }
+  }
+}

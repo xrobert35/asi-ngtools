@@ -1,0 +1,35 @@
+asi-error-messages, .asi-error-messages {
+  display: none;
+  margin-left: 5px;
+  margin-bottom: 3px;
+  &.active {
+    display: flex;
+  }
+  .asi-error-message {
+    color: red;
+    font-size: 0.75em;
+  }
+}
+
+// Ajout des * sur les champs required
+.asi-required {
+  .asi-component {
+    .input-label::after {
+      content: ' *';
+    }
+  }
+}
+
+//Modification des bordures des composants de saisie
+.asi-has-error {
+  .asi-focus-error {
+    &:not(.asi-fa-icon) {
+      border: @asi-ngtools-error-border !important;
+    }
+    &.asi-fa-icon {
+      button {
+        border: @asi-ngtools-error-border !important;
+      }
+    }
+  }
+}

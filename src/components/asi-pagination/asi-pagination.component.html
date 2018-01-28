@@ -1,0 +1,14 @@
+<div class="action-panel">
+  <div [ngClass]="{ 'disabled' : onFirstPage()}">
+    <span (click)="goFirstPage()" class="paginate-boutton action" [innerHTML]="'&#139;&#139;'"></span>
+    <span (click)="previousPage()" class="paginate-boutton action" [innerHTML]="'&#139;'"></span>
+  </div>
+</div>
+<span *ngFor="let paginationItem of getPaginationItems()" [ngClass]="{'selected' : isCurrentPagination(paginationItem) , 'paginate-boutton' : paginationItem != '...'}"
+  (click)="changePagination(paginationItem)" [innerHTML]="paginationItem"></span>
+<div class="action-panel">
+  <div [ngClass]="{ 'disabled' : onLastPage()}">
+    <span (click)="nextPage()" class="paginate-boutton action" [innerHTML]="'&#155;'"></span>
+    <span (click)="goLastPage()" class="paginate-boutton action" [innerHTML]="'&#155;&#155;'"></span>
+  </div>
+</div>

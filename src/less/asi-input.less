@@ -1,0 +1,18 @@
+asi-input, .asi-input {
+  .base-component;
+  label.input-label {
+    color: @asi-input-label-color;
+  }
+  input {
+    flex: 1 0 auto;
+    outline: none;
+    &:focus {
+      border: @asi-input-outline-border;
+    }
+    height: @asi-input-height;
+    padding: 0;
+    border: @asi-input-border;
+    border-radius: @asi-input-border-radius;
+    padding-left: 5px;
+  }
+}

@@ -1,0 +1,25 @@
+<ul class="breadcrumb">
+    <!-- Home -->
+    <li *ngIf="!hideHome">
+        <a (click)="clickOnElement({})">
+            <i class="fa fa-home"></i>
+        </a>
+    </li>
+    <!-- Collapsing elements on mobile -->
+    <li #asiBreadcrumbDropdownDots *ngIf="hideElements" (click)="elementsDropdownOpened = true">
+        <a>...</a>
+    </li>
+    <asi-dropdown [relativeTo]="asiBreadcrumbDropdownDots" [calculWidth]="false" [open]="elementsDropdownOpened" (onClose)="elementsDropdownOpened = false">
+        <div class="clickable drop-down-breadcrumb">
+            <div *ngFor="let elem of hiddenElements" (click)="clickOnElement(elem)">
+                <span>{{ getTrackedValue(elem) }}</span>
+            </div>
+        </div>
+    </asi-dropdown>
+    <!-- Folders path -->
+    <li *ngFor="let elem of shadowData">
+        <a (click)="clickOnElement(elem)">
+            <p ngClass.xs="shortText">{{ getTrackedValue(elem) }}</p>
+        </a>
+    </li>
+</ul>

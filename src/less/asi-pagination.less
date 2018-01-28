@@ -1,0 +1,46 @@
+asi-pagination, .asi-pagination {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  justify-content: center;
+  margin: 10px;
+  .action-panel {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    .disabled {
+      .paginate-boutton {
+        background-color: lightgrey;
+        box-shadow: none;
+      }
+    }
+    > div {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  .paginate-boutton {
+    height: 20px;
+    box-sizing: content-box;
+    border: 1px solid @asi-pagination-boutton-border-color;
+    text-align: center;
+    padding: 6px 7px 3px;
+    margin: 0px 3px 0px 3px;
+    box-shadow: 0 0 1px @asi-pagination-boutton-border-color;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+    }
+    &.selected {
+      background-color: @asi-pagination-selected-background-color;
+      color: @asi-pagination-selected-text-color;
+    }
+    &.action {
+      height: 20px;
+      box-sizing: content-box;
+      padding: 6px 7px 3px;
+    }
+  }
+}

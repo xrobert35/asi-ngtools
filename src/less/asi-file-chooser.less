@@ -1,0 +1,45 @@
+asi-file-chooser, .asi-file-chooser {
+  .base-component;
+
+  label.input-label {
+    color: @asi-file-chooser-label-color;
+  }
+  
+  .asi-file-chooser-container {
+    display: flex;
+    flex-direction: row;
+    align-items : center;
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: @asi-file-chooser-background-color;
+      border: @asi-file-chooser-border;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      input {
+        display: none;
+      }
+    }
+    .file-link {
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      margin-left : 5px;
+      asi-fa-icon {
+        margin: 0px;
+      }
+      a {
+        max-width: 250px;
+        text-decoration: underline;
+        padding-right: 10px;
+        &:hover {
+          text-decoration: none;
+        }
+        cursor: pointer;
+        .oneline;
+      }
+    }
+  }
+}

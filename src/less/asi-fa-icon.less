@@ -1,0 +1,71 @@
+asi-fa-icon, .asi-fa-icon {
+  .base-component;
+  flex : 0 0 auto;
+
+  label.input-label {
+    color: @asi-fa-icon-label-color;
+  }
+
+  border: @asi-fa-icon-border;
+  label {
+    &.enabled {
+      cursor: pointer;
+    }
+    color: @asi-fa-icon-label-color;
+  }
+  button {
+    .clean-button;
+    position: relative;
+    border : 1px solid transparent;
+
+    outline: none;
+    &:focus {
+      border: @asi-fa-icon-outline-border;
+    }
+
+    &:not([disabled]) {
+      color: @asi-fa-icon-color;
+    }
+    &[disabled] {
+      color: @asi-fa-icon-color-disabled;
+    }
+    &:hover {
+      .asi-tooltip {
+        display: block;
+      }
+    }
+    .asi-tooltip {
+      position: absolute;
+      z-index: 1;
+      display: none;
+      .tooltip-item {
+        display: block;
+        color: black;
+        font-size: 16px;
+        background-color: white;
+        padding: 5px;
+        border-radius: 3px;
+        border: 1px solid grey;
+        box-shadow: 0 0 1px grey;
+      }
+      &.tooltip-top {
+        bottom: 100%;
+        margin-bottom: 5px;
+      }
+      &.tooltip-bottom {
+        top: 100%;
+        margin-top: 5px;
+      }
+      &.tooltip-left {
+        right: 100%;
+        margin-right: 5px;
+        top: 0;
+      }
+      &.tooltip-right {
+        left: 100%;
+        margin-left: 5px;
+        top: 0;
+      }
+    }
+  }
+}

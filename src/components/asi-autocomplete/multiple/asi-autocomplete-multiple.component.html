@@ -1,0 +1,31 @@
+<div class="tag-container">
+  <div class="tag" *ngFor="let aValue of value">
+    <span>
+        <ng-template [ngTemplateOutlet]="tagDef.template" [ngTemplateOutletContext]="{$implicit : aValue}"></ng-template>
+      </span>
+    <button type="button" [disabled]="disabled" class="remove-icon-container" (click)="removeValue(aValue)">
+        <span class="remove-icon" [innerHTML]="'&#10005;'"></span>
+      </button>
+  </div>
+</div>
+<div class="autocomplete-container" #container>
+  <label class="input-label" *ngIf="label != null">{{label | translate}}</label>
+  <div class="autocomplete">
+    <input [attr.disabled]="disabled ? '' : null" class="asi-focus-error" [placeholder]="placeholder" [formControl]="autoCompleteControl"/>
+
+    <asi-dropdown [open]="open" (onClose)="onDropdownClose()" #dropdown>
+      <div class="drop-down-autocomplete-multiple">
+        <div class="drop-down-panel" [ngClass]="{'open' : open }">
+          <button type="button" class="drop-down-item" (click)="addValue(aData)" *ngFor="let aData of data">
+            <div class="option">
+              <span class="item">
+                <ng-template *ngIf="aData != null" [ngTemplateOutlet]="optionDef.template" [ngTemplateOutletContext]="{$implicit : aData}"></ng-template>
+              </span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </asi-dropdown>
+
+  </div>
+</div>

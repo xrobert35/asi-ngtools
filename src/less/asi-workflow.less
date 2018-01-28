@@ -1,0 +1,62 @@
+asi-workflow, .asi-workflow {
+  display: flex;
+  flex-direction: column;
+  .asi-workflow-header-container {
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+    .asi-workflow-header {
+      display: flex;
+      flex-direction: column;
+      width: 115px;
+      .header-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-bottom: 10px;
+        border-bottom: 1px inset lightgrey;
+        .header {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          height: 25px;
+          width: 25px;
+          border-radius: 25px;
+          padding: 2px;
+          box-shadow: 1px 1px 3px black;
+          background-color: lightgray;
+        }
+      }
+      span {
+        margin-top: 5px;
+        text-align: center;
+      }
+      &.complete {}
+      &.enable {
+        .header-container {
+          .header {
+            cursor: pointer;
+            background: steelblue;
+            &:hover {
+              background-color: white;
+              color: black;
+            }
+          }
+        }
+        span {
+          cursor: pointer;
+        }
+      }
+      &.active {
+        .header-container {
+          .header {
+            background-color: white;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}

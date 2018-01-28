@@ -1,0 +1,52 @@
+asi-dialog-container, .asi-dialog-container {
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  .dialog-backdrop {
+    background-color: @asi-dialog-backdrop-color;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    position: absolute;
+    transition: opacity .2s ease-in-out;
+  }
+  .dialog-container {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    align-items: center;
+    asi-dialog, .asi-dialog {
+      background-color: @asi-dialog-background-color;
+      box-shadow: 0 0 1px @asi-dialog-border-color;
+      border-radius: @asi-dialog-border-radius;
+      width: auto;
+      height: auto;
+      z-index: 1;
+      display: none;
+      .dialog-panel {
+        .dialog-header {
+          padding: 10px;
+          border-bottom: 1px solid @asi-dialog-border-color;
+        }
+        .dialog-content {
+          display: flex;
+          flex-direction: column;
+          padding: 10px;
+        }
+        .dialog-action {
+          border-top: 1px solid @asi-dialog-border-color;
+          display: flex;
+          flex-direction: row;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}

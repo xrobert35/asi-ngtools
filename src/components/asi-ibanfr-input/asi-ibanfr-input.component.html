@@ -1,0 +1,8 @@
+<label class="input-label" *ngIf="label != null">{{label | translate}}</label>
+<div class="inputs-panel">
+  <asi-input [placeholder]="'ASI-COMPONENT.ASI-IBAN.country' | translate" [maxlength]="4" [formControl]="countryControl"></asi-input>
+  <asi-input [placeholder]="'ASI-COMPONENT.ASI-IBAN.bank' | translate" [number]="true" [maxlength]="5" [(ngModel)]="bank"></asi-input>
+  <asi-input [placeholder]="'ASI-COMPONENT.ASI-IBAN.branch' | translate" [number]="true" [maxlength]="5" [(ngModel)]="branch"></asi-input>
+  <asi-input [placeholder]="'ASI-COMPONENT.ASI-IBAN.account' | translate" [maxlength]="11" [(ngModel)]="account"></asi-input>
+  <asi-input [placeholder]="'ASI-COMPONENT.ASI-IBAN.key' | translate" [number]="true" [maxlength]="2" [(ngModel)]="key"></asi-input>
+</div>

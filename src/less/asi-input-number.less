@@ -1,0 +1,36 @@
+asi-input-number, .asi-input-number {
+  .base-component;
+  label.input-label {
+    color: @asi-input-number-label-color;
+  }
+  .plus {
+    margin: 0 0 0 5px;
+  }
+  .minus {
+    margin: 0 5px 0 0;
+  }
+  .number-select {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    button {
+      font-size: 18px;
+      outline: none;
+      &:focus {
+        border: @asi-input-outline-border;
+      }
+    }
+    input {
+      outline: none;
+      &:focus {
+        border: @asi-input-outline-border;
+      }
+      height: @asi-input-number-height;
+      text-align: center;
+      min-width: 50px;
+      width: 50px;
+      border: @asi-input-number-border;
+      border-radius: @asi-input-number-border-radius;
+    }
+  }
+}

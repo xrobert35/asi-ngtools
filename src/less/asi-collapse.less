@@ -1,0 +1,34 @@
+asi-collapse, .asi-collapse {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  .collapse-header {
+    .clean-button;
+    outline: none;
+    &:focus {
+      border: @asi-collapse-outline-border;
+    }
+    &:hover{
+      background-color: #ECF0F6;
+    }
+    min-height: 40px;
+    font-size: 20px;
+    background-color: @asi-collapse-header-background-color;
+    &:not([disabled]) {
+      color: @asi-collapse-header-color;
+    }
+    box-shadow: 0px 0px 1px white;
+    padding-left: 10px;
+    margin-bottom: 1px;
+  }
+
+  .collapse-panel {
+    border: @asi-collapse-panel-border;
+    background-color: @asi-collapse-panel-background-color;
+    padding-top: 5px;
+    overflow: hidden;
+    padding-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}

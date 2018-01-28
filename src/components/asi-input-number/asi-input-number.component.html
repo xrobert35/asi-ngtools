@@ -1,0 +1,6 @@
+<label *ngIf="label != null">{{label | translate}}</label>
+<div class="number-select">
+  <button *ngIf="!hiddeAction" class="minus" [disabled]="disabled" type="button" (click)="decrease()">-</button>
+  <input #input [attr.disabled]="disabled || disableInput ? '' : null" type="text" class="asi-focus-error" [formControl]="inputControl" />
+  <button *ngIf="!hiddeAction" class="plus" [disabled]="disabled" type="button" (click)="increase()">+</button>
+</div>

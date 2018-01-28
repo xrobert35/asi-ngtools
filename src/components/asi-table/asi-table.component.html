@@ -1,0 +1,44 @@
+<table #table>
+  <thead>
+    <tr>
+      <th *ngFor="let column of getColumns()" [ngClass]="getHeaderClass(column)" (click)="onSort(column)">
+        <ng-container *ngIf="column.type == 'text'">
+          <span class="header">
+            <span *ngIf="!column.headerDef">{{column.libelle | translate}}</span>
+            <ng-template *ngIf="column.headerDef" [ngTemplateOutlet]="column.headerDef.template" [ngTemplateOutletContext]="{$implicit : column}"></ng-template>
+          <span class="sortIconAsc" [innerHtml]="'&#9660;'"></span>
+          <span class="sortIconDesc" [innerHtml]="'&#9650;'"></span>
+          </span>
+        </ng-container>
+        <asi-checkbox *ngIf="column.type == 'checkbox'" [(ngModel)]="allChecked" (onValueChange)="onAllChecked(column)"></asi-checkbox>
+      </th>
+    </tr>
+  </thead>
+  <ng-container *ngFor="let row of data?.results">
+    <tbody [ngClass]="getRowClass(row)">
+      <tr>
+        <td *ngFor="let column of getColumns()" [ngClass]="column.columnClass">
+          <ng-container *ngIf="column.type == 'text'">
+            <span *ngIf="!column.cellDef">{{getCellValue(row, column)}}</span>
+            <ng-template *ngIf="column.cellDef" [ngTemplateOutlet]="column.cellDef.template" [ngTemplateOutletContext]="{$implicit : row}"></ng-template>
+          </ng-container>
+          <asi-checkbox *ngIf="column.type == 'checkbox'" [(ngModel)]="row.checked" (onValueChange)="onChecked(row, column)"></asi-checkbox>
+        </td>
+      </tr>
+      <tr *ngFor="let inlineColumn of getInlineColumns()" class="inlined">
+        <td *ngIf="inlineColumn.inliners.length == 0" [attr.colspan]="getColumns().length" class="inlined" [ngClass]="inlineColumn.columnClass">
+          <span *ngIf="!inlineColumn.cellDef">{{getCellValue(row, inlineColumn)}}</span>
+          <ng-template *ngIf="inlineColumn.cellDef" [ngTemplateOutlet]="inlineColumn.cellDef.template" [ngTemplateOutletContext]="{$implicit : row}"></ng-template>
+        </td>
+        <ng-container *ngIf="inlineColumn.inliners.length > 0">
+          <td *ngFor="let inliner of inlineColumn.inliners" [attr.colspan]="inliner.colSpan">
+            <span *ngIf="!inliner.cellDef">{{getCellValue(row, inlineColumn)}}</span>
+            <ng-template *ngIf="inliner.cellDef" [ngTemplateOutlet]="inliner.cellDef.template" [ngTemplateOutletContext]="{$implicit : row}"></ng-template>
+          </td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </ng-container>
+</table>
+<asi-pagination *ngIf="data.paginate" [nbElements]="data.totalPages" [nbVisibleElements]="6" [selectedPagination]="data.pageIndex"
+  (onPaginationChanged)="onPaginationChanged($event)"></asi-pagination>

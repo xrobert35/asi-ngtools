@@ -1,0 +1,96 @@
+asi-notification-container, .asi-notification-container {
+  position: fixed;
+  padding: 5px;
+  z-index: 51;
+  &.top_center {
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  &.top_right {
+    top: 10px;
+    right: 10px;
+  }
+  &.top_left {
+    top: 10px;
+    left: 5px;
+  }
+  &.bottom_center {
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  &.bottom_right {
+    bottom: 10px;
+    right: 10px;
+  }
+  &.bottom_left {
+    bottom: 10px;
+    left: 5px;
+  }
+  .asi-notification-container-panel {
+    min-width: 255px;
+    position: relative;
+    .asi-notification {
+      position: absolute;
+      min-height: @asi-notification-height;
+      min-width: 250px;
+      color: white;
+      border-radius: 1px;
+      box-shadow: 1px 1px 1px grey;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      text-align: left;
+      transition: top .3s ease-in-out, bottom .3s ease-in-out, opacity .3s ease-in-out;
+      .icon-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        min-height : @asi-notification-height;
+        width: @asi-notification-height;
+      }
+      & > :not(.icon-container) {
+        padding: 5px 5px 5px 10px;
+      }
+      &.success {
+        background-color: @asi-notification-success;
+        .icon-container {
+          color: @asi-notification-success;
+        }
+      }
+      &.warning {
+        background-color: @asi-notification-warning;
+        .icon-container {
+          color: @asi-notification-warning;
+        }
+      }
+      &.error {
+        background-color: @asi-notification-error;
+        .icon-container {
+          color: @asi-notification-error;
+        }
+      }
+      &.info {
+        background-color: @asi-notification-info;
+        .icon-container {
+          color: @asi-notification-info;
+        }
+      }
+      &.top_center, &.top_left, &.top_right {
+        top: 0;
+      }
+      &.bottom_center, &.bottom_left, &.bottom_right {
+        bottom: 0;
+      }
+    }
+  }
+}

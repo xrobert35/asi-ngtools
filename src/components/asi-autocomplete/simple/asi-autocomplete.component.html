@@ -1,0 +1,27 @@
+<label class="input-label" *ngIf="label != null">{{label | translate}}</label>
+
+<div class="autocomplete">
+  <input [attr.disabled]="disabled ? '' : null" class="asi-focus-error" [placeholder]="placeholder" *ngIf="value == null" [formControl]="autoCompleteControl" />
+  <a tabindex="0" class="clean-a autocomplete-header" *ngIf="value != null">
+    <div class="select-value">
+      <ng-template [ngTemplateOutlet]="selectedDef.template" [ngTemplateOutletContext]="{$implicit : value}"></ng-template>
+    </div>
+    <button type="button" [disabled]="disabled" class="remove-icon-container" (click)="clearValue()">
+      <span class="remove-icon" [innerHTML]="'&#10005;'"></span>
+    </button>
+  </a>
+
+  <asi-dropdown [open]="open" (onClose)="onDropdownClose()" #dropdown>
+    <div class="drop-down-autocomplete">
+      <div class="drop-down-panel">
+        <button type="button" class="drop-down-item" (click)="selectValue(aData)" *ngFor="let aData of data">
+          <div class="option">
+            <span class="item">
+              <ng-template *ngIf="aData != null" [ngTemplateOutlet]="optionDef.template" [ngTemplateOutletContext]="{$implicit : aData}"></ng-template>
+            </span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </asi-dropdown>
+</div>
