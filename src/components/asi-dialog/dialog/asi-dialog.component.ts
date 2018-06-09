@@ -1,4 +1,4 @@
-import { Subject, Observable } from 'rxjs/Rx';
+import { Subject, Observable } from 'rxjs';
 import { AsiDialogConfig } from './../asi-dialog-config';
 import { Component, ViewContainerRef } from '@angular/core';
 
@@ -24,6 +24,10 @@ export class AsiDialog<T> {
 
   setConfig(config: AsiDialogConfig) {
     this._config = config;
+  }
+
+  getConfig(): AsiDialogConfig {
+    return this._config;
   }
 
   close(param?: any) {

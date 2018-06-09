@@ -1,4 +1,4 @@
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs';
 import { AsiNotification } from '../notification/asi-notification.component';
 import { AsiNotificationPosition, AsiNotificationConfig } from '../asi-notification-config';
 import { Component, ViewContainerRef, Renderer2, ElementRef, ComponentRef } from '@angular/core';

@@ -1,5 +1,5 @@
 import { AsiDialog } from './../dialog/asi-dialog.component';
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs';
 import { AsiDialogConfig } from '../asi-dialog-config';
 import { Component, ViewContainerRef, ComponentRef, ViewChild } from '@angular/core';
 

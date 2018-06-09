@@ -1,23 +1,30 @@
-import { Component, OnInit, Output, ChangeDetectorRef, DoCheck, IterableDiffers, EventEmitter, Input, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, ChangeDetectorRef, DoCheck, IterableDiffers,
+  EventEmitter, Input, ElementRef, ViewChild, AfterViewInit, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'asi-breadcrumb',
   templateUrl: 'asi-breadcrumb.component.html',
-  host: { 'class': 'asi-component asi-breadcrumb' },
 })
-export class AsiBreadcrumbComponent<T> implements OnInit, DoCheck {
+export class AsiBreadcrumbComponent<T> implements OnInit, DoCheck, AfterViewInit {
+
+  @HostBinding('class') class = 'asi-component asi-breadcrumb';
 
   @Input() public data: Array<T>;
   @Input() public trackBy: string;
   @Input() public hideHome: boolean;
 
-  @ViewChild("asiBreadcrumbDropdownDots") asiBreadcrumbDropdownDots: ElementRef;
+  @ViewChild('asiBreadcrumbDropdownDots') asiBreadcrumbDropdownDots: ElementRef;
 
   private differ: any;
   private nbElementsMax: number;
   public hideElements = false;
   public elementsDropdownOpened = false;
-  public shadowData: Array<T> = new Array<T>(); // Data displayed on dom, doesn't interfere with input data
+  /**
+   * Data displayed on dom, doesn't interfere with input data
+   * Needed because we sometimes hide some elements in GUI
+   * But we don't want to remove them from data array
+   */
+  public shadowData: Array<T> = new Array<T>();
   public hiddenElements: Array<T> = new Array<T>();
 
   @Output('clicked')
@@ -40,10 +47,14 @@ export class AsiBreadcrumbComponent<T> implements OnInit, DoCheck {
 
   // Using ngDoCheck instead of ngChanges to update on deep change (push/pop into the array)
   ngDoCheck() {
-    var changes = this.differ.diff(this.data);
+    let changes = this.differ.diff(this.data);
     if (changes) {
       this.ref.detectChanges();
-      this.updateShadow(changes._collection);
+      if (changes._collection) {
+        this.updateShadow(changes._collection);
+      } else {
+        this.updateShadow(changes.collection);
+      }  
     }
   }
 
@@ -52,15 +63,18 @@ export class AsiBreadcrumbComponent<T> implements OnInit, DoCheck {
     let breadcrumbWidth = this.elRef.nativeElement.offsetWidth;
     // (width - (home width) - ('...' width)) / max elements size
     this.nbElementsMax = Math.floor((breadcrumbWidth - 30 - 50) / 130);
-    setTimeout(() => this.updateShadow(this.data)); // setTimeout() avoid "ExpressionChangedAfterItHasBeenCheckedError" exception in dev mode
+    // setTimeout() avoid "ExpressionChangedAfterItHasBeenCheckedError" exception in dev mode
+    setTimeout(() => this.updateShadow(this.data));
   }
 
   private updateShadow(newStack: Array<T>) {
-    // true -> showing '...'
-    this.hideElements = newStack.length > this.nbElementsMax;
-    // just display the last 'nbElementsMax'
-    this.shadowData = newStack.slice(0 - this.nbElementsMax);
-    this.hiddenElements = newStack.slice(0, Math.max(newStack.length - this.nbElementsMax));
+    if (newStack) {
+      // true -> showing '...'
+      this.hideElements = newStack.length > this.nbElementsMax;
+      // just display the last 'nbElementsMax'
+      this.shadowData = newStack.slice(0 - this.nbElementsMax);
+      this.hiddenElements = newStack.slice(0, Math.max(newStack.length - this.nbElementsMax));
+    }
   }
 
   public getTrackedValue(element: T) {

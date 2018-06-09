@@ -46,7 +46,7 @@ export class AsiDialogService {
 
   private createDialog<T extends AsiDialogView>(content: ComponentType<T>, containerRef: ComponentRef<AsiDialogContainer>, config: AsiDialogConfig): ComponentRef<AsiDialog<T>> {
     //Creation de la notification
-    const asiDialogFactory: ComponentFactory<AsiDialog<T>> = this.resolver.resolveComponentFactory(AsiDialog);
+    const asiDialogFactory: ComponentFactory<AsiDialog<T>> = this.resolver.resolveComponentFactory<AsiDialog<T>>(AsiDialog);
     let asiDialogRef = containerRef.instance.viewContainerRef.createComponent(asiDialogFactory, 0);
 
     asiDialogRef.instance.setConfig(config);

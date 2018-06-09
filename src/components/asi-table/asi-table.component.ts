@@ -3,7 +3,7 @@ import { AsiTableSelectionModel } from './asi-table-config';
 import { AsiTableRequest } from './asi-table-request';
 import { AsiTableData } from './asi-table-data';
 import { AsiTableColumn } from './asi-table-column.directive';
-import { Component, QueryList, ContentChildren, AfterContentInit, EventEmitter, Output, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, QueryList, ContentChildren, AfterContentInit, Input, ViewChild, ElementRef } from '@angular/core';
 import * as lodash from 'lodash';
 
 @Component({
@@ -22,7 +22,7 @@ export class AsiTable<T> implements AfterContentInit {
   @Input() rowClass: any;
   @Input() fireRefreshOnInit = true;
   @Input() changePageOnTop = false;
-  @Output() onRequestData = new EventEmitter<AsiTableRequest>();
+  @Input() onRequestData: Function;
 
   @ViewChild("table") topElement: ElementRef;
 
@@ -135,7 +135,11 @@ export class AsiTable<T> implements AfterContentInit {
 
   private requestData() {
     let request = this.getAsiTableRequest();
-    this.onRequestData.emit(request);
+    if (this.onRequestData) {
+      Promise.resolve(this.onRequestData(request)).then((data: AsiTableData<T>) => {
+        this.updateData(data);
+      });
+    }
   }
 
   private getAsiTableRequest(): AsiTableRequest {

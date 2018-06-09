@@ -2,7 +2,11 @@
 
 This project is a little components library, simple to use, which will help you to simplify your project.
 
-This library have an angular 4 version and an angular 5 version.
+This library have an angular 4/5//6 version.
+
+##### To use it with angular 6 :
+
+`npm install -save @asi-ngtools/lib@^6.0.0`
 
 ##### To use it with angular 5 :
 

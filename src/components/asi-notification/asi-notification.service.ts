@@ -47,7 +47,7 @@ export class AsiNotificationService {
 
   private createNotificiation<T>(content: ComponentType<T>, containerRef: ComponentRef<AsiNotificationContainer>, config: AsiNotificationConfig): ComponentRef<AsiNotification<T>> {
     //Creation de la ntoficiation
-    const asiNotificationFactory: ComponentFactory<AsiNotification<T>> = this.resolver.resolveComponentFactory(AsiNotification);
+    const asiNotificationFactory: ComponentFactory<AsiNotification<T>> = this.resolver.resolveComponentFactory<AsiNotification<T>>(AsiNotification);
     let asiNotificationRef = containerRef.instance.viewContainerRef.createComponent(asiNotificationFactory, 0);
 
     asiNotificationRef.instance.setConfig(config);

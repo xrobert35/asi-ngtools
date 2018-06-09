@@ -1,4 +1,4 @@
-import { Component, Input, Output, ViewChild, ElementRef, OnInit, OnChanges, SimpleChanges, SimpleChange, Renderer2, EventEmitter } from '@angular/core';
+import { Component, Input, Output, ViewChild, ElementRef, OnInit, OnChanges, SimpleChanges, Renderer2, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'asi-fa-icon',

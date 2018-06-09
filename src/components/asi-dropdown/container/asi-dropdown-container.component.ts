@@ -1,6 +1,6 @@
 import { AsiDropdownService } from './../asi-dropdown.service';
 import { TemplateRef, Component, ElementRef, ViewChild, HostListener, Inject, Input } from '@angular/core';
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs';
 import { AsiDropDown } from './../asi-dropdown.component';
 import { DOCUMENT } from '@angular/platform-browser';
 

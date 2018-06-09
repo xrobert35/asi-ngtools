@@ -24,6 +24,7 @@ import { AsiImageChooserModule } from './components/asi-image-chooser/asi-image-
 import { AsiFileChooserModule } from './components/asi-file-chooser/asi-file-chooser.module';
 import { AsiInputNumberModule } from './components/asi-input-number/asi-input-number.module';
 import { AsiInputModule } from './components/asi-input/asi-input.module';
+import { AsiInputChipsModule } from './components/asi-input-chips/asi-input-chips.module';
 import { AsiIconInputModule } from './components/asi-icon-input/asi-icon-input.module';
 import { AsiErrorMessagesModule } from './components/asi-error-messages/asi-error-messages.module';
 import { AsiTabGroupModule } from './components/asi-tab-group/asi-tab-group.module';
@@ -58,6 +59,7 @@ export * from './components/asi-image-chooser/asi-image-chooser.module';
 export * from './components/asi-file-chooser/asi-file-chooser.module';
 export * from './components/asi-input-number/asi-input-number.module';
 export * from './components/asi-input/asi-input.module';
+export * from './components/asi-input-chips/asi-input-chips.module';
 export * from './components/asi-icon-input/asi-icon-input.module';
 export * from './components/asi-error-messages/asi-error-messages.module';
 export * from './components/asi-tab-group/asi-tab-group.module';
@@ -76,9 +78,10 @@ export * from './asi-ngtools-base.module';
   declarations: [],
   imports: [
     AsiInputModule.forRoot(),
+    AsiInputNumberModule.forRoot(),
+    AsiInputChipsModule.forRoot(),
     AsiRadioGroupModule.forRoot(),
     AsiSelectModule.forRoot(),
-    AsiInputNumberModule.forRoot(),
     AsiCheckBoxModule.forRoot(),
     AsiIconCheckBoxModule.forRoot(),
     AsiTabGroupModule.forRoot(),
@@ -113,9 +116,10 @@ export * from './asi-ngtools-base.module';
   ],
   exports: [
     AsiInputModule,
+    AsiInputNumberModule,
+    AsiInputChipsModule,
     AsiRadioGroupModule,
     AsiSelectModule,
-    AsiInputNumberModule,
     AsiCheckBoxModule,
     AsiIconCheckBoxModule,
     AsiTabGroupModule,

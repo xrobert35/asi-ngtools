@@ -22,6 +22,10 @@ asi-tab-group, .asi-tab-group {
         &:focus {
           border: @asi-tab-outline-border;
         }
+        
+        &:not(:disabled){
+          cursor: pointer;
+        }
 
         background: none;
         border: @asi-tab-border;

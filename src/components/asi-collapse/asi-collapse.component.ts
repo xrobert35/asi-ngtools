@@ -3,7 +3,8 @@ import {
   trigger,
   style,
   animate,
-  transition
+  transition,
+  
 } from '@angular/animations';
 import { AsiComponentTemplateCollapseHeaderDef } from '../common/asi-component-template';
 

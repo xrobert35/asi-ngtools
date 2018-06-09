@@ -1,10 +1,11 @@
-import { Component, Input, forwardRef, Output, EventEmitter, ElementRef, ContentChild, Renderer2, ViewChild } from '@angular/core';
+import { Component, Input, forwardRef, ElementRef, ContentChild, Renderer2, ViewChild } from '@angular/core';
 
 import { DefaultControlValueAccessor } from './../../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 
 import { AsiComponentTemplateOptionDef, AsiComponentTemplateSelectedDef } from './../../common/asi-component-template';
 import { AsiDropDown } from './../../asi-dropdown/asi-dropdown.component';
+import { debounceTime } from 'rxjs/operators';
 
 /**
  * asi-autocomplete component
@@ -37,7 +38,7 @@ export class AsiAutoCompleteComponent extends DefaultControlValueAccessor {
   @Input() placeholder: string = "";
 
   /** Event emitted to request new data when delay is past */
-  @Output() onRequestData = new EventEmitter();
+  @Input() onRequestData : Function;
 
   @ContentChild(AsiComponentTemplateOptionDef) optionDef: AsiComponentTemplateOptionDef;
   @ContentChild(AsiComponentTemplateSelectedDef) selectedDef: AsiComponentTemplateSelectedDef;
@@ -59,12 +60,16 @@ export class AsiAutoCompleteComponent extends DefaultControlValueAccessor {
 
   ngOnInit(): void {
     this.renderer.addClass(this.elementRef.nativeElement, "label-" + this.labelPosition);
-    this.autoCompleteControl.valueChanges
-      .debounceTime(this.delay)
+    this.autoCompleteControl.valueChanges.pipe(debounceTime(this.delay))
       .subscribe(value => {
         this.currentValue = value;
-        this.onRequestData.emit(value);
-        this.firstRequestDone = true;
+        Promise.resolve(this.onRequestData(value)).then((data) => {
+          this.data = data;
+          if (this.firstRequestDone) {
+            this.open = true;
+          }  
+          this.firstRequestDone = true;
+        });
       });
   }
 

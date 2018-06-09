@@ -3,7 +3,7 @@ import { DefaultControlValueAccessor } from './../common/default-control-value-a
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { Component, forwardRef, Input, ElementRef, Renderer2, ViewChild } from '@angular/core';
 
-import moment from 'moment';
+import * as moment from 'moment';
 
 @Component({
   selector: 'asi-datepicker',

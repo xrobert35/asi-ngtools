@@ -1,6 +1,7 @@
 {
   "name": "@asi-ngtools/lib",
-  "version": "5.0.4",
+  "version": "6.0.0",
+  "main": "./index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/xrobert35/asi-ngtools"
@@ -19,17 +20,15 @@
   "module": "asi-ngtools.js",
   "typings": "asi-ngtools.d.ts",
   "peerDependencies": {
-    "@angular/core": "^5.0.0",
-    "@angular/router": "^5.0.0",
-    "@angular/forms": "^5.0.0",
-    "@angular/http": "^5.0.0",
-    "@angular/animations": "^5.0.0",
-    "rxjs": "^5.1.0",
+    "@angular/core": "^6.0.0",
+    "@angular/router": "^6.0.0",
+    "@angular/forms": "^6.0.0",
+    "@angular/http": "^6.0.0",
+    "@angular/animations": "^6.0.0",
+    "rxjs": "^6.2.0",
     "zone.js": "^0.8.4",
-    "@ngx-translate/core": "^9.1.1",
+    "@ngx-translate/core": "^10.0.0",
     "ng-dynamic": "^3.0.2",
-    "@ngrx/core": "^1.2.0",
-    "@ngrx/store": "^4.0.3",
     "moment": "^2.18.1"
   },
   "dependencies": {

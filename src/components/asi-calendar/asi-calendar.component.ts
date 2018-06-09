@@ -5,7 +5,7 @@ import { Component, forwardRef, Input, Output, EventEmitter, ElementRef } from '
 import * as calendarConst from "./asi-calendar-constants";
 import * as lodash from "lodash";
 
-import moment from 'moment';
+import * as moment from 'moment';
 
 @Component({
   selector: 'asi-calendar',

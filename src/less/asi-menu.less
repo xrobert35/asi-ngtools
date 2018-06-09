@@ -38,11 +38,15 @@ asi-menu, .asi-menu {
           height: 40px;
           min-width: 100px;
           border-bottom : 2px solid transparent;
+          transition: background-color 0.1s ease-in;
           &.active {
-            font-weight: bold;
             background-color: @asi-menu-active-background-color;
             color: @asi-menu-active-text-color;
             border-bottom: @asi-menu-active-border-bottom;
+          }
+          &:hover{
+            background-color: @asi-menu-active-background-color;
+            color: @asi-menu-active-text-color;
           }
           outline: none;
           &:focus {

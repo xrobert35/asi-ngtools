@@ -6,10 +6,13 @@ asi-collapse, .asi-collapse {
     .clean-button;
     outline: none;
     &:focus {
-      border: @asi-collapse-outline-border;
+      border-bottom: @asi-collapse-outline-border;
     }
-    &:hover{
-      background-color: #ECF0F6;
+    &:hover {
+      background-color: @asi-collapse-header-hover-background-color;
+      &:not([disabled]) {
+        color: @asi-collapse-header-hover-color;
+      }
     }
     min-height: 40px;
     font-size: 20px;
@@ -21,7 +24,6 @@ asi-collapse, .asi-collapse {
     padding-left: 10px;
     margin-bottom: 1px;
   }
-
   .collapse-panel {
     border: @asi-collapse-panel-border;
     background-color: @asi-collapse-panel-background-color;

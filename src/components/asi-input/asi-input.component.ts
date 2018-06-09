@@ -1,7 +1,7 @@
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { Component, forwardRef, Input, ElementRef, Renderer2, ViewChild } from '@angular/core';
-
+import { debounceTime } from 'rxjs/operators';
 import * as lodash from 'lodash';
 
 @Component({
@@ -47,7 +47,7 @@ export class AsiInputComponent extends DefaultControlValueAccessor {
   }
 
   ngAfterViewInit() {
-    this.inputControl.valueChanges.debounceTime(this.delay).subscribe((value: string) => {
+    this.inputControl.valueChanges.pipe(debounceTime(this.delay)).subscribe((value: string) => {
       if (value == "") {
         this.value = null;
       } else if (this.isValide(value)) {

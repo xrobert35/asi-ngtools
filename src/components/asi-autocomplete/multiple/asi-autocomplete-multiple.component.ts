@@ -1,8 +1,9 @@
-import { Component, Input, forwardRef, Output, EventEmitter, OnInit, ElementRef, ContentChild, Renderer2, ViewChild } from '@angular/core';
+import { Component, Input, forwardRef, OnInit, ElementRef, ContentChild, Renderer2, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { DefaultControlValueAccessor } from './../../common/default-control-value-accessor';
 import { AsiComponentTemplateOptionDef, AsiComponentTemplateTagDef } from './../../common/asi-component-template';
 import * as lodash from 'lodash';
+import { debounceTime } from 'rxjs/operators';
 
 /**
  * asi-autocomplete-multiple component
@@ -23,6 +24,7 @@ export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccesso
 
   /** Label to display */
   @Input() label: string;
+
   /** Label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = "top";
 
@@ -38,7 +40,7 @@ export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccesso
   @Input() closeAfterSelect: boolean = false;
 
   /** Event emitted to request new data when delay is past */
-  @Output() onRequestData = new EventEmitter();
+  @Input() onRequestData : Function;
 
   @ContentChild(AsiComponentTemplateOptionDef) optionDef: AsiComponentTemplateOptionDef;
   @ContentChild(AsiComponentTemplateTagDef) tagDef: AsiComponentTemplateTagDef;
@@ -59,12 +61,18 @@ export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccesso
   }
 
   ngOnInit(): void {
-    this.autoCompleteControl.valueChanges
-      .debounceTime(this.delay)
+    this.autoCompleteControl.valueChanges.pipe(debounceTime(this.delay))
       .subscribe(value => {
         this.currentValue = value;
-        this.onRequestData.emit(value);
-        this.firstRequestDone = true;
+        if (this.onRequestData) {
+          Promise.resolve(this.onRequestData(value)).then((data) => {
+            this.data = data;
+            if (this.firstRequestDone) {
+              this.open = true;
+            }  
+            this.firstRequestDone = true;
+          });
+        } 
       });
   }
 

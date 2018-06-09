@@ -3,121 +3,121 @@
 /* Inspired by Flat CC3 Breadcrumb by Renaud Tertrais
         https://codepen.io/renaudtertrais/pen/qtico?editors=1100#0 */
 
-.breadcrumb {
-  margin: 0;
-  padding: 0;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  list-style: none;
-  text-align: center;
-  display: inline-block;
-  border: solid 1px @asi-breadcrumb-border-color;
-  background-color: @asi-breadcrumb-border-color;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  li {
-    float: left;
-    a {
-      color: @asi-breadcrumb-text-color;
-      display: block;
-      background-color: @asi-breadcrumb-background-color;
-      text-decoration: none;
-      position: relative;
-      height: 30px;
-      line-height: 30px;
-      padding-right: 10px;
-      text-align: center;
-      margin-right: 23px;
-      p {
-        margin: 0;
-        max-width: 130px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        &.shortText {
-          max-width: 110px;
+.asi-breadcrumb, asi-breadcrumb {
+  .base-component;
+  .breadcrumb {
+    padding: 0;
+    margin : 0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    list-style: none;
+    text-align: center;
+    display: inline-block;
+    border: solid 1px @asi-breadcrumb-border-color;
+    background-color: @asi-breadcrumb-border-color;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    li {
+      float: left;
+      a {
+        color: @asi-breadcrumb-text-color;
+        display: block;
+        background-color: @asi-breadcrumb-background-color;
+        text-decoration: none;
+        position: relative;
+        height: 35px;
+        line-height: 35px;
+        padding-right: 10px;
+        text-align: center;
+        margin-right: 23px;
+        p {
+          margin: 0;
+          max-width: 130px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          &.shortText {
+            max-width: 110px;
+          }
         }
-      }
-      &:before,
-      &:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        border: 0 solid @asi-breadcrumb-background-color;
-        border-width: 0 11px 30px;
-        width: 0;
-        height: 0;
-      }
-      &:before {
-        left: -22px;
-        border-left-color: transparent;
-      }
-      &:after {
-        left: 100%;
-        border-color: transparent;
-        border-left-color: @asi-breadcrumb-background-color;
-      }
-      &:hover {
-        background-color: @asi-breadcrumb-hover-color;
-        cursor: pointer;
+        &:before, &:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          border: 0 solid @asi-breadcrumb-background-color;
+          border-width: 0 11px 35px;
+          width: 0;
+          height: 0;
+        }
         &:before {
-          border-color: @asi-breadcrumb-hover-color;
-          cursor: pointer;
+          left: -22px;
           border-left-color: transparent;
         }
         &:after {
+          left: 100%;
+          border-color: transparent;
+          border-left-color: @asi-breadcrumb-background-color;
+        }
+        &:hover {
+          background-color: @asi-breadcrumb-hover-color;
           cursor: pointer;
-          border-left-color: @asi-breadcrumb-hover-color;
+          &:before {
+            border-color: @asi-breadcrumb-hover-color;
+            cursor: pointer;
+            border-left-color: transparent;
+          }
+          &:after {
+            cursor: pointer;
+            border-left-color: @asi-breadcrumb-hover-color;
+          }
+        }
+        &:active {
+          background-color: @asi-breadcrumb-active-color;
+          &:before {
+            border-color: @asi-breadcrumb-active-color;
+            border-left-color: transparent;
+          }
+          &:after {
+            border-left-color: @asi-breadcrumb-active-color;
+          }
         }
       }
-      &:active {
-        background-color: @asi-breadcrumb-active-color;
+      &:first-of-type a {
+        padding-left: 10px;
+        -moz-border-radius: 4px 0 0 4px;
+        border-radius: 4px 0 0 4px;
         &:before {
-          border-color: @asi-breadcrumb-active-color;
-          border-left-color: transparent;
+          border: none;
+        }
+      }
+      &:last-of-type a {
+        padding-right: 10px;
+        -moz-border-radius: 0 4px 4px 0;
+        border-radius: 0 4px 4px 0;
+        margin-right: 0px;
+        &:after {
+          border: none;
+        }
+      }
+      &:only-of-type a {
+        padding-right: 10px;
+        padding-left: 10px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        margin-right: 0px;
+        margin-left: 0px;
+        &:before {
+          border: none;
         }
         &:after {
-          border-left-color: @asi-breadcrumb-active-color;
+          border: none;
         }
-      }
-    }
-    &:first-of-type a {
-      padding-left: 10px;
-      -moz-border-radius: 4px 0 0 4px;
-      border-radius: 4px 0 0 4px;
-      &:before {
-        border: none;
-      }
-    }
-    &:last-of-type a {
-      padding-right: 10px;
-      -moz-border-radius: 0 4px 4px 0;
-      border-radius: 0 4px 4px 0;
-      margin-right: 0px;
-      &:after {
-        border: none;
-      }
-    }
-    &:only-of-type a {
-      padding-right: 10px;
-      padding-left: 10px;
-      -moz-border-radius: 4px;
-      border-radius: 4px;
-      margin-right: 0px;
-      margin-left: 0px;
-      &:before {
-        border: none;
-      }
-      &:after {
-        border: none;
       }
     }
   }
-
-  
 }
 
-.drop-down-breadcrumb{
+.drop-down-breadcrumb {
   color: white;
   background-color: @asi-breadcrumb-background-color;
   margin-top: 2px;
@@ -125,54 +125,49 @@
   box-shadow: 1px 1px 10px 0px #616161;
   max-height: 180px;
   overflow-y: auto;
-
   // === Custom scroll bar ===
-  &::-webkit-scrollbar
-  {
+  &::-webkit-scrollbar {
     width: 6px;
     background-color: #F5F5F5;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
   }
-  &::-webkit-scrollbar-track
-  {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #F5F5F5;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
   }
-  &::-webkit-scrollbar-thumb
-  {
+  &::-webkit-scrollbar-thumb {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
-    background-color: darken(@asi-breadcrumb-background-color,10%);
+    background-color: darken(@asi-breadcrumb-background-color, 10%);
   }
   // =========================
-
-  > div{
+  > div {
     border-top: 1px dashed @asi-breadcrumb-background-color;
     border-bottom: 1px dashed @asi-breadcrumb-background-color;
-    &:first-child{
+    &:first-child {
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
-      &:hover{
+      &:hover {
         border-top: 1px dashed @asi-breadcrumb-background-color; // set the border to the background color
       }
     }
-    &:last-child{
+    &:last-child {
       border-bottom-left-radius: 3px;
       border-bottom-right-radius: 3px;
-      &:hover{
+      &:hover {
         border-bottom: 1px dashed @asi-breadcrumb-background-color; // set the border to the background color
       }
     }
     padding:5px 5px;
-    &:hover{
+    &:hover {
       border-color: @asi-breadcrumb-border-color; // the border becomes visible
       background-color: @asi-breadcrumb-hover-color;
     }
-    &:active{
+    &:active {
       background-color: @asi-breadcrumb-active-color;
     }
   }
