@@ -2,7 +2,7 @@
 
 This project is a little components library, simple to use, which will help you to simplify your project.
 
-This library have an angular 4/5//6 version.
+This library have an angular 4/5/6 version.
 
 ##### To use it with angular 6 :
 
