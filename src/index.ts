@@ -25,7 +25,7 @@ import { AsiFileChooserModule } from './components/asi-file-chooser/asi-file-cho
 import { AsiInputNumberModule } from './components/asi-input-number/asi-input-number.module';
 import { AsiInputModule } from './components/asi-input/asi-input.module';
 import { AsiInputChipsModule } from './components/asi-input-chips/asi-input-chips.module';
-import { AsiIconInputModule } from './components/asi-icon-input/asi-icon-input.module';
+import { AsiInputIconModule } from './components/asi-input-icon/asi-input-icon.module';
 import { AsiErrorMessagesModule } from './components/asi-error-messages/asi-error-messages.module';
 import { AsiTabGroupModule } from './components/asi-tab-group/asi-tab-group.module';
 import { AsiCheckBoxModule } from './components/asi-checkbox/asi-checkbox.module';
@@ -60,7 +60,7 @@ export * from './components/asi-file-chooser/asi-file-chooser.module';
 export * from './components/asi-input-number/asi-input-number.module';
 export * from './components/asi-input/asi-input.module';
 export * from './components/asi-input-chips/asi-input-chips.module';
-export * from './components/asi-icon-input/asi-icon-input.module';
+export * from './components/asi-input-icon/asi-input-icon.module';
 export * from './components/asi-error-messages/asi-error-messages.module';
 export * from './components/asi-tab-group/asi-tab-group.module';
 export * from './components/asi-checkbox/asi-checkbox.module';
@@ -109,7 +109,7 @@ export * from './asi-ngtools-base.module';
     AsiDropdownModule.forRoot(),
     AsiNotificationModule.forRoot(),
     AsiDialogModule.forRoot(),
-    AsiIconInputModule.forRoot(),
+    AsiInputIconModule.forRoot(),
     AsiIbanFRInputModule.forRoot(),
     AsiValidatorsModule.forRoot(),
     AsiTreeViewModule.forRoot()
@@ -147,7 +147,7 @@ export * from './asi-ngtools-base.module';
     AsiNotificationModule,
     AsiDropdownModule,
     AsiDialogModule,
-    AsiIconInputModule,
+    AsiInputIconModule,
     AsiIbanFRInputModule,
     AsiValidatorsModule,
     AsiTreeViewModule

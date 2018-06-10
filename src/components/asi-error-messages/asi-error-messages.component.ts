@@ -9,8 +9,8 @@ import { Component, Input, ElementRef, OnInit, ContentChildren, QueryList, Injec
  * Exemple d'utilisation :
  * 
  *  <error-messages [for]="loginForm.get('password')">
- *        <message error="required" value="ERRORS.required"></message>
- *        <message error="minlength" value="ERRORS.minLength" [onSubmit]="true"></message>
+ *        <message error="required" value="VALIDATIONS.required"></message>
+ *        <message error="minlength" value="VALIDATIONS.minLength" [onSubmit]="true"></message>
  *  </error-messages>
  */
 @Component({

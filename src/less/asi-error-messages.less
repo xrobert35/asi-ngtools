@@ -23,11 +23,11 @@ asi-error-messages, .asi-error-messages {
 //Modification des bordures des composants de saisie
 .asi-has-error {
   .asi-focus-error {
-    &:not(.asi-fa-icon) {
+    &:not(.asi-fa-icon):not(.asi-button)  {
       border: @asi-ngtools-error-border !important;
     }
-    &.asi-fa-icon {
-      button {
+    &.asi-fa-icon, &.asi-button {
+      > button {
         border: @asi-ngtools-error-border !important;
       }
     }

@@ -28,7 +28,7 @@ Here's the list of components that can be found in the library :
 | asi-autocomplete | A typeahead component  |
 | asi-autocomplete-multiple | A multi selection typeahead component   |
 | asi-input  | Simple input  |
-| asi-icon-input | Simple input with an fa-icon |
+| asi-input-icon | Simple input with an fa-icon |
 | asi-textarea | Simple textarea |
 | asi-checkbox | Simple checkbox |
 | asi-button | Simple button   |

@@ -5,18 +5,18 @@ import { Component, forwardRef, Input, Output, EventEmitter, ElementRef, Rendere
 import * as lodash from 'lodash';
 
 @Component({
-  selector: 'asi-icon-input',
-  templateUrl: 'asi-icon-input.component.html',
-  host: { 'class': 'asi-component asi-icon-input' },
+  selector: 'asi-input-icon',
+  templateUrl: 'asi-input-icon.component.html',
+  host: { 'class': 'asi-component asi-input-icon' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => AsiIconInputComponent),
+      useExisting: forwardRef(() => AsiInputIconComponent),
       multi: true
     }
   ]
 })
-export class AsiIconInputComponent extends DefaultControlValueAccessor {
+export class AsiInputIconComponent extends DefaultControlValueAccessor {
 
   @Input() label: string;
   @Input() placeholder: string = "";
@@ -82,7 +82,7 @@ export class AsiIconInputComponent extends DefaultControlValueAccessor {
     }
   }
 
-  public handleIconClick(){
+  public handleIconClick() {
     this.iconClicked.emit();
   }
 }

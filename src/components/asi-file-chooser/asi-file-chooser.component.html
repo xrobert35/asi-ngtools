@@ -2,8 +2,10 @@
 <div class="asi-file-chooser-container">
     <label ondragover="return false;" [class.loaded]="loaded" (dragenter)="handleDragEnter()" (dragleave)="handleDragLeave()"
         (drop)="handleDrop($event)">
+        <asi-button [small]="true" class="asi-focus-error">
+            <asi-fa-icon  (onClick)="openFileInput()" [icon]="icon" size="2x"></asi-fa-icon>
+        </asi-button>
         <input #fileInput type="file" [disabled]="disabled" name="file" [accept]="acceptAttribute" (change)="handleInputChange($event)"/>
-        <asi-fa-icon class="asi-focus-error" (onClick)="openFileInput()" [icon]="icon" size="2x"></asi-fa-icon>
     </label>
     <div class="file-link" *ngIf="value != null">
         <a [innerHTML]="value.name" download [href]="getFileUrl()" target="_empty"></a>

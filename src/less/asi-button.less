@@ -1,7 +1,7 @@
 asi-button, .asi-button {
   .base-component;
   flex: 0 0 auto;
-  button {
+  > button {
     display: flex;
     justify-content: center;
     align-items : center;
@@ -26,6 +26,20 @@ asi-button, .asi-button {
     }
     &:focus {
       border: @asi-button-outline-border;
+    }
+  }
+  &.button-small {
+    > button {
+      min-width: 35px;
+      padding : 0px;
+      width: 35px;
+      height: 35px;
+
+      > asi-fa-icon {
+        width : 30px;
+        height: 30px;
+        margin : 0px;
+      }
     }
   }
   &.button-raised {

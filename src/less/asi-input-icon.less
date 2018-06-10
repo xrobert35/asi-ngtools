@@ -1,0 +1,98 @@
+.asi-input-icon,
+asi-input-icon {
+  .base-component;
+
+  label.input-label {
+    color: @asi-input-icon-label-color;
+  }
+
+  .input-panel {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: row;
+    box-shadow: @asi-input-icon-box-shadow;
+
+    > * {
+      border-top: @asi-input-icon-border;
+      border-right: @asi-input-icon-border;
+      border-bottom: @asi-input-icon-border;
+      border-left: @asi-input-icon-border;
+    }
+
+    &.icon-right {
+      flex-direction: row-reverse;
+
+      .icon-container {
+        border-radius: 0 @asi-input-icon-border-radius @asi-input-icon-border-radius 0;
+      }
+
+      input {
+        border-right: none;
+        border-radius: @asi-input-icon-border-radius 0px 0px @asi-input-icon-border-radius;
+      }
+    }
+
+    &.icon-left {
+      input {
+        border-left: none;
+        border-radius: 0 @asi-input-icon-border-radius @asi-input-icon-border-radius 0;
+      }
+
+      .icon-container {
+        border-radius: @asi-input-icon-border-radius 0px 0px @asi-input-icon-border-radius;
+      }
+    }
+
+    .asi-button,
+    asi-button {
+      margin: 0;
+      padding: 0;
+      height: 30px;
+      min-height: 30px;
+      max-height: 30px;
+      width: 30px;
+      min-width: 30px;
+      max-width: 30px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      > button {
+        padding: 0;
+        height: 30px;
+        min-height: 30px;
+        max-height: 30px;
+        width: 30px;
+        min-width: 30px;
+        max-width: 30px;
+        border-radius: 0;
+
+        border-color : @asi-input-icon-icon-background-color;
+        background-color: @asi-input-icon-icon-background-color;
+
+        .asi-fa-icon {
+          margin: 0;
+
+          button {
+            color: @asi-input-icon-icon-color;
+          }
+        }
+      }
+    }
+
+    input {
+      flex: 1 0 auto;
+      outline: none;
+      height: @asi-input-icon-height;
+      padding: 0 0 0 5px;
+      border-radius: @asi-input-icon-border-radius;
+
+      &:focus {
+        border-top: @asi-input-icon-outline-border;
+        border-right: @asi-input-icon-outline-border;
+        border-bottom: @asi-input-icon-outline-border;
+        border-left: @asi-input-icon-outline-border;
+      }
+    }
+  }
+}

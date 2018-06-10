@@ -9,6 +9,7 @@ export class AsiButtonComponent {
 
   @Input() design: 'flat' | 'raised' | 'bordered' = 'flat';
   @Input() type: 'submit' | 'button' = 'button';
+  @Input() small: boolean = false;
   @Input() disabled: boolean = false;
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {
@@ -16,6 +17,9 @@ export class AsiButtonComponent {
 
   ngOnInit() {
     this.renderer.addClass(this.elementRef.nativeElement, "button-" + this.design);
+    if (this.small) {
+      this.renderer.addClass(this.elementRef.nativeElement, "button-small");
+    }
   }
 
 }
