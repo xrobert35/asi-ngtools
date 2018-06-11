@@ -1,5 +1,5 @@
 import { Observable, Subscriber } from 'rxjs';
-import { Http, RequestOptions, ResponseContentType, Headers } from '@angular/http';
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { map } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class AsiFileService {
 
-  constructor(private http: Http, private sanitizer: DomSanitizer) {
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
   }
 
   fileToBase64(file: File, sanitize?: boolean): Observable<string> {
@@ -85,21 +85,17 @@ export class AsiFileService {
   }
 
   getFileAsText(fileUrl: string): Observable<string> {
-    return this.http.get(fileUrl).pipe(map((res) => res.text()));
+    return this.http.get(fileUrl, {responseType : 'text'});
   }
 
   getFileAsBlob(fileUrl: string): Observable<File> {
-    let requestOptions = new RequestOptions();
-    requestOptions.responseType = ResponseContentType.Blob;
-    return this.http.get(fileUrl, requestOptions).pipe(map((response) => {
+    return this.http.get(fileUrl, { responseType: 'blob' }).pipe(map((response) => {
       return this.getFileFromBlobResponse(response);
     }));
   }
 
   getFileAsBlobFromPostRequest(fileUrl: string, body: any): Observable<File> {
-    let requestOptions = new RequestOptions();
-    requestOptions.responseType = ResponseContentType.Blob;
-    return this.http.post(fileUrl, body, requestOptions).pipe(map((response) => {
+    return this.http.post(fileUrl, body, { responseType: 'blob' }).pipe(map((response) => {
       return this.getFileFromBlobResponse(response);
     }));
   }
@@ -113,7 +109,6 @@ export class AsiFileService {
     return Observable.create((observer: Subscriber<any>) => {
       this.getFileAsBlob(fileUrl).subscribe((fileAsBlob) => {
         this.saveToFile(fileAsBlob, fileName);
-
         observer.next();
         observer.complete();
       });
@@ -138,16 +133,12 @@ export class AsiFileService {
   }
 
   getBlobImage(fileUrl: string): Observable<Blob> {
-    let requestOptions = new RequestOptions();
-    requestOptions.responseType = ResponseContentType.Blob;
-    return this.http.get(fileUrl, requestOptions).pipe(map((response) => response.blob()));
+    return this.http.get(fileUrl, { responseType: 'blob' });
   }
 
   uploadFile(url: string, file: File): Observable<any> {
     let formData: FormData = new FormData();
     formData.append('file', file, file.name);
-    let headers = new Headers();
-    let options = new RequestOptions({ headers: headers });
-    return this.http.post(url, formData, options);
+    return this.http.post(url, formData);
   }
 }
