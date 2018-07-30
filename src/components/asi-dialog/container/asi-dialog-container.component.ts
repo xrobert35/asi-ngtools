@@ -1,6 +1,5 @@
 import { AsiDialog } from './../dialog/asi-dialog.component';
 import { Observable, Subject } from 'rxjs';
-import { AsiDialogConfig } from '../asi-dialog-config';
 import { Component, ViewContainerRef, ComponentRef, ViewChild } from '@angular/core';
 
 import * as lodash from 'lodash';
@@ -26,10 +25,7 @@ export class AsiDialogContainer {
     return this.subjectContainer.asObservable();
   }
 
-  addDialog(dialogRef: ComponentRef<AsiDialog<any>>, config? : AsiDialogConfig) {
-    //pour passer la verif en attendant des updates du dialog
-    config = null;
-
+  addDialog(dialogRef: ComponentRef<AsiDialog<any>>) {
     this.dialogs.push(dialogRef);
 
     dialogRef.instance["_dialogDestroy"].subscribe(() => {

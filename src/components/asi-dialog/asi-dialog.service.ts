@@ -23,7 +23,7 @@ export class AsiDialogService {
 
 
     let dialogRef = this.createDialog(content, containerRef, config);
-    containerRef.instance.addDialog(dialogRef, config);
+    containerRef.instance.addDialog(dialogRef);
 
     return dialogRef.instance;
   }

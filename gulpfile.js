@@ -230,7 +230,7 @@ function deleteFolders(folders) {
  * Process less application
  */
 gulp.task('process-css', function () {
-  var src = ['src/less/asingtools.less'];
+  var src = ['src/styles/less/asingtools.less'];
 
   return gulp.src(src)
     .pipe(less({}))
@@ -247,6 +247,6 @@ gulp.task('process-css', function () {
 });
 
 gulp.task("copy-css", function () {
-  var src = ['src/less/**/*'];
+  var src = ['src/styles/less/**/*'];
   return gulp.src(src).pipe(gulp.dest('dist/styles/less'));
 });

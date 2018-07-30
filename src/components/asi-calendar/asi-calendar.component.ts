@@ -1,11 +1,12 @@
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Component, forwardRef, Input, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, forwardRef, Input, Output, EventEmitter, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
 
 import * as calendarConst from "./asi-calendar-constants";
 import * as lodash from "lodash";
 
 import * as moment_ from 'moment';
+import { isPlatformBrowser } from '@angular/common';
 const moment = moment_;
 
 @Component({
@@ -41,7 +42,7 @@ export class AsiCalendarComponent extends DefaultControlValueAccessor {
 
   open = false;
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
     super();
     if (this.isFr()) {
       this.days = calendarConst.days_fr;
@@ -54,7 +55,11 @@ export class AsiCalendarComponent extends DefaultControlValueAccessor {
   }
 
   private isFr(): boolean {
-    return navigator.language == "fr" || navigator.language == "fr-FR";
+    if (isPlatformBrowser(this.platformId)) {
+      return navigator.language == "fr" || navigator.language == "fr-FR";
+    } else {
+      return false;
+    }
   }
 
   ngOnChanges() {

@@ -77,8 +77,13 @@ export class AsiBreadcrumbComponent<T> implements OnInit, DoCheck, AfterViewInit
     }
   }
 
-  public getTrackedValue(element: T) {
-    return eval('element.' + this.trackBy);
+  public getTrackedValue(element: any) {
+    if (element) {
+      const trackedValue: any = element[this.trackBy];
+      return trackedValue;
+    } else {
+      return null;
+    }
   }
 
   public clickOnElement(element: T) {

@@ -63,7 +63,7 @@ export class AsiInputChipsComponent extends DefaultControlValueAccessor implemen
    * Catch on key event to add a chip on pressing 'Enter'
    * @param $event the event thrown by pressing 'Enter' only
    */
-  onKey($event: KeyboardEvent) {
+  onKey() {
     let inputValue = this.inputElm.nativeElement.value;
     if (this.validateValue(inputValue)) {
       this.chips.push(inputValue);

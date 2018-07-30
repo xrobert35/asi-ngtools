@@ -5,7 +5,7 @@
     </div>
     <input #inputchips type="text" class="asi-focus-error"
         [(ngModel)]="value"
-        (keydown.enter)="onKey($event)"
+        (keydown.enter)="onKey()"
         [attr.disabled]="disabled ? '' : null" 
         [placeholder]="placeholder"
         [formControl]="inputControl"/>

@@ -23,9 +23,9 @@ export class AsiFileService {
 
   private toBase64(data: any, sanitize?: boolean): Observable<any> {
     return Observable.create((observer: Subscriber<any>) => {
-      var reader = new FileReader();
+      const reader = new FileReader();
       reader.onloadend = () => {
-        var content = reader.result;
+        let content = reader.result;
         if (sanitize) {
           content = this.sanitizer.bypassSecurityTrustUrl(content);
         }
@@ -45,20 +45,20 @@ export class AsiFileService {
     // If no name is provided, we use the original name if available, or a default name
     if (!fileName) {
       if (!fileAsBlob.name) {
-        fileName = "tmpFile";
+        fileName = 'tmpFile';
       } else {
         fileName = fileAsBlob.name;
       }
     }
-    if (window.navigator.msSaveBlob) {  //IE
+    if (window.navigator.msSaveBlob) {  // IE
       window.navigator.msSaveBlob(fileAsBlob, fileName);
-    } else {  //Le reste
+    } else {
       let url = window.URL.createObjectURL(fileAsBlob);
-      var anchor = document.createElement("a");
+      const anchor = document.createElement('a');
       anchor.download = fileName;
       anchor.target = '_blank';
       anchor.href = url;
-      anchor.dispatchEvent(new MouseEvent("click"));
+      anchor.dispatchEvent(new MouseEvent('click'));
     }
   }
 
@@ -66,10 +66,10 @@ export class AsiFileService {
    * Transform a Blob into a File adding a file name and a last modified date
    * @param response The blob response
    */
-  private getFileFromBlobResponse(response : any): File {
+  private getFileFromBlobResponse(response: any): File {
     let blob: any = response.blob();
     // May be null if the server doesn't explicitly add the content-disposition in the headers
-    let originalFileName = response.headers.get("content-disposition");
+    let originalFileName = response.headers.get('content-disposition');
     if (originalFileName) {
       originalFileName = originalFileName.substring(originalFileName.lastIndexOf('filename=')  +  9);
     }

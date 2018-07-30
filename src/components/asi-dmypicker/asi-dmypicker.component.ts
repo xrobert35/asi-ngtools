@@ -1,10 +1,12 @@
 import { Month } from './asi-dmypicker-constants';
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
-import { Component, ElementRef, forwardRef, Input, Renderer2 } from "@angular/core";
+import { Component, ElementRef, forwardRef, Input, Renderer2, Inject, PLATFORM_ID, Injector } from "@angular/core";
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
 
 import * as dmyConstants from "./asi-dmypicker-constants";
 import * as lodash from "lodash";
+
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
     selector: 'asi-dmypicker',
@@ -37,7 +39,9 @@ export class AsiDmyPickerComponent extends DefaultControlValueAccessor {
     months: Array<dmyConstants.Month> = [];
     years: Array<Number> = [];
 
-    constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+    language : any;
+
+    constructor(private elementRef: ElementRef, private renderer: Renderer2, @Inject(PLATFORM_ID) private platformId: any, private injector: Injector) {
         super();
         if (this.isFr()) {
             this.months = dmyConstants.months_fr;
@@ -55,13 +59,21 @@ export class AsiDmyPickerComponent extends DefaultControlValueAccessor {
     }
 
     private isFr(): boolean {
-        return navigator.language == "fr" || navigator.language == "fr-FR";
+        if (isPlatformBrowser(this.platformId)) {
+            return navigator.language == "fr" || navigator.language == "fr-FR";
+        } else {
+            const language = lodash.get(this.injector.get('request'), 'asiNgtools.language');
+            if (language) {
+                return language.substring(0, 2) === 'fr';
+            }
+            return false;
+        }
     }
 
-    initDays(){
-        lodash.times(31 , (time) => {
-            this.days.push(time+1);    
-        }); 
+    initDays() {
+        lodash.times(31, (time) => {
+            this.days.push(time + 1);
+        });
     }
 
     initYears() {
