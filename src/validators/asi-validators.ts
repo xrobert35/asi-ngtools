@@ -1,7 +1,6 @@
 import { AbstractControl, ValidationErrors, Validators, ValidatorFn } from '@angular/forms';
 
-import * as moment_ from 'moment';
-const moment = moment_;
+import moment from 'moment';
 
 /**
  * Custom from  validators

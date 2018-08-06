@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import * as moment_ from 'moment';
-const moment = moment_;
+import moment from 'moment';
 
 @Injectable()
 export class AsiMomentService {

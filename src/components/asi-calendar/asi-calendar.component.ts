@@ -6,8 +6,7 @@ import { isPlatformBrowser } from '@angular/common';
 import * as calendarConst from './asi-calendar-constants';
 import * as lodash from 'lodash';
 
-import * as moment_ from 'moment';
-const moment = moment_;
+import moment from 'moment';
 
 @Component({
   selector: 'asi-calendar',
