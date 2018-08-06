@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 import * as moment_ from 'moment';
 const moment = moment_;
@@ -11,7 +11,7 @@ export class AsiMomentService {
 
   addDays(date: Date, dayNumber: number): Date {
     if (date != null && dayNumber != null) {
-      return moment(date).add(dayNumber, "days").toDate();
+      return moment(date).add(dayNumber, 'days').toDate();
     } else {
       return null;
     }
@@ -19,33 +19,33 @@ export class AsiMomentService {
 
   addMonths(date: Date, monthNumber: number): Date {
     if (date != null && monthNumber != null) {
-      return moment(date).add(monthNumber, "months").toDate();
+      return moment(date).add(monthNumber, 'months').toDate();
     } else {
       return null;
     }
   }
 
-  formatToLocalDate(date: any) : string {
+  formatToLocalDate(date: any): string {
     return this.format(date, 'YYYY-MM-DD', 'YYYY-MM-DD');
   }
 
-  formatDate(date: any, pattern?: string) : string {
+  formatDate(date: any, pattern?: string): string {
     return this.format(date, 'YYYY-MM-DD', pattern);
   }
 
-  formatDateTime(date: any, pattern?: string) : string {
+  formatDateTime(date: any, pattern?: string): string {
     return this.format(date, 'YYYY-MM-DDTHH:mm:ss:SSSZ', pattern);
   }
 
-  format(date: any, baseFormat: string, pattern?: string) : string {
+  format(date: any, baseFormat: string, pattern?: string): string {
     if (!date) {
-      return "";
+      return '';
     }
     if (!pattern) {
-      pattern = "DD/MM/YYYY"
+      pattern = 'DD/MM/YYYY'
     }
     let aDate = date;
-    if (typeof aDate == "string") {
+    if (typeof aDate === 'string') {
       let amoment = moment(aDate, baseFormat);
       return amoment.format(pattern);
     }

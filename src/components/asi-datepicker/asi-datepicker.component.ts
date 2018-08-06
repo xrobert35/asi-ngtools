@@ -20,21 +20,21 @@ const moment = moment_;
 })
 export class AsiDatePickerComponent extends DefaultControlValueAccessor {
 
-  @Input() label : string;
-  @Input() placeholder: string = "";
-  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = "top";
+  @Input() label: string;
+  @Input() placeholder = '';
+  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
-  @Input() pattern: string = "DD/MM/YYYY";
+  @Input() pattern = 'DD/MM/YYYY';
 
   @Input() minDate: Date;
   @Input() maxDate: Date;
 
-  @Input() autoOpen : boolean = true;
+  @Input() autoOpen = true;
 
   inputControl = new FormControl();
 
-  @ViewChild("input") inputElement: ElementRef;
-  @ViewChild("calendar") calendarElement : AsiCalendarComponent;
+  @ViewChild('input') inputElement: ElementRef;
+  @ViewChild('calendar') calendarElement: AsiCalendarComponent;
 
   dateValid = true;
 
@@ -44,18 +44,18 @@ export class AsiDatePickerComponent extends DefaultControlValueAccessor {
 
   ngOnInit() {
     this.placeholder = this.pattern.toLowerCase();
-    this.renderer.addClass(this.elementRef.nativeElement, "label-" + this.labelPosition);
+    this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
   }
 
   ngAfterViewInit() {
     this.inputControl.valueChanges.subscribe((val) => {
       this.dateValid = true;
-      if (val == "" || val == null) {
+      if (val === '' || val == null) {
         this.value = null;
       } else {
         let momentTest = moment(val, this.pattern);
         if (momentTest.isValid()) {
-          if (val.length == this.pattern.length) {
+          if (val.length === this.pattern.length) {
             this.value = momentTest.toDate();
           } else {
             this.value = null;
@@ -68,8 +68,8 @@ export class AsiDatePickerComponent extends DefaultControlValueAccessor {
     });
   }
 
-  openCalendar(){
-    if(this.autoOpen){
+  openCalendar() {
+    if (this.autoOpen) {
       this.calendarElement.openCalendar();
     }
   }
@@ -79,7 +79,7 @@ export class AsiDatePickerComponent extends DefaultControlValueAccessor {
     this.inputControl.setValue(formattedValue);
   }
 
-  writeValue(value : Date) {
+  writeValue(value: Date) {
     if (value != null) {
       let momentValue = moment(value);
       this._value = momentValue.toDate();
