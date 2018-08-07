@@ -18,7 +18,7 @@ This library have an angular 4/5/6 version.
 
 This library also work with **angular universal**
 
-The documentation can be found on this website : http://ng-tools.asi.fr
+The documentation can be found on this website : https://ng-tools.asi.fr
 
 Here's the list of components that can be found in the library :
 

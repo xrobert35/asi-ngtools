@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChange, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, Input, SimpleChange, PLATFORM_ID, Inject, HostBinding, OnInit, OnChanges } from '@angular/core';
 import { AsiFileService } from './../../services/asi-file.service';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -6,18 +6,19 @@ declare const Prism: any;
 
 @Component({
   selector: 'asi-code-viewer',
-  templateUrl: './asi-code-viewer.component.html',
-  host: { 'class': 'asi-component asi-code-viewer' },
+  templateUrl: './asi-code-viewer.component.html'
 })
-export class AsiCodeViewer {
+export class AsiCodeViewer implements OnInit, OnChanges {
 
-  @Input() language: string = 'typescript';
+  @HostBinding('class') class = 'asi-component asi-code-viewer';
+
+  @Input() language = 'typescript';
   @Input() fromUrl: string;
   @Input() value: string;
 
   hightlightCode: any;
 
-  constructor(private fileService: AsiFileService, @Inject(PLATFORM_ID) private platformId : any) {
+  constructor(private fileService: AsiFileService, @Inject(PLATFORM_ID) private platformId: any) {
   }
 
   ngOnInit() {

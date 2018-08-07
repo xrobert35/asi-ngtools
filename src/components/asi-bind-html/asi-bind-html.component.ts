@@ -1,12 +1,13 @@
 import { AsiFileService } from './../../services/asi-file.service';
-import { Component, Input, Renderer, ElementRef } from '@angular/core';
+import { Component, Input, Renderer, ElementRef, HostBinding, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'asi-bind-html',
   template: '<div><div>',
-  host: { 'class': 'asi-component asi-bind-html' },
 })
-export class AsiBindHtml {
+export class AsiBindHtml implements OnChanges {
+
+  @HostBinding('class') class = 'asi-component asi-bind-html';
 
   @Input() value: string;
   @Input() fromUrl: string;

@@ -1,4 +1,4 @@
-import { Directive, TemplateRef, Component } from "@angular/core";
+import { Directive, TemplateRef, Component } from '@angular/core';
 
 @Component({
   selector: 'asi-option, asi-tag, asi-selected, asi-empty, asi-header, asi-cell, asi-tree-node, asi-tree-leaf',
@@ -9,7 +9,7 @@ export class AsiComponentTemplate {
   }
 }
 
-//############# OPTION  #############
+// ############# OPTION  #############
 @Directive({
   selector: '[optionDef]',
 })

@@ -1,16 +1,17 @@
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Component, Input, ContentChild, forwardRef, ElementRef, Renderer2 } from '@angular/core';
+import { Component, Input, ContentChild, OnInit, OnChanges, forwardRef, HostBinding } from '@angular/core';
 
-import { AsiComponentTemplateOptionDef, AsiComponentTemplateEmptyDef, AsiComponentTemplateSelectedDef } from '../common/asi-component-template';
+import {
+  AsiComponentTemplateOptionDef, AsiComponentTemplateEmptyDef,
+  AsiComponentTemplateSelectedDef
+} from '../common/asi-component-template';
 
 import * as lodash from 'lodash';
-
 
 @Component({
   selector: 'asi-select',
   templateUrl: 'asi-select.component.html',
-  host: { 'class': 'asi-component asi-select' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -19,33 +20,35 @@ import * as lodash from 'lodash';
     }
   ]
 })
-export class AsiSelectComponent extends DefaultControlValueAccessor {
+export class AsiSelectComponent extends DefaultControlValueAccessor implements OnInit, OnChanges {
+
+  @HostBinding('class') class = 'asi-component asi-select';
 
   @Input() label: string;
   @Input() disabled = false;
-  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = "top";
+  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
   @Input() data: Array<any>;
-  @Input() multiple: boolean = false;
+  @Input() multiple = false;
   @Input() trackBy: string;
 
-  @Input() withEmptyValue: boolean = false;
+  @Input() withEmptyValue = false;
 
   @ContentChild(AsiComponentTemplateOptionDef) optionDef: AsiComponentTemplateOptionDef;
   @ContentChild(AsiComponentTemplateEmptyDef) emptyDef: AsiComponentTemplateEmptyDef;
   @ContentChild(AsiComponentTemplateSelectedDef) selectedDef: AsiComponentTemplateSelectedDef;
 
-  //Copie des données d'entrée
+  // Copie des données d'entrée
   selectDatas: Array<any>;
   open = false;
   allChecked = false;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor() {
     super();
   }
 
   ngOnInit(): void {
-    this.renderer.addClass(this.elementRef.nativeElement, "label-" + this.labelPosition);
+    this.class += ' label-' + this.labelPosition;
   }
 
   onDropdownClose() {
@@ -68,7 +71,7 @@ export class AsiSelectComponent extends DefaultControlValueAccessor {
     }
 
     this.data.forEach((data) => {
-      var proxyData = {
+      const proxyData = {
         selected: false,
         value: data
       }
@@ -79,7 +82,7 @@ export class AsiSelectComponent extends DefaultControlValueAccessor {
   checkAll(value: any): void {
     this.allChecked = value;
     this.selectDatas.forEach((data) => {
-      if (data != null && (value != data.selected)) {
+      if (data != null && (value !== data.selected)) {
         this.selectValue(null, data);
       }
     });
@@ -111,9 +114,9 @@ export class AsiSelectComponent extends DefaultControlValueAccessor {
       let removed = lodash.remove(this._value, (value: any) => {
         if (value != null) {
           if (this.trackBy != null) {
-            return value[this.trackBy] == realValue[this.trackBy];
+            return value[this.trackBy] === realValue[this.trackBy];
           } else {
-            return value == realValue;
+            return value === realValue;
           }
         }
         return false;
@@ -155,12 +158,12 @@ export class AsiSelectComponent extends DefaultControlValueAccessor {
       if (this._value != null) {
         this.selectDatas.forEach((data) => {
           if (data != null) {
-            data.selected = lodash.find(this.value, (value: any) => {
-              if (value != null) {
+            data.selected = lodash.find(this.value, (possibleValue: any) => {
+              if (possibleValue != null) {
                 if (this.trackBy != null) {
-                  return value[this.trackBy] == data.value[this.trackBy];
+                  return possibleValue[this.trackBy] === data.value[this.trackBy];
                 } else {
-                  return value == data.value;
+                  return possibleValue === data.value;
                 }
               }
               return false;

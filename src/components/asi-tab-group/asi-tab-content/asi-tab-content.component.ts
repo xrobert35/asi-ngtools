@@ -1,11 +1,12 @@
 import { AsiTab } from './../asi-tab/asi-tab.component';
-import { Input, Component } from '@angular/core';
+import { Input, Component, OnChanges, HostBinding } from '@angular/core';
 @Component({
   selector: 'asi-tab-content',
-  templateUrl: 'asi-tab-content.component.html',
-  host: { 'class': 'asi-component asi-tab-content' },
+  templateUrl: 'asi-tab-content.component.html'
 })
-export class AsiTabContent {
+export class AsiTabContent implements OnChanges {
+
+  @HostBinding('class') class = 'asi-component asi-tab-content';
 
   @Input() tabs: Array<AsiTab>;
 

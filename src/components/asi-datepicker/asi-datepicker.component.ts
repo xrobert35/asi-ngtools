@@ -1,14 +1,13 @@
 import { AsiCalendarComponent } from './../asi-calendar/asi-calendar.component';
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
-import { Component, forwardRef, Input, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, forwardRef, Input, ElementRef, OnInit, AfterViewInit, ViewChild, HostBinding } from '@angular/core';
 
 import moment from 'moment';
 
 @Component({
   selector: 'asi-datepicker',
   templateUrl: 'asi-datepicker.component.html',
-  host: { 'class': 'asi-component asi-datepicker' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -17,7 +16,9 @@ import moment from 'moment';
     }
   ]
 })
-export class AsiDatePickerComponent extends DefaultControlValueAccessor {
+export class AsiDatePickerComponent extends DefaultControlValueAccessor implements OnInit, AfterViewInit {
+
+  @HostBinding('class') class = 'asi-component asi-datepicker';
 
   @Input() label: string;
   @Input() placeholder = '';
@@ -37,13 +38,13 @@ export class AsiDatePickerComponent extends DefaultControlValueAccessor {
 
   dateValid = true;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor() {
     super();
   }
 
   ngOnInit() {
     this.placeholder = this.pattern.toLowerCase();
-    this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
+    this.class += ' label-' + this.labelPosition;
   }
 
   ngAfterViewInit() {

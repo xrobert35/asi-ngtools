@@ -1,13 +1,15 @@
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
-import { Component, forwardRef, Input, Output, EventEmitter, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import {
+  Component, forwardRef, Input, Output, OnInit, EventEmitter,
+  ElementRef, ViewChild, AfterViewInit, HostBinding
+} from '@angular/core';
 
 import * as lodash from 'lodash';
 
 @Component({
   selector: 'asi-input-icon',
   templateUrl: 'asi-input-icon.component.html',
-  host: { 'class': 'asi-component asi-input-icon' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -16,11 +18,13 @@ import * as lodash from 'lodash';
     }
   ]
 })
-export class AsiInputIconComponent extends DefaultControlValueAccessor {
+export class AsiInputIconComponent extends DefaultControlValueAccessor implements OnInit, AfterViewInit {
+
+  @HostBinding('class') class = 'asi-component asi-input-icon';
 
   @Input() label: string;
-  @Input() placeholder: string = "";
-  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = "top";
+  @Input() placeholder = '';
+  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
   @Input() icon: string;
   @Input() iconPosition: 'left' | 'right' = 'left';
@@ -38,27 +42,27 @@ export class AsiInputIconComponent extends DefaultControlValueAccessor {
 
   inputControl = new FormControl();
 
-  @ViewChild("input") inputElm: ElementRef;
+  @ViewChild('input') inputElm: ElementRef;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor() {
     super();
   }
 
   ngOnInit() {
-    this.renderer.addClass(this.elementRef.nativeElement, "label-" + this.labelPosition);
-    if (this.number == true) {
-      this.pattern = new RegExp("^-*[0-9,\.]*$");
+    this.class += ' label-' + this.labelPosition;
+    if (this.number === true) {
+      this.pattern = new RegExp('^-*[0-9,\.]*$');
     }
   }
 
   ngAfterViewInit() {
     this.inputControl.valueChanges.subscribe((value: string) => {
-      if (value == "") {
+      if (value === '') {
         this.value = null;
       } else if (this.isValide(value)) {
         this.value = value;
-      } else if (this.maxlength != -1 && value.length > this.maxlength) {
-        //if value is too long, we truncate
+      } else if (this.maxlength !== -1 && value.length > this.maxlength) {
+        // if value is too long, we truncate
         this.value = value.substr(0, this.maxlength);
       }
       this.inputElm.nativeElement.value = this._value;
@@ -66,19 +70,19 @@ export class AsiInputIconComponent extends DefaultControlValueAccessor {
   }
 
   private isValide(value: string): boolean {
-    return value == null || ((this.maxlength == -1 || value.length <= this.maxlength)
+    return value == null || ((this.maxlength === -1 || value.length <= this.maxlength)
       && (this.pattern == null || this.pattern.test(value)))
   }
 
   writeValue(value: string) {
     if (this.isValide(value)) {
       this.inputControl.setValue(value, { emitEvent: false });
-    } else if (this.maxlength != -1 && value.length > this.maxlength) {
-      //Length incorrect on truncate
+    } else if (this.maxlength !== -1 && value.length > this.maxlength) {
+      // Length incorrect on truncate
       this.inputControl.setValue(lodash.truncate(value, { length: this.maxlength }), { emitEvent: false });
     } else {
-      //Pattern incorrect
-      this.inputElm.nativeElement.value = "Incorrect value";
+      // Pattern incorrect
+      this.inputElm.nativeElement.value = 'Incorrect value';
     }
   }
 

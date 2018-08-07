@@ -3,9 +3,10 @@ import { ControlValueAccessor } from '@angular/forms';
 
 export class DefaultControlValueAccessor implements ControlValueAccessor {
 
+  // tslint:disable-next-line:no-input-rename
   @Input('value') _value: any;
 
-  @Input() disabled: boolean = false;
+  @Input() disabled = false;
 
   @Output() onValueChange = new EventEmitter();
 

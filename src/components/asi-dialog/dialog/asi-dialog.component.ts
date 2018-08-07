@@ -1,13 +1,14 @@
 import { Subject, Observable } from 'rxjs';
 import { AsiDialogConfig } from './../asi-dialog-config';
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component, ViewContainerRef, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'asi-dialog',
-  templateUrl: 'asi-dialog.component.html',
-  host: { 'class': 'asi-component asi-dialog' },
+  templateUrl: 'asi-dialog.component.html'
 })
 export class AsiDialog<T> {
+
+  @HostBinding('class') class = 'asi-component asi-dialog';
 
   private _component: T;
   private _config: AsiDialogConfig;

@@ -1,36 +1,33 @@
 import { Observable, Subject } from 'rxjs';
 import { AsiNotification } from '../notification/asi-notification.component';
 import { AsiNotificationPosition, AsiNotificationConfig } from '../asi-notification-config';
-import { Component, ViewContainerRef, Renderer2, ElementRef, ComponentRef } from '@angular/core';
+import { Component, ViewContainerRef, ComponentRef, HostBinding } from '@angular/core';
 
 import * as lodash from 'lodash';
 
 @Component({
   selector: 'asi-notification-container',
-  templateUrl: 'asi-notification-container.component.html',
-  host: { 'class': 'asi-component asi-notification-container' },
+  templateUrl: 'asi-notification-container.component.html'
 })
 export class AsiNotificationContainer {
+
+  @HostBinding('class') class = 'asi-component asi-notification-container';
 
   private _position: AsiNotificationPosition;
   private subjectContainer: Subject<AsiNotificationContainer> = new Subject();
 
   notifications: Array<ComponentRef<AsiNotification<any>>> = [];
 
-  constructor(public viewContainerRef: ViewContainerRef, private renderer: Renderer2, private element: ElementRef) {
+  constructor(public viewContainerRef: ViewContainerRef) {
   }
 
   setPosition(position: AsiNotificationPosition) {
     this._position = position;
-    this.updateClass();
+    this.class += ` ${this._position.toString()}`;
   }
 
   getPosition() {
     return this._position;
-  }
-
-  private updateClass() {
-    this.renderer.addClass(this.element.nativeElement, this._position.toString());
   }
 
   onContainerEmpty(): Observable<AsiNotificationContainer> {
@@ -50,15 +47,15 @@ export class AsiNotificationContainer {
   }
 
   removeNotification(componentRef: ComponentRef<AsiNotification<any>>) {
-    componentRef.location.nativeElement.style.opacity = "0";
+    componentRef.location.nativeElement.style.opacity = '0';
 
     setTimeout(() => {
       lodash.remove(this.notifications, (notif) => {
-        return notif.instance == componentRef.instance;
+        return notif.instance === componentRef.instance;
       });
       this.updatePosition();
       componentRef.destroy();
-      if (this.notifications.length == 0) {
+      if (this.notifications.length === 0) {
         this.subjectContainer.next(this);
         this.subjectContainer.complete();
       }
@@ -67,13 +64,13 @@ export class AsiNotificationContainer {
   }
 
   updatePosition() {
-    let top = this._position.value.startsWith("top")
+    let top = this._position.value.startsWith('top')
 
-    let position: number = 0;
+    let position = 0;
     let notifHeight;
     this.notifications.forEach(notification => {
       notifHeight = notification.location.nativeElement.offsetHeight;
-      let pos = (position * notifHeight + (5 * position)) + "px";
+      let pos = (position * notifHeight + (5 * position)) + 'px';
       if (top) {
         notification.location.nativeElement.style.top = pos;
       } else {

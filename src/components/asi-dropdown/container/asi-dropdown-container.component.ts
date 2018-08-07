@@ -1,17 +1,20 @@
 import { AsiDropdownService } from './../asi-dropdown.service';
-import { TemplateRef, Component, ElementRef, ViewChild, HostListener, Inject, Input } from '@angular/core';
+import { TemplateRef, Component, ElementRef, ViewChild, HostListener, Inject, Input, HostBinding } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { AsiDropDown } from './../asi-dropdown.component';
 import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
   selector: 'asi-dropdown-container',
-  templateUrl: 'asi-dropdown-container.component.html',
-  host: { 'class': 'asi-component asi-dropdown-container' },
+  templateUrl: 'asi-dropdown-container.component.html'
 })
 export class AsiDropdownContainer {
 
-  private static baseIndex: number = 125
+  private static BASE_INDEX = 125;
+
+  @HostBinding('class') class = 'asi-component asi-dropdown-container';
+
+
   index: number;
 
   @Input() calculWidth = true;
@@ -55,9 +58,9 @@ export class AsiDropdownContainer {
   forElement(elementRef: any) {
     this.referenceElement = elementRef;
     let rectPos = elementRef.getBoundingClientRect();
-    //Get the computed class margin (from both style + css class)
-    let bodyMTop = parseInt(getComputedStyle(this.document.body).marginTop.slice(0, -2));
-    let bodyMLeft = parseInt(getComputedStyle(this.document.body).marginLeft.slice(0, -2));
+    // Get the computed class margin (from both style + css class)
+    let bodyMTop = parseInt(getComputedStyle(this.document.body).marginTop.slice(0, -2), 10);
+    let bodyMLeft = parseInt(getComputedStyle(this.document.body).marginLeft.slice(0, -2), 10);
 
     this.drop.nativeElement.style.top = rectPos.top + elementRef.offsetHeight + this.getScrollTopValue() - bodyMTop + 'px';
     this.drop.nativeElement.style.left = rectPos.left + this.getScrollLeftValue() - bodyMLeft + 'px';
@@ -80,11 +83,12 @@ export class AsiDropdownContainer {
     setTimeout(() => {
       this.template = asiDrownDown.contentTemplate;
       let visibility = this.drop.nativeElement.style.visibility;
-      this.drop.nativeElement.style.visibility = "hidden";
+      this.drop.nativeElement.style.visibility = 'hidden';
       setTimeout(() => {
         let dropRight = this.drop.nativeElement.offsetLeft + this.drop.nativeElement.offsetWidth;
         if (dropRight > this.document.documentElement.clientWidth) {
-          this.drop.nativeElement.style.left = this.drop.nativeElement.offsetLeft + this.document.documentElement.scrollLeft - (dropRight - this.document.documentElement.clientWidth) + 'px';
+          this.drop.nativeElement.style.left = this.drop.nativeElement.offsetLeft
+            + this.document.documentElement.scrollLeft - (dropRight - this.document.documentElement.clientWidth) + 'px';
         }
         this.drop.nativeElement.style.visibility = visibility;
       });
@@ -97,7 +101,7 @@ export class AsiDropdownContainer {
 
   public setIndex(index: number) {
     this.index = index;
-    this.element.nativeElement.style.zIndex = AsiDropdownContainer.baseIndex + index;
+    this.element.nativeElement.style.zIndex = AsiDropdownContainer.BASE_INDEX + index;
   }
 
   public setCalculWidth(calculWidth: boolean) {

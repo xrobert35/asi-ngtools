@@ -1,21 +1,22 @@
 import { AsiNotificationType } from '../asi-notification-config';
 import { AsiNotificationPosition, AsiNotificationConfig } from '../asi-notification-config';
-import { Component, ViewContainerRef, Renderer2, ElementRef } from '@angular/core';
+import { Component, ViewContainerRef, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'asi-notification',
   templateUrl: './asi-notification.component.html',
-  host: { 'class': 'asi-component asi-notification' },
 })
 export class AsiNotification<T> {
+
+  @HostBinding('class') class = 'asi-component asi-notification';
 
   private _component: T;
   private _config: AsiNotificationConfig;
 
-  icon: "fa-exclamation" | "fa-info" | "fa-check" = "fa-check";
+  icon: 'fa-exclamation' | 'fa-info' | 'fa-check' = 'fa-check';
   withIcon = false;
 
-  constructor(public viewContainerRef: ViewContainerRef, private renderer: Renderer2, private element: ElementRef) {
+  constructor(public viewContainerRef: ViewContainerRef) {
   }
 
   getComponent(): T {
@@ -27,14 +28,14 @@ export class AsiNotification<T> {
     this.withIcon = config.withIcon;
     switch (config.type) {
       case AsiNotificationType.SUCCESS:
-        this.icon = "fa-check";
+        this.icon = 'fa-check';
         break;
       case AsiNotificationType.INFO:
-        this.icon = "fa-info";
+        this.icon = 'fa-info';
         break;
       case AsiNotificationType.WARNING:
       case AsiNotificationType.ERROR:
-        this.icon = "fa-exclamation";
+        this.icon = 'fa-exclamation';
         break;
     }
     this.updateClass();
@@ -45,7 +46,7 @@ export class AsiNotification<T> {
   }
 
   private updateClass() {
-    this.renderer.addClass(this.element.nativeElement, this._config.position.toString());
-    this.renderer.addClass(this.element.nativeElement, this._config.type.toString());
+    this.class += ` ${this._config.position.toString()}`;
+    this.class += ` ${this._config.type.toString()}`;
   }
 }

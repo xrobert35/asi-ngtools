@@ -1,11 +1,10 @@
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
-import { Component, Input, forwardRef, ElementRef, Renderer2 } from '@angular/core';
+import { Component, Input, forwardRef, HostBinding, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'asi-switch',
   templateUrl: 'asi-switch.component.html',
-  host: { 'class': 'asi-component asi-switch' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -14,18 +13,20 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class AsiSwitchComponent extends DefaultControlValueAccessor {
+export class AsiSwitchComponent extends DefaultControlValueAccessor implements OnInit {
 
-  @Input() label : string;
+  @HostBinding('class') class = 'asi-component asi-switch';
+
+  @Input() label: string;
   @Input() disabled = false;
-  @Input() labelPosition : 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = "top";
+  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
-  constructor(private elementRef : ElementRef, private renderer : Renderer2) {
+  constructor() {
     super();
   }
 
-  ngOnInit(){
-    this.renderer.addClass(this.elementRef.nativeElement, "label-" + this.labelPosition);
+  ngOnInit() {
+    this.class += ' label-' + this.labelPosition;
   }
 
   switch() {

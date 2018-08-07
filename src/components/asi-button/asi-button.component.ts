@@ -1,25 +1,24 @@
-import { Component, Input, ElementRef, Renderer2 } from '@angular/core';
+import { Component, Input, HostBinding, OnInit } from '@angular/core';
 
 @Component({
   selector: 'asi-button',
   templateUrl: 'asi-button.component.html',
-  host: { 'class': 'asi-component asi-button' },
 })
-export class AsiButtonComponent {
+export class AsiButtonComponent implements OnInit {
+
+  @HostBinding('class') class = 'asi-component asi-button';
 
   @Input() design: 'flat' | 'raised' | 'bordered' = 'flat';
   @Input() type: 'submit' | 'button' = 'button';
-  @Input() small: boolean = false;
-  @Input() disabled: boolean = false;
+  @Input() small = false;
+  @Input() disabled = false;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
-  }
+  constructor() {}
 
   ngOnInit() {
-    this.renderer.addClass(this.elementRef.nativeElement, "button-" + this.design);
+    this.class += ' button-' + this.design;
     if (this.small) {
-      this.renderer.addClass(this.elementRef.nativeElement, "button-small");
+      this.class += ' button-small';
     }
   }
-
 }

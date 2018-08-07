@@ -1,12 +1,13 @@
 import { AsiFileService } from './../../services/asi-file.service';
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostBinding, OnInit } from '@angular/core';
 
 @Component({
   selector: 'asi-bind-and-compile-html',
   template: '<div *dynamicComponent="value; context : context;"><div>',
-  host: { 'class': 'asi-component asi-bind-and-compile-html' },
 })
-export class AsiBindAndCompileHtml {
+export class AsiBindAndCompileHtml implements OnInit {
+
+  @HostBinding('class') class = 'asi-component asi-bind-and-compile-html';
 
   @Input() value: string;
   @Input() fromUrl: string;

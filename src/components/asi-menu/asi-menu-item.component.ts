@@ -6,15 +6,14 @@ import { TemplateRef, Input, EventEmitter, Output, Component, ViewChild } from '
 })
 export class AsiMenuItem {
 
-  @Input() routerLink : string;
-  @Input() disabled : Boolean = false;
-  
+  @Input() routerLink: string;
+  @Input() disabled: Boolean = false;
+
   @Output() onClick = new EventEmitter();
-  
+
   @ViewChild(TemplateRef) template: TemplateRef<any>;
 
-  emitClick($event : MouseEvent){
+  emitClick($event: MouseEvent) {
     this.onClick.emit($event);
   }
-
 }

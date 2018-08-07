@@ -12,5 +12,5 @@ export class AsiRadioComponent {
   @ViewChild(TemplateRef) template: TemplateRef<any>;
 
   public active: boolean;
-  public index : number;
+  public index: number;
 }

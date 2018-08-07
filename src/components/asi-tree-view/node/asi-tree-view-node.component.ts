@@ -1,14 +1,19 @@
-import { Component, TemplateRef, Input, ElementRef, Renderer2, ViewChild, ViewChildren, QueryList } from "@angular/core";
-import { AsiComponentTemplateTreeNodeDef, AsiComponentTemplateTreeLeafDef } from "./../../common/asi-component-template";
-import { AsiTreeViewComponent } from "./../asi-tree-view.component";
+import {
+  Component, TemplateRef, Input, ElementRef, OnInit, Renderer2,
+  ViewChild, ViewChildren, QueryList, HostBinding
+} from '@angular/core';
+import { AsiComponentTemplateTreeNodeDef, AsiComponentTemplateTreeLeafDef } from './../../common/asi-component-template';
+import { AsiTreeViewComponent } from './../asi-tree-view.component';
 import * as lodash from 'lodash';
 
 @Component({
   selector: 'asi-tree-view-node',
-  templateUrl: 'asi-tree-view-node.component.html',
-  host: { 'class': 'asi-component asi-tree-view-node' }
+  templateUrl: 'asi-tree-view-node.component.html'
 })
-export class AsiTreeViewNodeComponent {
+export class AsiTreeViewNodeComponent implements OnInit {
+
+  @HostBinding('class') class = 'asi-component asi-tree-view-node';
+  @HostBinding('class.found') found = false;
 
   @Input() level: number;
 
@@ -28,15 +33,15 @@ export class AsiTreeViewNodeComponent {
   @Input() firstNode: boolean;
   @Input() lastNode: boolean;
 
-  @ViewChild("treeNode") treeNode: ElementRef;
+  @ViewChild('treeNode') treeNode: ElementRef;
   @ViewChildren(AsiTreeViewNodeComponent) public childNodes: QueryList<AsiTreeViewNodeComponent>;
 
   template: TemplateRef<any>;
-  public leaf: boolean = false;
+  public leaf = false;
   subData: any = null;
-  init: boolean = false;
+  init = false;
 
-  open: boolean = false
+  open = false
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {
   }
@@ -59,15 +64,11 @@ export class AsiTreeViewNodeComponent {
       this.renderer.addClass(this.treeNode.nativeElement, 'node');
     }
 
-    this.elementRef.nativeElement.style.marginLeft = ((this.level - 1) * 10) + "px";
+    this.elementRef.nativeElement.style.marginLeft = ((this.level - 1) * 10) + 'px';
   }
 
   public tagFound(found: true) {
-    if (found) {
-      this.renderer.addClass(this.treeNode.nativeElement, 'found');
-    } else {
-      this.renderer.removeClass(this.treeNode.nativeElement, 'found');
-    }
+    this.found = found;
   }
 
   /** Open the node if it is not a leaf */

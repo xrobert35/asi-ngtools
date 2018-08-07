@@ -1,4 +1,6 @@
-import { Component, Input, forwardRef, ElementRef, ContentChild, Renderer2, ViewChild } from '@angular/core';
+import {
+  Component, Input, forwardRef, ContentChild, ViewChild, OnInit, HostBinding, OnChanges
+} from '@angular/core';
 
 import { DefaultControlValueAccessor } from './../../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
@@ -13,7 +15,6 @@ import { debounceTime } from 'rxjs/operators';
 @Component({
   selector: 'asi-autocomplete',
   templateUrl: 'asi-autocomplete.component.html',
-  host: { 'class': 'asi-component asi-autocomplete' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -22,44 +23,47 @@ import { debounceTime } from 'rxjs/operators';
     }
   ]
 })
-export class AsiAutoCompleteComponent extends DefaultControlValueAccessor {
+export class AsiAutoCompleteComponent extends DefaultControlValueAccessor implements OnInit, OnChanges {
+
+  @HostBinding('class') class = 'asi-component asi-autocomplete';
 
   /** Label to display */
   @Input() label: string;
   /** Label position */
-  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = "top";
+  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
   /** Delay between the moment you stop typing and dropdown is display */
-  @Input() delay: number = 500;
+  @Input() delay = 500;
 
   /** Data to display in the dropdown : change input reference to make it display */
   @Input() data: Array<any>;
 
-  @Input() placeholder: string = "";
+  @Input() placeholder = '';
 
   /** Event emitted to request new data when delay is past */
-  @Input() onRequestData : Function;
+  @Input() onRequestData: Function;
 
   @ContentChild(AsiComponentTemplateOptionDef) optionDef: AsiComponentTemplateOptionDef;
   @ContentChild(AsiComponentTemplateSelectedDef) selectedDef: AsiComponentTemplateSelectedDef;
 
-  @ViewChild("dropdown") dropdown: AsiDropDown;
+  @ViewChild('dropdown') dropdown: AsiDropDown;
 
   autoCompleteControl = new FormControl();
   open = false;
 
-  //Var used to manage component initialization
+  // Var used to manage component initialization
   firstRequestDone: Boolean = null;
-  init: boolean = false;
+  init = false;
 
   private currentValue: any = null;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor() {
     super();
   }
 
   ngOnInit(): void {
-    this.renderer.addClass(this.elementRef.nativeElement, "label-" + this.labelPosition);
+    this.class += ' label-' + this.labelPosition;
+
     this.autoCompleteControl.valueChanges.pipe(debounceTime(this.delay))
       .subscribe(value => {
         this.currentValue = value;
@@ -67,7 +71,7 @@ export class AsiAutoCompleteComponent extends DefaultControlValueAccessor {
           this.data = data;
           if (this.firstRequestDone) {
             this.open = true;
-          }  
+          }
           this.firstRequestDone = true;
         });
       });
@@ -78,10 +82,10 @@ export class AsiAutoCompleteComponent extends DefaultControlValueAccessor {
   }
 
   ngOnChanges() {
-    if (this.init == true) {
+    if (this.init) {
       this.open = true;
     } else {
-      if (this.firstRequestDone == true) {
+      if (this.firstRequestDone) {
         this.init = true;
       }
     }
@@ -99,7 +103,7 @@ export class AsiAutoCompleteComponent extends DefaultControlValueAccessor {
   }
 
   writeValue(value: any) {
-    if (this.init == false) {
+    if (this.init === false) {
       this.autoCompleteControl.setValue(this.currentValue);
     } else {
       this._value = value;

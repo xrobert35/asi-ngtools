@@ -1,15 +1,16 @@
-import { Component, ContentChild, Input, ViewChildren, QueryList, Output, EventEmitter } from "@angular/core";
-import { AsiComponentTemplateTreeNodeDef, AsiComponentTemplateTreeLeafDef } from "./../common/asi-component-template";
-import { AsiTreeViewNodeComponent } from "./node/asi-tree-view-node.component";
+import { Component, ContentChild, Input, ViewChildren, QueryList, Output, EventEmitter, HostBinding } from '@angular/core';
+import { AsiComponentTemplateTreeNodeDef, AsiComponentTemplateTreeLeafDef } from './../common/asi-component-template';
+import { AsiTreeViewNodeComponent } from './node/asi-tree-view-node.component';
 import * as lodash from 'lodash';
-import { AsiTreeViewService } from "./asi-tree-view.service";
+import { AsiTreeViewService } from './asi-tree-view.service';
 
 @Component({
   selector: 'asi-tree-view',
   templateUrl: 'asi-tree-view.component.html',
-  host: { 'class': 'asi-component asi-tree-view' }
 })
 export class AsiTreeViewComponent {
+
+  @HostBinding('class') class = 'asi-component asi-tree-view';
 
   private baseData: Array<any> = [];
   filteredData: Array<any> = [];
@@ -25,7 +26,7 @@ export class AsiTreeViewComponent {
     this.filteredData = data;
   };
 
-  @Input() nodeName = "";
+  @Input() nodeName = '';
 
   /** If this function is define it's used to define of the node is a leaf */
   @Input() isLeaf: Function = null;
@@ -57,5 +58,4 @@ export class AsiTreeViewComponent {
   public onNodeClicked(node: AsiTreeViewNodeComponent) {
     this.onNodeSelected.emit(node);
   }
-
 }

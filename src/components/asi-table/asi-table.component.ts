@@ -3,41 +3,42 @@ import { AsiTableSelectionModel } from './asi-table-config';
 import { AsiTableRequest } from './asi-table-request';
 import { AsiTableData } from './asi-table-data';
 import { AsiTableColumn } from './asi-table-column.directive';
-import { Component, QueryList, ContentChildren, AfterContentInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, QueryList, ContentChildren, AfterContentInit, Input, ViewChild, ElementRef, HostBinding } from '@angular/core';
 import * as lodash from 'lodash';
 
 @Component({
   selector: 'asi-table',
-  templateUrl: 'asi-table.component.html',
-  host: { 'class': 'asi-component asi-table' }
+  templateUrl: 'asi-table.component.html'
 })
 export class AsiTable<T> implements AfterContentInit {
 
+  @HostBinding('class') class = 'asi-component asi-table';
+
   @ContentChildren(AsiTableColumn) queryColumns: QueryList<AsiTableColumn>;
 
-  @Input() autoSort: boolean = false;
-  @Input() autoPaginate: boolean = false;
+  @Input() autoSort = false;
+  @Input() autoPaginate = false;
   @Input() nbElementParPage = 25;
-  @Input() selectionModel = new AsiTableSelectionModel("id", false);
+  @Input() selectionModel = new AsiTableSelectionModel('id', false);
   @Input() rowClass: any;
   @Input() fireRefreshOnInit = true;
   @Input() changePageOnTop = false;
   @Input() onRequestData: Function;
 
-  @ViewChild("table") topElement: ElementRef;
+  @ViewChild('table') topElement: ElementRef;
 
   columns = new Array<AsiTableColumn>();
 
   data = new AsiTableData();
 
-  searchDone: boolean = false;
-  loading: boolean = false;
+  searchDone = false;
+  loading = false;
 
   sortedColumn: AsiTableColumn;
 
   noPaginateResults: Array<T>;
 
-  //Affichage de la coche allchecked
+  // Show allcheck checkbox allchecked
   allChecked = false;
 
   constructor(private paginateService: AsiPaginationService) {
@@ -61,12 +62,12 @@ export class AsiTable<T> implements AfterContentInit {
   }
 
   getHeaderClass(column: AsiTableColumn) {
-    var columnClass: any = {};
-    if (column.columnClass != null) {
+    let columnClass: any = {};
+    if (column.columnClass) {
       if (column.columnClass instanceof Object) {
-        //Copy
+        // Copy
         columnClass = { ...column.columnClass }
-      } else if (typeof column.columnClass === "string") {
+      } else if (typeof column.columnClass === 'string') {
         columnClass['' + column.columnClass] = true;
       }
     }
@@ -98,7 +99,7 @@ export class AsiTable<T> implements AfterContentInit {
   onSort(column: AsiTableColumn) {
     if (column.sortable) {
 
-      if (this.sortedColumn != null && this.sortedColumn != column) {
+      if (this.sortedColumn != null && this.sortedColumn !== column) {
         this.sortedColumn.unsort();
       }
 
@@ -155,7 +156,8 @@ export class AsiTable<T> implements AfterContentInit {
 
   private sortDatas() {
     if (this.sortedColumn != null) {
-      this.data.results = lodash.orderBy(this.data.results, [this.sortedColumn.getSortName()], [this.sortedColumn.getAsc() ? 'asc' : 'desc']);
+      this.data.results = lodash.orderBy(this.data.results, [this.sortedColumn.getSortName()],
+        [this.sortedColumn.getAsc() ? 'asc' : 'desc']);
       this.loading = false;
     }
   }
@@ -171,21 +173,21 @@ export class AsiTable<T> implements AfterContentInit {
 
   initCheckbox() {
     this.columns.forEach((column) => {
-      if (column.type == 'checkbox') {
+      if (column.type === 'checkbox') {
         if (this.selectionModel.allChecked) {
-          //Si est en mode allchecked on deselection les ligne excluent
+          // If we are in allcheck mode we unselect excluded lines
           lodash.forEach(this.data.results, (item: any) => {
             let itemId = this.getProperty(item, this.selectionModel.config.selectionId);
-            var excluded = lodash.find(this.selectionModel.itemsExcluded, (excludeditem) => {
+            const excluded = lodash.find(this.selectionModel.itemsExcluded, (excludeditem) => {
               return this.matchRow(itemId, excludeditem);
             }) != null;
             item.checked = !excluded;
           });
         } else {
-          //Sinon on selectionne les lignes incluent
+          // Else we select included lines
           lodash.forEach(this.data.results, (item: any) => {
             let itemId = this.getProperty(item, this.selectionModel.config.selectionId);
-            var included = lodash.find(this.selectionModel.itemsIncluded, (includedItem) => {
+            const included = lodash.find(this.selectionModel.itemsIncluded, (includedItem) => {
               return this.matchRow(itemId, includedItem);
             }) != null;
             item.checked = included;
@@ -257,14 +259,14 @@ export class AsiTable<T> implements AfterContentInit {
   }
 
   private matchRow(rowId: any, rowToMatch: any) {
-    return rowId == this.getProperty(rowToMatch, this.selectionModel.config.selectionId);
+    return rowId === this.getProperty(rowToMatch, this.selectionModel.config.selectionId);
   }
 
   private updateAllChecked() {
     if (this.selectionModel.config.multipage) {
-      this.allChecked = this.selectionModel.nbItemsSelected == this.data.totalElements;
+      this.allChecked = this.selectionModel.nbItemsSelected === this.data.totalElements;
     } else {
-      this.allChecked = this.selectionModel.nbItemsSelected == this.data.results.length;
+      this.allChecked = this.selectionModel.nbItemsSelected === this.data.results.length;
     }
   }
 
@@ -275,10 +277,12 @@ export class AsiTable<T> implements AfterContentInit {
       } else {
         let rowClassStr = JSON.stringify(this.rowClass);
         rowClassStr = lodash.replace(rowClassStr, new RegExp('{row}', 'g'), 'row');
+        // tslint:disable-next-line:quotemark
         rowClassStr = lodash.replace(rowClassStr, new RegExp("'", 'g'), '"');
         let jsonRowClass: any = JSON.parse(rowClassStr);
-        for (var key in jsonRowClass) {
+        for (let key in jsonRowClass) {
           if (jsonRowClass.hasOwnProperty(key)) {
+            // tslint:disable-next-line:no-eval
             jsonRowClass[key] = eval(jsonRowClass[key]);
           }
         }
@@ -288,7 +292,7 @@ export class AsiTable<T> implements AfterContentInit {
   }
 
   private isFunction(functionToCheck: Function) {
-    var getType = {};
+    const getType = {};
     return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
   }
 

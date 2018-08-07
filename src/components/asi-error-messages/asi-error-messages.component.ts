@@ -1,13 +1,16 @@
 import { FormControl, FormGroupDirective } from '@angular/forms';
 import { AsiMessage } from './asi-message.directive';
-import { Component, Input, ElementRef, OnInit, ContentChildren, QueryList, Inject, forwardRef } from '@angular/core';
+import {
+  Component, Input, ElementRef, OnInit, ContentChildren,
+  AfterContentInit, QueryList, Inject, forwardRef, HostBinding
+} from '@angular/core';
 
 /**
  * Composant de gestion des messages d'erreur sur un champ de formulaire
  * for : valeur du champ de validation a ecouter : exemple (loginForm.get('password').errors)
- * 
+ *
  * Exemple d'utilisation :
- * 
+ *
  *  <error-messages [for]="loginForm.get('password')">
  *        <message error="required" value="VALIDATIONS.required"></message>
  *        <message error="minlength" value="VALIDATIONS.minLength" [onSubmit]="true"></message>
@@ -15,29 +18,30 @@ import { Component, Input, ElementRef, OnInit, ContentChildren, QueryList, Injec
  */
 @Component({
   selector: 'error-messages , asi-error-messages',
-  templateUrl: 'asi-error-messages.component.html',
-  host: { 'class': 'asi-component asi-error-messages' },
+  templateUrl: 'asi-error-messages.component.html'
 })
-export class AsiErrorMessages implements OnInit {
+export class AsiErrorMessages implements OnInit, AfterContentInit {
+
+  @HostBinding('class') class = 'asi-component asi-error-messages';
 
   @Input() for: FormControl;
-  @Input() forName : string;
-  @Input() showOne : boolean = false;
+  @Input() forName: string;
+  @Input() showOne = false;
 
   @ContentChildren(AsiMessage) messages: QueryList<AsiMessage>;
 
   errorMessages: Array<AsiMessage> = [];
-  submitted: boolean = false;
+  submitted = false;
 
   constructor(private element: ElementRef, @Inject(forwardRef(() => FormGroupDirective)) private formGroupDirective: FormGroupDirective) {
   }
 
   ngOnInit() {
-    if(this.forName != null){
+    if (this.forName != null) {
       this.for = <FormControl> this.formGroupDirective.control.controls[this.forName];
     }
 
-    this.formGroupDirective.ngSubmit.subscribe( ()=>{
+    this.formGroupDirective.ngSubmit.subscribe( () => {
       this.submitted = true;
       this.onStatusChange();
     });
@@ -47,16 +51,16 @@ export class AsiErrorMessages implements OnInit {
     });
   }
 
-  ngAfterContentInit(){
+  ngAfterContentInit() {
     if (this.isFieldRequired()) {
-      this.element.nativeElement.parentElement.classList.add("asi-required");
+      this.element.nativeElement.parentElement.classList.add('asi-required');
     }
   }
 
   isFieldRequired() {
     let required = false;
     this.messages.forEach(element => {
-      if (element.error == 'required') {
+      if (element.error === 'required') {
         required = true;
       }
     });
@@ -71,7 +75,7 @@ export class AsiErrorMessages implements OnInit {
     if (this.for.touched || this.submitted) {
       if (this.for.errors != null && this.messages != null) {
         this.messages.forEach(message => {
-          if (this.for.errors[message.error] != null && (!message.onSubmit || this.submitted) && !(this.showOne && messagesError.length > 0)) {
+          if (this.for.errors[message.error] && (!message.onSubmit || this.submitted) && !(this.showOne && messagesError.length > 0)) {
             messagesError.push(message);
           }
         });
@@ -79,11 +83,11 @@ export class AsiErrorMessages implements OnInit {
     }
     this.errorMessages = messagesError;
     if (this.errorMessages.length > 0) {
-      this.element.nativeElement.parentElement.classList.add("asi-has-error");
-      this.element.nativeElement.classList.add("active");
+      this.element.nativeElement.parentElement.classList.add('asi-has-error');
+      this.element.nativeElement.classList.add('active');
     } else {
-      this.element.nativeElement.parentElement.classList.remove("asi-has-error");
-      this.element.nativeElement.classList.remove("active");
+      this.element.nativeElement.parentElement.classList.remove('asi-has-error');
+      this.element.nativeElement.classList.remove('active');
     }
   }
 }

@@ -15,7 +15,7 @@ export * from './asi-radio-element/asi-radio-element.component';
 @NgModule({
   declarations: [AsiRadioComponent, AsiRadioGroupComponent, AsiRadioElement],
   imports: [AsiNgToolsBaseModule.forRoot(), AsiCheckBoxModule.forRoot()],
-  exports: [AsiNgToolsBaseModule,AsiRadioComponent, AsiRadioGroupComponent, AsiRadioElement],
+  exports: [AsiNgToolsBaseModule, AsiRadioComponent, AsiRadioGroupComponent, AsiRadioElement],
   entryComponents: [],
   providers: []
 })

@@ -7,13 +7,12 @@ import { AsiComponentTemplateTabHeaderDef } from '../../common/asi-component-tem
 })
 export class AsiTab {
 
-  @Input() label : string;
+  @Input() label: string;
 
   @ViewChild(TemplateRef) contentTemplate: TemplateRef<any>;
 
   @ContentChild(AsiComponentTemplateTabHeaderDef) headerDef: AsiComponentTemplateTabHeaderDef;
 
-  //Position du Tab
-  public active : boolean;
-  public index : Number;
+  public active: boolean;
+  public index: Number;
 }

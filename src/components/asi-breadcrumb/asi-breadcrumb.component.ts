@@ -54,7 +54,7 @@ export class AsiBreadcrumbComponent<T> implements OnInit, DoCheck, AfterViewInit
         this.updateShadow(changes._collection);
       } else {
         this.updateShadow(changes.collection);
-      }  
+      }
     }
   }
 

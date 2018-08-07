@@ -1,22 +1,22 @@
-import { Component, Input, ElementRef, Renderer2 } from '@angular/core';
+import { Component, Input, HostBinding, OnInit } from '@angular/core';
 
 @Component({
   selector: 'asi-link-button',
-  templateUrl: 'asi-link-button.component.html',
-  host: { 'class': 'asi-component asi-link-button' },
+  templateUrl: 'asi-link-button.component.html'
 })
-export class AsiLinkButtonComponent {
+export class AsiLinkButtonComponent implements OnInit {
+
+  @HostBinding('class') class = 'asi-component asi-link-button';
 
   @Input() design: 'flat' | 'raised' | 'bordered' = 'flat';
-  @Input() href: string = "";
-  @Input() target: '_blank' | '_self' | '_parent' | '_top' = "_self";
-  @Input() disabled: boolean = false;
+  @Input() href = '';
+  @Input() target: '_blank' | '_self' | '_parent' | '_top' = '_self';
+  @Input() disabled = false;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.renderer.addClass(this.elementRef.nativeElement, "link-button-" + this.design);
+    this.class += ' link-button-' + this.design;
   }
-
 }

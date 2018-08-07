@@ -1,12 +1,11 @@
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
-import { Component, forwardRef, Input, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, forwardRef, Input, ElementRef, AfterContentInit, OnInit, ViewChild, HostBinding } from '@angular/core';
 
 
 @Component({
   selector: 'asi-input-number',
   templateUrl: 'asi-input-number.component.html',
-  host: { 'class': 'asi-component asi-input-number' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -15,35 +14,37 @@ import { Component, forwardRef, Input, ElementRef, Renderer2, ViewChild } from '
     }
   ]
 })
-export class AsiInputNumberComponent extends DefaultControlValueAccessor {
+export class AsiInputNumberComponent extends DefaultControlValueAccessor implements AfterContentInit, OnInit {
 
-  @Input() label : string;
-  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = "top";
+  @HostBinding('class') class = 'asi-component asi-input-number';
+
+  @Input() label: string;
+  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
   @Input() step = 1;
   @Input() disableInput = false;
 
   @Input() hiddeAction = false;
 
-  @Input() min : Number;
-  @Input() max : Number;
+  @Input() min: Number;
+  @Input() max: Number;
 
-  @ViewChild("input") inputElm: ElementRef;
-  
+  @ViewChild('input') inputElm: ElementRef;
+
   inputControl = new FormControl();
-  pattern = new RegExp("^-*[0-9]*$");
+  pattern = new RegExp('^-*[0-9]*$');
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor() {
     super();
   }
 
   ngOnInit() {
-    this.renderer.addClass(this.elementRef.nativeElement, "label-" + this.labelPosition);
+    this.class += ' label-' + this.labelPosition;
   }
 
   ngAfterContentInit() {
     setTimeout(() => {
       this.inputControl.valueChanges.subscribe((value) => {
-        if (value === "") {
+        if (value === '') {
           value = null;
         }
         if (value != null && this.pattern.test(value)) {
@@ -63,7 +64,7 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor {
   }
 
   increase() {
-    if (this.value == null) {
+    if (!this.value) {
       this.value = 0;
     } else if (this.max == null || this.value < this.max) {
       this.value = this.value + this.step;
@@ -78,11 +79,11 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor {
     }
   }
 
-  writeValue(value : any) {
+  writeValue(value: any) {
     if (value == null || this.pattern.test(value)) {
       this._value = value;
     } else {
-      this.inputElm.nativeElement.value = "Incorrect value";
+      this.inputElm.nativeElement.value = 'Incorrect value';
     }
   }
 }

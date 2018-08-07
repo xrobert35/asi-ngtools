@@ -1,10 +1,10 @@
 import { Observable, Subscriber } from 'rxjs';
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { map } from 'rxjs/operators';
 
-/** 
+/**
  * Service de gestion de fichier
  */
 @Injectable()

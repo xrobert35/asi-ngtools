@@ -2,10 +2,13 @@ import { AsiMimeType } from './asi-file-chooser-constants';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
-import { Component, Input, EventEmitter, Output, forwardRef, AfterViewInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { AsiFileService } from "./../../services/asi-file.service";
+import {
+  Component, Input, EventEmitter, Output, forwardRef, AfterViewInit,
+  OnChanges, ViewChild, HostBinding, OnInit
+} from '@angular/core';
+import { AsiFileService } from './../../services/asi-file.service';
 
-import * as lodash from "lodash";
+import * as lodash from 'lodash';
 
 /**
  * Composant permettant la selection d'un fichier
@@ -15,7 +18,6 @@ import * as lodash from "lodash";
 @Component({
   selector: 'asi-file-chooser',
   templateUrl: './asi-file-chooser.component.html',
-  host: { 'class': 'asi-component asi-file-chooser' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -24,37 +26,40 @@ import * as lodash from "lodash";
     }
   ]
 })
-export class AsiFileChooserComponent extends DefaultControlValueAccessor implements AfterViewInit {
+export class AsiFileChooserComponent extends DefaultControlValueAccessor implements AfterViewInit, OnChanges, OnInit {
+
+  @HostBinding('class') class = 'asi-component asi-file-chooser';
 
   @Input() label: string;
-  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = "top";
+  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
   @Input() fileSrc: string = null;
   @Input() fileName: string = null;
 
   @Input() accept: Array<AsiMimeType> | AsiMimeType;
-  acceptAttribute: string = "";
+  acceptAttribute = '';
 
-  @Input() icon = "fa-paperclip";
+  @Input() icon = 'fa-paperclip';
 
   @Output() onError = new EventEmitter<any>();
 
-  @ViewChild("fileInput") fileInput: any;
+  @ViewChild('fileInput') fileInput: any;
 
-  dragging: boolean = false;
-  loaded: boolean = false;
-
-  fileLoaded: boolean = false;
+  dragging = false;
+  loaded = false;
+  fileLoaded = false;
 
   file: File;
 
-  constructor(private fileService: AsiFileService, private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor(private fileService: AsiFileService) {
     super();
   }
 
-  ngAfterViewInit() {
-    this.renderer.addClass(this.elementRef.nativeElement, "label-" + this.labelPosition);
+  ngOnInit() {
+    this.class += ' label-' + this.labelPosition;
+  }
 
+  ngAfterViewInit() {
     if (this.fileSrc != null) {
       this.fileService.getFileAsBlob(this.fileSrc).subscribe(blob => {
         const fileName = this.fileSrc.split('/').pop();
@@ -68,11 +73,11 @@ export class AsiFileChooserComponent extends DefaultControlValueAccessor impleme
   ngOnChanges() {
     if (lodash.isArray(this.accept)) {
       (<Array<AsiMimeType>>this.accept).forEach((accept) => {
-        this.acceptAttribute += accept.extension + ", " + accept.mimeType + ",";
+        this.acceptAttribute += accept.extension + ', ' + accept.mimeType + ',';
       });
     } else if (this.accept != null) {
       const aAccept: AsiMimeType = (<AsiMimeType>this.accept);
-      this.acceptAttribute = aAccept.extension + ", " + aAccept.mimeType;
+      this.acceptAttribute = aAccept.extension + ', ' + aAccept.mimeType;
     }
   }
 
@@ -107,11 +112,11 @@ export class AsiFileChooserComponent extends DefaultControlValueAccessor impleme
   }
 
   handleInputChange(event: any) {
-    var file = event.dataTransfer ? event.dataTransfer.files[0] : event.target.files[0];
+    const file = event.dataTransfer ? event.dataTransfer.files[0] : event.target.files[0];
 
     if (!this.isValideMimeType(file.type)) {
       this.onError.emit({
-        error: "FORMAT",
+        error: 'FORMAT',
         file: file
       });
       return;
@@ -131,13 +136,13 @@ export class AsiFileChooserComponent extends DefaultControlValueAccessor impleme
     if (lodash.isArray(this.accept)) {
       const accepts = <Array<AsiMimeType>>this.accept;
       for (let accept of accepts) {
-        if (accept.mimeType == mimeType) {
+        if (accept.mimeType === mimeType) {
           return true;
         }
       }
     } else {
       const aAccept: AsiMimeType = (<AsiMimeType>this.accept);
-      return aAccept.mimeType == mimeType
+      return aAccept.mimeType === mimeType
     }
     return false;
   }

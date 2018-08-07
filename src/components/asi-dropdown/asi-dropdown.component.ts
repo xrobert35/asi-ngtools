@@ -1,4 +1,7 @@
-import { EventEmitter, Output, ElementRef, Input, Component, TemplateRef, ViewChild, OnChanges, SimpleChanges, ComponentRef } from '@angular/core';
+import {
+    EventEmitter, Output, ElementRef, Input, Component, TemplateRef,
+    ViewChild, OnChanges, SimpleChanges, ComponentRef
+} from '@angular/core';
 import { AsiDropdownContainer } from './container/asi-dropdown-container.component';
 import { AsiDropdownService } from './asi-dropdown.service';
 
@@ -8,7 +11,7 @@ import { AsiDropdownService } from './asi-dropdown.service';
 })
 export class AsiDropDown implements OnChanges {
 
-    @Input() open: boolean = false;
+    @Input() open = false;
 
     @Input() calculWidth = true;
     @Input() relativeTo: ElementRef;

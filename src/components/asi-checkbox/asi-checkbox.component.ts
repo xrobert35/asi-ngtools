@@ -1,11 +1,10 @@
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
-import { Component, Input, forwardRef, Renderer2, ElementRef } from '@angular/core';
+import { Component, Input, forwardRef, HostBinding, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'asi-checkbox',
   templateUrl: 'asi-checkbox.component.html',
-  host: { 'class': 'asi-component asi-checkbox' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -14,19 +13,21 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class AsiCheckboxComponent extends DefaultControlValueAccessor {
+export class AsiCheckboxComponent extends DefaultControlValueAccessor implements OnInit {
 
-  @Input() label : string;
-  @Input() labelPosition : 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = "top";
-  
-  @Input() type : 'checkbox' | 'radio' = "checkbox";
+  @HostBinding('class') class = 'asi-component asi-checkbox';
 
-  constructor(private elementRef : ElementRef, private renderer : Renderer2) {
+  @Input() label: string;
+  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
+
+  @Input() type: 'checkbox' | 'radio' = 'checkbox';
+
+  constructor() {
     super();
   }
 
-  ngOnInit(){
-    this.renderer.addClass(this.elementRef.nativeElement, "label-" + this.labelPosition);
+  ngOnInit() {
+    this.class += ' label-' + this.labelPosition;
   }
 
   toggleCheck() {

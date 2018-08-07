@@ -1,4 +1,7 @@
-import { Component, Input, forwardRef, OnInit, ElementRef, ContentChild, Renderer2, ViewChild } from '@angular/core';
+import {
+  Component, Input, forwardRef, OnInit, ElementRef, ContentChild,
+  ViewChild, OnChanges, HostBinding, Renderer2
+} from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { DefaultControlValueAccessor } from './../../common/default-control-value-accessor';
 import { AsiComponentTemplateOptionDef, AsiComponentTemplateTagDef } from './../../common/asi-component-template';
@@ -11,7 +14,6 @@ import { debounceTime } from 'rxjs/operators';
 @Component({
   selector: 'asi-autocomplete-multiple',
   templateUrl: 'asi-autocomplete-multiple.component.html',
-  host: { 'class': 'asi-component asi-autocomplete-multiple' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -20,39 +22,41 @@ import { debounceTime } from 'rxjs/operators';
     }
   ]
 })
-export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccessor implements OnInit {
+export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccessor implements OnInit, OnChanges {
+
+  @HostBinding('class') class = 'asi-component asi-autocomplete-multiple';
 
   /** Label to display */
   @Input() label: string;
 
   /** Label position */
-  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = "top";
+  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
-  @Input() placeholder: string = "";
+  @Input() placeholder = '';
 
   /** Delay between the moment you stop typing and dropdown is display */
-  @Input() delay: number = 500;
+  @Input() delay = 500;
 
   /** Data to display in the dropdown : change input reference to make it display */
   @Input() data: Array<any>;
 
   /** Option to keep the list open once an item is selected */
-  @Input() closeAfterSelect: boolean = false;
+  @Input() closeAfterSelect = false;
 
   /** Event emitted to request new data when delay is past */
-  @Input() onRequestData : Function;
+  @Input() onRequestData: Function;
 
   @ContentChild(AsiComponentTemplateOptionDef) optionDef: AsiComponentTemplateOptionDef;
   @ContentChild(AsiComponentTemplateTagDef) tagDef: AsiComponentTemplateTagDef;
 
-  @ViewChild("container") container: ElementRef;
+  @ViewChild('container') container: ElementRef;
 
   autoCompleteControl = new FormControl();
   open = false;
 
-  //Var used to manage component initialization
+  // Var used to manage component initialization
   firstRequestDone: Boolean = null;
-  init: boolean = false;
+  init = false;
 
   private currentValue: any = null;
 
@@ -61,6 +65,7 @@ export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccesso
   }
 
   ngOnInit(): void {
+    this.renderer.addClass(this.container.nativeElement, 'label-' + this.labelPosition);
     this.autoCompleteControl.valueChanges.pipe(debounceTime(this.delay))
       .subscribe(value => {
         this.currentValue = value;
@@ -69,15 +74,11 @@ export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccesso
             this.data = data;
             if (this.firstRequestDone) {
               this.open = true;
-            }  
+            }
             this.firstRequestDone = true;
           });
-        } 
+        }
       });
-  }
-
-  ngAfterViewInit() {
-    this.renderer.addClass(this.container.nativeElement, "label-" + this.labelPosition);
   }
 
   onDropdownClose() {
@@ -85,10 +86,10 @@ export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccesso
   }
 
   ngOnChanges() {
-    if (this.init == true) {
+    if (this.init) {
       this.open = true;
     } else {
-      if (this.firstRequestDone == true) {
+      if (this.firstRequestDone) {
         this.init = true;
       }
     }
@@ -99,14 +100,14 @@ export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccesso
       this.value = [];
     }
     this.value.push(data);
-    if(this.closeAfterSelect) {
+    if (this.closeAfterSelect) {
       this.open = false;
     }
   }
 
   removeValue(data: any) {
     lodash.remove(this.value, (value) => {
-      return data == value;
+      return data === value;
     });
 
     if (lodash.isEmpty(this.value)) {
@@ -116,7 +117,7 @@ export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccesso
 
   writeValue(value: any) {
     this._value = value;
-    if (this.init == false) {
+    if (this.init === false) {
       this.autoCompleteControl.setValue(this.currentValue);
     } else {
       this.currentValue = value;

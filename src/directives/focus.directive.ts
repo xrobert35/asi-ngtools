@@ -1,15 +1,15 @@
-import { Directive, Input, ElementRef } from '@angular/core';
+import { Directive, Input, ElementRef, AfterViewInit } from '@angular/core';
 
 @Directive({
   selector: '[focus]'
 })
-export class FocusDirective {
+export class FocusDirective implements AfterViewInit {
 
   @Input() focus: boolean;
-  
+
   constructor(private element: ElementRef) { }
-  
-  protected ngAfterViewInit() {
+
+  ngAfterViewInit() {
     this.element.nativeElement.focus();
   }
 }

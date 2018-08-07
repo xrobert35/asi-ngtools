@@ -1,13 +1,12 @@
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
-import { Component, Input, forwardRef, NgZone, ElementRef, Renderer2 } from '@angular/core';
+import { Component, Input, forwardRef, NgZone, OnInit, OnDestroy, AfterViewInit, HostBinding } from '@angular/core';
 
 declare var tinymce: any;
 
 @Component({
   selector: 'asi-tinymce',
   templateUrl: 'asi-tinymce.component.html',
-  host: { 'class': 'asi-component asi-tinymce' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -16,28 +15,31 @@ declare var tinymce: any;
     }
   ]
 })
-export class AsiTinyMCE extends DefaultControlValueAccessor {
+export class AsiTinyMCE extends DefaultControlValueAccessor implements OnInit, AfterViewInit, OnDestroy {
+
+  @HostBinding('class') class = 'asi-component asi-tinymce';
 
   @Input() label: string;
-  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = "top";
+  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
   @Input() elementId: string;
 
-  //reference de l'instance du tinymce
+  // reference de l'instance du tinymce
   editor: any;
 
-  constructor(private zone: NgZone, private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor(private zone: NgZone) {
     super();
   }
 
   ngOnInit(): void {
-    this.renderer.addClass(this.elementRef.nativeElement, "label-" + this.labelPosition);
+    this.class += ' label-' + this.labelPosition;
   }
 
   ngAfterViewInit() {
     tinymce.init({
       selector: '#' + this.elementId,
       plugins: ['link', 'paste', 'table', 'textcolor', 'colorpicker'],
-      toolbar: " fontselect fontsizeselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | outdent indent blockquote | forecolor backcolor",
+      // tslint:disable-next-line:max-line-length
+      toolbar: 'fontselect fontsizeselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | outdent indent blockquote | forecolor backcolor',
       skin_url: '../assets/tinymce/skin',
       setup: (editor: any) => {
         this.editor = editor;
@@ -67,5 +69,4 @@ export class AsiTinyMCE extends DefaultControlValueAccessor {
   ngOnDestroy() {
     tinymce.remove(this.editor);
   }
-
 }

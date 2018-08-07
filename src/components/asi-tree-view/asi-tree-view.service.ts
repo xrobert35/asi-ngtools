@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { AsiTreeViewNodeComponent } from "./node/asi-tree-view-node.component";
+import { Injectable } from '@angular/core';
+import { AsiTreeViewNodeComponent } from './node/asi-tree-view-node.component';
 import * as lodash from 'lodash';
 
 @Injectable()
@@ -89,7 +89,7 @@ export class AsiTreeViewService {
     let childNodes: Array<any> = <Array<any>>lodash.get(nodeData, nodeName);
     let matchingLeaf = false;
     if (childNodes) {
-      //Delete not matching children
+      // Delete not matching children
       if (keepLeaves) {
         lodash.remove(childNodes, (child) => {
           let leaf = (isLeaf && isLeaf(child)) || (!isLeaf && lodash.isEmpty(lodash.get(child, nodeName)));
@@ -111,5 +111,4 @@ export class AsiTreeViewService {
     }
     return (lodash.isEmpty(childNodes) || !matchingLeaf) && !nodeFinder(nodeData);
   }
-
 }

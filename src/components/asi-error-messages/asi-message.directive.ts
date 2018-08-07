@@ -7,13 +7,14 @@ import { Directive, Input } from '@angular/core';
  * value :  valeur du message à afficher interpreter par le translator
  */
 @Directive({
+  // tslint:disable-next-line:directive-selector
   selector: 'message, asi-message',
 })
 export class AsiMessage {
 
   @Input() error: string;
   @Input() value: string;
-  @Input() onSubmit : false;
+  @Input() onSubmit: false;
 
   constructor() {
   }

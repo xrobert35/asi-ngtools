@@ -1,10 +1,10 @@
 
-export class AsiTableData<T>{
-  pageIndex: number = 1;
+export class AsiTableData<T> {
+  pageIndex = 1;
   results: Array<T> = null;
-  totalElements: number = 0;
-  totalPages: number = 0;
-  paginate: boolean = false;
+  totalElements = 0;
+  totalPages = 0;
+  paginate = false;
 
   constructor() {
   }

@@ -1,12 +1,14 @@
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import { AsiRadioComponent } from './asi-radio/asi-radio.component';
-import { Input, Component, TemplateRef, ViewChild, ContentChildren, QueryList, forwardRef, ElementRef, Renderer2 } from '@angular/core';
+import {
+  Input, Component, TemplateRef, ViewChild, ContentChildren, QueryList,
+  forwardRef, HostBinding, OnInit, AfterContentInit
+} from '@angular/core';
 
 @Component({
   selector: 'asi-radio-group',
   templateUrl: 'asi-radio-group.component.html',
-  host: { 'class': 'asi-component asi-radio-group' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -15,7 +17,9 @@ import { Input, Component, TemplateRef, ViewChild, ContentChildren, QueryList, f
     }
   ]
 })
-export class AsiRadioGroupComponent extends DefaultControlValueAccessor {
+export class AsiRadioGroupComponent extends DefaultControlValueAccessor implements OnInit, AfterContentInit {
+
+  @HostBinding('class') class = 'asi-component asi-radio-group';
 
   @Input() label: string;
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
@@ -28,14 +32,14 @@ export class AsiRadioGroupComponent extends DefaultControlValueAccessor {
 
   radios = new Array<AsiRadioComponent>();
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor() {
     super();
   }
 
   ngOnInit() {
-    this.renderer.addClass(this.elementRef.nativeElement, "label-" + this.labelPosition);
+    this.class += ' label-' + this.labelPosition;
     if (this.vertical) {
-      this.renderer.addClass(this.elementRef.nativeElement, "asi-vertical");
+      this.class += ' asi-vertical';
     }
   }
 
@@ -44,18 +48,25 @@ export class AsiRadioGroupComponent extends DefaultControlValueAccessor {
   }
 
   onRadioChecked(radioEvent: { index: number, value: boolean }) {
-    this.radios.forEach((radio) => {
-      if (radio.index == radioEvent.index) {
-        radio.active = true;
-        this.value = radio.value;
-      } else {
+    if (radioEvent.value) {
+      this.radios.forEach((radio) => {
+        if (radio.index === radioEvent.index) {
+          radio.active = true;
+          this.value = radio.value;
+        } else {
+          radio.active = false;
+        }
+      });
+    } else {
+      this.radios.forEach((radio) => {
         radio.active = false;
-      }
-    });
+      });
+      this.value = null;
+    }
   }
 
   ngAfterContentInit() {
-    var index = -1;
+    let index = -1;
     this.queryRadios.forEach(radio => {
       radio.index = ++index;
       this.radios.push(radio)
@@ -77,11 +88,11 @@ export class AsiRadioGroupComponent extends DefaultControlValueAccessor {
     } else {
       if (this.trackBy != null) {
         this.radios.forEach((radio) => {
-          radio.active = radio.value[this.trackBy] == value[this.trackBy];
+          radio.active = radio.value[this.trackBy] === value[this.trackBy];
         });
       } else {
         this.radios.forEach((radio) => {
-          radio.active = (radio.value == value)
+          radio.active = (radio.value === value)
         });
       }
     }

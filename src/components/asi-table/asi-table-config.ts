@@ -1,8 +1,8 @@
 export class AsiTableSelectionModel {
-  nbItemsSelected: number = 0;
+  nbItemsSelected = 0;
   itemsIncluded: Array<any> = [];
   itemsExcluded: Array<any> = [];
-  allChecked: boolean = false;
+  allChecked = false;
   config: {
     selectionId: string;
     multipage: boolean;

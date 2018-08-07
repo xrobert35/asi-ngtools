@@ -1,23 +1,24 @@
 import { AsiTableInliner } from './asi-table-inliner.directive';
-import { Directive, Input, ContentChild, EventEmitter, Output, ContentChildren, QueryList } from '@angular/core';
+import { Directive, Input, ContentChild, EventEmitter, Output, AfterContentInit, ContentChildren, QueryList } from '@angular/core';
 import { AsiComponentTemplateTableHeaderDef, AsiComponentTemplateCellDef } from '../common/asi-component-template';
 
 @Directive({
+  /* tslint:disable-next-line:directive-selector */
   selector: 'asi-table-column',
 })
-export class AsiTableColumn {
+export class AsiTableColumn implements AfterContentInit {
 
   @Input() name: string;
   @Input() sortName: string;
   @Input() libelle: string;
   @Input() showIf: boolean;
   @Input() hideIf: boolean;
-  @Input() inversSort: boolean = false;
-  @Input() sortable: boolean = false;
+  @Input() inversSort = false;
+  @Input() sortable = false;
   @Input() sortByDefault: boolean;
   @Input() columnClass: any;
 
-  @Input() inlineColumn: boolean = false;
+  @Input() inlineColumn = false;
 
   @Input() type: 'text' | 'checkbox' = 'text';
 

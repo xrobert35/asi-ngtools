@@ -1,23 +1,24 @@
 import { AsiRadioComponent } from './../asi-radio/asi-radio.component';
-import { Component, Input, Output, EventEmitter, ElementRef, Renderer2 } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostBinding, OnInit } from '@angular/core';
 
 @Component({
   selector: 'asi-radio-element',
-  templateUrl: 'asi-radio-element.component.html',
-  host: { 'class': 'asi-component asi-radio-element' },
+  templateUrl: 'asi-radio-element.component.html'
 })
-export class AsiRadioElement {
+export class AsiRadioElement implements OnInit {
+
+  @HostBinding('class') class = 'asi-component asi-radio-element';
 
   @Input() radio: AsiRadioComponent;
 
   @Input() value = false;
   @Output() onValueChange = new EventEmitter<{ index: number, value: boolean }>();
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.renderer.addClass(this.elementRef.nativeElement, "asi-template-" + this.radio.templatePosition);
+    this.class += ' asi-template-' + this.radio.templatePosition;
   }
 
   onRadioChecked(checked: boolean) {

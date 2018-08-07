@@ -1,6 +1,6 @@
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
-import { Component, forwardRef, Input, ElementRef, Renderer2, ViewChild, OnInit, HostBinding } from '@angular/core';
+import { Component, forwardRef, Input, ElementRef, ViewChild, OnInit, HostBinding } from '@angular/core';
 import * as lodash from 'lodash';
 
 @Component({
@@ -48,15 +48,15 @@ export class AsiInputChipsComponent extends DefaultControlValueAccessor implemen
     }
   }
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor() {
     super();
   }
 
   ngOnInit() {
+    this.class += ' label-' + this.labelPosition;
     if (!lodash.isArray(this.chips)) {
       this.chips = new Array<string>();
     }
-    this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
   }
 
   /**
