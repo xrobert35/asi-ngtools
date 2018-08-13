@@ -30,7 +30,7 @@
     "@ngx-translate/core": "^10.0.0",
     "ng-dynamic": "^3.0.2",
     "moment": "^2.18.1",
-    "lodash": "4.17.4"
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "@types/lodash": "4.14.66"

@@ -1,5 +1,6 @@
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 import {
   Component, forwardRef, Input, Output, OnInit, EventEmitter,
   ElementRef, ViewChild, AfterViewInit, HostBinding
@@ -33,6 +34,8 @@ export class AsiInputIconComponent extends DefaultControlValueAccessor implement
 
   @Input() maxlength = -1;
 
+  @Input() delay = 0;
+
   @Input() number = false;
 
   @Input() type: 'password' | 'text' = 'text';
@@ -56,7 +59,7 @@ export class AsiInputIconComponent extends DefaultControlValueAccessor implement
   }
 
   ngAfterViewInit() {
-    this.inputControl.valueChanges.subscribe((value: string) => {
+    this.inputControl.valueChanges.pipe(debounceTime(this.delay)).subscribe((value: string) => {
       if (value === '') {
         this.value = null;
       } else if (this.isValide(value)) {
