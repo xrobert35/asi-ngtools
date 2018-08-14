@@ -1,4 +1,9 @@
 language: node_js
 sudo: false
 node_js:
-- '6.9'
+- '8'
+before_install:
+  - npm i -g npm@latest
+  - npm i
+install:
+  - npm run build
