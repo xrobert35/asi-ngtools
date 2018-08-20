@@ -1,12 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable()
 export class AsiLocalStorageService {
 
   private localStorage: Storage;
 
-  constructor() {
-    this.localStorage = window.localStorage;
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.localStorage = window.localStorage;
+    }
   }
 
   setItem(key: string, value: string): void {
@@ -18,7 +21,7 @@ export class AsiLocalStorageService {
   }
 
   setObjectItem(key: string, value: string): void {
-    var strValue: string = null;
+    let strValue: string = null;
     if (value != null) {
       strValue = JSON.stringify(value);
     }
