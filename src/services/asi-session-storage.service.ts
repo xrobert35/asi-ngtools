@@ -1,12 +1,14 @@
-import { Injectable } from '@angular/core';
-
+import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 @Injectable()
 export class AsiSessionStorageService {
 
   private sessionStorage: Storage;
 
-  constructor() {
-    this.sessionStorage = window.sessionStorage;
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.sessionStorage = window.sessionStorage;
+    }
   }
 
   setItem(key: string, value: string): void {
