@@ -30,8 +30,8 @@ asi-checkbox, .asi-checkbox {
       width: 11px;
       height: 6px;
       display: block;
-      //On dessine la check grace au bordure
-      border: 3px solid @asi-checkbox-check-color;
+      // we drawn the "check" thanks to border
+      border: 3px solid @asi-checkbox-checked-color;
       border-top: none;
       border-right: none;
       background: transparent;
@@ -39,7 +39,7 @@ asi-checkbox, .asi-checkbox {
       opacity: 0;
     }
     &.checked {
-      background-color: @asi-checkbox-background-active-color;
+      background-color: @asi-checkbox-checked-background-color;
       .checkbox-button {
         opacity: 1;
       }

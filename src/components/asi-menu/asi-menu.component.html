@@ -2,12 +2,12 @@
   <span *ngIf="burger" (click)="toggleBurger()">
     <ng-template *ngIf="burgerTemplate != null" [ngTemplateOutlet]="burgerTemplate"></ng-template>
   </span>
-  <div class="asi-menu-panel">
-    <div *ngIf="burgerOpen" class="items-container" [ngClass]="{'vertical' : vertical, 'burger' : burger }">
+  <ul class="asi-menu-panel">
+    <li *ngIf="burgerOpen" class="items-container" [ngClass]="{'vertical' : vertical, 'burger' : burger }">
       <button *ngFor="let item of items" class="item-container" routerLinkActive="active" [routerLink]="item.routerLink" [disabled]="disabled || item.disabled"
         (click)="item.emitClick($event)">
           <ng-template *ngIf="item.template != null" [ngTemplateOutlet]="item.template"></ng-template>
       </button>
-    </div>
-  </div>
+    </li>
+  </ul>
 </div>

@@ -20,7 +20,7 @@ export class AsiSessionStorageService {
   }
 
   setObjectItem(key: string, value: string): void {
-    var strValue: string = null;
+    let strValue: string = null;
     if (value != null) {
       strValue = JSON.stringify(value);
     }

@@ -15,10 +15,13 @@ asi-menu, .asi-menu {
       display: flex;
       flex-direction: column;
       position: relative;
+      list-style: none;
+      padding-left: 0px;
       .items-container {
         display: flex;
         flex-direction: row;
         overflow: auto;
+        list-style: none;
         background-color: @asi-menu-background-color;
         &.vertical {
           flex-direction: column;
@@ -34,19 +37,18 @@ asi-menu, .asi-menu {
           align-items: center;
           text-align: center;
           padding: 5px;
-          min-height: 40px;
-          height: 40px;
-          min-width: 100px;
+          min-height: @asi-menu-min-height;
+          min-width: @asi-menu-min-width;
           border-bottom : 2px solid transparent;
-          transition: background-color 0.1s ease-in;
+          transition: background-color 0.1s easea-in;
           &.active {
             background-color: @asi-menu-active-background-color;
             color: @asi-menu-active-text-color;
             border-bottom: @asi-menu-active-border-bottom;
           }
           &:hover{
-            background-color: @asi-menu-active-background-color;
-            color: @asi-menu-active-text-color;
+            background-color: @asi-menu-hover-background-color;
+            color: @asi-menu-hover-text-color;
           }
           outline: none;
           &:focus {

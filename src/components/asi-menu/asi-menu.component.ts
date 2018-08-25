@@ -1,7 +1,7 @@
 import { AsiMenuItem } from './asi-menu-item.component';
 import {
   Component, Input, ContentChild, TemplateRef, QueryList,
-  AfterContentInit, OnInit, ContentChildren, HostBinding
+  AfterContentInit, ContentChildren, HostBinding
 } from '@angular/core';
 
 
@@ -9,7 +9,7 @@ import {
   selector: 'asi-menu',
   templateUrl: './asi-menu.component.html'
 })
-export class AsiMenu implements AfterContentInit, OnInit {
+export class AsiMenu implements AfterContentInit {
 
   @HostBinding('class') class = 'asi-component asi-menu';
 
@@ -22,10 +22,7 @@ export class AsiMenu implements AfterContentInit, OnInit {
 
   burgerOpen: Boolean;
 
-  constructor() {
-  }
-
-  ngOnInit() {}
+  constructor() {}
 
   toggleBurger() {
     this.burgerOpen = !this.burgerOpen;
