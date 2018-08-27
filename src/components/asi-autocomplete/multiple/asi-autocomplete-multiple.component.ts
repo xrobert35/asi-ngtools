@@ -72,7 +72,7 @@ export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccesso
         if (this.onRequestData) {
           Promise.resolve(this.onRequestData(value)).then((data) => {
             this.data = data;
-            if (this.firstRequestDone) {
+            if (this.firstRequestDone && data && data.length > 0) {
               this.open = true;
             }
             this.firstRequestDone = true;
