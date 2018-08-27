@@ -1,47 +1,49 @@
 //colors
-@asi-ngtools-primary-color : #3eaaaf;
-@asi-ngtools-secondary-color : #3d566f;
-@asi-ngtools-third-color : rgb(184, 183, 183);
+@asi-ngtools-primary-color: #3eaaaf;
+@asi-ngtools-secondary-color: #3d566f;
+@asi-ngtools-third-color: rgb(184, 183, 183);
 @asi-ngtools-fourth-color: #91c4c7;
 
 //general
-@asi-ngtools-height : 30px;
-@asi-ngtools-label-color :  #3d3e3f;
-@asi-ngtools-border-color : @asi-ngtools-third-color;
-@asi-ngtools-border-radius : 2px;
-@asi-ngtools-outline-border : 1px solid @asi-ngtools-primary-color;
-@asi-ngtools-error-color : red;
-@asi-ngtools-error-border : 1px solid @asi-ngtools-error-color;
-@asi-ngtools-input-box-shadow : 1px 1px 1px @asi-ngtools-fourth-color;
+@asi-ngtools-height: 30px;
+@asi-ngtools-label-color: #3d3e3f;
+@asi-disabled-text-color: grey;
+@asi-ngtools-border-color: @asi-ngtools-third-color;
+@asi-ngtools-border-radius: 2px;
+@asi-ngtools-outline-border: 1px solid @asi-ngtools-primary-color;
+@asi-ngtools-error-color: red;
+@asi-ngtools-error-border: 1px solid @asi-ngtools-error-color;
+@asi-ngtools-input-box-shadow: 1px 1px 1px @asi-ngtools-fourth-color;
+@asi-ngtools-hover-left-box-shadow: 3px 0 0 0 @asi-ngtools-primary-color inset;
 
 // asi-checkbox
 @asi-checkbox-checked-color: white;
 @asi-checkbox-checked-background-color: @asi-ngtools-primary-color;
-@asi-checkbox-label-color : @asi-ngtools-label-color;
-@asi-checkbox-background-color : white;
-@asi-checkbox-border : 1px solid @asi-ngtools-border-color;
-@asi-checkbox-box-shadow : 0px 0px 1px @asi-ngtools-border-color;
-@asi-checkbox-outline-border : @asi-ngtools-outline-border;
+@asi-checkbox-label-color: @asi-ngtools-label-color;
+@asi-checkbox-background-color: white;
+@asi-checkbox-border: 1px solid @asi-ngtools-border-color;
+@asi-checkbox-box-shadow: 0 0 1px @asi-ngtools-border-color;
+@asi-checkbox-outline-border: @asi-ngtools-outline-border;
 
 // asi-icon-checkbox
-@asi-icon-checkbox-checked-color : @asi-ngtools-primary-color;
-@asi-icon-checkbox-unchecked-color : @asi-ngtools-label-color;
-@asi-icon-checkbox-label-color : @asi-ngtools-label-color;
-@asi-icon-checkbox-outline-border : @asi-ngtools-outline-border;
+@asi-icon-checkbox-checked-color: @asi-ngtools-primary-color;
+@asi-icon-checkbox-unchecked-color: @asi-ngtools-label-color;
+@asi-icon-checkbox-label-color: @asi-ngtools-label-color;
+@asi-icon-checkbox-outline-border: @asi-ngtools-outline-border;
 
 // asi-radio-group
-@asi-radio-group-label-color : @asi-ngtools-label-color;
+@asi-radio-group-label-color: @asi-ngtools-label-color;
 
 // asi-tab-group 
 @asi-tab-label-color: @asi-ngtools-label-color;
 @asi-tab-background-color: white;
-@asi-tab-border : none;
-@asi-tab-outline-border : @asi-ngtools-outline-border;
-@asi-tab-box-shadow : 0px 0px 1px @asi-ngtools-border-color;
+@asi-tab-border: none;
+@asi-tab-outline-border: @asi-ngtools-outline-border;
+@asi-tab-box-shadow: 0 0 1px @asi-ngtools-border-color;
 @asi-tab-height: 41px;
 @asi-tab-active-label-color: white;
 @asi-tab-active-background-color: @asi-ngtools-secondary-color;
-@asi-tab-active-border : none;
+@asi-tab-active-border: none;
 
 // asi-breadcrumb
 @asi-breadcrumb-border-color: white;
@@ -55,7 +57,7 @@
 @asi-button-label-color: white;
 @asi-button-border: 1px solid @asi-ngtools-secondary-color;
 @asi-button-border-radius: 3px;
-@asi-button-outline-border : @asi-ngtools-outline-border;
+@asi-button-outline-border: @asi-ngtools-outline-border;
 @asi-button-hover-border: 1px solid @asi-ngtools-primary-color;
 @asi-button-hover-background-color: @asi-ngtools-primary-color;
 @asi-button-bordered-background-color: white;
@@ -64,165 +66,170 @@
 @asi-button-raised-box-shadow: 1px 1px 1px grey;
 
 // asi-switch
-@asi-switch-checked-background-color : #5CB85C;
-@asi-switch-label-color : @asi-ngtools-label-color;
-@asi-switch-background-color : @asi-ngtools-secondary-color;
-@asi-switch-color : white;
-@asi-switch-checked-color : white;
+@asi-switch-checked-background-color: #5CB85C;
+@asi-switch-label-color: @asi-ngtools-label-color;
+@asi-switch-background-color: @asi-ngtools-secondary-color;
+@asi-switch-color: white;
+@asi-switch-checked-color: white;
 
 //asi-input 
-@asi-input-height : @asi-ngtools-height;
-@asi-input-label-color : @asi-ngtools-label-color;
-@asi-input-border : 1px solid @asi-ngtools-border-color;
-@asi-input-border-radius : @asi-ngtools-border-radius;
-@asi-input-box-shadow : @asi-ngtools-input-box-shadow;
-@asi-input-outline-border : @asi-ngtools-outline-border;
+@asi-input-height: @asi-ngtools-height;
+@asi-input-max-height: @asi-ngtools-height;
+@asi-input-label-color: @asi-ngtools-label-color;
+@asi-input-border: 1px solid @asi-ngtools-border-color;
+@asi-input-border-radius: @asi-ngtools-border-radius;
+@asi-input-box-shadow: @asi-ngtools-input-box-shadow;
+@asi-input-outline-border: @asi-ngtools-outline-border;
 
 //asi-input-icon
-@asi-input-icon-height : @asi-ngtools-height;
-@asi-input-icon-label-color : @asi-ngtools-label-color;
-@asi-input-icon-border : 1px solid @asi-ngtools-border-color;
-@asi-input-icon-border-radius : @asi-ngtools-border-radius;
-@asi-input-icon-outline-border : @asi-ngtools-outline-border;
-@asi-input-icon-icon-color : white;
-@asi-input-icon-box-shadow : @asi-ngtools-input-box-shadow;
-@asi-input-icon-icon-background-color : @asi-ngtools-secondary-color;
+@asi-input-icon-height: @asi-ngtools-height;
+@asi-input-icon-max-height: @asi-ngtools-height;
+@asi-input-icon-label-color: @asi-ngtools-label-color;
+@asi-input-icon-border: 1px solid @asi-ngtools-border-color;
+@asi-input-icon-border-radius: @asi-ngtools-border-radius;
+@asi-input-icon-outline-border: @asi-ngtools-outline-border;
+@asi-input-icon-icon-color: white;
+@asi-input-icon-box-shadow: @asi-ngtools-input-box-shadow;
+@asi-input-icon-icon-background-color: @asi-ngtools-secondary-color;
 
 //asi-input-number
-@asi-input-number-height : @asi-ngtools-height;
-@asi-input-number-label-color : @asi-ngtools-label-color;
-@asi-input-number-border : 1px solid @asi-ngtools-border-color;
-@asi-input-number-border-radius : @asi-ngtools-border-radius;
-@asi-input-number-box-shadow : @asi-ngtools-input-box-shadow;
-@asi-input-number-outline-border : @asi-ngtools-outline-border;
+@asi-input-number-height: @asi-ngtools-height;
+@asi-input-number-max-height: @asi-ngtools-height;
+@asi-input-number-label-color: @asi-ngtools-label-color;
+@asi-input-number-border: 1px solid @asi-ngtools-border-color;
+@asi-input-number-border-radius: @asi-ngtools-border-radius;
+@asi-input-number-box-shadow: @asi-ngtools-input-box-shadow;
+@asi-input-number-outline-border: @asi-ngtools-outline-border;
 
 //asi-textarea 
-@asi-textarea-height : @asi-ngtools-height;
-@asi-textarea-label-color : @asi-ngtools-label-color;
-@asi-textarea-border : 1px solid @asi-ngtools-border-color;
-@asi-textarea-border-radius : @asi-ngtools-border-radius;
-@asi-textarea-outline-border : @asi-ngtools-outline-border;
+@asi-textarea-min-height: @asi-ngtools-height;
+@asi-textarea-label-color: @asi-ngtools-label-color;
+@asi-textarea-border: 1px solid @asi-ngtools-border-color;
+@asi-textarea-border-radius: @asi-ngtools-border-radius;
+@asi-textarea-outline-border: @asi-ngtools-outline-border;
+@asi-textarea-box-shadow: @asi-ngtools-input-box-shadow;
 
 //asi-calendar
-@asi-calendar-background-color : white;
-@asi-calendar-border-color : @asi-ngtools-primary-color;
-@asi-calendar-daylist-color : @asi-ngtools-primary-color;
-@asi-calendar-daylist-background-color : white; 
-
-@asi-calendar-selected-day-background-color : @asi-ngtools-primary-color;
-@asi-calendar-selected-day-color : white;
-@asi-calendar-selected-day-boxshadow : 0 0 1px grey;
-@asi-calendar-extra-day-color : lightsteelblue;
-@asi-calendar-disabled-day-color : lightsteelblue;
-@asi-calendar-outline-border : @asi-ngtools-outline-border;
+@asi-calendar-background-color: white;
+@asi-calendar-border-color: @asi-ngtools-primary-color;
+@asi-calendar-daylist-color: @asi-ngtools-primary-color;
+@asi-calendar-daylist-background-color: white;
+@asi-calendar-selected-day-background-color: @asi-ngtools-primary-color;
+@asi-calendar-selected-day-color: white;
+@asi-calendar-selected-day-boxshadow: 0 0 1px grey;
+@asi-calendar-extra-day-color: lightsteelblue;
+@asi-calendar-disabled-day-color: lightsteelblue;
+@asi-calendar-outline-border: @asi-ngtools-outline-border;
 
 //asi-datepicker
-@asi-datepicker-height : @asi-ngtools-height;
-@asi-datepicker-label-color : @asi-ngtools-label-color;
-@asi-datepicker-border : 1px solid @asi-ngtools-border-color;
-@asi-datepicker-border-radius : @asi-ngtools-border-radius;
-@asi-datepicker-box-shadow : @asi-ngtools-input-box-shadow;
-@asi-datepicker-outline-border : @asi-ngtools-outline-border;
+@asi-datepicker-height: @asi-ngtools-height;
+@asi-datepicker-label-color: @asi-ngtools-label-color;
+@asi-datepicker-border: 1px solid @asi-ngtools-border-color;
+@asi-datepicker-border-radius: @asi-ngtools-border-radius;
+@asi-datepicker-box-shadow: @asi-ngtools-input-box-shadow;
+@asi-datepicker-outline-border: @asi-ngtools-outline-border;
 @asi-datepicker-box-shadow: @asi-ngtools-input-box-shadow;
 
 //asi-autocomplete 
-@asi-autocomplete-height : @asi-ngtools-height;
-@asi-autocomplete-label-color : @asi-ngtools-label-color;
-@asi-autocomplete-dropdown-max-height : 181px;
-@asi-autocomplete-border : 1px solid @asi-ngtools-border-color;
-@asi-autocomplete-border-radius : @asi-ngtools-border-radius;
-@asi-autocomplete-box-shadow : @asi-ngtools-input-box-shadow;
-@asi-autocomplete-remove-icon-color : black;
-@asi-autocomplete-dropdown-color : white;
-@asi-autocomplete-tag-height : @asi-ngtools-height;
-@asi-autocomplete-tag-border : 1px solid @asi-ngtools-border-color;
-@asi-autocomplete-outline-border : @asi-ngtools-outline-border;
+@asi-autocomplete-height: @asi-ngtools-height;
+@asi-autocomplete-max-height: @asi-ngtools-height;
+@asi-autocomplete-label-color: @asi-ngtools-label-color;
+@asi-autocomplete-dropdown-max-height: 181px;
+@asi-autocomplete-border: 1px solid @asi-ngtools-border-color;
+@asi-autocomplete-border-radius: @asi-ngtools-border-radius;
+@asi-autocomplete-box-shadow: @asi-ngtools-input-box-shadow;
+@asi-autocomplete-remove-icon-color: black;
+@asi-autocomplete-dropdown-color: white;
+@asi-autocomplete-tag-height: @asi-ngtools-height;
+@asi-autocomplete-tag-border: 1px solid @asi-ngtools-border-color;
+@asi-autocomplete-outline-border: @asi-ngtools-outline-border;
+@asi-autocomplete-hover-left-box-shadow: @asi-ngtools-hover-left-box-shadow;
 
 // asi-notification
 @asi-notification-success: #5CB85C;
 @asi-notification-warning: #F0AD4E;
 @asi-notification-error: #D9534F;
 @asi-notification-info: #337AB7;
-@asi-notification-height : 45px;
+@asi-notification-height: 45px;
 
 // asi-dialog
-@asi-dialog-backdrop-color : grey;
-@asi-dialog-background-color : white;
-@asi-dialog-border-color : lightgrey;
-@asi-dialog-border-radius : @asi-ngtools-border-radius;
+@asi-dialog-backdrop-color: grey;
+@asi-dialog-background-color: white;
+@asi-dialog-border-color: lightgrey;
+@asi-dialog-border-radius: @asi-ngtools-border-radius;
 
 // asi-table
-@asi-table-border : none;
-@asi-table-header-height : 50px;
-@asi-table-header-th-border : none;
-@asi-table-header-tr-border : 1px solid @asi-ngtools-border-color;
-@asi-table-header-box-shadow : 0px 0px 1px @asi-ngtools-border-color;
+@asi-table-border: none;
+@asi-table-header-height: 50px;
+@asi-table-header-th-border: none;
+@asi-table-header-tr-border: 1px solid @asi-ngtools-border-color;
+@asi-table-header-box-shadow: 0 0 1px @asi-ngtools-border-color;
 @asi-table-header-background-color: @asi-ngtools-secondary-color;
 @asi-table-header-text-color: white;
-@asi-table-body-1-color : transparent;
-@asi-table-body-2-color : transparent;
+@asi-table-body-1-color: transparent;
+@asi-table-body-2-color: transparent;
 @asi-table-body-tr-border: 1px solid @asi-ngtools-border-color;
 @asi-table-body-td-border: none;
-@asi-table-body-td-text-color : inherit;
-@asi-table-body-line-height : 35px;
+@asi-table-body-td-text-color: inherit;
+@asi-table-body-line-height: 35px;
 @asi-table-body-line1-color: #E8E8E8;
 @asi-table-body-line2-color: white;
 
 //asi-select
-@asi-select-height : @asi-ngtools-height;
-@asi-select-dropdown-max-height : 181px;
-@asi-select-label-color : @asi-ngtools-label-color;
+@asi-select-height: @asi-ngtools-height;
+@asi-select-dropdown-max-height: 181px;
+@asi-select-label-color: @asi-ngtools-label-color;
 @asi-select-border: 1px solid @asi-ngtools-border-color;
-@asi-select-border-radius : @asi-ngtools-border-radius;
-@asi-select-text-color : black;
-@asi-select-header-background-color : white;
+@asi-select-border-radius: @asi-ngtools-border-radius;
+@asi-select-text-color: black;
+@asi-select-header-background-color: white;
 @asi-select-dropdown-background-color: white;
-@asi-select-outline-border : @asi-ngtools-outline-border;
-@asi-select-box-shadow : @asi-ngtools-input-box-shadow;
+@asi-select-outline-border: @asi-ngtools-outline-border;
+@asi-select-box-shadow: @asi-ngtools-input-box-shadow;
+@asi-select-hover-left-box-shadow : @asi-ngtools-hover-left-box-shadow; 
 
 //asi-pagination
 @asi-pagination-boutton-border-color: @asi-ngtools-border-color;
 @asi-pagination-selected-background-color: @asi-ngtools-secondary-color;
 @asi-pagination-selected-text-color: white;
-@asi-pagination-outline-border : @asi-ngtools-outline-border;
+@asi-pagination-outline-border: @asi-ngtools-outline-border;
 
 //asi-menu
 @asi-menu-background-color: white;
 @asi-menu-text-color: black;
-@asi-menu-active-background-color : @asi-ngtools-secondary-color;
-@asi-menu-active-border-bottom : 2px solid @asi-ngtools-primary-color;
-@asi-menu-active-text-color : white;
-@asi-menu-outline-border : 2px solid @asi-ngtools-primary-color;
+@asi-menu-active-background-color: @asi-ngtools-secondary-color;
+@asi-menu-active-border-bottom: 2px solid @asi-ngtools-primary-color;
+@asi-menu-active-text-color: white;
+@asi-menu-outline-border: 2px solid @asi-ngtools-primary-color;
 @asi-menu-min-height: 40px;
 @asi-menu-min-width: 100px;
-
 @asi-menu-hover-background-color: @asi-ngtools-secondary-color;
 @asi-menu-hover-text-color: white;
 
 //asi-image-chooser
-@asi-image-chooser-background-color : white;
-@asi-image-chooser-label-color : @asi-ngtools-label-color;
+@asi-image-chooser-background-color: white;
+@asi-image-chooser-label-color: @asi-ngtools-label-color;
 @asi-image-chooser-border: 1px dashed @asi-ngtools-border-color;
-@asi-image-chooser-outline-border : @asi-ngtools-outline-border;
+@asi-image-chooser-outline-border: @asi-ngtools-outline-border;
 
 //asi-file-chooser
-@asi-file-chooser-label-color : @asi-ngtools-label-color;
+@asi-file-chooser-label-color: @asi-ngtools-label-color;
 @asi-file-chooser-border: none;
-@asi-file-chooser-outline-border : @asi-ngtools-outline-border;
+@asi-file-chooser-outline-border: @asi-ngtools-outline-border;
 
 //asi-collapse
-@asi-collapse-header-background-color : transparent;
-@asi-collapse-header-color : black;
-@asi-collapse-header-hover-background-color : @asi-ngtools-secondary-color;
-@asi-collapse-header-hover-color : white;
-@asi-collapse-panel-border : 1px solid transparent;
-@asi-collapse-panel-background-color : transparent;
-@asi-collapse-outline-border : @asi-ngtools-outline-border;
+@asi-collapse-header-background-color: transparent;
+@asi-collapse-header-color: black;
+@asi-collapse-header-hover-background-color: @asi-ngtools-secondary-color;
+@asi-collapse-header-hover-color: white;
+@asi-collapse-panel-border: 1px solid transparent;
+@asi-collapse-panel-background-color: transparent;
+@asi-collapse-outline-border: @asi-ngtools-outline-border;
 
 //asi-fa-icon
-@asi-fa-icon-border : none;
-@asi-fa-icon-label-color : @asi-ngtools-label-color;
-@asi-fa-icon-color : black;
-@asi-fa-icon-label-color : black;
-@asi-fa-icon-outline-border : @asi-ngtools-outline-border;
+@asi-fa-icon-border: none;
+@asi-fa-icon-label-color: @asi-ngtools-label-color;
+@asi-fa-icon-color: black;
+@asi-fa-icon-label-color: black;
+@asi-fa-icon-outline-border: @asi-ngtools-outline-border;
 @asi-fa-icon-color-disabled: grey;

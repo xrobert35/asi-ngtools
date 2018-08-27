@@ -10,6 +10,7 @@ export class AsiRadioElement implements OnInit {
   @HostBinding('class') class = 'asi-component asi-radio-element';
 
   @Input() radio: AsiRadioComponent;
+  @Input() disabled: boolean = false;
 
   @Input() value = false;
   @Output() onValueChange = new EventEmitter<{ index: number, value: boolean }>();

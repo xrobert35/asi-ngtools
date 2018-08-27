@@ -16,7 +16,7 @@ export class AsiFaIconComponent implements OnInit, OnChanges {
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
   @Input() submit = false;
 
-  @Input() size: string = null;
+  @Input() size: '1x' | '2x' | '3x' | '4x';
   @Input() disabled: boolean;
   @Input() tooltip: boolean;
   @Input() tooltipPosition: 'top' | 'left' | 'right' | 'bottom' = 'bottom';

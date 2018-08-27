@@ -1,10 +1,11 @@
 {
   "name": "asi-ngtools",
-  "version": "6.0.0-rc11",
+  "version": "6.0.0-rc12",
   "main": "./dist/index.js",
   "scripts": {
     "build": "gulp build",
     "babel": "node node_modules/babel-cli/bin/babel.js dist --out-dir dist --presets es2015",
+    "package" : "npm run build && npm run babel",
     "build:watch": "gulp",
     "docs": "npm run docs:build",
     "docs:build": "compodoc -p tsconfig.json -n asi-ngtools -d docs --hideGenerator",

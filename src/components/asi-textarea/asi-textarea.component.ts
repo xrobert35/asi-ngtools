@@ -22,7 +22,7 @@ export class AsiTextareaComponent extends DefaultControlValueAccessor implements
   @Input() label: string;
   @Input() placeholder = '';
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
-  @Input() rows = 1;
+  @Input() rows = 2;
   @Input() maxlength = -1;
 
   @Input() pattern: RegExp;

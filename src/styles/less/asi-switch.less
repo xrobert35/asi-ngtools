@@ -1,9 +1,11 @@
 asi-switch {
   .base-component;
+
   label.input-label {
     color: @asi-switch-label-color;
   }
-  .switch {
+
+  button.switch {
     max-height: 22px;
     height: 22px;
     max-width: 40px;
@@ -15,25 +17,33 @@ asi-switch {
     position: relative;
     outline: none;
     box-sizing: border-box;
-    border : 1px solid transparent;
+    border: 1px solid transparent;
+
+    :not([disabled]) {
+      // border: 1px solid @asi-switch-color;
+      background-color: @asi-switch-color;
+    }
+
     &:focus {
       border: 1px solid orange;
     }
+
     .switch-button {
       position: absolute;
-      top: 0px;
-      left: 0px;
+      top: 0;
+      left: 0;
       height: 20px;
       width: 20px;
       border-radius: 18px;
       display: block;
       box-shadow: 0 0 1px grey;
-      background-color: @asi-switch-color;
       transition: left .2s ease-in-out;
       box-sizing: border-box;
     }
+
     &.checked {
       background-color: @asi-switch-checked-background-color;
+
       .switch-button {
         background-color: @asi-switch-checked-color;
         left: 19px;

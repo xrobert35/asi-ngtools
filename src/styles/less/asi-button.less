@@ -1,75 +1,105 @@
-asi-button, .asi-button {
+.asi-button,
+asi-button {
   .base-component;
   flex: 0 0 auto;
+
   > button {
+    .clean-button;
+
     display: flex;
     justify-content: center;
-    align-items : center;
+    align-items: center;
     flex: 1 0 auto;
-    .clean-button;
-    font-size: 0.9em;
+    font-size: .9em;
     min-height: 35px;
     border: @asi-button-border;
-    background-color: @asi-button-background-color;
     transition: background-color .1s ease-in;
-    color: @asi-button-label-color;
     border-radius: @asi-button-border-radius;
-    padding: 5px 15px 5px 15px;
+    padding: 5px 15px;
     box-sizing: border-box;
     outline: none;
     min-width: 150px;
     text-align: center;
     outline: none;
-    &:disabled{
-      background-color : lightgrey;
-      border-color: lightgrey;
+    
+    &:not([disabled]) {
+      background-color: @asi-button-background-color;
+      color: @asi-button-label-color;
     }
+
     &:focus {
       border: @asi-button-outline-border;
     }
+
+    &:disabled {
+      background-color: lightgrey;
+      border-color: lightgrey;
+    }
   }
+
   &.button-small {
     > button {
       min-width: 35px;
-      padding : 0px;
+      padding: 0;
       width: 35px;
       height: 35px;
 
       > asi-fa-icon {
-        width : 30px;
+        width: 30px;
         height: 30px;
-        margin : 0px;
+        margin: 0;
       }
     }
   }
+
   &.button-raised {
-    button:not([disabled]) {
+    > button:not([disabled]) {
       box-shadow: @asi-button-raised-box-shadow;
+
       &:hover {
         border: @asi-button-hover-border;
         background-color: @asi-button-hover-background-color;
       }
+
+      .asi-fa-icon {
+        label.input-label {
+          color: white;
+        }
+      }
+
       &:active {
         box-shadow: inset 1px 1px 3px 1px grey;
       }
     }
   }
+
   &.button-flat {
-    button:not([disabled]) {
+    > button:not([disabled]) {
       &:hover {
         border: @asi-button-hover-border;
         background-color: @asi-button-hover-background-color;
       }
+      .asi-fa-icon {
+        label.input-label {
+          color: white;
+        }
+      }
     }
   }
+
   &.button-bordered {
-    button:not([disabled]) {
+    > button:not([disabled]) {
       background-color: @asi-button-bordered-background-color;
       color: @asi-button-bordered-label-color;
       border: @asi-button-bordered-border;
+
       &:hover {
         border: @asi-button-hover-border;
       }
     }
+  }
+
+  .asi-fa-icon {
+    margin: 2px;
   }
 }

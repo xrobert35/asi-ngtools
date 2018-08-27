@@ -2,14 +2,14 @@
 
 <div class="autocomplete">
   <input [attr.disabled]="disabled ? '' : null" class="asi-focus-error" [placeholder]="placeholder" *ngIf="value == null" [formControl]="autoCompleteControl" />
-  <a tabindex="0" class="clean-a autocomplete-header" *ngIf="value != null">
+  <button [disabled]="disabled" type="button" class="clean-a autocomplete-header" *ngIf="value != null">
     <div class="select-value">
       <ng-template [ngTemplateOutlet]="selectedDef.template" [ngTemplateOutletContext]="{$implicit : value}"></ng-template>
     </div>
-    <button type="button" [disabled]="disabled" class="remove-icon-container" (click)="clearValue()">
+    <button [disabled]="disabled" class="remove-icon-container" (click)="clearValue()">
       <span class="remove-icon" [innerHTML]="'&#10005;'"></span>
     </button>
-  </a>
+  </button>
 
   <asi-dropdown [open]="open" (onClose)="onDropdownClose()" #dropdown>
     <div class="drop-down-autocomplete">

@@ -14,12 +14,10 @@
       justify-content: center;
       cursor: pointer;
       height: @asi-autocomplete-height;
-      min-height: @asi-autocomplete-height;
-      max-height: @asi-autocomplete-height;
+      max-height: @asi-autocomplete-max-height;
       min-width: 100%;
       padding: 0;
       border: @asi-autocomplete-border;
-      border-bottom: none;
       background-color: white;
       &:first-child {
         border-radius: @asi-select-border-radius @asi-select-border-radius 0 0;
@@ -29,7 +27,7 @@
         border-radius: 0 0 @asi-select-border-radius @asi-select-border-radius;
       }
       &:hover {
-        box-shadow: 3px 0px 0px 0px @asi-ngtools-secondary-color inset;
+        box-shadow: @asi-autocomplete-hover-left-box-shadow;
         background-color: #F3F3F3;
         .option {
           .item {

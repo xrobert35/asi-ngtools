@@ -1,2 +1,2 @@
   <div class="asi-radio-template"><ng-template [ngTemplateOutlet]="radio.template"></ng-template></div>
-  <asi-checkbox type="radio" [(ngModel)]="value" (onValueChange)="onRadioChecked($event)"></asi-checkbox>
+  <asi-checkbox type="radio" [disabled]="disabled" [(ngModel)]="value" (onValueChange)="onRadioChecked($event)"></asi-checkbox>

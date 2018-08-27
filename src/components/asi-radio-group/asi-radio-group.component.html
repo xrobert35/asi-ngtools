@@ -2,6 +2,7 @@
 <div class="asi-radio-container">
   <asi-radio-element *ngFor="let radio of getRadios()" 
   [radio]="radio" 
+  [disabled]="disabled"
   [value]="radio.active" 
   (onValueChange)="onRadioChecked($event)">
   </asi-radio-element>
