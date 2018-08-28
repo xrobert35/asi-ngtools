@@ -23,6 +23,9 @@ export class AsiInputIconComponent extends DefaultControlValueAccessor implement
 
   @HostBinding('class') class = 'asi-component asi-input-icon';
 
+  @Input() id: string;
+  @Input() name: string;
+
   @Input() label: string;
   @Input() placeholder = '';
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';

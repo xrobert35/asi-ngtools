@@ -3,6 +3,12 @@
   <asi-button (click)="handleIconClick()" [disabled]="iconClicked.observers.length === 0">
     <asi-fa-icon [icon]="icon" [disabled]="iconClicked.observers.length === 0"></asi-fa-icon>
   </asi-button>
-  <input #input [attr.type]="type" [attr.disabled]="disabled ? '' : null" class="asi-focus-error" [placeholder]="placeholder"
-    [formControl]="inputControl" />
+  <input #input 
+  [id]="id"
+  [name]="name"
+  [attr.type]="type" 
+  [attr.disabled]="disabled ? '' : null" 
+  class="asi-focus-error" 
+  [placeholder]="placeholder"
+  [formControl]="inputControl" />
 </div>

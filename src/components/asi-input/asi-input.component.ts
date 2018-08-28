@@ -19,10 +19,12 @@ export class AsiInputComponent extends DefaultControlValueAccessor implements On
 
   @HostBinding('class') class = 'asi-component asi-input';
 
+  @Input() id: string;
+  @Input() name: string;
+
   @Input() label: string;
   @Input() placeholder = '';
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
-
   @Input() pattern: RegExp;
 
   @Input() maxlength = -1;
