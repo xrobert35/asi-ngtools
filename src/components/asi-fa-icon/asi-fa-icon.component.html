@@ -1,4 +1,4 @@
-<label (click)="!noClickOnLabel && click()" class="input-label" [ngClass]="{'enabled' : !disabled && !noClickOnLabel}" *ngIf="label != null">{{label | translate}}</label>
+<span (click)="!noClickOnLabel && click()" class="input-label" [ngClass]="{'enabled' : !disabled && !noClickOnLabel}" *ngIf="label != null">{{label | translate}}</span>
 <div class="icon-panel">
   <button [disabled]="disabled" [attr.type]="submit ? 'submit' : 'button'" (click)="click($event)" #icon class="fa " aria-hidden="true ">
     <div class="asi-tooltip" #tooltipView>

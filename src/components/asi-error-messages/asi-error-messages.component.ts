@@ -1,4 +1,5 @@
-import { FormControl, FormGroupDirective } from '@angular/forms';
+import { FormControl, FormGroupDirective, FormGroupName, FormGroup } from '@angular/forms';
+import { Injector } from '@angular/core';
 import { AsiMessage } from './asi-message.directive';
 import {
   Component, Input, ElementRef, OnInit, ContentChildren,
@@ -33,15 +34,24 @@ export class AsiErrorMessages implements OnInit, AfterContentInit {
   errorMessages: Array<AsiMessage> = [];
   submitted = false;
 
-  constructor(private element: ElementRef, @Inject(forwardRef(() => FormGroupDirective)) private formGroupDirective: FormGroupDirective) {
+  // @Inject(forwardRef(() => FormGroupName)) private formGroupNameDirective: FormGroupName
+  constructor(private element: ElementRef,
+    @Inject(forwardRef(() => FormGroupDirective)) private formGroupDirective: FormGroupDirective,
+    private injector: Injector) {
   }
 
   ngOnInit() {
-    if (this.forName != null) {
-      this.for = <FormControl> this.formGroupDirective.control.controls[this.forName];
+    const formGroupName = this.injector.get(FormGroupName, null);
+    if (this.forName) {
+      if (!formGroupName) {
+        this.for = <FormControl>this.formGroupDirective.control.controls[this.forName];
+      } else {
+        const groupFormName: FormGroup = <FormGroup>this.formGroupDirective.control.controls[formGroupName.name];
+        this.for = <FormControl>groupFormName.controls[this.forName];
+      }
     }
 
-    this.formGroupDirective.ngSubmit.subscribe( () => {
+    this.formGroupDirective.ngSubmit.subscribe(() => {
       this.submitted = true;
       this.onStatusChange();
     });

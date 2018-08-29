@@ -1,6 +1,6 @@
 {
   "name": "asi-ngtools",
-  "version": "6.0.0-rc14",
+  "version": "6.0.0-rc16",
   "main": "./dist/index.js",
   "scripts": {
     "build": "gulp build",
