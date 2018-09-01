@@ -39,7 +39,7 @@ export class AsiFileChooserComponent extends DefaultControlValueAccessor impleme
   @Input() accept: Array<AsiMimeType> | AsiMimeType;
   acceptAttribute = '';
 
-  @Input() icon = 'fa-paperclip';
+  @Input() icon = 'fa fa-paperclip';
 
   @Output() onError = new EventEmitter<any>();
 

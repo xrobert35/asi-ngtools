@@ -21,7 +21,7 @@ export class AsiIconCheckboxComponent extends DefaultControlValueAccessor implem
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
   @Input() disabled = false;
-  @Input() icon = 'fa-question';
+  @Input() icon = 'fa fa-question';
   @Input() size = '2x';
 
   constructor() {

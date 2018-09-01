@@ -3,7 +3,7 @@
 <asi-dropdown [open]="open" [relativeTo]="relativeTo" (onClose)="onDropdownClose()" [calculWidth]="false">
   <div class="asi-calendar-picker">
     <div class="calendar-header">
-      <asi-fa-icon icon="fa-angle-left" size="lg" (onClick)="goPreviousMonth()"></asi-fa-icon>
+      <asi-fa-icon icon="fa fa-angle-left" size="lg" (onClick)="goPreviousMonth()"></asi-fa-icon>
       <asi-select class="select-month" [disabled]="disabled" [(ngModel)]="selectedMonth" [data]="months" (onValueChange)="calculDays()">
         <asi-selected *selectedDef="let data">{{data.num + " - " + data.libelle}}</asi-selected>
         <asi-option *optionDef="let data">{{data.num + " - " + data.libelle}}</asi-option>
@@ -12,7 +12,7 @@
         <asi-selected *selectedDef="let data">{{data}}</asi-selected>
         <asi-option *optionDef="let data">{{data}}</asi-option>
       </asi-select>
-      <asi-fa-icon icon="fa-angle-right" size="lg" (onClick)="goNextMonth()"></asi-fa-icon>
+      <asi-fa-icon icon="fa fa-angle-right" size="lg" (onClick)="goNextMonth()"></asi-fa-icon>
     </div>
     <div class="day-list">
       <div class="day-str" *ngFor="let day of days">

@@ -13,7 +13,7 @@ export class AsiNotification<T> {
   private _component: T;
   private _config: AsiNotificationConfig;
 
-  icon: 'fa-exclamation' | 'fa-info' | 'fa-check' = 'fa-check';
+  icon: 'fa fa-exclamation' | 'fa fa-info' | 'fa fa-check' = 'fa fa-check';
   withIcon = false;
 
   constructor(public viewContainerRef: ViewContainerRef) {
@@ -28,14 +28,14 @@ export class AsiNotification<T> {
     this.withIcon = config.withIcon;
     switch (config.type) {
       case AsiNotificationType.SUCCESS:
-        this.icon = 'fa-check';
+        this.icon = 'fa fa-check';
         break;
       case AsiNotificationType.INFO:
-        this.icon = 'fa-info';
+        this.icon = 'fa fa-info';
         break;
       case AsiNotificationType.WARNING:
       case AsiNotificationType.ERROR:
-        this.icon = 'fa-exclamation';
+        this.icon = 'fa fa-exclamation';
         break;
     }
     this.updateClass();

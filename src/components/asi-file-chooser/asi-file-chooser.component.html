@@ -9,6 +9,6 @@
     </label>
     <div class="file-link" *ngIf="value != null">
         <a [innerHTML]="value.name" download [href]="getFileUrl()" target="_empty"></a>
-        <asi-fa-icon (onClick)="clean()" icon="fa-trash-o" size="lg"></asi-fa-icon>
+        <asi-fa-icon (onClick)="clean()" icon="fa fa-trash-o" size="lg"></asi-fa-icon>
     </div>
 </div>

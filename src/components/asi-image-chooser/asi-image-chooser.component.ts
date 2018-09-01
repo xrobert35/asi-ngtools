@@ -32,7 +32,7 @@ export class AsiImageChooserComponent extends DefaultControlValueAccessor implem
   @Input() imageSrc: string;
   @Input() image64: string;
 
-  @Input() icon = 'fa-picture-o';
+  @Input() icon = 'fa fa-picture-o';
 
   @Output() onImageSelected = new EventEmitter<File>();
   @Output() onError = new EventEmitter<any>();
