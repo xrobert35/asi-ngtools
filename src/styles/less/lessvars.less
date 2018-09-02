@@ -3,6 +3,7 @@
 @asi-ngtools-secondary-color: #3d566f;
 @asi-ngtools-third-color: rgb(184, 183, 183);
 @asi-ngtools-fourth-color: #91c4c7;
+@asi-ng-tools-fifth-color: #f6f6f6;
 
 //general
 @asi-ngtools-height: 30px;
@@ -41,9 +42,10 @@
 @asi-tab-outline-border: @asi-ngtools-outline-border;
 @asi-tab-box-shadow: 0 0 1px @asi-ngtools-border-color;
 @asi-tab-height: 41px;
-@asi-tab-active-label-color: white;
-@asi-tab-active-background-color: @asi-ngtools-secondary-color;
+@asi-tab-active-label-color: @asi-ngtools-primary-color;
+@asi-tab-active-background-color: white;
 @asi-tab-active-border: none;
+@asi-tab-active-border-bottom: 1px solid @asi-ngtools-primary-color;
 
 // asi-breadcrumb
 @asi-breadcrumb-border-color: white;
@@ -160,20 +162,20 @@
 
 // asi-table
 @asi-table-border: none;
-@asi-table-header-height: 50px;
-@asi-table-header-th-border: none;
+@asi-table-header-height: 40px;
+@asi-table-header-th-border: 2px solid  @asi-ngtools-primary-color;
 @asi-table-header-tr-border: 1px solid @asi-ngtools-border-color;
 @asi-table-header-box-shadow: 0 0 1px @asi-ngtools-border-color;
-@asi-table-header-background-color: @asi-ngtools-secondary-color;
-@asi-table-header-text-color: white;
+@asi-table-header-background-color: white;
+@asi-table-header-text-color: @asi-ngtools-primary-color;
 @asi-table-body-1-color: transparent;
 @asi-table-body-2-color: transparent;
 @asi-table-body-tr-border: 1px solid @asi-ngtools-border-color;
 @asi-table-body-td-border: none;
 @asi-table-body-td-text-color: inherit;
 @asi-table-body-line-height: 35px;
-@asi-table-body-line1-color: #E8E8E8;
-@asi-table-body-line2-color: white;
+@asi-table-body-line1-color: white;
+@asi-table-body-line2-color: @asi-ng-tools-fifth-color;
 
 //asi-select
 @asi-select-height: @asi-ngtools-height;
@@ -189,8 +191,10 @@
 @asi-select-hover-left-box-shadow : @asi-ngtools-hover-left-box-shadow; 
 
 //asi-pagination
-@asi-pagination-boutton-border-color: @asi-ngtools-border-color;
-@asi-pagination-selected-background-color: @asi-ngtools-secondary-color;
+@asi-pagination-boutton-border: none;
+@asi-pagination-boutton-background-color: white;
+@asi-pagination-box-shadow: @asi-ngtools-input-box-shadow; 
+@asi-pagination-selected-background-color: @asi-ngtools-primary-color;
 @asi-pagination-selected-text-color: white;
 @asi-pagination-outline-border: @asi-ngtools-outline-border;
 
