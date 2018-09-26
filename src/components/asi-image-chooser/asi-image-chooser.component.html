@@ -1,8 +1,0 @@
-<label class="input-label" *ngIf="label != null">{{label | translate}}</label>
-
-<label class="asi-image-chooser-container" ondragover="return false;" [class.loaded]="loaded" (dragenter)="handleDragEnter()" (dragleave)="handleDragLeave()"
-    (drop)="handleDrop($event)">
-    <img *ngIf="image64 != null" [src]="image64" (load)="handleImageLoad()" [class.loaded]="imageLoaded" />
-    <input #fileInput type="file" [disabled]="disabled" name="file" accept="image/*" (change)="handleInputChange($event)">
-    <asi-fa-icon *ngIf="image64 == null" (onClick)="openFileInput()" class="asi-focus-error" [icon]="icon" size="2x"></asi-fa-icon>
-</label>

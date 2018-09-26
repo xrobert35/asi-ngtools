@@ -1,16 +1,34 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
     "target": "es5",
-    "moduleResolution": "node",
-    "rootDir": "./src",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "lib": [
-      "es2015",
+      "es2017",
       "dom"
     ],
-    "skipLibCheck": true,
-    "types": []
+    "paths": {
+      "asi-ng-tools": [
+        "dist/asi-ng-tools"
+      ],
+      "asi-ng-tools/*": [
+        "dist/asi-ng-tools/*"
+      ],
+    }
   }
 }

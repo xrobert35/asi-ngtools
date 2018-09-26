@@ -1,0 +1,13 @@
+<div class="chips">
+    <div class="chip" *ngFor="let chip of chips; let i = index" (click)="focusChip(i)" tabindex="0">
+        {{chip}}
+        <i class="fa fa-times" (click)="removeChip(i)"></i>
+    </div>
+    <input #asiInputChips type="text" class="asi-focus-error"
+        [attr.id]="id"
+        [attr.name]="name"
+        [(ngModel)]="value"
+        (keydown.enter)="onKey()"
+        [attr.disabled]="disabled ? '' : null" 
+        [placeholder]="placeholder" />
+</div>

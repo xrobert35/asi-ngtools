@@ -1,0 +1,9 @@
+<label class="input-label" *ngIf="label != null">{{label | translate}}</label>
+<input #asiInput 
+[attr.id]="id"
+[attr.name]="name"
+[attr.type]="type" 
+[attr.disabled]="disabled ? '' : null" 
+class="asi-focus-error" 
+[placeholder]="placeholder" 
+[formControl]="inputControl" />

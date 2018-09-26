@@ -1,0 +1,40 @@
+{
+  "name": "@asi-ngtools/lib",
+  "version": "6.0.0-rc19",
+  "main": "bundles/asi-ng-tools.umd.js",
+  "module": "fesm5/asi-ng-tools.js",
+  "es2015": "fesm2015/asi-ng-tools.js",
+  "esm5": "esm5/asi-ng-tools.js",
+  "esm2015": "esm2015/asi-ng-tools.js",
+  "fesm5": "fesm5/asi-ng-tools.js",
+  "fesm2015": "fesm2015/asi-ng-tools.js",
+  "typings": "asi-ng-tools.d.ts",
+  "metadata": "asi-ng-tools.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0",
+    "clone-deep": "^4.0.0"
+  },
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/http": "^6.0.0",
+    "@angular/animations": "^6.0.0",
+    "@ngx-translate/core": "^10.0.0",
+    "moment": "^2.22.2"
+  },
+  "author": {
+    "name": "asi-ngtools",
+    "email": "xrobert@asi.fr"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xrobert35/asi-ngtools/issues"
+  },
+  "keywords": [
+    "angular",
+    "angular6",
+    "typescript",
+    "library"
+  ]
+}

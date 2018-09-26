@@ -1,0 +1,13 @@
+<div class="asi-tab-group">
+  <div class="tab-header">
+    <ng-container *ngFor="let tab of getTabs()">
+      <button type="button" *ngIf="tab.headerDef == null" (click)="showTab(tab)" [translate]="tab.label" [ngClass]="{ 'active' : tab.active}"></button>
+      <button type="button" *ngIf="tab.headerDef != null" (click)="showTab(tab)" [ngClass]="{ 'active' : tab.active}">
+          <ng-template [ngTemplateOutlet]="tab.headerDef.template" [ngTemplateOutletContext]="{$implicit : tab}"></ng-template>
+      </button>
+    </ng-container>
+  </div>
+  <div class="tab-content">
+    <asi-tab-content [tabs]="getTabs()"></asi-tab-content>
+  </div>
+</div>
