@@ -1,27 +1,80 @@
-# AsiNgToolsApp
+# asi-ngtools
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+This project is a little components library, simple to use, which will help you to simplify your project.
 
-## Development server
+This library have an angular 4/5/6 version.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+##### To use it with angular 6 :
 
-## Code scaffolding
+`npm install -save @asi-ngtools/lib@^6.0.0`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+##### To use it with angular 5 :
 
-## Build
+`npm install -save @asi-ngtools/lib@^5.0.0`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+#### To use it with angular 4 :  
 
-## Running unit tests
+`npm install -save @asi-ngtools/lib@^4.0.0`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This library also work with **angular universal**
 
-## Running end-to-end tests
+The documentation can be found on this website : https://ng-tools.asi.fr
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Here's the list of components that can be found in the library :
 
-## Further help
+|  Name | Description    |
+| :------------: | :------------: |
+| asi-select | A simple or multi selection listbox component |
+| asi-autocomplete | A typeahead component  |
+| asi-autocomplete-multiple | A multi selection typeahead component   |
+| asi-input  | Simple input  |
+| asi-input-icon | Simple input with an fa-icon |
+| asi-textarea | Simple textarea |
+| asi-checkbox | Simple checkbox |
+| asi-button | Simple button   |
+| asi-link-button | A href with the design of a button |
+| asi-switch | Simple switch |
+| asi-radio-group | Radio button component |
+| asi-datepicker | A datepicker   |
+| asi-dmy-picker | A day month year picker |
+| asi-calendar |  A calendar  |
+| asi-error-messages | A component used to display error message  |
+| asi-notification | Display success/warning/error/info notification   |
+| asi-dialog | Display dialog box |
+| asi-table | Display a table with pagination |
+| asi-tree-view | Display a tree view |
+| asi-tab-group | Display a tab group |
+| asi-file-chooser | Used to choose a file |
+| asi-image-chooser | Used to choose an image |
+| asi-fa-icon | Used to display font awesome icon |
+| asi-bind-html | Allow you to load and inject html |
+| asi-bind-and-compile-html | Allow you to load and injected angular compilated html |
+| asi-code-viewer | Allow you to display code |
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Here's  the list of services that can be found in the library :
+
+|  Name | Description    |
+| :------------: | :------------: |
+| AsiCssInjectorService  | Allow you load and inject css |
+| AsiFileService  | Allow you manage file easily |
+| AsiPaginationService | Simple service to paginate data  |
+| AsiSessionStorageService | Simple service to save data in sessionStorage  |
+| AsiLocalStorageStorageService | Simple service to save data in localStorage  |
+
+Here's  the list of validators that can be found in the library :
+
+|  Name | Description    |
+| :------------: | :------------: |
+| AsiValidators.email | Allow you to validate a none required email  |
+| AsiValidators.minDateFromControl  | Allow you to dynamically validate a min date from formControl |
+| AsiValidators.minDateFromControl  | Allow you to dynamically validate a max date from formControl |
+
+## Greeting
+
+The base of this project library is created with : https://github.com/jvandemo/generator-angular2-library
+So, thanks @jvandemo @izifortune and other contributors !
+
+## License
+
+MIT © [xrobert](mailto:xrobert@asi.fr)
+
