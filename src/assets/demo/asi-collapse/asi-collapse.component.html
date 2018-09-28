@@ -1,0 +1,16 @@
+<asi-collapse [collapsed]="false">
+  <asi-header *asiCollapseHeaderDef="let data">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <asi-fa-icon *ngIf="data.collapsed" icon="fa fa-chevron-right"></asi-fa-icon>
+      <asi-fa-icon *ngIf="!data.collapsed" icon="fa fa-chevron-down"></asi-fa-icon>
+      <label>Collapse 1</label>
+    </div>
+  </asi-header>
+  Content of the collapse 1
+</asi-collapse>
+<asi-collapse label="Collapse 2">
+  Content of the collapse 2
+</asi-collapse>
+<asi-collapse label="Collapse 3">
+  Content of the collapse 3
+</asi-collapse>

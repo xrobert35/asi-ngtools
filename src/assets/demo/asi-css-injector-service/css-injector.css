@@ -1,0 +1,19 @@
+.injected{
+    padding: 5px;
+    animation-name: fadeBackground;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-direction: alternate;
+}
+
+@keyframes fadeBackground {
+    0% {
+        background-color: lightgrey;
+        color: black;
+    }
+    100% {
+        background-color: #4B545C;
+        color: white;
+    }
+}

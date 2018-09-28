@@ -1,0 +1,52 @@
+<h1 class="title"> asi-code-viewer </h1>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <code>import AsiNgToolsModule or AsiCodeViewerModule</code>
+    <code>This component is an integration of the Prism library, see : http://prismjs.com </code>
+
+    <code> In your package.json add the dependency :  </code>
+    <code> "prismjs": "1.6.0" </code>
+    <code> In your angular-cli.json add  in scripts : </code>
+    <code>
+      "../node_modules/prismjs/prism.js",
+    </code>
+    <code> In your angular-cli.json add  in styles : </code>
+    <code>"../node_modules/prismjs/themes/prism.css" </code>
+    <code> For specifique language you must add scripts : example for typescript add </code>
+    <code>
+      "../node_modules/prismjs/components/prism-typescript"
+    </code>
+  </div>
+</div>
+
+<div class="fixed-panel">
+  <asi-tab-group>
+    <asi-tab label="Demo">
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-code-viewer/asi-code-viewer.component.html"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="Attributes">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[language]</td>
+            <td>Language to display : 'html', 'typescript', 'css' etc... see primjs documentation</td>
+          </tr>
+          <tr>
+            <td>[fromUrl]</td>
+            <td>Url of the file to display</td>
+          </tr>
+          <tr>
+            <td>[value]</td>
+            <td>Display a value</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+  </asi-tab-group>
+</div>

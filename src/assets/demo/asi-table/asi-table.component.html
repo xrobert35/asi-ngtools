@@ -1,0 +1,31 @@
+<label> Nb items selected  : {{mySelectionModel.nbItemsSelected}}</label>
+<asi-table [rowClass]="{ 'row-class' : rowClassMethod() && '{row}.col2%2 == 0'}" [autoPaginate]="true" [nbElementParPage]="5" [autoSort]="true" [selectionModel]="mySelectionModel" [onRequestData]="refreshTable"
+  fxFlex>
+  <asi-table-column type="checkbox"></asi-table-column>
+  <asi-table-column name="col1" libelle="Libelle column" sortable="true">
+    <asi-cell *asiCellDef="let row"> {{row.col2}} {{row.col1}} </asi-cell>
+    <asi-header *asiTableHeaderDef="let row">{{row.libelle}}</asi-header>
+  </asi-table-column>
+  <asi-table-column name="col2" libelle="Libelle 2" [columnClass]="{ 'valid' : checked}">
+      <asi-cell *asiCellDef="let row"> Col {{row.col2}} </asi-cell>
+  </asi-table-column>
+  <asi-table-column name="col3" libelle="Libelle 3">
+    <asi-cell *asiCellDef="let row">
+      <asi-input [(ngModel)]="row.col3"></asi-input>
+    </asi-cell>
+  </asi-table-column>
+  <asi-table-column name="col4.libelle" libelle="Super libelle 4">
+    <asi-cell *asiCellDef="let row">
+      <asi-datepicker [(ngModel)]="row.col4"></asi-datepicker>
+    </asi-cell>
+  </asi-table-column>
+  <asi-table-column [inlineColumn]="true">
+    <asi-table-inliner colSpan="2">
+      <asi-cell *asiCellDef="let row">Code : {{row.col5.code}}</asi-cell>
+    </asi-table-inliner>
+    <asi-table-inliner colSpan="3">
+      <asi-cell *asiCellDef="let row">Libelle : {{row.col5.libelle}}</asi-cell>
+    </asi-table-inliner>
+  </asi-table-column>
+</asi-table>
+</asi-tab>

@@ -1,0 +1,232 @@
+<h1 class="title"> asi-autocomplete </h1>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <code>import AsiNgToolsModule or AsiAutoCompleteModule</code>
+  </div>
+</div>
+
+<div class="fixed-panel">
+  <asi-tab-group>
+    <asi-tab label="Demo">
+      <h3 translate="COMMON.withNgModel"></h3>
+      <asi-autocomplete [onRequestData]="requestData" label="label-autocomplete" [data]="datas" [(ngModel)]="autoCompleteValue">
+        <asi-selected *asiSelectedDef="let data">{{data?.code}} - {{data?.libelle}}</asi-selected>
+        <asi-option *asiOptionDef="let data">{{data?.code}} - {{data?.libelle}}</asi-option>
+      </asi-autocomplete>
+
+      <h3 translate="COMMON.withFormControl"></h3>
+      <form [formGroup]="myForm">
+        <div class="asi-container">
+          <asi-autocomplete [onRequestData]="requestDataForm" label="label-autocomplete" [data]="datasForm" formControlName="myModel">
+            <asi-selected *asiSelectedDef="let data">{{data?.code}} - {{data?.libelle}}</asi-selected>
+            <asi-option *asiOptionDef="let data">{{data?.code}} - {{data?.libelle}}</asi-option>
+          </asi-autocomplete>
+          <error-messages forName="myModel">
+            <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+          </error-messages>
+        </div>
+        <div fxLayout="row">
+          <asi-button type="submit">Submit</asi-button>
+        </div>
+      </form>
+    </asi-tab>
+    <asi-tab label="HTML">
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-autocomplete/asi-autocomplete.component.html"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS">
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-autocomplete/asi-autocomplete.component.ts"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="Attributes">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[label]</td>
+            <td>Component label</td>
+          </tr>
+          <tr>
+            <td>[labelPosition]</td>
+            <td>Component label position in 'top' , 'left' , 'right' , 'bottom</td>
+          </tr>
+          <tr>
+            <td>[delay]</td>
+            <td>The delay in ms between starting the research and displaying the results</td>
+          </tr>
+          <tr>
+            <td>[datas]</td>
+            <td>The data among which the autocomplete must do its research</td>
+          </tr>
+          <tr>
+            <td>[placeholder]</td>
+            <td>Allows you to define a placeholder when the input is empty</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+    <asi-tab label="Style Override">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>@asi-autocomplete-label-color</td>
+            <td>Label color of the autocomplete</td>
+          </tr>
+          <tr>
+            <td>@asi-autocomplete-outline-border</td>
+            <td>Border of the autocomplete when focused</td>
+          </tr>
+          <tr>
+            <td>@asi-autocomplete-height</td>
+            <td>Input height of the autocomplete</td>
+          </tr>
+          <tr>
+            <td>@asi-autocomplete-border</td>
+            <td>Border of the autocomplete</td>
+          </tr>
+          <tr>
+            <td>@asi-autocomplete-border-radius</td>
+            <td>Border radius of the autocomplete</td>
+          </tr>
+          <tr>
+            <td>@asi-autocomplete-remove-icon-color</td>
+            <td>Color of the remove icon of the right</td>
+          </tr>
+          <tr>
+            <td>@asi-autocomplete-dropdown-max-height</td>
+            <td>Max height of the dropdown</td>
+          </tr>
+          <tr>
+            <td>@asi-autocomplete-dropdown-color</td>
+            <td>Background color of the dropdown</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+  </asi-tab-group>
+</div>
+
+<h1 class="title"> asi-autocomplete-multiple </h1>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <code>import AsiNgToolsModule or AsiAutoCompleteMultipleModule</code>
+  </div>
+</div>
+
+<div class="fixed-panel">
+  <asi-tab-group>
+    <asi-tab label="Demo">
+      <h3 translate="COMMON.withNgModel"></h3>
+      <asi-autocomplete-multiple [onRequestData]="requestDataMultiple" label="label-autocomplete" [data]="datasMultiple" [(ngModel)]="autoCompleteMultipleValue">
+        <asi-tag *asiTagDef="let data">{{data?.code}}</asi-tag>
+        <asi-selected *asiSelectedDef="let data">{{data?.code}} - {{data?.libelle}}</asi-selected>
+        <asi-option *asiOptionDef="let data">{{data?.code}} - {{data?.libelle}}</asi-option>
+      </asi-autocomplete-multiple>
+
+      <h3 translate="COMMON.withFormControl"></h3>
+      <form [formGroup]="myFormMultiple">
+        <div class="asi-container">
+          <asi-autocomplete-multiple [onRequestData]="requestDataFormMultiple" label="label-autocomplete" [data]="datasFormMultiple"
+            formControlName="myModel">
+            <asi-tag *asiTagDef="let data">{{data?.code}}</asi-tag>
+            <asi-selected *asiSelectedDef="let data">{{data?.code}} - {{data?.libelle}}</asi-selected>
+            <asi-option *asiOptionDef="let data">{{data?.code}} - {{data?.libelle}}</asi-option>
+          </asi-autocomplete-multiple>
+          <error-messages forName="myModel">
+            <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+          </error-messages>
+        </div>
+        <div fxLayout="row">
+          <asi-button type="submit">Submit</asi-button>
+        </div>
+      </form>
+    </asi-tab>
+    <asi-tab label="HTML">
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-autocomplete-multiple/asi-autocomplete-multiple.component.html"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS">
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-autocomplete-multiple/asi-autocomplete-multiple.component.ts"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="Attributes">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[label]</td>
+            <td>Component label</td>
+          </tr>
+          <tr>
+            <td>[labelPosition]</td>
+            <td>Component label position in 'top' , 'left' , 'right' , 'bottom</td>
+          </tr>
+          <tr>
+            <td>[delay]</td>
+            <td>The delay in ms between starting the research and displaying the results</td>
+          </tr>
+          <tr>
+            <td>[datas]</td>
+            <td>The data among which the autocomplete must do its research</td>
+          </tr>
+          <tr>
+            <td>[placeholder]</td>
+            <td>Allows you to define a placeholder when the input is empty</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+    <asi-tab label="Style Override">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>@asi-autocomplete-label-color</td>
+            <td>Label color of the autocomplete</td>
+          </tr>
+          <tr>
+            <td>@asi-autocomplete-outline-border</td>
+            <td>Border of the autocomplete when focused</td>
+          </tr>
+          <tr>
+            <td>@asi-autocomplete-height</td>
+            <td>Input height of the autocomplete</td>
+          </tr>
+          <tr>
+            <td>@asi-autocomplete-border</td>
+            <td>Border of the autocomplete</td>
+          </tr>
+          <tr>
+            <td>@asi-autocomplete-border-radius</td>
+            <td>Border radius of the autocomplete</td>
+          </tr>
+          <tr>
+            <td>@asi-autocomplete-remove-icon-color</td>
+            <td>Color of the remove icon of the right</td>
+          </tr>
+          <tr>
+            <td>@asi-autocomplete-dropdown-max-height</td>
+            <td>Max height of the dropdown</td>
+          </tr>
+          <tr>
+            <td>@asi-autocomplete-dropdown-color</td>
+            <td>Background color of the dropdown</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+  </asi-tab-group>
+</div>

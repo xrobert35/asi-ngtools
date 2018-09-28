@@ -1,0 +1,74 @@
+@import "../../dist/asi-ngtools/styles/less/asingtools.less";
+@import "./lessvars.less";
+@import "./asi-ngtools-override.less";
+@import "./components/components.less";
+@import "./pages/pages.less";
+@import "header.less";
+
+html {
+  height: 100%;
+  position: relative;
+  font-family: "Open sans", Futura, Arial, sans-serif;
+}
+
+body {
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: horizontal;
+  margin: 0;
+  background-color: @fourthly-color;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+h1{
+  &.title{
+    margin : 5px 5px 15px 5px;
+    color : @secondary-color;
+    border-bottom : 1px solid lightgrey;
+  }
+}
+
+.a-no-decoration, .a-no-decoration:hover, .a-no-decoration:visited, .a-no-decoration:link, .a-no-decoration:active{
+  text-decoration: none;
+}
+
+app-root {
+  display: flex;
+  flex: 1;
+  .flex {
+    flex: 1;
+  }
+  .display-flex{
+    display: flex;
+    flex-direction: column;
+  }
+  h1, h2, h3 {
+    color: @thirdly-color;
+  }
+  .clickable {
+    cursor: pointer;
+  }
+
+  .displayOnHover {
+    a[class*="fa"] {
+      visibility: hidden;
+    }
+    &:hover{
+      a[class*="fa"] {
+        visibility: inherit;
+      }
+    }
+  }
+
+  .logo-central{
+    display: block;
+    max-width: 200px;
+    width : auto;
+    height: auto;
+  }
+}

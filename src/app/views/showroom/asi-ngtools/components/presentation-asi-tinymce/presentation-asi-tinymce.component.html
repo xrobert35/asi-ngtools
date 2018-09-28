@@ -1,0 +1,33 @@
+<h1 class="title"> asi-tinymce </h1>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <code>import AsiNgToolsModule or AsiTinyMCEModule</code>
+    <code>This component is an integration of the TinyMCE, see : https://www.tinymce.com/</code>
+    <code> In your package.json add the dependency :  </code>
+    <code> "tinymce": "4.6.5" </code>
+    <code> In your angular-cli.json add </code>
+    <code> "../node_modules/tinymce/tinymce.js", </code>
+    <code> "../node_modules/tinymce/themes/modern/theme.js", </code>
+    <code> "../node_modules/tinymce/plugins/link/plugin.js", </code>
+    <code> "../node_modules/tinymce/plugins/paste/plugin.js", </code>
+    <code> "../node_modules/tinymce/plugins/table/plugin.js" </code>
+    <code> "../node_modules/tinymce/plugins/textcolor/plugin.js", </code>
+    <code> "../node_modules/tinymce/plugins/colorpicker/plugin.js", </code>
+  </div>
+</div>
+
+<div fxLayout="column">
+  <asi-tinymce [(ngModel)]="content" elementId="id1"></asi-tinymce>
+  <div fxFlex="50">
+    <asi-tab-group>
+      <asi-tab label="HTML">
+        <asi-code-viewer readOnly="true" language="html" [value]="content"></asi-code-viewer>
+      </asi-tab>
+      <asi-tab label="Preview">
+        <asi-bind-html [value]="content"></asi-bind-html>
+      </asi-tab>
+    </asi-tab-group>
+  </div>
+</div>

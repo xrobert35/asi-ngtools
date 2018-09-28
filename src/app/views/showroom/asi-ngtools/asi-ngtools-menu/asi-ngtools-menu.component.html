@@ -1,0 +1,91 @@
+
+<img class="logo-ngtools" src="assets/asi-ngtools-logo.PNG" />
+<asi-menu [vertical]="true">
+  <asi-menu-item [routerLink]="['quick-start']" translate="ASI_NGTOOLS.quickstart"> Quick Start </asi-menu-item>
+  <asi-menu-item [routerLink]="['form']"> full form exemple </asi-menu-item>
+  <asi-menu-item [routerLink]="['style-override']"> style-override </asi-menu-item>
+</asi-menu>
+<asi-collapse>
+  <asi-header *asiCollapseHeaderDef="let data">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <span>Components</span>
+      <!-- <asi-fa-icon *ngIf="data.collapsed" icon="fa fa-chevron-right"></asi-fa-icon>
+      <asi-fa-icon *ngIf="!data.collapsed" icon="fa fa-chevron-down"></asi-fa-icon> -->
+    </div>
+  </asi-header>
+  <asi-menu [vertical]="true">
+    <asi-menu-item [routerLink]="['components/asi-autocomplete']"> asi-autocomplete </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-button']"> asi-button </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-bind-html']"> asi-bind-html </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-breadcrumb']"> asi-breadcrumb </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-checkbox']"> asi-checkbox </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-code-viewer']"> asi-code-viewer </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-collapse']"> asi-collapse </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-datepicker']"> asi-datepicker </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-dialog']"> asi-dialog </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-dmypicker']"> asi-dmypicker </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-error-messages']"> asi-error-messages </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-fa-icon']"> asi-fa-icon </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-file-chooser']"> asi-file-chooser </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-image-chooser']"> asi-image-chooser </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-input']"> asi-input </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-input-chips']"> asi-input-chips </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-icon-checkbox']"> asi-icon-checkbox </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-input-icon']"> asi-input-icon </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-menu']"> asi-menu </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-notification']"> asi-notification </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-radio-group']"> asi-radio-group </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-select']"> asi-select </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-switch']"> asi-switch </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-table']"> asi-table </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-tab-group']"> asi-tab-group </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-textarea']"> asi-textarea </asi-menu-item>
+    <!-- <asi-menu-item [routerLink]="['components/asi-tinymce']"> asi-tinymce </asi-menu-item> -->
+    <asi-menu-item [routerLink]="['components/asi-tree-view']"> asi-tree-view </asi-menu-item>
+  </asi-menu>
+</asi-collapse>
+<asi-collapse>
+  <asi-header *asiCollapseHeaderDef="let data">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <span>Pipes</span>
+      <!-- <asi-fa-icon *ngIf="data.collapsed" icon="fa fa-chevron-right"></asi-fa-icon>
+      <asi-fa-icon *ngIf="!data.collapsed" icon="fa fa-chevron-down"></asi-fa-icon> -->
+    </div>
+  </asi-header>
+  <asi-menu [vertical]="true">
+    <asi-menu-item [routerLink]="['pipes/asi-concat-translate']"> asiConcatTranslate </asi-menu-item>
+    <asi-menu-item [routerLink]="['pipes/asi-concat']"> asiConcat </asi-menu-item>
+    <asi-menu-item [routerLink]="['pipes/asi-date']"> asiDate </asi-menu-item>
+    <asi-menu-item [routerLink]="['pipes/asi-filter']"> asiFilter </asi-menu-item>
+    <asi-menu-item [routerLink]="['pipes/asi-intArray']"> asiIntArray </asi-menu-item>
+  </asi-menu>
+</asi-collapse>
+<asi-collapse>
+  <asi-header *asiCollapseHeaderDef="let data">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <span>Services</span>
+      <!-- <asi-fa-icon *ngIf="data.collapsed" icon="fa fa-chevron-right"></asi-fa-icon>
+      <asi-fa-icon *ngIf="!data.collapsed" icon="fa fa-chevron-down"></asi-fa-icon> -->
+    </div>
+  </asi-header>
+  <asi-menu [vertical]="true">
+    <asi-menu-item [routerLink]="['services/asi-css-injector']"> AsiCssInjectorService </asi-menu-item>
+    <asi-menu-item [routerLink]="['services/asi-file']"> AsiFileService </asi-menu-item>
+    <asi-menu-item [routerLink]="['services/asi-moment']"> AsiMomentService </asi-menu-item>
+    <asi-menu-item [routerLink]="['services/asi-pagination']"> AsiPaginationService </asi-menu-item>
+    <asi-menu-item [routerLink]="['services/asi-localstorage']"> AsiLocalStorageService </asi-menu-item>
+    <asi-menu-item [routerLink]="['services/asi-sessionstorage']"> AsiSessionStorageService </asi-menu-item>
+  </asi-menu>
+</asi-collapse>
+<asi-collapse>
+  <asi-header *asiCollapseHeaderDef="let data">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <span>Validators</span>
+      <!-- <asi-fa-icon *ngIf="data.collapsed" icon="fa fa-chevron-right"></asi-fa-icon>
+      <asi-fa-icon *ngIf="!data.collapsed" icon="fa fa-chevron-down"></asi-fa-icon> -->
+    </div>
+  </asi-header>
+  <asi-menu [vertical]="true">
+    <asi-menu-item [routerLink]="['validators/asi-email']"> Email Validator </asi-menu-item>
+  </asi-menu>
+</asi-collapse>

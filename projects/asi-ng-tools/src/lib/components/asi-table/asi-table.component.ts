@@ -156,8 +156,14 @@ export class AsiTable<T> implements AfterContentInit {
 
   private sortDatas() {
     if (this.sortedColumn != null) {
-      this.data.results = nh.orderBy(this.data.results, this.sortedColumn.getSortName(),
-        this.sortedColumn.getAsc() ? 'asc' : 'desc');
+      if (!this.autoPaginate) {
+        this.data.results = nh.orderBy(this.data.results, this.sortedColumn.getSortName(),
+          this.sortedColumn.getAsc() ? 'asc' : 'desc');
+      } else {
+        nh.orderBy(this.noPaginateResults, this.sortedColumn.getSortName(),
+          this.sortedColumn.getAsc() ? 'asc' : 'desc');
+        this.paginateDatas();
+      }
       this.loading = false;
     }
   }

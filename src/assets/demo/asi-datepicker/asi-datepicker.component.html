@@ -1,0 +1,28 @@
+<h3> With ngModel</h3>
+<asi-datepicker [(ngModel)]="date" label="datepicker" labelPosition="left" [minDate]="minDate"></asi-datepicker>
+<span> {{date | asiDate }}</span>
+
+<h3> With formControl</h3>
+<form [formGroup]="myForm" (ngSubmit)="submit()">
+  <div fxLayout="row">
+    <div class="asi-container">
+      <asi-datepicker formControlName="from" label="From : " labelPosition="left" [maxDate]="myForm.value.to"></asi-datepicker>
+      <span> {{myForm.value.myModel | asiDate }}</span>
+      <error-messages forName="from">
+        <message error="required" value="VALIDATIONS.required"></message>
+        <message error="maxDate" value="Date trop grande"></message>
+      </error-messages>
+    </div>
+    <div class="asi-container">
+      <asi-datepicker formControlName="to" label="To : " labelPosition="left" [minDate]="myForm.value.from"></asi-datepicker>
+      <span> {{myForm.value.myModel | asiDate }}</span>
+      <error-messages forName="to">
+        <message error="required" value="VALIDATIONS.required"></message>
+        <message error="minDate" value="Date trop petite"></message>
+      </error-messages>
+    </div>
+  </div>
+  <div fxLayout="row">
+    <asi-button type="submit">Submit</asi-button>
+  </div>
+</form>

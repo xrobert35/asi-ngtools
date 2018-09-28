@@ -1,0 +1,32 @@
+<asi-input [number]="true" placeholder="Number to change into array" [(ngModel)]="myNumber"></asi-input>
+<div fxLayout="row">
+  Normal : [
+  <div *ngFor="let number of (myNumber | intArray)">
+    {{number}}, 
+  </div>
+  ]
+</div>
+
+<div fxLayout="row">
+  Starting to 5 : [
+  <div *ngFor="let number of (myNumber | intArray: 5)">
+    {{number}}, 
+  </div>
+  ]
+</div>
+
+<div fxLayout="row">
+  Step 2 : [
+  <div *ngFor="let number of (myNumber | intArray: 0 : 2)">
+    {{number}}, 
+  </div>
+  ]
+</div>
+
+<div fxLayout="row">
+  Reversed : [
+  <div *ngFor="let number of (myNumber | intArray: 0 : 1 : true)">
+    {{number}}, 
+  </div>
+  ]
+</div>

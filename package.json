@@ -1,5 +1,5 @@
 {
-  "name": "asi-ng-tools-app",
+  "name": "asi-ngtools-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,25 +8,42 @@
     "build:lib:prod": "bash build.sh",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build-server": "tsc -p tsconfig.server.json && ng run asi-ngtools-app:server:production",
+    "build-client": "ng run asi-ngtools-app:build:production",
+    "build-universal": "npm run build-client && npm run build-server"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.3",
+    "@angular/cdk": "^6.0.3",
     "@angular/common": "^6.0.3",
     "@angular/compiler": "^6.0.3",
     "@angular/core": "^6.0.3",
+    "@angular/flex-layout": "6.0.0-beta.17",
     "@angular/forms": "^6.0.3",
     "@angular/http": "^6.0.3",
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
+    "@angular/platform-server": "^6.1.0",
     "@angular/router": "^6.0.3",
+    "@fortawesome/fontawesome-free": "^5.3.1",
+    "@nguniversal/express-engine": "^6.0.0",
+    "@nguniversal/module-map-ngfactory-loader": "^6.0.0",
     "@ngx-translate/core": "^10.0.0",
     "clone-deep": "^4.0.0",
     "copyfiles": "^2.1.0",
+    "prismjs": "^1.6.0",
     "core-js": "^2.5.4",
+    "fs": "0.0.1-security",
     "moment": "^2.22.2",
-    "rxjs": "^6.0.0",
+    "rxjs": "6.2.0",
+    "rxjs-compat": "6.2.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

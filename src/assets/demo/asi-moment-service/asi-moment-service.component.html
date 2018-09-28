@@ -1,0 +1,9 @@
+<div fxLayout="row">
+    <asi-input label="Date" (onValueChange)="parseDate($event)" [(ngModel)]="dateStr"></asi-input>
+    <asi-input label="Pattern" placeholder="dd/mm/yyyy" [(ngModel)]="pattern"></asi-input>
+</div>
+{{format()}}
+<div fxLayout="row">
+    <asi-button type='button' (click)="addDay()">Ajouter un jour</asi-button>
+    <asi-button type='button' (click)="addMonth()">Ajouter un mois</asi-button>
+</div>

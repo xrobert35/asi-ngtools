@@ -1,0 +1,159 @@
+<h1 class="title"> asi-select </h1>
+
+<div fxLayout="column" class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <code> import AsiNgToolsModule or AsiSelectModule </code>
+  </div>
+</div>
+
+<div class="flex-panel">
+  <asi-tab-group>
+    <asi-tab label="Demo">
+      <div fxLayout="column">
+        <h3 translate="COMMON.withNgModel"></h3>
+
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <asi-select label="Referentiel" labelPosition="top" [data]="datas" withEmptyValue="true" [(ngModel)]="selectValue" (onValueChange)="valueChange()">
+            <asi-empty *asiEmptyData="let data">
+              <div>Please select a value</div>
+            </asi-empty>
+            <asi-selected *asiSelectedDef="let data">{{data.code}}</asi-selected>
+            <asi-option *asiOptionDef="let data">{{data.code}} - {{data.libelle}}</asi-option>
+          </asi-select>
+        </div>
+
+        <h3 translate="COMMON.withFormControl"></h3>
+        <form [formGroup]="myForm" (ngSubmit)="submit()">
+          <div class="asi-container">
+            <asi-select label="Referentiel" labelPosition="left" multiple="true" [data]="datas" formControlName="myModel" (onValueChange)="valueChange()">
+              <asi-empty *asiEmptyData="let data">Please select a value</asi-empty>
+              <asi-selected *asiSelectedDef="let data">{{data?.length}}</asi-selected>
+              <asi-option *asiOptionDef="let data">{{data?.code}} - {{data?.libelle}}</asi-option>
+            </asi-select>
+            <error-messages forName="myModel">
+              <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+            </error-messages>
+          </div>
+          <div fxLayout="row">
+            <asi-button type="submit">Submit</asi-button>
+          </div>
+        </form>
+      </div>
+    </asi-tab>
+    <asi-tab label="HTML">
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-select/asi-select.component.html"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS">
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-select/asi-select.component.ts"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="Attributes">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[label]</td>
+            <td>Component label</td>
+          </tr>
+          <tr>
+            <td>[labelPosition]</td>
+            <td>Component label position within 'top' , 'left' , 'right' , 'bottom'</td>
+          </tr>
+          <tr>
+            <td>[datas]</td>
+            <td>List of data to display</td>
+          </tr>
+          <tr>
+            <td>[multiple]</td>
+            <td>true if you want multiple selection</td>
+          </tr>
+          <tr>
+            <td>[trackBy]</td>
+            <td>Define a trackBy attribut which will be used to compare element</td>
+          </tr>
+          <tr>
+            <td>[disabled]</td>
+            <td>Allow you to disable the select</td>
+          </tr>
+          <tr>
+            <td>(onValueChange)</td>
+            <td>
+              <div fxLayout="column">
+                <span>Event emitted when value change</span>
+                <span>$event will be the model value (select value/values)</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3> Templates </h3>
+      <table class="presentation-table">
+        <thead>
+          <th> Id </th>
+          <th> Context </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#option</td>
+            <td>data</td>
+            <td>Define how to display options</td>
+          </tr>
+          <tr>
+            <td>#selected</td>
+            <td>data</td>
+            <td>
+              <div fxLayout="column">
+                <span>Define how to display selected value</span>
+                <span>When select is multiple, data is an array of selected values or null</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>#empty</td>
+            <td></td>
+            <td>Define what to display when nothing is selected</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+    <asi-tab label="Style Override">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>@asi-select-height</td>
+            <td>Height of the select</td>
+          </tr>
+          <tr>
+            <td>@asi-select-dropdown-max-height</td>
+            <td>Size max of the drop down menu</td>
+          </tr>
+          <tr>
+            <td>@asi-select-label-color</td>
+            <td>Label color</td>
+          </tr>
+          <tr>
+            <td>@asi-select-text-color</td>
+            <td>Selected value and option color</td>
+          </tr>
+          <tr>
+            <td>@asi-select-header-background-color</td>
+            <td>Header background color</td>
+          </tr>
+          <tr>
+            <td>@asi-select-dropdown-background-color</td>
+            <td>Dropdown menu background color color</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+  </asi-tab-group>
+</div>

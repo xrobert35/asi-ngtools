@@ -23,12 +23,21 @@
       "dom"
     ],
     "paths": {
-      "asi-ng-tools": [
-        "dist/asi-ng-tools"
+      "@asi-ngtools/lib": [
+        "./dist/asi-ngtools"
       ],
-      "asi-ng-tools/*": [
-        "dist/asi-ng-tools/*"
+      "@asi-ngtools/lib/*": [
+        "./dist/asi-ngtools/*"
       ],
+      "@common/*": [
+        "./src/app/common/*"
+      ],
+      "@config/*": [
+        "./src/app/common/config/*"
+      ],
+      "@utils/*": [
+        "./src/app/common/utils/*"
+      ]
     }
   }
 }

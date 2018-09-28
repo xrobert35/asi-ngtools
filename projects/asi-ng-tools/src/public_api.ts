@@ -34,4 +34,4 @@ export * from './lib/pipes/asi-pipes.module';
 export * from './lib/validators/asi-validators.module';
 export * from './lib/services/asi-services.module';
 export * from './lib/asi-ngtools-base.module';
-export * from './lib/asi-ng-tools.module';
+export * from './lib/asi-ngtools.module';

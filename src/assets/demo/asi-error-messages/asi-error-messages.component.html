@@ -1,0 +1,20 @@
+<form [formGroup]="myForm" (ngSubmit)="submit()">
+  <h3> Required element</h3>
+  <div class="asi-container">
+    <asi-input label="asi-input" formControlName="myModel"></asi-input>
+    <asi-error-messages forName="myModel">
+      <asi-message error="required" value="VALIDATIONS.required" [onSubmit]="true"></asi-message>
+      <asi-message error="minlength" value="min length validation"></asi-message>
+      <asi-message error="maxlength" value="max length validation"></asi-message>
+    </asi-error-messages>
+  </div>
+  <h3> None required element</h3>
+  <div class="asi-container">
+    <asi-input label="asi-input" formControlName="myModel2"></asi-input>
+    <asi-error-messages forName="myModel2">
+      <asi-message error="minlength" value="min length validation"></asi-message>
+      <asi-message error="maxlength" value="max length validation"></asi-message>
+    </asi-error-messages>
+  </div>
+  <asi-button type="submit">Submit</asi-button>
+</form>

@@ -1,0 +1,90 @@
+<h1 class="title"> asi-breadcrumb </h1>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <code> import AsiNgToolsModule or AsiBreadcrumbModule </code>
+  </div>
+</div>
+
+<div class="fixed-panel">
+  <asi-tab-group>
+    <asi-tab label="Demo">
+      <div class="margin10" fxLayout="column">
+        <asi-breadcrumb [data]="elements" trackBy="name" (clicked)="itemClicked($event)"></asi-breadcrumb>
+        <asi-button (click)="addFolder()">Add a folder</asi-button>
+        <span>Input data:</span>
+        <div *ngFor="let elem of elements">
+          <span>{{elem.name}}</span>
+        </div>
+      </div>
+    </asi-tab>
+    <asi-tab label="HTML">
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-breadcrumb/asi-breadcrumb.component.html"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS">
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-breadcrumb/asi-breadcrumb.component.ts"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="Attributes">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[data]</td>
+            <td>Component data as Array</td>
+          </tr>
+          <tr>
+            <td>[trackBy]</td>
+            <td>The json node to display on each element</td>
+          </tr>
+          <tr>
+            <td>[hideHome]</td>
+            <td>Boolean to hide the home icon. By default: false.</td>
+          </tr>
+          <tr>
+            <td>(clicked)</td>
+            <td>
+              <div fxLayout="column">
+                <span>Event emitted when an element is clicked</span>
+                <span>$event will be the array of new data</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+    <asi-tab label="Style Override">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>@asi-breadcrumb-border-color</td>
+            <td>The border color of the breadcrumb</td>
+          </tr>
+          <tr>
+            <td>@asi-breadcrumb-text-color</td>
+            <td>The text color of the breadcrumb and the home icon color</td>
+          </tr>
+          <tr>
+            <td>@asi-breadcrumb-background-color</td>
+            <td>Background color of the breadcrumb</td>
+          </tr>
+          <tr>
+            <td>@asi-breadcrumb-hover-color</td>
+            <td>Color of a breadcrumb item when hovered</td>
+          </tr>
+          <tr>
+            <td>@asi-breadcrumb-active-color</td>
+            <td>Color of the a breadcrumb item when clicked</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+  </asi-tab-group>
+</div>

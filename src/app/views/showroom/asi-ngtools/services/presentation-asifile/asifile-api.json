@@ -1,0 +1,155 @@
+{
+  "summary": "This service is used to handle files. You can download or upload files using the following methods.",
+  "functionsDoc": [{
+      "functionName": "fileToBase64(file: File, sanitize?: boolean): Observable<string>",
+      "description": "Convert a file to a base64 stream.",
+      "parameters": [{
+          "name": "file",
+          "type": "File",
+          "description": "The file to convert",
+          "typeLink": "https://developer.mozilla.org/fr/docs/Web/API/File"
+        },
+        {
+          "name": "sanitize",
+          "type": "boolean",
+          "description": "Sanitize the file or not (remove metadata)"
+        }
+      ],
+      "return": {
+        "name": "return",
+        "type": "Observable<string>",
+        "description": "Returns a base64 string representing the given file"
+      }
+    },
+    {
+      "functionName": "blobToBase64(blob: Blob, sanitize?: boolean): Observable<string>",
+      "description": "Convert a blob to a base64 stream.",
+      "parameters": [{
+          "name": "blob",
+          "type": "Blob",
+          "description": "The file to convert",
+          "typeLink": "https://developer.mozilla.org/fr/docs/Web/API/Blob"
+        },
+        {
+          "name": "sanitize",
+          "type": "boolean",
+          "description": "Sanitize the file or not (remove metadata)"
+        }
+      ],
+      "return": {
+        "name": "return",
+        "type": "Observable<string>",
+        "description": "Returns a base64 string representing the given file"
+      }
+    },
+    {
+      "functionName": "getFileUrl(file: File): SafeResourceUrl",
+      "description": "Get a file download url.",
+      "parameters": [{
+        "name": "file",
+        "type": "File",
+        "description": "The file from which we get the url",
+        "typeLink": "https://developer.mozilla.org/fr/docs/Web/API/File"
+      }],
+      "return": {
+        "name": "return",
+        "type": "SafeResourceUrl",
+        "description": "Returns the url to download the file",
+        "typeLink": "https://angular.io/api/platform-browser/SafeResourceUrl"
+      }
+    },
+    {
+      "functionName": "getFileAsText(fileUrl: string): Observable<string>",
+      "description": "Download a file as a text document.",
+      "parameters": [{
+        "name": "fileUrl",
+        "type": "string",
+        "description": "The url to the file to download"
+      }]
+    },
+    {
+      "functionName": "getFileAsBlob(fileUrl: string): Observable<File>",
+      "description": "Download the file with a get request.",
+      "parameters": [{
+        "name": "fileUrl",
+        "type": "string",
+        "description": "The url to the file to download"
+      }]
+    },
+    {
+      "functionName": "getFileAsBlobFromPostRequest(fileUrl: string, body: any): Observable<File>",
+      "description": "Download the file with a post request.",
+      "parameters": [{
+          "name": "fileUrl",
+          "type": "string",
+          "description": "The url to the file to download"
+        },
+        {
+          "name": "body",
+          "type": "any",
+          "description": "The http post body"
+        }
+      ]
+    },
+    {
+      "functionName": "downloadFile(fileUrl: string, fileName?: string): Observable<void>",
+      "description": "Download the file and save it from browser.",
+      "parameters": [{
+          "name": "fileUrl",
+          "type": "string",
+          "description": "The url to the file to download"
+        },
+        {
+          "name": "fileName",
+          "type": "string",
+          "description": "Specify the name of the downloaded file"
+        }
+      ]
+    },
+    {
+      "functionName": "downloadFileFromPostRequest(fileUrl: string, body: any, fileName?: string): Observable<void>",
+      "description": "Download the file with a post request and save it from browser.",
+      "parameters": [{
+          "name": "fileUrl",
+          "type": "string",
+          "description": "The url to the file to download"
+        },
+        {
+          "name": "body",
+          "type": "any",
+          "description": "The http post body"
+        },
+        {
+          "name": "fileName",
+          "type": "string",
+          "description": "Specify the name of the downloaded file"
+        }
+      ]
+    },
+    {
+      "functionName": "getBlobImage(fileUrl: string): Observable<Blob>",
+      "description": "Get the blob image of a file from its file url",
+      "parameters": [{
+        "name": "fileUrl",
+        "type": "string",
+        "description": "The url to the file to download"
+      }]
+    },
+    {
+      "functionName": "uploadFile(url: string, file: File): Observable<any>",
+      "description": "Upload a file to the given url",
+      "parameters": [{
+          "name": "url",
+          "type": "string",
+          "description": "The url where to upload the file"
+        },
+        {
+          "name": "file",
+          "type": "File",
+          "description": "The file to upload",
+          "typeLink": "https://developer.mozilla.org/fr/docs/Web/API/File"
+        }
+      ]
+    }
+  ]
+}

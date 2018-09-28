@@ -1,0 +1,69 @@
+<h1 class="title"> asi-notification </h1>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <code> import AsiNgToolsModule or AsiNotificationModule </code>
+    <code> add public viewContainerRef : viewContainerRef in your root component constructor </code>
+  </div>
+</div>
+
+<div class="flex-panel">
+  <asi-tab-group>
+    <asi-tab label="Demo">
+      <div class="fixed-panel">
+        <asi-input label="Delay" step="100" [number]="true" placeholder="Delay" [(ngModel)]="delay"></asi-input>
+        <asi-select [data]="types" [(ngModel)]="toastType">
+          <asi-selected *asiSelectedDef="let data">{{data.toString()}}</asi-selected>
+          <asi-option *asiOptionDef="let data">{{data.toString()}}</asi-option>
+        </asi-select>
+      </div>
+      <div fxLayout="column">
+        <div fxLayout="row">
+          <asi-button (click)="showNotif_TopLeft()" type="button"> Top Left </asi-button>
+          <asi-button (click)="showNotif_TopCenter()" design="raised" type="button"> Top Center </asi-button>
+          <asi-button (click)="showNotif_TopRight()" type="button"> Top Right </asi-button>
+        </div>
+        <div fxLayout="row">
+          <asi-button (click)="showNotif_BottomLeft()" design="bordered" type="button"> Bottom Left </asi-button>
+          <asi-button (click)="showNotif_BottomCenter()" type="button"> Bottom Center </asi-button>
+          <asi-button (click)="showNotif_BottomRight()" design="bordered" type="button"> Bottom Right </asi-button>
+        </div>
+      </div>
+    </asi-tab>
+    <asi-tab label="TS1">
+      <asi-code-viewer readOnly="true" language="typescript" fromUrl="assets/demo/asi-notification/asi-notification.component.ts"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS2">
+      <asi-code-viewer readOnly="true" language="typescript" fromUrl="assets/demo/asi-notification/notification.component.ts"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="Attributes">
+    </asi-tab>
+    <asi-tab label="Style Override">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>@asi-notification-success</td>
+            <td>Background color of the success toast</td>
+          </tr>
+          <tr>
+            <td>@asi-notification-warning</td>
+            <td>Background color of the warning toast</td>
+          </tr>
+          <tr>
+            <td>@asi-notification-error</td>
+            <td>Background color of the error toast</td>
+          </tr>
+          <tr>
+            <td>@asi-notification-info</td>
+            <td>Background color of the info toast</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+  </asi-tab-group>
+</div>

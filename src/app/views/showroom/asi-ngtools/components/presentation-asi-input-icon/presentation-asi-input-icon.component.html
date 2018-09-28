@@ -1,0 +1,125 @@
+<h1> asi-input </h1>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <code>import AsiNgToolsModule or AsiInputModule</code>
+  </div>
+</div>
+
+<div fxLayout="row" class="flex-panel">
+  <asi-tab-group>
+    <asi-tab label="Demo">
+      <div fxLayout="column">
+        <h3 translate="COMMON.withNgModel"></h3>
+        <asi-input-icon icon="fa fa-bars" label="asi-input" labelPosition="left" [(ngModel)]="inputValue" (iconClicked)="showMenu()"></asi-input-icon>
+        <h3 translate="COMMON.withFormControl"></h3>
+        <form [formGroup]="myForm" fxFlex (ngSubmit)="submit()">
+          <div class="asi-container">
+            <asi-input-icon icon="fa fa-bars" iconPosition="right" label="asi-input" labelPosition="left" formControlName="myModel"></asi-input-icon>
+            <error-messages forName="myModel">
+              <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+            </error-messages>
+          </div>
+          <div fxLayout="row">
+            <asi-button type="submit">Submit</asi-button>
+          </div>
+        </form>
+      </div>
+    </asi-tab>
+    <asi-tab label="HTML">
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-input-icon/asi-input-icon.component.html"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS">
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-input-icon/asi-input-icon.component.ts"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="Attributes">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[label]</td>
+            <td>Component label</td>
+          </tr>
+          <tr>
+            <td>[labelPosition]</td>
+            <td>Component label position in 'top' , 'left' , 'right' , 'bottom</td>
+          </tr>
+          <tr>
+              <td>[icon]</td>
+              <td>Component icon (font awesome)</td>
+            </tr>
+            <tr>
+              <td>[iconPosition]</td>
+              <td>Component icon position in 'left' , 'right'</td>
+            </tr>
+          <tr>
+            <td>[placeholder]</td>
+            <td>Allow you to define a placeholder when the input is empty</td>
+          </tr>
+          <tr>
+            <td>[pattern]</td>
+            <td>Define a 'RegExp' pattern to respect while typing</td>
+          </tr>
+          <tr>
+            <td>[maxlength]</td>
+            <td>Define the max length of the input</td>
+          </tr>
+          <tr>
+            <td>[number]</td>
+            <td>If true the input only accept number by respecting pattern : "^-*[0-9,\.]*$"</td>
+          </tr>
+          <tr>
+            <td>[type]</td>
+            <td>Input type in 'text', 'password'</td>
+          </tr>
+          <tr>
+            <td>(iconClicked)</td>
+            <td>Event emitted when the icon is clicked</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+    <asi-tab label="Style Override">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>@asi-input-icon-height</td>
+            <td>Height of the input</td>
+          </tr>
+          <tr>
+            <td>@asi-input-icon-label-color</td>
+            <td>Label color</td>
+          </tr>
+          <tr>
+            <td>@asi-input-icon-border</td>
+            <td>Border of the input</td>
+          </tr>
+          <tr>
+            <td>@asi-input-icon-border-radius</td>
+            <td>Border radius of the input</td>
+          </tr>
+          <tr>
+            <td>@asi-input-icon-outline-border</td>
+            <td>Border of the input when focused</td>
+          </tr>
+          <tr>
+            <td>@asi-input-icon-icon-color</td>
+            <td>Icon color</td>
+          </tr>
+          <tr>
+            <td>@asi-input-icon-icon-background-color</td>
+            <td>Background color of the icon div</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+  </asi-tab-group>
+</div>

@@ -1,0 +1,10 @@
+<div class="dialog-header">
+  <span>{{ title }}</span>
+</div>
+<div class="dialog-container">
+  <p>{{ message }}</p>
+</div>
+<div class="dialog-action">
+  <asi-button (click)="dialog.close(true)">OK</asi-button>
+  <asi-button (click)="dialog.cancel()">Cancel</asi-button>
+</div>

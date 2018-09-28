@@ -1,0 +1,6 @@
+<asi-breadcrumb [data]="{'trackBy': elements.length, 'stack':elements}" trackBy="name" (clicked)="itemClicked($event)"></asi-breadcrumb>
+<asi-button (click)="addFolder()">Add a folder</asi-button>
+<span>Input data:</span>
+<div *ngFor="let elem of elements">
+  <span>{{elem.name}}</span>
+</div>

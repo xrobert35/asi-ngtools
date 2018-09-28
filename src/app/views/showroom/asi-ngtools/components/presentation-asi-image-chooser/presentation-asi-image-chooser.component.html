@@ -1,0 +1,85 @@
+<h1 class="title"> asi-image-chooser </h1>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <code>import AsiNgToolsModule or AsiImageChooserModule</code>
+  </div>
+</div>
+
+
+<div fxLayout="row" class="fixed-panel">
+  <asi-tab-group>
+    <asi-tab label="Demo">
+      <form [formGroup]="myForm">
+        <div class="asiContainer">
+          <asi-image-chooser (onImageSelected)="imageSelect($event)" formControlName="myModel"></asi-image-chooser>
+          <error-messages forName="myModel">
+            <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+          </error-messages>
+        </div>
+        <div fxLayout="row">
+          <asi-button type="submit">Submit</asi-button>
+        </div>
+      </form>
+    </asi-tab>
+    <asi-tab label="HTML">
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-image-chooser/asi-image-chooser.component.html"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS">
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-image-chooser/asi-image-chooser.component.ts"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="Attributes">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[label]</td>
+            <td>Component label</td>
+          </tr>
+          <tr>
+            <td>[labelPosition]</td>
+            <td>Component label position in 'top' , 'left' , 'right' , 'bottom</td>
+          </tr>
+          <tr>
+            <td>[imageSrc]</td>
+            <td>The link to the chosen image</td>
+          </tr>
+          <tr>
+            <td>[image64]</td>
+            <td>The image blob to display (base 64). Default value is loaded by the 'imageSrc'</td>
+          </tr>
+          <tr>
+            <td>[icon]</td>
+            <td>Icon in the center of the chooser area. Used as an 'asi-fa-icon'</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+    <asi-tab label="Style Override">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>@asi-image-chooser-label-color</td>
+            <td>Label color of the image chooser</td>
+          </tr>
+          <tr>
+            <td>@asi-image-chooser-background-color</td>
+            <td>Background color of the image chooser</td>
+          </tr>
+          <tr>
+            <td>@asi-image-chooser-border</td>
+            <td>Border of the image chooser</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+  </asi-tab-group>
+</div>

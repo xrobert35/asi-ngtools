@@ -1,0 +1,33 @@
+{
+  "VALIDATIONS": {
+    "required": "This field is required",
+    "email": "Please give a valide email"
+  },
+  "HOME": {
+    "description": "A simple angular library"
+  },
+  "ASINGTOOLS": {
+    "quickstart": "Quick start",
+    "install": "1. Install",
+    "angular4": "with angular 4",
+    "angular5": "with angular 5",
+    "angular6": "with angular 6",
+    "peerDependencies" : "Peer Dependencies",
+    "importModule": "2. Import module(s)",
+    "importModuleLine1": "Import the AsiNgToolsModule or components modules separately in your application module",
+    "importModuleLine2": "Some components require external dependencies, check component installation",
+    "importStyle": "3. Import styles",
+    "importStyleWithLess": "with Less",
+    "importStyleWithLessLine1": "Import asingtools.less in your less application",
+    "importStyleWithLessLine2": "../node_modules/@asi-ngtools/lib/styles/less/asingtools.less",
+    "importStyleWithLessLine3": "By including asingtools.less in your less application you will be able to override some less variables see  \"Style Override\" section on component documentation",
+    "importStyleWithCss": "only CSS",
+    "importStyleWithCssLine1": "Import asingtools.css in your .angular-cli.json",
+    "importStyleWithCssLine2": "\"styles\": [ \"../node_modules/@asi-ngtools/lib/styles/asingtools.css\", ... ]"
+  },
+  "COMMON" : {
+    "withNgModel" : "with ngModel",
+    "withFormControl" : "with formControl",
+    "installation" : "Installation"
+  }
+}

@@ -1,0 +1,19 @@
+<h1 class="title"> asi-menu </h1>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <code> import AsiNgToolsModule or AsiMenuModule </code>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="start">
+  <asi-menu vertical="false">
+    <ng-template #burger><asi-button>burger</asi-button></ng-template>
+    <asi-menu-item [routerLink]="['./root']">item1</asi-menu-item>
+    <asi-menu-item [routerLink]="['./root1']">item2</asi-menu-item>
+    <asi-menu-item [routerLink]="['./root2']">item3</asi-menu-item>
+  </asi-menu>
+</div>
+
+<router-outlet></router-outlet>

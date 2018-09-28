@@ -1,0 +1,111 @@
+<h1 class="title"> Full form exemple </h1>
+
+<div class="fixed-panel">
+  <asi-tab-group>
+    <asi-tab label="Demo">
+      <form [formGroup]="exempleForm" (ngSubmit)="createContent()">
+
+        <!-- Sexe -->
+        <div class="asi-container">
+          <asi-radio-group label="Sexe :" labelPosition="left" formControlName="sexe">
+            <asi-radio value="man">Man</asi-radio>
+            <asi-radio value="woman">Woman</asi-radio>
+          </asi-radio-group>
+          <error-messages forName="sexe">
+            <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+          </error-messages>
+        </div>
+
+        <!-- Firstname -->
+        <div fxLayout="row">
+          <div class="asi-container">
+            <asi-input label="Firstname :" formControlName="firstname" placeholder="Firstname"></asi-input>
+            <error-messages forName="firstname">
+              <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+            </error-messages>
+          </div>
+
+          <!-- Lastname -->
+          <div class="asi-container">
+            <asi-input label="Lastname :" formControlName="lastname" placeholder="Lastname"></asi-input>
+            <error-messages forName="lastname">
+              <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+            </error-messages>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="asi-container">
+          <asi-input-icon label="Email :" [email]="true" icon="far fa-envelope" formControlName="email" placeholder="Email"></asi-input-icon>
+          <error-messages forName="email">
+            <message error="email" value="VALIDATIONS.email" [onSubmit]="true"></message>
+          </error-messages>
+        </div>
+
+        <!-- Birthdate -->
+        <div class="asi-container">
+          <asi-datepicker label="Birthdate :" formControlName="birthdate" [maxDate]="today"></asi-datepicker>
+          <error-messages forName="birthdate">
+            <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+          </error-messages>
+        </div>
+
+        <fieldset formGroupName="other">
+          <legend>Other</legend>
+
+          <!-- Job -->
+          <div class="asi-container">
+            <asi-select label="Job :" [data]="jobs" [withEmptyValue]="true" formControlName="job">
+              <asi-empty *asiEmptyData="let data">Please tell us your job</asi-empty>
+              <asi-selected *asiSelectedDef="let data">{{data}}</asi-selected>
+              <asi-option *asiOptionDef="let data">{{data}}</asi-option>
+            </asi-select>
+            <error-messages forName="job">
+              <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+            </error-messages>
+          </div>
+
+          <!-- Town -->
+          <div class="asi-container">
+            <asi-autocomplete [onRequestData]="requestTown" label="Town :" placeholder="Please tell us your town" formControlName="town">
+              <asi-selected *asiSelectedDef="let data">{{data}}</asi-selected>
+              <asi-option *asiOptionDef="let data">{{data}}</asi-option>
+            </asi-autocomplete>
+            <error-messages forName="town">
+              <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+            </error-messages>
+          </div>
+
+          <!-- Hobbies -->
+          <div class="asi-container">
+            <asi-autocomplete-multiple [onRequestData]="requestHobbies" label="Hobbies :" placeholder="Please tell us your hobbies" formControlName="hobbies">
+              <asi-tag *asiTagDef="let data">{{data}}</asi-tag>
+              <asi-selected *asiSelectedDef="let data">{{data}}</asi-selected>
+              <asi-option *asiOptionDef="let data">{{data}}</asi-option>
+            </asi-autocomplete-multiple>
+            <error-messages forName="hobbies">
+              <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+            </error-messages>
+          </div>
+
+        </fieldset>
+
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <asi-button (click)="enableForm(false)" [disabled]="exempleForm.disabled">
+            <asi-fa-icon icon="fas fa-ban" [disabled]="exempleForm.disabled" label="Disable form" labelPosition="right"></asi-fa-icon>
+          </asi-button>
+          <asi-button (click)="enableForm(true)" [disabled]="!exempleForm.disabled"> Enable form </asi-button>
+          <asi-button type="submit" design="bordered" [disabled]="exempleForm.disabled">
+            <asi-fa-icon icon="fas fa-save" label="save" labelPosition="right" [disabled]="exempleForm.disabled"></asi-fa-icon>
+          </asi-button>
+        </div>
+      </form>
+    </asi-tab>
+    <asi-tab label="HTML">
+      <asi-code-viewer language="html" fromUrl="assets/demo/full-form/full-form.component.html"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS">
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/full-form/full-form.component.ts"></asi-code-viewer>
+    </asi-tab>
+  </asi-tab-group>
+</div>

@@ -1,0 +1,56 @@
+<h1> asi-dropdown </h1>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <code> import AsiNgToolsModule or AsiBreadcrumbModule </code>
+  </div>
+</div>
+
+<div class="flex-panel">
+  <asi-tab-group>
+    <asi-tab label="Demo">
+      <div class="margin10" fxLayout="column">
+        <asi-checkbox label="Match width with relative node" labelPosition="left" [(ngModel)]="calculateWidth"></asi-checkbox>
+        <button #testAsiDropdown style="width:500px; height: 50px; background-color: yellow;" (click)="openDropdown = true">Open dropdown</button>
+        <asi-dropdown [relativeTo]="elementRefTest" [calculWidth]="calculateWidth" [open]="openDropdown" (onClose)="openDropdown = false">
+          <div class="test-dropdown">
+            <span>You can add everything you want here</span>
+          </div>
+        </asi-dropdown>
+      </div>
+    </asi-tab>
+    <asi-tab label="HTML">
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-dropdown/asi-dropdown.component.html"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS">
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-dropdown/asi-dropdown.component.ts"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="Attributes">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[open]</td>
+            <td>Boolean indicating if the dropdown should be opened or not</td>
+          </tr>
+          <tr>
+            <td>[calculWidth]</td>
+            <td>Boolean: true if the dropdown should have the same width than its relative node. By default: true.</td>
+          </tr>
+          <tr>
+            <td>[relativeTo]</td>
+            <td>The elementRef the dropdown refers to. Can be retrieve on html by #id or by a @ViewChild().</td>
+          </tr>
+          <tr>
+            <td>(onClose)</td>
+            <td>Event triggered when the dropdown is closed when clicking outside</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+  </asi-tab-group>
+</div>

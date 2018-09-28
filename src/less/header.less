@@ -1,0 +1,31 @@
+header-component {
+  .header-panel {
+    margin: 5px 5px 5px 15px;
+    .asi-fa-icon {
+      margin-right : 20px;
+      button {
+        color: white;
+        &:hover, &:focus{
+          color : @red-color;
+          border-color : transparent;
+        }
+      }
+    }
+  }
+  .asi-menu {
+    margin-left: 15px;
+    .asi-menu-container .asi-menu-panel .items-container .item-container {
+      background-color: @thirdly-color;
+      color: lightgrey;
+      border: none;
+      &:focus, &:hover {
+          color : @red-color;
+          border : none;
+      }
+      &.active {
+        border: none;
+        color : @secondary-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<div class="margin10" fxLayout="column">
+  <asi-checkbox label="Match width with relative node" labelPosition="left" [(ngModel)]="calculateWidth"></asi-checkbox>
+  <button #testAsiDropdown style="width:500px; height: 50px; background-color: yellow;" (click)="openDropdown = true">Open dropdown</button>
+  <asi-dropdown [relativeTo]="elementRefTest" [calculWidth]="calculateWidth" [open]="openDropdown" (onClose)="openDropdown = false">
+    <div class="test-dropdown">
+      <span>You can add everything you want here</span>
+    </div>
+  </asi-dropdown>
+</div>

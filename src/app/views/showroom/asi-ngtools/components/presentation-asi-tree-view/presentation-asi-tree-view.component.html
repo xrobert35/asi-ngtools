@@ -1,0 +1,90 @@
+<h1 class="title"> asi-tree-view </h1>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <code>import AsiNgToolsModule or AsiTreeViewModule</code>
+  </div>
+</div>
+
+<div fxLayout="row">
+  <asi-button (click)="openNode()"> Open File 1 </asi-button>
+  <asi-button (click)="closeAll()"> Close all </asi-button>
+  <asi-button (click)="openAll()"> Open all </asi-button>
+</div>
+
+<asi-tab-group>
+  <asi-tab label="Demo">
+    <asi-input label="Filter (keep leaves)" [delay]="500" (onValueChange)="filterTreeDataKeepLeaves($event)"></asi-input>
+    <asi-input label="Filter" [delay]="500" (onValueChange)="filterTreeData($event)"></asi-input>
+
+    <asi-tree-view [nodeName]="nodeName" [data]="data" [isLeaf]="isLeaf" (onNodeSelected)="onNodeSelected($event)">
+      <asi-tree-node *asiTreeNodeDef="let node">
+        <asi-fa-icon [label]="node.data.name" labelPosition="right" [icon]="node.open ? 'fa-folder-open-o' : 'fa-folder-o'"></asi-fa-icon>
+      </asi-tree-node>
+      <asi-tree-leaf *asiTreeLeafDef="let node">
+        <asi-fa-icon [label]="node.data.name" labelPosition="right" icon="fa fa-file-o"></asi-fa-icon>
+      </asi-tree-leaf>
+    </asi-tree-view>
+  </asi-tab>
+  <asi-tab label="HTML">
+    <asi-code-viewer language="html" fromUrl="assets/demo/asi-tree-view/asi-tree-view.component.html"></asi-code-viewer>
+  </asi-tab>
+  <asi-tab label="TS">
+    <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-tree-view/asi-tree-view.component.ts"></asi-code-viewer>
+  </asi-tab>
+  <asi-tab label="Attributes">
+    <table class="presentation-table">
+      <thead>
+        <th> Name </th>
+        <th> Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>[data]</td>
+          <td>Data to display</td>
+        </tr>
+        <tr>
+          <td>[nodeName]</td>
+          <td>Name of data attributes to iterate on</td>
+        </tr>
+        <tr>
+          <td>[isLeaf]</td>
+          <td>Function used to know of a node is a leaf</td>
+        </tr>
+        <tr>
+          <td>(onNodeSelected)</td>
+          <td>
+            <div fxLayout="column">
+              <span>Event emitted when you click on a node</span>
+              <span>$event will be the model an AsiTreeViewNodeComponent</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3> Templates </h3>
+    <table class="presentation-table">
+      <thead>
+        <th> Id </th>
+        <th> Context </th>
+        <th> Description</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>asi-tree-node *asiTreeNodeDef="let yourVar"</td>
+          <td>{{ "{" }}data : any, open : boolean, firstNode : boolean, lastNode : boolean{{ "}" }}</td>
+          <td>Define how to display a node</td>
+        </tr>
+        <tr>
+          <td>asi-tree-leaf *asiTreeLeafDef="let yourVar"</td>
+          <td>{{ "{" }}data : any, open : boolean, firstNode : boolean, lastNode : boolean{{ "}" }} </td>
+          <td>Define how to display a leaf</td>
+        </tr>
+      </tbody>
+    </table>
+  </asi-tab>
+  <asi-tab label="Style override">
+  </asi-tab>
+</asi-tab-group>

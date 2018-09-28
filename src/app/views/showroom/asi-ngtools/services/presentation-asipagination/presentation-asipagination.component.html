@@ -1,0 +1,30 @@
+<h1 class="title"> asiPaginationService </h1>
+
+<div class="fixed-panel">
+  <h3> Installation </h3>
+  <div class="install">
+    <code>import AsiNgToolsModule or AsiServicesModule</code>
+  </div>
+</div>
+
+<div fxLayout="row" class="fixed-panel">
+  <asi-tab-group>
+    <asi-tab label="Api">
+    </asi-tab>
+    <asi-tab label="Demo">
+      <div fxLayout="row">
+        <asi-input [number]="true" label="Nombre de valeurs dans l'array" (onValueChange)="computePages()" [(ngModel)]="nbElements"></asi-input>
+        <asi-input [number]="true" label="Nombre d'element par page" (onValueChange)="computePages()" [(ngModel)]="nbElementsPerPage"></asi-input>
+      </div>
+      <span>Nombre de pages nécessaire : {{nbPages}}</span>
+      <asi-input [number]="true" label="Numero de la page a recuperer" (onValueChange)="updateAPage($event)"></asi-input>
+      <div *ngFor="let elem of page">{{elem}}</div>
+    </asi-tab>
+    <asi-tab label="HTML">
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-moment-service/asi-moment-service.component.html"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS">
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-moment-service/asi-moment-service.component.ts"></asi-code-viewer>
+    </asi-tab>
+  </asi-tab-group>
+</div>

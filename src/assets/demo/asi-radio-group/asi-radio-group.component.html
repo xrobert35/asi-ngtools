@@ -1,0 +1,23 @@
+<h3>With ngModel</h3>
+<asi-radio-group [(ngModel)]="radioValue" label="Radio Group" trackBy="code">
+  <asi-radio [value]="model1">Radio 1</asi-radio>
+  <asi-radio [value]="model2">Radio 2</asi-radio>
+  <asi-radio [value]="model3">Radio 3</asi-radio>
+</asi-radio-group>
+{{radioValue.libelle}}
+
+<h3>With formControl</h3>
+<form [formGroup]="myForm" (ngSubmit)="submitting()">
+  <div class="asi-container">
+    <asi-radio-group [(ngModel)]="fcRadioValue" formControlName="radios" label="Radio Group" trackBy="code">
+      <asi-radio [value]="fcontrol1">Radio 1</asi-radio>
+      <asi-radio [value]="fcontrol2">Radio 2</asi-radio>
+      <asi-radio [value]="fcontrol3">Radio 3</asi-radio>
+    </asi-radio-group>
+    <error-messages forName="radios">
+      <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+    </error-messages>
+    {{fcRadioValue.libelle}}
+  </div>
+  <asi-button type="submit">Submit</asi-button>
+</form>

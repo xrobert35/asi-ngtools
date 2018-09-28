@@ -1,0 +1,34 @@
+<h1 class="title"> AsiValidators.email </h1>
+
+<div class="fixed-panel">
+  <h3> Installation </h3>
+  <div class="install">
+    <code>import AsiNgToolsModule or AsiValidatorsModule</code>
+  </div>
+</div>
+
+<div fxLayout="row" class="flex-panel">
+  <asi-tab-group>
+    <asi-tab label="Demo">
+      <div fxLayout="column">
+        <form [formGroup]="myForm" fxFlex (ngSubmit)="submit()">
+          <div class="asi-container">
+            <asi-input label="Enter an email and try to submit it" formControlName="myFormControl"></asi-input>
+            <asi-error-messages forName="myFormControl">
+              <asi-message error="email" value="The email is incorrect" [onSubmit]="true"></asi-message>
+            </asi-error-messages>
+          </div>
+          <div fxLayout="row">
+            <asi-button type="submit">Submit</asi-button>
+          </div>
+        </form>
+      </div>
+    </asi-tab>
+    <asi-tab label="HTML">
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-email-validator/asi-email-validator.component.html"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS">
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-email-validator/asi-email-validator.component.ts"></asi-code-viewer>
+    </asi-tab>
+  </asi-tab-group>
+</div>

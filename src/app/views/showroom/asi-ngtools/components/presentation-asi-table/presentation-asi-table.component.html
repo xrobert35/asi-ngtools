@@ -1,0 +1,298 @@
+<h1 class="title"> asi-table </h1>
+
+<div fxLayout="column" class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <code> import AsiNgToolsModule or AsiTableModule </code>
+  </div>
+</div>
+
+<div class="flex-panel">
+  <asi-tab-group>
+    <asi-tab label="Demo">
+      <label> Nb items selected  : {{mySelectionModel.nbItemsSelected}}</label>
+      <asi-table [rowClass]="{ 'row-class' : rowClassMethod() && '{row}.col2%2 == 0'}" [autoPaginate]="true" [nbElementParPage]="5" [autoSort]="true" [selectionModel]="mySelectionModel" [onRequestData]="refreshTable"
+        fxFlex>
+        <asi-table-column type="checkbox"></asi-table-column>
+        <asi-table-column name="col1" libelle="Libelle column" sortable="true">
+          <asi-cell *asiCellDef="let row"> {{row.col2}} {{row.col1}} </asi-cell>
+          <asi-header *asiTableHeaderDef="let row">{{row.libelle}}</asi-header>
+        </asi-table-column>
+        <asi-table-column name="col2" libelle="Libelle 2" [columnClass]="{ 'valid' : checked}">
+            <asi-cell *asiCellDef="let row"> Col {{row.col2}} </asi-cell>
+        </asi-table-column>
+        <asi-table-column name="col3" libelle="Libelle 3">
+          <asi-cell *asiCellDef="let row">
+            <asi-input [(ngModel)]="row.col3"></asi-input>
+          </asi-cell>
+        </asi-table-column>
+        <asi-table-column name="col4.libelle" libelle="Super libelle 4">
+          <asi-cell *asiCellDef="let row">
+            <asi-datepicker [(ngModel)]="row.col4"></asi-datepicker>
+          </asi-cell>
+        </asi-table-column>
+        <asi-table-column [inlineColumn]="true">
+          <asi-table-inliner colSpan="2">
+            <asi-cell *asiCellDef="let row">Code : {{row.col5.code}}</asi-cell>
+          </asi-table-inliner>
+          <asi-table-inliner colSpan="3">
+            <asi-cell *asiCellDef="let row">Libelle : {{row.col5.libelle}}</asi-cell>
+          </asi-table-inliner>
+        </asi-table-column>
+      </asi-table>
+    </asi-tab>
+    <asi-tab label="HTML">
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-table/asi-table.component.html"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS">
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-table/asi-table.component.ts"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS-2">
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-table/tableRow.ts"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="Attributes">
+      <h3> asi-table </h3>
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[autoSort]</td>
+            <td>true if table should sort result by himself</td>
+          </tr>
+          <tr>
+            <td>[autoPaginate]</td>
+            <td>true if table should paginate result by himself</td>
+          </tr>
+          <tr>
+            <td>[nbElementParPage]</td>
+            <td>Nb element by page</td>
+          </tr>
+          <tr>
+            <td>[selectionModel]</td>
+            <td>
+              <div fxLayout="column">
+                <span>In the case you have a column of type="checkbox" you must give a selectionModel</span>
+                <span>AsiSelectionModel(selectionId : any , multipage : boolean)</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>[rowClass]</td>
+            <td>Allow you to add conditionals classes on rows : it must respect this pattern : <code>rowClass="{{'{'}} 'classToAdd' : parentComponentMethod() && '{{'{'}}row{{'}'}}.col2 == 4500'{{'}'}}</code></td>
+          </tr>
+          <tr>
+            <td>[fireRefreshOnInit]</td>
+            <td>true if data should ask for data at initialization</td>
+          </tr>
+          <tr>
+            <td>[refreshOnTop]</td>
+            <td>true if scrollbar must go to the top of the table when updateData is called</td>
+          </tr>
+          <tr>
+            <td>(onRequestData)</td>
+            <td>
+              <div fxLayout="column">
+                <span>Event emitted when table request for data</span>
+                <span>$event will be an AsiTableRequest</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3> asi-table-column </h3>
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[name]</td>
+            <td>name of the column. It will be used to extract data from row object if no template is specified</td>
+          </tr>
+          <tr>
+            <td>[type]</td>
+            <td>'text' (default) or 'checkbox' : only one checkbox column allowed</td>
+          </tr>
+          <tr>
+            <td>[sortName]</td>
+            <td>name used when table ask to sort data</td>
+          </tr>
+          <tr>
+            <td>[libelle]</td>
+            <td>Libelle used for column th if no template is specified</td>
+          </tr>
+          <tr>
+            <td>[showIf]</td>
+            <td>Show the column only if this condition is true</td>
+          </tr>
+          <tr>
+            <td>[hideIf]</td>
+            <td>Show the column only if this condition is false</td>
+          </tr>
+          <tr>
+            <td>[inversSort]</td>
+            <td>Display purpose : the column will be sorted in reverse order</td>
+          </tr>
+          <tr>
+            <td>[sortable]</td>
+            <td>true if the column must be sortable</td>
+          </tr>
+          <tr>
+            <td>[sortByDefault]</td>
+            <td>true if you want the table to be sorted on this column by default</td>
+          </tr>
+          <tr>
+            <td>[columnClass]</td>
+            <td>work like ngClass but for an entire column</td>
+          </tr>
+          <tr>
+            <td>[inlineColumn]</td>
+            <td>true if the column must become a row. You can then define some asi-column-inliner to manage colspan</td>
+          </tr>
+          <tr>
+            <td>(onChecked)</td>
+            <td>
+              <div fxLayout="column">
+                <span>Event emitted when a row of a checkbox column is checked or unchecked</span>
+                <span>$event will contain the row</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>(onAllChecked)</td>
+            <td>
+              <div fxLayout="column">
+                <span>Event emitted when the top checkbox of a checkbox column is checked or unchecked</span>
+                <span>$event will contain a boolean (true if checked)</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h3> asi-table-column templates </h3>
+      <table class="presentation-table">
+        <thead>
+          <th> Id </th>
+          <th> Data </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#column</td>
+            <td>row</td>
+            <td>allow you to define template for every cell of the column</td>
+          </tr>
+          <tr>
+            <td>#header</td>
+            <td>column : AsiTableColumn</td>
+            <td>allow you to define template for the column header</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3> asi-table-inliner </h3>
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>colSpan</td>
+            <td>colspan of the td</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3> asi-table-inliner templates </h3>
+      <table class="presentation-table">
+        <thead>
+          <th> Id </th>
+          <th> Data </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#inliner</td>
+            <td>row </td>
+            <td>Template of the inlined td</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+    <asi-tab label="Style Override">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>@asi-table-border</td>
+            <td>Table border</td>
+          </tr>
+          <tr>
+            <td>@asi-table-header-height</td>
+            <td>Table head height</td>
+          </tr>
+          <tr>
+            <td>@asi-table-header-th-border</td>
+            <td>Table head cells borders</td>
+          </tr>
+          <tr>
+            <td>@asi-table-header-tr-border</td>
+            <td>Table head rows borders</td>
+          </tr>
+          <tr>
+            <td>@asi-table-header-background-color</td>
+            <td>Table head background-color</td>
+          </tr>
+          <tr>
+            <td>@asi-table-header-text-color</td>
+            <td>Table head text color</td>
+          </tr>
+          <tr>
+            <td>@asi-table-header-box-shadow</td>
+            <td>Table head box-shadow</td>
+          </tr>
+          <tr>
+            <td>@asi-table-body-1-color</td>
+            <td>Table body background color (even child)</td>
+          </tr>
+          <tr>
+            <td>@asi-table-body-2-color</td>
+            <td>Table body background color (odd child)</td>
+          </tr>
+          <tr>
+            <td>@asi-table-body-line1-color</td>
+            <td>Table body rows background color (even child)</td>
+          </tr>
+          <tr>
+            <td>@asi-table-body-line2-color</td>
+            <td>Table body rows background color (odd child)</td>
+          </tr>
+          <tr>
+            <td>@asi-table-body-line-height</td>
+            <td>Tabme body rows height</td>
+          </tr>
+          <tr>
+            <td>@asi-table-body-tr-border</td>
+            <td>Table body rows borders</td>
+          </tr>
+          <tr>
+            <td>@asi-table-body-td-border</td>
+            <td>Table body cells borders</td>
+          </tr>
+          <tr>
+            <td>@asi-table-body-td-text-color</td>
+            <td>Table body cells text color</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+  </asi-tab-group>
+</div>

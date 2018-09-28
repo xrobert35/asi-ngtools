@@ -1,0 +1,124 @@
+home-page {
+  background-color: white;
+  // .top-band {
+  //   margin-top: 30px;
+  //   margin-bottom: 30px;
+  //   flex: 0 0 auto;
+  //   img {
+  //     height: auto;
+  //     display: block;
+  //     width: auto;
+  //     margin: 10px;
+  //     @media @mobile-media {
+  //       max-height: 75px;
+
+  //     }
+  //   }
+  // }
+
+  .left-band {
+    background-color: @blue-color;
+    box-shadow: 1px 1px 2px grey;
+    z-index: 1;
+    position: relative;
+
+    h1 {
+      color: white;
+      margin: 10px;
+      text-align: center;
+      font-size: 40px;
+    }
+
+    h2 {
+      color: white;
+      margin: 10px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .logo-panel {
+      display: flex;
+      flex: 1 0 auto;
+      flex-direction: column;
+      align-items: center;
+      margin: 45px 15px 5px;
+      z-index: 2;
+
+      img {
+        max-height: 180px;
+        @media @mobile-media {
+          max-height: 60px;
+        }
+        width: auto;
+        height: auto;
+      }
+
+      h3 {
+        color: white;
+      }
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      opacity: .6;
+    }
+  }
+
+  .right-band {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    .car-panel {
+      margin-top: 30px;
+      .card {
+        max-width: 300px;
+        width: 300px;
+        height: 75px;
+        padding: 10px;
+        margin: 8px 15px;
+        @media @mobile-media {
+          max-width: 100%;
+        }
+        color: #9c9c9c;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        background-color: #f6f6f6;
+        box-shadow: 1px 1px 1px 1px #bfbfbf;
+        transition: background-color .3s linear, color .3s linear;
+
+        &:hover {
+          background-color: #fcfcfc;
+          color: darken(#858585, 10%);
+          box-shadow: 1px 1px 1px 2px #bfbfbf;
+        }
+
+        span {
+          margin-left: 20px;
+          font-size: 1.3em;
+        }
+
+        img {
+          height: auto;
+          max-height: 85%;
+          width: auto;
+          opacity: 1;
+          transition: opacity .3s linear;
+
+          &:hover {
+            opacity: .7;
+          }
+        }
+      }
+    }
+  }
+}

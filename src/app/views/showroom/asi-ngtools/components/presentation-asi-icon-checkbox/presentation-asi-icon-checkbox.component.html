@@ -1,0 +1,104 @@
+<h1> asi-checkbox </h1>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <code>import AsiNgToolsModule or AsiIconCheckboxModule</code>
+  </div>
+</div>
+
+<div class="fixed-panel">
+  <asi-tab-group>
+    <asi-tab label="Demo">
+      <h3 translate="COMMON.withNgModel"></h3>
+      <asi-icon-checkbox [(ngModel)]="check" icon="fa fa-home" disabled="true"></asi-icon-checkbox>
+
+      <h3 translate="COMMON.withFormControl"></h3>
+      <form [formGroup]="myForm">
+        <div class="asi-container">
+          <asi-icon-checkbox formControlName="myModel" icon="fa fa-home" label="checkbox" labelPosition="left"></asi-icon-checkbox>
+          <error-messages forName="myModel">
+            <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+          </error-messages>
+        </div>
+        <div fxLayout="row">
+          <asi-button type="submit">Submit</asi-button>
+        </div>
+      </form>
+    </asi-tab>
+    <asi-tab label="HTML">
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-checkbox/asi-checkbox.component.html"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS">
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-checkbox/asi-checkbox.component.ts"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="Attributes">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>[label]</td>
+            <td>Component label</td>
+          </tr>
+          <tr>
+            <td>[labelPosition]</td>
+            <td>Component label position in 'top' , 'left' , 'right' , 'bottom</td>
+          </tr>
+          <tr>
+            <td>[disabled]</td>
+            <td>Allows you to disable the checkbox</td>
+          </tr>
+          <tr>
+            <td>[type]</td>
+            <td>Set the type to 'checkbox' or 'radio'. Set to 'checkbox' by default.</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+    <asi-tab label="Style Override">
+      <table class="presentation-table">
+        <thead>
+          <th> Name </th>
+          <th> Description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>@asi-checkbox-label-color</td>
+            <td>Label color</td>
+          </tr>
+          <tr>
+            <td>@asi-checkbox-size</td>
+            <td>Sides size of the checkbox</td>
+          </tr>
+          <tr>
+            <td>@asi-checkbox-outline-border</td>
+            <td>Border of the checkbox when focused</td>
+          </tr>
+          <tr>
+            <td>@asi-checkbox-background-color</td>
+            <td>Background color of the checkbox</td>
+          </tr>
+          <tr>
+            <td>@asi-checkbox-box-shadow</td>
+            <td>Box shadow of the checkbox</td>
+          </tr>
+          <tr>
+            <td>@asi-checkbox-border</td>
+            <td>Borders of the checkbox</td>
+          </tr>
+          <tr>
+            <td>@asi-checkbox-check-color</td>
+            <td>Color of the check itself</td>
+          </tr>
+          <tr>
+            <td>@asi-checkbox-background-active-color</td>
+            <td>Background color of the checkbox when checked</td>
+          </tr>
+        </tbody>
+      </table>
+    </asi-tab>
+  </asi-tab-group>
+</div>

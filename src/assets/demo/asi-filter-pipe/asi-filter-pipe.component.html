@@ -1,0 +1,9 @@
+<h4>Referentiels list:</h4>
+<div *ngFor="let ref of myArray">
+  Code: {{ref.code}} | Libelle: {{ref.libelle}}
+</div>
+
+<h4>Filtered list:</h4>
+<div *ngFor="let ref of (myArray | asiFilter : '2' : filterFct) ">
+  Code: {{ref.code}} | Libelle: {{ref.libelle}}
+</div>

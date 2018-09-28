@@ -1,0 +1,32 @@
+<h1 class="title"> asiMomentService </h1>
+
+<div class="fixed-panel">
+  <h3> Installation </h3>
+  <div class="install">
+    <code>import AsiNgToolsModule or AsiServicesModule</code>
+  </div>
+</div>
+
+<div fxLayout="row" class="fixed-panel">
+  <asi-tab-group>
+    <asi-tab label="Api">
+    </asi-tab>
+    <asi-tab label="Demo">
+      <div fxLayout="row">
+        <asi-input label="Date" (onValueChange)="parseDate()" [(ngModel)]="dateStr"></asi-input>
+        <asi-input label="Pattern" placeholder="dd/mm/yyyy" [(ngModel)]="pattern"></asi-input>
+      </div>
+      {{format()}}
+      <div fxLayout="row">
+        <asi-button type='button' (click)="addDay()">Ajouter un jour</asi-button>
+        <asi-button type='button' (click)="addMonth()">Ajouter un mois</asi-button>
+      </div>
+    </asi-tab>
+    <asi-tab label="HTML">
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-moment-service/asi-moment-service.component.html"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS">
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-moment-service/asi-moment-service.component.ts"></asi-code-viewer>
+    </asi-tab>
+  </asi-tab-group>
+</div>

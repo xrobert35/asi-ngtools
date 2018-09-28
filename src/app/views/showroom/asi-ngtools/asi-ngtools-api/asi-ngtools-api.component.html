@@ -1,0 +1,36 @@
+<h3> Overview </h3>
+<ul class="overview">
+  <li *ngFor="let f of fcts; trackBy: trackByFctName">
+    <a routerLink="." fragment="{{f.functionName}}" [innerHTML]="f.htmlSignature"></a>
+  </li>
+</ul>
+<div id="overViewDescription" class="description">
+  <h3> Description </h3>
+  <p id="summary">{{summary}}</p>
+  <ul class="functions">
+    <li [scrollFragment]="f.functionName" *ngFor="let f of fcts; trackBy: trackByFctName">
+      <h4 class="displayOnHover"><a routerLink="." fragment="{{f.functionName}}" class="fa fa-link link"></a> {{f.functionName}} </h4>
+      <div class="funcDescription">
+        <p>{{f.description}}</p>
+        <div>
+          <h5>Parameters:</h5>
+          <ul class="parameters" *ngFor="let p of f.parameters">
+            <li>
+              <span class="keyword">{{p.name}}</span>
+              <span *ngIf="p.typeLink">(<a [href]="p.typeLink">{{p.type}}</a>):</span>
+              <span *ngIf="!p.typeLink">({{p.type}}):</span>
+              <span>{{p.description}}</span>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="f.return">
+          <h5>Returns:</h5>
+          <span>{{f.return.description}}</span><br>
+          Type:
+          <span class="keyword" *ngIf="f.return.typeLink"><a [href]="f.return.typeLink">{{f.return.type}}</a></span>
+          <span class="keyword" *ngIf="!f.return.typeLink">{{f.return.type}}</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,24 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "../",
+    "module": "commonjs",
+    "types": [
+      "node"
+    ]
+  },
+  "include" : [
+    "./**/*.ts",
+    "../node_modules/@asi-ngtools/**/*.ts",
+    "../asi-ngtools/**/*.ts"
+  ],
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts",
+    "./assets/demo/**/*"
+  ],
+  "angularCompilerOptions": {
+    "entryModule": "app/app.server.module#AppServerModule"
+  }
+}

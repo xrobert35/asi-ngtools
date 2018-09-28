@@ -1,0 +1,138 @@
+@import "home";
+@import "showroom";
+@import "asi-ngtools";
+
+.central-menu {
+  min-width: 205px;
+  margin-right: 15px;
+  box-shadow: 1px 0px 2px 0px #cfcfcf;
+  background-color: #f8f8f8;
+  .asi-menu .asi-menu-container .asi-menu-panel .items-container {
+    background-color: transparent;
+    .item-container{
+      height: 35px;
+      padding-left: 15px;
+    }
+  }
+  asi-collapse,
+  .asi-collapse {
+    .asi-fa-icon button {
+      font-size: 15px;
+      color: inherit;
+    }
+  }
+  .collapse-panel {
+    border: none;
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-left: 0px;
+  }
+}
+
+app-asi-ngtools-api {
+  /* Text colors */
+  .keyword {
+    color: #207ffe;
+  }
+  .char {
+    color: black;
+  }
+  .variable {
+    color: #e38c00;
+  }
+  .type {
+    color: #31bf05;
+  }
+  .link{
+    text-decoration: none;
+    color: #268cca;
+    &:hover{
+      color: darken(#268cca, 10%);
+    }
+  }
+  // Overview of the methods
+  .overview {
+    background-color: #fdfdfd;
+    border: 1px solid #e0e0e0;
+    font-family: Droid Sans Mono,monospace;
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    li{
+      margin-bottom: 4px;
+      a{
+        text-decoration: none;
+        &:hover{
+          border-bottom: 1px solid black;
+        }
+      }
+    }
+  }
+  // Detailed description
+  .description {
+    #summary {
+      margin-left: 5px;
+      color: slategray;
+    }
+    span{
+      font-size: 0.9em;
+    }
+    h5 {
+      font-size: 1em;
+      margin: 8px 0px;
+      color: #6b6b6b;
+    }
+    .functions {
+      list-style: none;
+      padding-left: 10px;
+      > li{
+        border-bottom: 1px solid darkgrey;
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+        > h4{
+          margin: 0px;
+        }
+        .funcDescription{
+          padding-left: 30px;
+        }
+      }
+    }
+  }
+}
+
+
+.page-container {
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: white;
+  .page {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    overflow-y: auto;
+    .panel {
+      display: flex;
+      flex-direction: column;
+      border-radius: 1px;
+      margin: 4px;
+      padding: 4px;
+      .sub-panel {
+        padding: 10px;
+      }
+    }
+    .flex-panel {
+      flex: 1 1 auto;
+      .panel;
+    }
+    .fixed-panel {
+      flex: 0 0 auto;
+      .panel;
+    }
+    // Tab content for each component / service presentation
+    .asi-tab-element {
+      background-color: #f2f2f2;
+      padding: 8px;
+      margin-top: 10px;
+    }
+  }
+}

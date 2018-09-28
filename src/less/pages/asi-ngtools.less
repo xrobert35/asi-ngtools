@@ -1,0 +1,72 @@
+app-root asi-ngtools {
+  h1 {
+    &.title{
+      margin : 5px 5px 5px 5px;
+      color : @thirdly-color;
+      border-bottom : 1px solid @red-color;
+      font-size: 25px;
+    }
+  }
+
+  h2 {
+    margin : 10px 5px 10px 5px;
+    color : @red-color;
+  }
+
+  h3 {
+    margin : 5px 5px 5px 5px;
+  }
+
+  .logo-ngtools {
+    display: block;
+    max-width: 200px;
+    width: 200px;
+    height: auto;
+    margin: 10px 5px;
+  }
+  table {
+    &.presentation-table {
+      border-collapse: collapse;
+      thead {
+        th {
+          height: 30px;
+          padding: 5px;
+          text-align: left;
+        }
+      }
+      tbody {
+        tr {
+          &:nth-child(2n+1) {
+            background-color: lightgrey;
+          }
+          td {
+            border: 1px solid lightgrey;
+            height: 30px;
+            padding: 5px;
+            &:first-child {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+  .row-class {
+    color: #C71C1C;
+  }
+  .install {
+    display: flex;
+    flex-direction: column;
+    background-color: #ECF0F6;
+    border-radius: 2px;
+    margin: 5px;
+    padding: 10px;
+    background-color : #5b6a70;
+    box-shadow: 1px 1px 1px lightgrey;
+    color : white;
+  }
+
+  .warning{
+    color : lightcoral;
+  }
+}

@@ -1,0 +1,13 @@
+<div fxLayout="column">
+  <form [formGroup]="myForm" fxFlex (ngSubmit)="submit()">
+    <div class="asi-container">
+      <asi-input label="Enter an email and try to submit it" labelPosition="top" formControlName="myFormControl"></asi-input>
+      <error-messages forName="myFormControl">
+        <message error="email" value="The email is incorrect" [onSubmit]="true"></message>
+      </error-messages>
+    </div>
+    <div fxLayout="row">
+      <asi-button type="submit">Submit</asi-button>
+    </div>
+  </form>
+</div>
