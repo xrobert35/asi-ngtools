@@ -10,6 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build-server": "tsc -p tsconfig.server.json && ng run asi-ngtools-app:server:production",
+    "server": "node server",
     "build-client": "ng run asi-ngtools-app:build:production",
     "build-universal": "npm run build-client && npm run build-server"
   },
