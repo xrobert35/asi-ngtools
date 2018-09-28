@@ -13,7 +13,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build:lib:prod
+RUN ./build.sh
 RUN npm run build-universal
 
 CMD ls -l && npm run server
