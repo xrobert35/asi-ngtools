@@ -10,7 +10,7 @@ WORKDIR /app
 ADD package*.json /app/
 
 RUN npm install
-RUN npm i -g lessc
+RUN npm i -g less
 RUN npm i -g @angular/cli@~6.0.8
 
 COPY . .
