@@ -32,7 +32,7 @@ const translateLoader = (transferState: TransferState, universalService: Univers
       }
     })
   ],
-  exports : [],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent]
 })

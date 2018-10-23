@@ -57,6 +57,7 @@ import { PresentationAsiSessionStorageComponent } from './services/presentation-
 import { FragmentPolyfillModule } from '@common/utils/FragmentPolyfill.module';
 import { FullFormComponent } from './full-form/full-form.component';
 import { StyleOverrideComponent } from './style-override/style-override.component';
+import { PresentationAsiInputNumberComponent } from './components/presentation-asi-input-number/presentation-asi-input-number.component';
 
 const asiNgToolsRoutes: Routes = [{
   path: '',
@@ -71,6 +72,7 @@ const asiNgToolsRoutes: Routes = [{
       path: 'components', component: PresentationAsiComponents, children: [
         { path: 'asi-select', component: PresentationAsiSelectComponent },
         { path: 'asi-input', component: PresentationAsiInputComponent },
+        { path: 'asi-input-number', component: PresentationAsiInputNumberComponent },
         { path: 'asi-input-chips', component: PresentationAsiInputChipsComponent },
         { path: 'asi-input-icon', component: PresentationAsiInputIconComponent },
         { path: 'asi-icon-checkbox', component: PresentationAsiIconCheckboxComponent },
@@ -163,6 +165,7 @@ export const asiNgToolsPresentationRouting: ModuleWithProviders = RouterModule.f
     PresentationAsiSelectComponent,
     PresentationAsiInputComponent,
     PresentationAsiInputChipsComponent,
+    PresentationAsiInputNumberComponent,
     PresentationAsiTextAreaComponent,
     PresentationAsiTinyMCEComponent,
     PresentationAsiImageChooserComponent,
