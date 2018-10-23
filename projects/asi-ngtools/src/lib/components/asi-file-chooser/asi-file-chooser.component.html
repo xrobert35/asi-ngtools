@@ -2,7 +2,7 @@
 <div class="asi-file-chooser-container">
     <label ondragover="return false;" [class.loaded]="loaded" (dragenter)="handleDragEnter()" (dragleave)="handleDragLeave()"
         (drop)="handleDrop($event)">
-        <asi-button [small]="true" class="asi-focus-error">
+        <asi-button size="small" class="asi-focus-error">
             <asi-fa-icon  (onClick)="openFileInput()" [icon]="icon" size="2x"></asi-fa-icon>
         </asi-button>
         <input #fileInput type="file" [disabled]="disabled" name="file" [accept]="acceptAttribute" (change)="handleInputChange($event)"/>

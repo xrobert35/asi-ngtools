@@ -59,7 +59,7 @@ export function get(object: any, path: any, defaultVal?: any): any {
     return object === undefined ? defaultVal : object
   }
 
-  return get(object[_path.shift()], _path, defaultVal)
+  return get(object[_path.shift()], _path, defaultVal);
 }
 
 export function find(array: Array<any>, finder: (value: any, index: number, obj: any[]) => boolean) {

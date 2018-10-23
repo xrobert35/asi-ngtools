@@ -3,8 +3,7 @@
   "dest": "../../dist/asi-ngtools",
   "deleteDestPath": false,
   "lib": {
-    "entryFile": "src/public_api.ts",
-    "paths": ["src/lib/styles/less/asingtools.less"]
+    "entryFile": "src/public_api.ts"
   },
   "whitelistedNonPeerDependencies": ["moment", "clone-deep"]
 }

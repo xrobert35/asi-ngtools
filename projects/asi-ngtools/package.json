@@ -1,6 +1,6 @@
 {
   "name": "@asi-ngtools/lib",
-  "version": "6.0.0-rc19",
+  "version": "6.0.1",
   "main": "bundles/asi-ngtools.umd.js",
   "module": "fesm5/asi-ngtools.js",
   "es2015": "fesm2015/asi-ngtools.js",
@@ -26,6 +26,10 @@
   "author": {
     "name": "asi-ngtools",
     "email": "xrobert@asi.fr"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xrobert35/asi-ngtools"
   },
   "license": "MIT",
   "bugs": {

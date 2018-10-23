@@ -6,8 +6,8 @@
           <span class="header">
             <span *ngIf="!column.headerDef">{{column.libelle | translate}}</span>
             <ng-template *ngIf="column.headerDef" [ngTemplateOutlet]="column.headerDef.template" [ngTemplateOutletContext]="{$implicit : column}"></ng-template>
-          <span class="sortIconAsc" [innerHtml]="'&#9660;'"></span>
-          <span class="sortIconDesc" [innerHtml]="'&#9650;'"></span>
+          <span class="sortIconDesc" [innerHtml]="'&#9660;'"></span>
+          <span class="sortIconAsc" [innerHtml]="'&#9650;'"></span>
           </span>
         </ng-container>
         <asi-checkbox *ngIf="column.type == 'checkbox'" [(ngModel)]="allChecked" (onValueChange)="onAllChecked(column)"></asi-checkbox>

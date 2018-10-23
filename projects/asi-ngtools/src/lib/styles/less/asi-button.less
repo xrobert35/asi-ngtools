@@ -21,7 +21,7 @@ asi-button {
     min-width: 150px;
     text-align: center;
     outline: none;
-    
+
     &:not([disabled]) {
       background-color: @asi-button-background-color;
       color: @asi-button-label-color;
@@ -37,13 +37,28 @@ asi-button {
     }
   }
 
+  &.button-mini {
+    > button {
+      padding: 0;
+      width: 25px;
+      min-width: 25px;
+      height: 25px;
+      min-height: 25px;
+      > asi-fa-icon {
+        width: 20px;
+        height: 20px;
+        margin: 0;
+      }
+    }
+  }
+
   &.button-small {
     > button {
-      min-width: 35px;
       padding: 0;
       width: 35px;
+      min-width: 35px;
       height: 35px;
-
+      min-height: 35px;
       > asi-fa-icon {
         width: 30px;
         height: 30px;

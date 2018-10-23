@@ -10,15 +10,10 @@ export class AsiButtonComponent implements OnInit {
 
   @Input() design: 'flat' | 'raised' | 'bordered' = 'flat';
   @Input() type: 'submit' | 'button' = 'button';
-  @Input() small = false;
+  @Input() size: 'standard' | 'small' | 'mini' = 'standard';
   @Input() disabled = false;
 
-  constructor() {}
-
   ngOnInit() {
-    this.class += ' button-' + this.design;
-    if (this.small) {
-      this.class += ' button-small';
-    }
+    this.class += ` button-${this.design} button-${this.size}`;
   }
 }
