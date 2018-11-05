@@ -34,14 +34,18 @@ export function forEach(array: Array<any>, iteratee: (value: any, index: number)
 }
 
 export function remove(array: Array<any>, iteratee: (value: any, index: number) => any) {
+  let deletedItems = [];
   if (array) {
     let index = array.length;
     while (index--) {
-      if (iteratee(array[index], index)) {
+      const item = array[index];
+      if (iteratee(item, index)) {
         array.splice(index, 1);
+        deletedItems.push(item);
       }
     }
   }
+  return deletedItems;
 }
 
 export function removeAtIndex(array: Array<any>, index: number) {
@@ -53,7 +57,7 @@ export function removeAtIndex(array: Array<any>, index: number) {
 export function get(object: any, path: any, defaultVal?: any): any {
   const _path = Array.isArray(path)
     ? path
-    : path.split('.').filter( (index: any) => index.length)
+    : path.split('.').filter((index: any) => index.length)
 
   if (!_path.length) {
     return object === undefined ? defaultVal : object
