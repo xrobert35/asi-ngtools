@@ -8,22 +8,22 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 })
 export class AsiSelectPresentationComponent {
 
-  datas : Array<Referentiel> = [];
-  selectValue : Referentiel;
+  datas: Array<Referentiel> = [];
+  selectValue: Referentiel;
 
-  //Form declaration
+  // Form declaration
   myForm: FormGroup;
 
-  constructor(fb: FormBuilder){
+  constructor(fb: FormBuilder) {
     this.myForm = fb.group({
       myModel : [null, Validators.required]
     });
 
-    this.datas.push(new Referentiel("Code1", "Libelle code1"));
-    this.datas.push(new Referentiel("Code2", "Libelle code2"));
-    this.datas.push(new Referentiel("Code3", "Libelle code3"));
-    this.datas.push(new Referentiel("Code4", "Libelle code4"));
-    this.datas.push(new Referentiel("Code5", "Libelle code5"));
-    this.datas.push(new Referentiel("Code6", "Libelle code6"));
+    this.datas.push(new Referentiel('Code1', 'Libelle code1'));
+    this.datas.push(new Referentiel('Code2', 'Libelle code2'));
+    this.datas.push(new Referentiel('Code3', 'Libelle code3'));
+    this.datas.push(new Referentiel('Code4', 'Libelle code4'));
+    this.datas.push(new Referentiel('Code5', 'Libelle code5'));
+    this.datas.push(new Referentiel('Code6', 'Libelle code6'));
   }
 }

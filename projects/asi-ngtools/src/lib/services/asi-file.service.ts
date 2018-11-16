@@ -17,15 +17,31 @@ export class AsiFileService {
     return this.toBase64(file, sanitize);
   }
 
+  fileToBase64Url(file: File, sanitize?: boolean): Observable<string> {
+    return this.toBase64Url(file, sanitize);
+  }
+
+  fileToBase64Data(file: File): Observable<string> {
+    return this.toBase64Data(file);
+  }
+
   blobToBase64(blob: Blob, sanitize?: boolean): Observable<string> {
     return this.toBase64(blob, sanitize);
+  }
+
+  blobToBase64Url(blob: Blob, sanitize?: boolean): Observable<string> {
+    return this.toBase64Url(blob, sanitize);
+  }
+
+  blobToBase64Data(blob: Blob): Observable<string> {
+    return this.toBase64Data(blob);
   }
 
   private toBase64(data: any, sanitize?: boolean): Observable<any> {
     return Observable.create((observer: Subscriber<any>) => {
       const reader = new FileReader();
       reader.onloadend = () => {
-        let content = reader.result;
+        let content: any = reader.result;
         if (sanitize) {
           content = this.sanitizer.bypassSecurityTrustUrl(content);
         }
@@ -33,6 +49,21 @@ export class AsiFileService {
         observer.complete();
       }
       reader.readAsDataURL(data);
+    });
+  }
+
+  private toBase64Url(data: any, sanitize?: boolean): Observable<any> {
+    return this.toBase64(data, sanitize);
+  }
+
+  private toBase64Data(data: any): Observable<any> {
+    return Observable.create((observer: Subscriber<any>) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        observer.next(window.btoa(<string>reader.result));
+        observer.complete();
+      }
+      reader.readAsBinaryString(data);
     });
   }
 
@@ -71,7 +102,7 @@ export class AsiFileService {
     // May be null if the server doesn't explicitly add the content-disposition in the headers
     let originalFileName = response.headers.get('content-disposition');
     if (originalFileName) {
-      originalFileName = originalFileName.substring(originalFileName.lastIndexOf('filename=')  +  9);
+      originalFileName = originalFileName.substring(originalFileName.lastIndexOf('filename=') + 9);
     }
     // The two attributes missing to a Blob to be a File
     blob.name = originalFileName;
@@ -85,7 +116,7 @@ export class AsiFileService {
   }
 
   getFileAsText(fileUrl: string): Observable<string> {
-    return this.http.get(fileUrl, {responseType : 'text'});
+    return this.http.get(fileUrl, { responseType: 'text' });
   }
 
   getFileAsBlob(fileUrl: string): Observable<File> {

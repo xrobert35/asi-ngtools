@@ -13,14 +13,14 @@ export class PresentationAsiDialogComponent {
   }
 
   showDialog() {
-    let asiDialog = this.asiDialogService.fromComponent(DialogComponent, null);
-    asiDialog.onDialogCancel().subscribe(()=>{
-      console.log("Cancel !!");
+    let asiDialog = this.asiDialogService.fromComponent(DialogComponent, { class: 'presentation' });
+    asiDialog.onDialogCancel().subscribe(() => {
+      console.log('Cancel !!');
     });
-    asiDialog.onDialogClose().subscribe((item)=>{
-      console.log("Dialog close !!" + item);
+    asiDialog.onDialogClose().subscribe((item) => {
+      console.log('Dialog close !!' + item);
     });
 
-    asiDialog.getComponent().message = "My Dialog";
+    asiDialog.getComponent().message = 'My Dialog';
   }
 }

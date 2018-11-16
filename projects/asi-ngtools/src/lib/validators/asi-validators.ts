@@ -41,4 +41,18 @@ export class AsiValidators {
     };
     return validator;
   }
+
+  static fileSize(maxSize: number): ValidatorFn {
+    const validator = (control: AbstractControl): ValidationErrors | null => {
+      const rightSize = control.value == null || control.value.size <= maxSize;
+      if (!rightSize) {
+        return {
+          fileSize: { valid: false }
+        };
+      } else {
+        return null;
+      }
+    };
+    return validator;
+  }
 }

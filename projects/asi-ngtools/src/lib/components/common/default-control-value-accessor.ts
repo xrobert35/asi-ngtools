@@ -19,8 +19,8 @@ export class DefaultControlValueAccessor implements ControlValueAccessor {
 
   set value(val: any) {
     this._value = val;
-    this.onChange(val);
     this.onTouched();
+    this.onChange(val);
     this.onValueChange.emit(this.value);
   }
 

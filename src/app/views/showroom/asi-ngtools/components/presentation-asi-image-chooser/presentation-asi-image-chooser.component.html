@@ -14,9 +14,10 @@
       <form [formGroup]="myForm">
         <div class="asiContainer">
           <asi-image-chooser (onImageSelected)="imageSelect($event)" formControlName="myModel"></asi-image-chooser>
-          <error-messages forName="myModel">
-            <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
-          </error-messages>
+          <asi-error-messages forName="myModel">
+            <asi-message error="required" value="VALIDATIONS.required" [onSubmit]="true"></asi-message>
+            <asi-message error="fileSize" value="Filesizezzzzz"></asi-message>
+          </asi-error-messages>
         </div>
         <div fxLayout="row">
           <asi-button type="submit">Submit</asi-button>
