@@ -1,14 +1,14 @@
 <label class="input-label" *ngIf="label != null">{{label | translate}}</label>
 <div class="asi-file-chooser-container">
-    <label ondragover="return false;" [class.loaded]="loaded" (dragenter)="handleDragEnter()" (dragleave)="handleDragLeave()"
-        (drop)="handleDrop($event)">
-        <asi-button size="small" class="asi-focus-error">
-            <asi-fa-icon  (onClick)="openFileInput()" [icon]="icon" size="2x"></asi-fa-icon>
-        </asi-button>
-        <input #fileInput type="file" [disabled]="disabled" name="file" [accept]="acceptAttribute" (change)="handleInputChange($event)"/>
-    </label>
-    <div class="file-link" *ngIf="value != null">
-        <a [innerHTML]="value.name" download [href]="getFileUrl()" target="_empty"></a>
-        <asi-fa-icon (onClick)="clean()" icon="fa fa-trash-o" size="lg"></asi-fa-icon>
-    </div>
+  <label ondragover="return false;" [class.loaded]="loaded" (dragenter)="handleDragEnter()" (dragleave)="handleDragLeave()"
+    (drop)="handleDrop($event)">
+    <asi-button size="small" class="asi-focus-error" (click)="openFileInput()">
+      <asi-fa-icon [icon]="icon" size="2x"></asi-fa-icon>
+    </asi-button>
+    <input #fileInput type="file" [disabled]="disabled" name="file" [accept]="acceptAttribute" (change)="handleInputChange($event)" />
+  </label>
+  <div class="file-link" *ngIf="value != null">
+    <a [innerHTML]="value.name" download [href]="getFileUrl()" target="_empty"></a>
+    <asi-fa-icon (onClick)="clean()" icon="fa fa-trash-o" size="lg"></asi-fa-icon>
+  </div>
 </div>
