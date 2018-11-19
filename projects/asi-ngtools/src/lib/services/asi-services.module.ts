@@ -36,3 +36,22 @@ export class AsiServicesModule {
     };
   }
 }
+
+if (FileReader.prototype.readAsBinaryString === undefined) {
+  FileReader.prototype.readAsBinaryString = function (fileData) {
+    let binary = '';
+    const pt = <any>this;
+    const reader = new FileReader();
+    reader.onload = function (_e) {
+      const bytes = new Uint8Array(<any>reader.result);
+      const length = bytes.byteLength;
+      for (let i = 0; i < length; i++) {
+        binary += String.fromCharCode(bytes[i]);
+      }
+      // pt.result  - readonly so assign content to another property
+      pt.content = binary;
+      pt.onloadend();
+    };
+    reader.readAsArrayBuffer(fileData);
+  };
+}

@@ -42,6 +42,9 @@ export class AsiFileService {
       const reader = new FileReader();
       reader.onloadend = () => {
         let content: any = reader.result;
+        if (!reader.result) {
+          content = <string>reader['content'];
+        }
         if (sanitize) {
           content = this.sanitizer.bypassSecurityTrustUrl(content);
         }
@@ -60,7 +63,11 @@ export class AsiFileService {
     return Observable.create((observer: Subscriber<any>) => {
       const reader = new FileReader();
       reader.onloadend = () => {
-        observer.next(window.btoa(<string>reader.result));
+        if (!reader.result) {
+          observer.next(window.btoa(<string>reader['content']));
+        } else {
+          observer.next(window.btoa(<string>reader.result));
+        }
         observer.complete();
       }
       reader.readAsBinaryString(data);
