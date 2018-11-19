@@ -34,11 +34,15 @@ export class AsiDialogContainer implements AfterContentInit {
     });
 
     setTimeout(() => {
-      if (this.visibleDialog) {
+      if (this.visibleDialog && !dialogRef.instance.getConfig().over) {
         this.visibleDialog.location.nativeElement.style.display = 'none';
       }
       this.visibleDialog = dialogRef;
       this.visibleDialog.location.nativeElement.style.display = 'block';
+      if (dialogRef.instance.getConfig().over) {
+        this.visibleDialog.location.nativeElement.style.position = 'absolute';
+        this.visibleDialog.location.nativeElement.style.zIndex = 1;
+      }
     }, 200);
 
   }

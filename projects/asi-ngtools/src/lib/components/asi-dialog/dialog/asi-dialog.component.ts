@@ -24,7 +24,7 @@ export class AsiDialog<T> {
   }
 
   setConfig(config: AsiDialogConfig) {
-    this._config = config || { class: null };
+    this._config = config || new AsiDialogConfig();
     if (this._config.class) {
       this.class += ' ' + this._config.class;
     }

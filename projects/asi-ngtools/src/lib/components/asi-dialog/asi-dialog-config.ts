@@ -3,4 +3,5 @@
  */
 export class AsiDialogConfig {
   class: string;
+  over = false;
 }
