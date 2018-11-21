@@ -1,13 +1,14 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Referentiel } from './../presentation-asi-select/referentiel';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-autocomplete',
   templateUrl: './presentation-asi-autocomplete.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiAutoCompleteComponent {
+
+  @HostBinding('class') class = 'flex';
 
   datas: Array<any> = [];
   datasForm: Array<any> = [];
@@ -18,9 +19,9 @@ export class PresentationAsiAutoCompleteComponent {
   autoCompleteValue: any;
   autoCompleteMultipleValue: any;
 
-  ref = new Referentiel("Code2", "Libelle");
+  ref = new Referentiel('Code2', 'Libelle');
 
-  //Form declaration
+  // Form declaration
   myForm: FormGroup;
   myFormMultiple: FormGroup;
 

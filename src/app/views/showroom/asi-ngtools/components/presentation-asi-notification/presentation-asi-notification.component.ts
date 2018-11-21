@@ -1,13 +1,14 @@
 import { AsiNotificationService, AsiNotificationPosition, AsiNotificationType } from '@asi-ngtools/lib';
 import { NotificationComponent } from './notification-component/notification.component';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-notification',
   templateUrl: './presentation-asi-notification.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiNotificationComponent {
+
+  @HostBinding('class') class = 'flex';
 
   delay = 4000;
   toastType: AsiNotificationType = AsiNotificationType.SUCCESS;
@@ -23,7 +24,7 @@ export class PresentationAsiNotificationComponent {
       delayInMs: this.delay,
       withIcon : true
     });
-    asiNotificationTR.getComponent().message = "Top Right";
+    asiNotificationTR.getComponent().message = 'Top Right';
   }
 
   showNotif_TopLeft() {
@@ -33,7 +34,7 @@ export class PresentationAsiNotificationComponent {
       delayInMs: this.delay,
       withIcon : true
     });
-    asiNotificationTR.getComponent().message = "Top Left";
+    asiNotificationTR.getComponent().message = 'Top Left';
   }
 
   showNotif_BottomRight() {
@@ -43,7 +44,7 @@ export class PresentationAsiNotificationComponent {
       delayInMs: this.delay,
       withIcon : true
     });
-    asiNotificationTR.getComponent().message = "Bottom Right";
+    asiNotificationTR.getComponent().message = 'Bottom Right';
   }
 
   showNotif_BottomLeft() {
@@ -53,7 +54,7 @@ export class PresentationAsiNotificationComponent {
       delayInMs: this.delay,
       withIcon : true
     });
-    asiNotificationTR.getComponent().message = "Bottom Left";
+    asiNotificationTR.getComponent().message = 'Bottom Left';
   }
 
   showNotif_TopCenter() {
@@ -63,7 +64,7 @@ export class PresentationAsiNotificationComponent {
       delayInMs: this.delay,
       withIcon : true
     });
-    asiNotificationTR.getComponent().message = "TOP Center";
+    asiNotificationTR.getComponent().message = 'TOP Center';
   }
 
   showNotif_BottomCenter() {
@@ -73,7 +74,7 @@ export class PresentationAsiNotificationComponent {
       delayInMs: this.delay,
       withIcon : true
     });
-    asiNotificationTR.getComponent().message = "Bottom Center";
+    asiNotificationTR.getComponent().message = 'Bottom Center';
   }
 
 

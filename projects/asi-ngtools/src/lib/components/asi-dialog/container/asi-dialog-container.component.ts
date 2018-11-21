@@ -40,8 +40,9 @@ export class AsiDialogContainer implements AfterContentInit {
       this.visibleDialog = dialogRef;
       this.visibleDialog.location.nativeElement.style.display = 'block';
       if (dialogRef.instance.getConfig().over) {
+        this.shadow.nativeElement.style.zIndex = 2;
         this.visibleDialog.location.nativeElement.style.position = 'absolute';
-        this.visibleDialog.location.nativeElement.style.zIndex = 1;
+        this.visibleDialog.location.nativeElement.style.zIndex = 3;
       }
     }, 200);
 
@@ -52,6 +53,9 @@ export class AsiDialogContainer implements AfterContentInit {
       return dialog.instance === dialogRef.instance;
     });
 
+    if (dialogRef.instance.getConfig().over) {
+      this.shadow.nativeElement.style.zIndex = 1;
+    }
     dialogRef.destroy();
 
     if (this.dialogs.length === 0) {

@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asidate',
   templateUrl: './presentation-asidate.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiDateComponent {
 
+  @HostBinding('class') class = 'flex';
+
   today = new Date();
 
-  constructor(){
+  constructor() {
 
   }
 

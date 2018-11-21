@@ -1,12 +1,13 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-dmypicker',
   templateUrl: './presentation-asi-dmypicker.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiDmyPickerComponent {
+
+  @HostBinding('class') class = 'flex';
 
   dmy: any;
   myForm: FormGroup;

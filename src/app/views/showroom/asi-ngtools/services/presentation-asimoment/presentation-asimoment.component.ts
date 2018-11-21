@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { AsiMomentService } from '@asi-ngtools/lib';
 
 @Component({
   selector: 'presentation-asimoment',
   templateUrl: './presentation-asimoment.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiMomentComponent {
+
+  @HostBinding('class') class = 'page';
 
   dateStr: string;
   pattern = 'DD/MM/YYYY';

@@ -2,6 +2,6 @@
  * Class de configuration
  */
 export class AsiDialogConfig {
-  class: string;
-  over = false;
+  class?: string;
+  over?: boolean;
 }

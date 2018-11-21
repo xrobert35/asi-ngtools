@@ -1,12 +1,13 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-input-icon',
   templateUrl: './presentation-asi-input-icon.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiInputIconComponent {
+
+  @HostBinding('class') class = 'flex';
 
   myForm: FormGroup;
   inputValue: string;
@@ -20,7 +21,7 @@ export class PresentationAsiInputIconComponent {
   submit() {
   }
 
-  showMenu(){
+  showMenu() {
     console.log('Icon clicked!');
   }
 }

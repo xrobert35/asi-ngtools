@@ -1,13 +1,14 @@
 import { Referentiel } from './../presentation-asi-select/referentiel';
-import { Component, } from '@angular/core';
+import { Component, HostBinding, } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'presentation-asi-radio-group',
   templateUrl: './presentation-asi-radio-group.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiRadioGroupComponent {
+
+  @HostBinding('class') class = 'flex';
 
   myForm: FormGroup;
   model1 = new Referentiel('code1', 'libelle1');

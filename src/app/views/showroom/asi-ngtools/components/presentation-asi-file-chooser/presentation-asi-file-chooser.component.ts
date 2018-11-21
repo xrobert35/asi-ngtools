@@ -1,12 +1,13 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-file-chooser',
-  templateUrl: './presentation-asi-file-chooser.component.html',
-  host: { 'class': 'flex' }
+  templateUrl: './presentation-asi-file-chooser.component.html'
 })
 export class PresentationAsiFileChooserComponent {
+
+  @HostBinding('class') class = 'flex';
 
   myForm: FormGroup;
 

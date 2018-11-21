@@ -1,11 +1,12 @@
-import { Component, ViewChild, ElementRef} from '@angular/core';
+import { Component, ViewChild, ElementRef, HostBinding} from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-dropdown',
   templateUrl: './presentation-asi-dropdown.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiDropdownComponent {
+
+  @HostBinding('class') class = 'flex';
 
   @ViewChild('testAsiDropdown') elementRefTest: ElementRef;
   public calculateWidth = false;

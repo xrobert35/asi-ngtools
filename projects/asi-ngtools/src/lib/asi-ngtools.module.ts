@@ -35,6 +35,7 @@ import { AsiDropdownModule } from './components/asi-dropdown/asi-dropdown.module
 import { AsiValidatorsModule } from './validators/asi-validators.module';
 import { AsiIbanFRInputModule } from './components/asi-ibanfr-input/asi-ibanfr-input.module';
 import { AsiTreeViewModule } from './components/asi-tree-view/asi-tree-view.module';
+import { AsiNavGroupModule } from './components/asi-nav-group/asi-nav-group.module';
 
 @NgModule({
   declarations: [],
@@ -47,6 +48,7 @@ import { AsiTreeViewModule } from './components/asi-tree-view/asi-tree-view.modu
     AsiCheckBoxModule.forRoot(),
     AsiIconCheckBoxModule.forRoot(),
     AsiTabGroupModule.forRoot(),
+    AsiNavGroupModule.forRoot(),
     AsiFileChooserModule.forRoot(),
     AsiImageChooserModule.forRoot(),
     AsiErrorMessagesModule.forRoot(),
@@ -85,6 +87,7 @@ import { AsiTreeViewModule } from './components/asi-tree-view/asi-tree-view.modu
     AsiCheckBoxModule,
     AsiIconCheckBoxModule,
     AsiTabGroupModule,
+    AsiNavGroupModule,
     AsiFileChooserModule,
     AsiImageChooserModule,
     AsiErrorMessagesModule,

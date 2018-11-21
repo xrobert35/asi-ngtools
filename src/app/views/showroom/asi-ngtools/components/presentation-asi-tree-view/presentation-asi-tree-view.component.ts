@@ -1,14 +1,15 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, HostBinding } from '@angular/core';
 import { AsiTreeViewComponent, AsiTreeViewNodeComponent } from '@asi-ngtools/lib';
 
 import * as lodash from 'lodash';
 
 @Component({
   selector: 'presentation-asi-tree-view',
-  templateUrl: './presentation-asi-tree-view.component.html',
-  host: { 'class': 'flex' }
+  templateUrl: './presentation-asi-tree-view.component.html'
 })
 export class PresentationAsiTreeViewComponent {
+
+  @HostBinding('class') class = 'flex';
 
   data = [{
     name: 'Folder1',

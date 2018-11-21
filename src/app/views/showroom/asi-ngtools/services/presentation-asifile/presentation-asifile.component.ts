@@ -1,5 +1,5 @@
 import { AsiFileService, AsiNotificationService, AsiNotificationPosition, AsiNotificationType } from '@asi-ngtools/lib';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { NotificationComponent } from '../../components/presentation-asi-notification/notification-component/notification.component';
 
 const _apiDoc = require('./asifile-api.json');
@@ -7,9 +7,10 @@ const _apiDoc = require('./asifile-api.json');
 @Component({
   selector: 'presentation-asifile',
   templateUrl: './presentation-asifile.component.html',
-  host: { 'class': 'page' }
 })
 export class PresentationAsiFileComponent {
+
+  @HostBinding('class') class = 'page';
 
   public fcts: any[] = [];
   public apiDoc = _apiDoc;

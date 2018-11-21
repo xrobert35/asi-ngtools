@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
-  selector: 'asi-ngtools-quick-start',
-  templateUrl: './quick-start.component.html',
-  host: { 'class': 'page' }
+  selector: 'presentation-asi-ngtools-quick-start',
+  templateUrl: './quick-start.component.html'
 })
 export class QuickStartComponent {
 
-  }
+  @HostBinding('class') class = 'page';
+
+}

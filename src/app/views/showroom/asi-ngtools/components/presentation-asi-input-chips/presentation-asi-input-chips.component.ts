@@ -1,12 +1,13 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-input-chips',
   templateUrl: './presentation-asi-input-chips.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiInputChipsComponent {
+
+  @HostBinding('class') class = 'flex';
 
   myForm: FormGroup;
   inputValue = '';

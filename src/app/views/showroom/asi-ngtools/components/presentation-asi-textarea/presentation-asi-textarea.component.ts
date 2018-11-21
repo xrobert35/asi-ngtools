@@ -1,15 +1,16 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-textarea',
   templateUrl: './presentation-asi-textarea.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiTextAreaComponent {
 
+  @HostBinding('class') class = 'flex';
+
   myForm: FormGroup;
-  textareaValue : string;
+  textareaValue: string;
 
   constructor(fb: FormBuilder) {
     this.myForm = fb.group({

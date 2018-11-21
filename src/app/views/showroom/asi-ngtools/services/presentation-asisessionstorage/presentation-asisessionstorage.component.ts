@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { AsiSessionStorageService } from '@asi-ngtools/lib';
 
 @Component({
   selector: 'presentation-asisessionstorage',
   templateUrl: './presentation-asisessionstorage.component.html',
-  host: { 'class': 'page' }
 })
 export class PresentationAsiSessionStorageComponent {
+
+  @HostBinding('class') class = 'flex';
 
   constructor(public sessionStorage: AsiSessionStorageService) {
   }

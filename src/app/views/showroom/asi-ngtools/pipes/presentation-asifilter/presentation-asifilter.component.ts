@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { Referentiel } from './../../components/presentation-asi-select/referentiel';
 
 
 @Component({
   selector: 'presentation-asifilter',
   templateUrl: './presentation-asifilter.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiFilterComponent {
+
+  @HostBinding('class') class = 'flex';
 
   ref1 = new Referentiel('1', 'Libelle');
   ref2 = new Referentiel('2', 'Libelle');

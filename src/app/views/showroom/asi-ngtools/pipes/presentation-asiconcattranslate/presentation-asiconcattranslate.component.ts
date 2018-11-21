@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asiconcattranslate',
   templateUrl: './presentation-asiconcattranslate.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiConcatTranslateComponent {
+
+  @HostBinding('class') class = 'flex';
 }

@@ -1,13 +1,14 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { AsiValidators } from '@asi-ngtools/lib';
 
 @Component({
   selector: 'presentation-asi-datepicker',
   templateUrl: './presentation-asi-datepicker.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiDatepickerComponent {
+
+  @HostBinding('class') class = 'flex';
 
   date: Date;
   myForm: FormGroup;
@@ -26,8 +27,6 @@ export class PresentationAsiDatepickerComponent {
   }
 
   submit() {
-    if (this.myForm.valid) {
-      this.myForm.controls.from.validator;
-    }
+    if (this.myForm.valid) {}
   }
 }

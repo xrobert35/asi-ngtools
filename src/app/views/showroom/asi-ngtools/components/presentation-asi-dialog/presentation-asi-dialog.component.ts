@@ -1,13 +1,14 @@
 import { DialogComponent } from './dialog-component/dialog.component';
 import { AsiDialogService } from '@asi-ngtools/lib';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-dialog',
   templateUrl: './presentation-asi-dialog.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiDialogComponent {
+
+  @HostBinding('class') class = 'flex';
 
   constructor(private asiDialogService: AsiDialogService) {
   }
@@ -22,5 +23,19 @@ export class PresentationAsiDialogComponent {
     });
 
     asiDialog.getComponent().message = 'My Dialog';
+
+
+    setTimeout(() => {
+      let asiDialog2 = this.asiDialogService.fromComponent(DialogComponent, { class: 'presentation', over: true });
+      asiDialog2.onDialogCancel().subscribe(() => {
+        console.log('Cancel !!');
+      });
+      asiDialog2.onDialogClose().subscribe((item) => {
+        console.log('Dialog close !!' + item);
+      });
+
+      asiDialog2.getComponent().message = 'My Dialog 2 ';
+    }, 5000);
+
   }
 }

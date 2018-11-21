@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-intarray',
   templateUrl: './presentation-asi-intArray.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiIntArrayComponent {
 
-  myNumber: number = 10;
+  @HostBinding('class') class = 'flex';
+
+  myNumber = 10;
 
   constructor() {
   }

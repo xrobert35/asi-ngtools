@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asiconcat',
   templateUrl: './presentation-asiconcat.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiConcatComponent {
+
+  @HostBinding('class') class = 'flex';
 
   public list: Array<string> = new Array<string>();
   public listObj: Array<{id: number, value: string}> = new Array<{id: number, value: string}>();

@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-tab',
   templateUrl: './presentation-asi-tab-group.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiTabGroupComponent {
+
+  @HostBinding('class') class = 'flex';
 
 }
 

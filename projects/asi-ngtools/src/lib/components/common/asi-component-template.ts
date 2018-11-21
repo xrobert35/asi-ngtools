@@ -59,6 +59,14 @@ export class AsiComponentTemplateTabHeaderDef {
 }
 
 @Directive({
+  selector: '[asiNavHeaderDef]',
+})
+export class AsiComponentTemplateNavHeaderDef {
+  constructor(public template: TemplateRef<any>) {
+  }
+}
+
+@Directive({
   selector: '[asiCollapseHeaderDef]',
 })
 export class AsiComponentTemplateCollapseHeaderDef {

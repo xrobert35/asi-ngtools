@@ -1,16 +1,17 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-icon-checkbox',
   templateUrl: './presentation-asi-icon-checkbox.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiIconCheckboxComponent {
 
-  check : boolean;
+  @HostBinding('class') class = 'flex';
 
-  //Form declaration
+  check: boolean;
+
+  // Form declaration
   myForm: FormGroup;
 
   constructor(fb: FormBuilder) {

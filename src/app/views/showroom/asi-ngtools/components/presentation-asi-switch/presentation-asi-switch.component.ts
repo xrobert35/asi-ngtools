@@ -1,17 +1,18 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-switch',
   templateUrl: './presentation-asi-switch.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiSwitchComponent {
+
+  @HostBinding('class') class = 'flex';
 
   value: boolean;
   check: boolean;
 
-  //Form declaration
+  // Form declaration
   myForm: FormGroup;
 
   constructor(fb: FormBuilder) {

@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
-  selector: 'style-override',
+  selector: 'presentation-style-override',
   templateUrl: './style-override.component.html',
-  host: { 'class': 'page' }
 })
 export class StyleOverrideComponent {
+
+  @HostBinding('class') class = 'page';
 
 }

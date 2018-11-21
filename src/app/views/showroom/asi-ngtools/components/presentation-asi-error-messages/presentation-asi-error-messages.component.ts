@@ -1,12 +1,13 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-error-messages',
   templateUrl: './presentation-asi-error-messages.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiErrorMessagesComponent {
+
+  @HostBinding('class') class = 'flex';
 
   myForm: FormGroup;
 
@@ -18,6 +19,6 @@ export class PresentationAsiErrorMessagesComponent {
     });
   }
 
-  submit(){
+  submit() {
   }
 }

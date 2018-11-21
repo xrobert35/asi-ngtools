@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import * as lodash from 'lodash';
 
 @Component({
-  selector: 'full-form',
+  selector: 'presentation-full-form',
   templateUrl: './full-form.component.html',
-  host: { 'class': 'flex' }
 })
 export class FullFormComponent {
+
+  @HostBinding('class') class = 'flex';
 
   exempleForm: FormGroup;
 

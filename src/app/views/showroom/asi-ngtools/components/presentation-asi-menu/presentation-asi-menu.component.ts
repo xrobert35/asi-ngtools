@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-menu',
   templateUrl: './presentation-asi-menu.component.html',
-  host: { 'class': 'flex' }
 })
 export class PresentationAsiMenuComponent {
+
+  @HostBinding('class') class = 'flex';
 
   constructor() {
   }

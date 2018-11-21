@@ -58,6 +58,8 @@ import { FragmentPolyfillModule } from '@common/utils/FragmentPolyfill.module';
 import { FullFormComponent } from './full-form/full-form.component';
 import { StyleOverrideComponent } from './style-override/style-override.component';
 import { PresentationAsiInputNumberComponent } from './components/presentation-asi-input-number/presentation-asi-input-number.component';
+import { PresentationAsiNavGroupComponent } from './components/presentation-asi-nav-group/presentation-asi-nav-group.component';
+import { PresentationAsiNavViewComponent } from './components/presentation-asi-nav-group/nav/presentation-asi-nav-view.component';
 
 const asiNgToolsRoutes: Routes = [{
   path: '',
@@ -85,6 +87,14 @@ const asiNgToolsRoutes: Routes = [{
         { path: 'asi-switch', component: PresentationAsiSwitchComponent },
         { path: 'asi-checkbox', component: PresentationAsiCheckboxComponent },
         { path: 'asi-tab-group', component: PresentationAsiTabGroupComponent },
+        {
+          path: 'asi-nav-group', component: PresentationAsiNavGroupComponent, children: [
+            { path: 'asi-nav-1', component: PresentationAsiNavViewComponent, data: { nav: '1' } },
+            { path: 'asi-nav-2', component: PresentationAsiNavViewComponent, data: { nav: '2' } },
+            { path: 'asi-nav-3', component: PresentationAsiNavViewComponent, data: { nav: '3' } },
+            { path: '', redirectTo: 'asi-nav-3', pathMatch: 'full' },
+          ]
+        },
         { path: 'asi-radio-group', component: PresentationAsiRadioGroupComponent },
         { path: 'asi-error-messages', component: PresentationAsiErrorMessagesComponent },
         { path: 'asi-code-viewer', component: PresentationAsiCodeViewerComponent },
@@ -184,6 +194,8 @@ export const asiNgToolsPresentationRouting: ModuleWithProviders = RouterModule.f
     PresentationAsiFileChooserComponent,
     PresentationAsiRadioGroupComponent,
     PresentationAsiTabGroupComponent,
+    PresentationAsiNavGroupComponent,
+    PresentationAsiNavViewComponent,
     PresentationAsiDatepickerComponent,
     PresentationAsiButtonComponent,
     PresentationAsiErrorMessagesComponent,

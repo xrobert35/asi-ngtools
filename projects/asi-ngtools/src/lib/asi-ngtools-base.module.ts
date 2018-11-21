@@ -9,7 +9,7 @@ import {
   AsiComponentTemplateCellDef, AsiComponentTemplateSelectedDef, AsiComponentTemplateColumnDef,
   AsiComponentTemplateTabHeaderDef, AsiComponentTemplateTableHeaderDef,
   AsiComponentTemplateTreeNodeDef, AsiComponentTemplateTreeLeafDef,
-  AsiComponentTemplate, AsiComponentTemplateCollapseHeaderDef
+  AsiComponentTemplate, AsiComponentTemplateCollapseHeaderDef, AsiComponentTemplateNavHeaderDef
 } from './components/common/asi-component-template';
 
 export * from './components/common/default-control-value-accessor';
@@ -27,6 +27,7 @@ export * from './components/common/asi-component-template';
     AsiComponentTemplateTagDef,
     AsiComponentTemplateTreeNodeDef,
     AsiComponentTemplateTreeLeafDef,
+    AsiComponentTemplateNavHeaderDef,
     AsiComponentTemplateCollapseHeaderDef,
     AsiComponentTemplate],
   imports: [TranslateModule,
