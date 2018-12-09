@@ -1,6 +1,6 @@
 import {
   Component, Input, forwardRef, OnInit, ElementRef, ContentChild,
-  ViewChild, OnChanges, HostBinding, Renderer2
+  ViewChild, OnChanges, Renderer2
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { DefaultControlValueAccessor } from './../../common/default-control-value-accessor';
@@ -13,6 +13,7 @@ import * as nh from '../../../native-helper'
 @Component({
   selector: 'asi-autocomplete-multiple',
   templateUrl: 'asi-autocomplete-multiple.component.html',
+  host: { 'class': 'asi-component asi-autocomplete-multiple' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -22,8 +23,6 @@ import * as nh from '../../../native-helper'
   ]
 })
 export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccessor implements OnInit, OnChanges {
-
-  @HostBinding('class') class = 'asi-component asi-autocomplete-multiple';
 
   /** Label to display */
   @Input() label: string;

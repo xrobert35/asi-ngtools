@@ -1,6 +1,6 @@
 import { Month } from './asi-dmypicker-constants';
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
-import { Component, forwardRef, Input, Inject, PLATFORM_ID, Injector, HostBinding, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, Inject, PLATFORM_ID, Injector, OnInit, Renderer2, ElementRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import * as dmyConstants from './asi-dmypicker-constants';
@@ -10,6 +10,7 @@ import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'asi-dmypicker',
+  host: { 'class': 'asi-component asi-dmypicker' },
   templateUrl: './asi-dmypicker.component.html',
   providers: [
     {
@@ -20,8 +21,6 @@ import { isPlatformBrowser } from '@angular/common';
   ]
 })
 export class AsiDmyPickerComponent extends DefaultControlValueAccessor implements OnInit {
-
-  @HostBinding('class') class = 'asi-component asi-dmypicker';
 
   @Input() label: string;
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
@@ -42,12 +41,13 @@ export class AsiDmyPickerComponent extends DefaultControlValueAccessor implement
 
   language: any;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: any, private injector: Injector) {
+  constructor(@Inject(PLATFORM_ID) private platformId: any, private injector: Injector,
+    private renderer: Renderer2, private elementRef: ElementRef) {
     super();
   }
 
   ngOnInit() {
-    this.class += ' label-' + this.labelPosition;
+    this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
     if (this.isFr()) {
       this.months = dmyConstants.months_fr;
       this.dayLabel = 'Jour';

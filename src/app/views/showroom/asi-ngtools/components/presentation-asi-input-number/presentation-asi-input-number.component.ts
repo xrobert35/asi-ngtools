@@ -10,11 +10,11 @@ export class PresentationAsiInputNumberComponent {
   @HostBinding('class') class = 'flex';
 
   myForm: FormGroup;
-  inputValue: number;
+  inputValue = 0;
 
   constructor(fb: FormBuilder) {
     this.myForm = fb.group({
-      myModel: [null, Validators.required]
+      myModel: [0, Validators.required]
     });
   }
 

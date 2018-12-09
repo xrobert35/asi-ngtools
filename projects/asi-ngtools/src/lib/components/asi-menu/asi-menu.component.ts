@@ -1,17 +1,16 @@
 import { AsiMenuItem } from './asi-menu-item.component';
 import {
   Component, Input, ContentChild, TemplateRef, QueryList,
-  AfterContentInit, ContentChildren, HostBinding
+  AfterContentInit, ContentChildren
 } from '@angular/core';
 
 
 @Component({
   selector: 'asi-menu',
+  host: { 'class': 'asi-component asi-menu' },
   templateUrl: './asi-menu.component.html'
 })
 export class AsiMenu implements AfterContentInit {
-
-  @HostBinding('class') class = 'asi-component asi-menu';
 
   @Input() disabled = false;
   @Input() burger = false;
@@ -23,7 +22,7 @@ export class AsiMenu implements AfterContentInit {
 
   burgerOpen: Boolean;
 
-  constructor() {}
+  constructor() { }
 
   toggleBurger() {
     this.burgerOpen = !this.burgerOpen;
@@ -34,7 +33,7 @@ export class AsiMenu implements AfterContentInit {
     this.queryItems.forEach((item) => {
       this.items.push(item);
     });
-    this.queryItems.changes.subscribe ( (items) => {
+    this.queryItems.changes.subscribe((items) => {
       this.items = items;
     });
     this.burgerOpen = !this.burger;

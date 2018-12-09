@@ -1,35 +1,35 @@
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
-import { AsiRadioComponent } from './asi-radio/asi-radio.component';
+import { AsiRadioButtonComponent } from './asi-radio-button/asi-radio-button.component';
 import {
   Input, Component, TemplateRef, ViewChild, ContentChildren, QueryList,
-  forwardRef, OnInit, AfterContentInit, Renderer2, ElementRef
+  forwardRef, OnInit, AfterContentInit, ElementRef, Renderer2
 } from '@angular/core';
 
 @Component({
-  selector: 'asi-radio-group',
-  templateUrl: 'asi-radio-group.component.html',
-  host: { 'class': 'asi-component asi-radio-group' },
+  selector: 'asi-radio-button-group',
+  templateUrl: 'asi-radio-button-group.component.html',
+  host: { 'class': 'asi-component asi-radio-button-group' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => AsiRadioGroupComponent),
+      useExisting: forwardRef(() => AsiRadioButtonGroupComponent),
       multi: true
     }
   ]
 })
-export class AsiRadioGroupComponent extends DefaultControlValueAccessor implements OnInit, AfterContentInit {
+export class AsiRadioButtonGroupComponent extends DefaultControlValueAccessor implements OnInit, AfterContentInit {
 
   @Input() label: string;
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
   @Input() vertical = false;
   @Input() trackBy: string = null;
 
-  @ContentChildren(AsiRadioComponent) queryRadios: QueryList<AsiRadioComponent>;
+  @ContentChildren(AsiRadioButtonComponent) queryRadios: QueryList<AsiRadioButtonComponent>;
 
   @ViewChild(TemplateRef) contentTemplate: TemplateRef<any>;
 
-  radios = new Array<AsiRadioComponent>();
+  radios = new Array<AsiRadioButtonComponent>();
 
   constructor(private renderer: Renderer2,
     private elementRef: ElementRef) {

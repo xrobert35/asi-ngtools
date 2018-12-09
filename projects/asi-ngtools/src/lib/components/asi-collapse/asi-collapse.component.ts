@@ -1,9 +1,10 @@
-import { Component, Input, ContentChild, Output, EventEmitter, HostBinding } from '@angular/core';
+import { Component, Input, ContentChild, Output, EventEmitter } from '@angular/core';
 import {  trigger,  style,  animate,  transition } from '@angular/animations';
 import { AsiComponentTemplateCollapseHeaderDef } from '../common/asi-component-template';
 
 @Component({
   selector: 'asi-collapse',
+  host: { 'class': 'asi-component asi-collapse' },
   templateUrl: './asi-collapse.component.html',
   animations: [
     trigger('reveal', [
@@ -18,8 +19,6 @@ import { AsiComponentTemplateCollapseHeaderDef } from '../common/asi-component-t
   ]
 })
 export class AsiCollapseComponent  {
-
-  @HostBinding('class') class = 'asi-component asi-collapse';
 
   @Input() label: string;
   @Input() collapsed = true;

@@ -9,8 +9,7 @@ asi-link-button, .asi-link-button {
     .clean-button;
     font-size: 0.9em;
     min-height: 35px;
-    border: @asi-button-border;
-    background-color: @asi-button-background-color;
+
     color: @asi-button-label-color;
     border-radius: @asi-button-border-radius;
     padding: 5px 15px 5px 15px;
@@ -19,6 +18,10 @@ asi-link-button, .asi-link-button {
     min-width: 150px;
     text-align: center;
     outline: none;
+    &:not([disabled]) {
+      border: @asi-button-border;
+      background-color: @asi-button-background-color;
+    }
     &:disabled{
       background-color : lightgrey;
       border-color: lightgrey;

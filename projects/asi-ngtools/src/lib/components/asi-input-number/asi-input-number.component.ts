@@ -1,10 +1,12 @@
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
-import { Component, forwardRef, Input, ElementRef, OnInit, ViewChild, HostBinding } from '@angular/core';
+import { Component, forwardRef, Input, ElementRef, OnInit, ViewChild, Renderer2 } from '@angular/core';
+import { debounceTime } from 'rxjs/operators';
 
 
 @Component({
   selector: 'asi-input-number',
+  host: { 'class': 'asi-component asi-input-number' },
   templateUrl: 'asi-input-number.component.html',
   providers: [
     {
@@ -15,8 +17,6 @@ import { Component, forwardRef, Input, ElementRef, OnInit, ViewChild, HostBindin
   ]
 })
 export class AsiInputNumberComponent extends DefaultControlValueAccessor implements OnInit {
-
-  @HostBinding('class') class = 'asi-component asi-input-number';
 
   @Input() id: string;
   @Input() name: string;
@@ -31,19 +31,22 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
   @Input() min: number;
   @Input() max: number;
 
+  @Input() delay = 0;
+
   @ViewChild('input') inputElm: ElementRef;
 
   inputControl = new FormControl();
   pattern = new RegExp('^-*[0-9]*$');
 
-  constructor() {
+  constructor(private renderer: Renderer2,
+    private elementRef: ElementRef) {
     super();
   }
 
   ngOnInit() {
-    this.class += ' label-' + this.labelPosition;
+    this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
 
-    this.inputControl.valueChanges.subscribe((value) => {
+    this.inputControl.valueChanges.pipe(debounceTime(this.delay)).subscribe((value) => {
       if (value === '') {
         value = null;
       }
@@ -81,6 +84,7 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
     if (value != null) {
       if (this.pattern.test(value)) {
         this.inputControl.setValue(value, { emitEvent: false });
+        this.value = value;
       } else {
         this.inputElm.nativeElement.value = 'NaN';
       }

@@ -1,5 +1,5 @@
 import {
-  Component, Input, forwardRef, ContentChild, ViewChild, OnInit, HostBinding, OnChanges
+  Component, Input, forwardRef, ContentChild, ViewChild, OnInit, OnChanges, Renderer2, ElementRef
 } from '@angular/core';
 
 import { DefaultControlValueAccessor } from './../../common/default-control-value-accessor';
@@ -15,6 +15,7 @@ import { debounceTime } from 'rxjs/operators';
 @Component({
   selector: 'asi-autocomplete',
   templateUrl: 'asi-autocomplete.component.html',
+  host: { 'class': 'asi-component asi-autocomplete' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -24,8 +25,6 @@ import { debounceTime } from 'rxjs/operators';
   ]
 })
 export class AsiAutoCompleteComponent extends DefaultControlValueAccessor implements OnInit, OnChanges {
-
-  @HostBinding('class') class = 'asi-component asi-autocomplete';
 
   /** Label to display */
   @Input() label: string;
@@ -57,12 +56,12 @@ export class AsiAutoCompleteComponent extends DefaultControlValueAccessor implem
 
   private currentValue: any = null;
 
-  constructor() {
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) {
     super();
   }
 
-  ngOnInit(): void {
-    this.class += ' label-' + this.labelPosition;
+  ngOnInit() {
+    this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
 
     this.autoCompleteControl.valueChanges.pipe(debounceTime(this.delay))
       .subscribe(value => {

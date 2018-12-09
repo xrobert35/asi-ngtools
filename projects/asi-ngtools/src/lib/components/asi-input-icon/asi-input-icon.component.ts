@@ -3,13 +3,14 @@ import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import {
   Component, forwardRef, Input, Output, OnInit, EventEmitter,
-  ElementRef, ViewChild, AfterViewInit, HostBinding
+  ElementRef, ViewChild, AfterViewInit, Renderer2
 } from '@angular/core';
 
 import * as nh from '../../native-helper';
 
 @Component({
   selector: 'asi-input-icon',
+  host: { 'class': 'asi-component asi-input-icon' },
   templateUrl: 'asi-input-icon.component.html',
   providers: [
     {
@@ -20,8 +21,6 @@ import * as nh from '../../native-helper';
   ]
 })
 export class AsiInputIconComponent extends DefaultControlValueAccessor implements OnInit, AfterViewInit {
-
-  @HostBinding('class') class = 'asi-component asi-input-icon';
 
   @Input() id: string;
   @Input() name: string;
@@ -50,12 +49,13 @@ export class AsiInputIconComponent extends DefaultControlValueAccessor implement
 
   @ViewChild('asiInputIcon') inputElm: ElementRef;
 
-  constructor() {
+  constructor(private renderer: Renderer2,
+    private elementRef: ElementRef) {
     super();
   }
 
   ngOnInit() {
-    this.class += ' label-' + this.labelPosition;
+    this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
     if (this.number === true) {
       this.pattern = new RegExp('^-*[0-9,\.]*$');
     }

@@ -1,4 +1,4 @@
-import { Component, ContentChild, Input, ViewChildren, QueryList, Output, EventEmitter, HostBinding } from '@angular/core';
+import { Component, ContentChild, Input, ViewChildren, QueryList, Output, EventEmitter } from '@angular/core';
 import { AsiComponentTemplateTreeNodeDef, AsiComponentTemplateTreeLeafDef } from './../common/asi-component-template';
 import { AsiTreeViewNodeComponent } from './node/asi-tree-view-node.component';
 import * as nh from '../../native-helper';
@@ -6,11 +6,10 @@ import { AsiTreeViewService } from './asi-tree-view.service';
 
 @Component({
   selector: 'asi-tree-view',
+  host: { 'class': 'asi-component asi-tree-view' },
   templateUrl: 'asi-tree-view.component.html',
 })
 export class AsiTreeViewComponent {
-
-  @HostBinding('class') class = 'asi-component asi-tree-view';
 
   private baseData: Array<any> = [];
   filteredData: Array<any> = [];

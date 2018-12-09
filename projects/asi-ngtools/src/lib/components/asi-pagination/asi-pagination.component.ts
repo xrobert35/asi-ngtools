@@ -1,21 +1,19 @@
-import { Component, Input, EventEmitter, Output, HostBinding } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import * as nh from '../../native-helper';
 
 @Component({
   selector: 'asi-pagination',
+  host: { 'class': 'asi-component asi-pagination' },
   templateUrl: 'asi-pagination.component.html',
 })
 export class AsiPaginationComponent {
 
   private static TRI_POINT = '...';
 
-  @HostBinding('class') class = 'asi-component asi-pagination';
-
   @Input() nbElements = 0;
   @Input() nbVisibleElements = 0;
   @Input() selectedPagination = 1;
   @Output() onPaginationChanged = new EventEmitter<number>();
-
 
   onFirstPage() {
     return this.selectedPagination === 1;

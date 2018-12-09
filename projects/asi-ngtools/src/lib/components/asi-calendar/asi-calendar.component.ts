@@ -1,6 +1,6 @@
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Component, forwardRef, Input, Output, EventEmitter, ElementRef, Inject, PLATFORM_ID, HostBinding, OnChanges } from '@angular/core';
+import { Component, forwardRef, Input, Output, EventEmitter, ElementRef, Inject, PLATFORM_ID, OnChanges } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 import * as calendarConst from './asi-calendar-constants';
@@ -10,6 +10,7 @@ import moment from 'moment';
 @Component({
   selector: 'asi-calendar',
   templateUrl: 'asi-calendar.component.html',
+  host: { 'class': 'asi-component asi-calendar' },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -19,8 +20,6 @@ import moment from 'moment';
   ]
 })
 export class AsiCalendarComponent extends DefaultControlValueAccessor implements OnChanges {
-
-  @HostBinding('class') class = 'asi-component asi-calendar';
 
   @Input() relativeTo: ElementRef;
 

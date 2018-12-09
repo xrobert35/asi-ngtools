@@ -1,10 +1,11 @@
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Component, forwardRef, Input, ElementRef, ViewChild, OnInit, HostBinding } from '@angular/core';
+import { Component, forwardRef, Input, ElementRef, ViewChild, OnInit, Renderer2 } from '@angular/core';
 import * as nh from '../../native-helper';
 
 @Component({
   selector: 'asi-input-chips',
+  host: { 'class': 'asi-component asi-input-chips' },
   templateUrl: 'asi-input-chips.component.html',
   providers: [
     {
@@ -16,7 +17,6 @@ import * as nh from '../../native-helper';
 })
 export class AsiInputChipsComponent extends DefaultControlValueAccessor implements OnInit {
 
-  @HostBinding('class') class = 'asi-component asi-input-chips';
   @ViewChild('asiInputChips') inputElm: ElementRef;
 
   @Input() id: string;
@@ -37,7 +37,7 @@ export class AsiInputChipsComponent extends DefaultControlValueAccessor implemen
   @Input() chips: Array<string>;
 
   private _inputValue: any;
-  private onChangeCallback: (_: any) => void = () => {};
+  private onChangeCallback: (_: any) => void = () => { };
 
   get value(): any {
     return this._inputValue;
@@ -45,17 +45,18 @@ export class AsiInputChipsComponent extends DefaultControlValueAccessor implemen
 
   set value(v: any) {
     if (v !== this._inputValue) {
-        this._inputValue = v;
-        this.onChangeCallback(v);
+      this._inputValue = v;
+      this.onChangeCallback(v);
     }
   }
 
-  constructor() {
+  constructor(private renderer: Renderer2,
+    private elementRef: ElementRef) {
     super();
   }
 
   ngOnInit() {
-    this.class += ' label-' + this.labelPosition;
+    this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
     if (!nh.isArray(this.chips)) {
       this.chips = new Array<string>();
     }

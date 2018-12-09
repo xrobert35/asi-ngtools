@@ -1,11 +1,12 @@
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
-import { Component, forwardRef, Input, OnInit, AfterViewInit, ElementRef, ViewChild, HostBinding } from '@angular/core';
+import { Component, forwardRef, Input, OnInit, AfterViewInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 import { debounceTime } from 'rxjs/operators';
 import * as nh from '../../native-helper';
 
 @Component({
   selector: 'asi-input',
+  host: { 'class': 'asi-component asi-input' },
   templateUrl: 'asi-input.component.html',
   providers: [
     {
@@ -16,8 +17,6 @@ import * as nh from '../../native-helper';
   ]
 })
 export class AsiInputComponent extends DefaultControlValueAccessor implements OnInit, AfterViewInit {
-
-  @HostBinding('class') class = 'asi-component asi-input';
 
   @Input() id: string;
   @Input() name: string;
@@ -39,12 +38,13 @@ export class AsiInputComponent extends DefaultControlValueAccessor implements On
 
   @ViewChild('asiInput') inputElm: ElementRef;
 
-  constructor() {
+  constructor(private renderer: Renderer2,
+    private elementRef: ElementRef) {
     super();
   }
 
   ngOnInit() {
-    this.class += ' label-' + this.labelPosition;
+    this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
     if (this.number) {
       this.pattern = new RegExp('^-*[0-9,\.]*$');
     }

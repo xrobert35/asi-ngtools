@@ -60,6 +60,8 @@ import { StyleOverrideComponent } from './style-override/style-override.componen
 import { PresentationAsiInputNumberComponent } from './components/presentation-asi-input-number/presentation-asi-input-number.component';
 import { PresentationAsiNavGroupComponent } from './components/presentation-asi-nav-group/presentation-asi-nav-group.component';
 import { PresentationAsiNavViewComponent } from './components/presentation-asi-nav-group/nav/presentation-asi-nav-view.component';
+// tslint:disable-next-line:max-line-length
+import { PresentationAsiRadioButtonGroupComponent } from './components/presentation-asi-radio-button-group/presentation-asi-radio-button-group.component';
 
 const asiNgToolsRoutes: Routes = [{
   path: '',
@@ -96,6 +98,7 @@ const asiNgToolsRoutes: Routes = [{
           ]
         },
         { path: 'asi-radio-group', component: PresentationAsiRadioGroupComponent },
+        { path: 'asi-radio-button-group', component: PresentationAsiRadioButtonGroupComponent },
         { path: 'asi-error-messages', component: PresentationAsiErrorMessagesComponent },
         { path: 'asi-code-viewer', component: PresentationAsiCodeViewerComponent },
         { path: 'asi-bind-html', component: PresentationAsiBindHtmlComponent },
@@ -193,6 +196,7 @@ export const asiNgToolsPresentationRouting: ModuleWithProviders = RouterModule.f
     PresentationAsiCodeViewerComponent,
     PresentationAsiFileChooserComponent,
     PresentationAsiRadioGroupComponent,
+    PresentationAsiRadioButtonGroupComponent,
     PresentationAsiTabGroupComponent,
     PresentationAsiNavGroupComponent,
     PresentationAsiNavViewComponent,

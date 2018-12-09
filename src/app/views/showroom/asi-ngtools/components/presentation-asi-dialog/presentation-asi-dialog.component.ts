@@ -23,19 +23,5 @@ export class PresentationAsiDialogComponent {
     });
 
     asiDialog.getComponent().message = 'My Dialog';
-
-
-    setTimeout(() => {
-      let asiDialog2 = this.asiDialogService.fromComponent(DialogComponent, { class: 'presentation', over: true });
-      asiDialog2.onDialogCancel().subscribe(() => {
-        console.log('Cancel !!');
-      });
-      asiDialog2.onDialogClose().subscribe((item) => {
-        console.log('Dialog close !!' + item);
-      });
-
-      asiDialog2.getComponent().message = 'My Dialog 2 ';
-    }, 5000);
-
   }
 }

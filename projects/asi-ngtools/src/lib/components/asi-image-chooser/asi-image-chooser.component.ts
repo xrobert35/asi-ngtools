@@ -3,16 +3,12 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import {
   Component, Input, EventEmitter, AfterViewInit, Output,
-  forwardRef, ViewChild, HostBinding, OnInit
+  forwardRef, ViewChild, OnInit, Renderer2, ElementRef
 } from '@angular/core';
 
-/**
- * Composant permettant la selection d'une image
- * Exemple d'utilisation :
- * <asi-image-chooser (onImageSelected)="imageSelect($event)" formControlName="logo" (onError)="imageError($event)"></asi-image-chooser>
- */
 @Component({
   selector: 'asi-image-chooser',
+  host: { 'class': 'asi-component asi-image-chooser' },
   templateUrl: './asi-image-chooser.component.html',
   providers: [
     {
@@ -23,8 +19,6 @@ import {
   ]
 })
 export class AsiImageChooserComponent extends DefaultControlValueAccessor implements AfterViewInit, OnInit {
-
-  @HostBinding('class') class = 'asi-component asi-image-chooser';
 
   @Input() id: string;
   @Input() name: string;
@@ -49,12 +43,13 @@ export class AsiImageChooserComponent extends DefaultControlValueAccessor implem
 
   init = false;
 
-  constructor(private fileService: AsiFileService) {
+  constructor(private fileService: AsiFileService, private renderer: Renderer2,
+    private elementRef: ElementRef) {
     super();
   }
 
   ngOnInit() {
-    this.class += ' label-' + this.labelPosition;
+    this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
   }
 
   ngAfterViewInit() {

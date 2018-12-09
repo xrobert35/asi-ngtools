@@ -1,11 +1,12 @@
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
-import { Component, forwardRef, Input, ElementRef, ViewChild, HostBinding, OnInit, AfterViewInit } from '@angular/core';
+import { Component, forwardRef, Input, ElementRef, ViewChild, OnInit, AfterViewInit, Renderer2 } from '@angular/core';
 
 import * as nh from '../../native-helper';
 
 @Component({
   selector: 'asi-textarea',
+  host: { 'class': 'asi-component asi-textarea' },
   templateUrl: 'asi-textarea.component.html',
   providers: [
     {
@@ -16,8 +17,6 @@ import * as nh from '../../native-helper';
   ]
 })
 export class AsiTextareaComponent extends DefaultControlValueAccessor implements OnInit, AfterViewInit {
-
-  @HostBinding('class') class = 'asi-component asi-textarea';
 
   @Input() label: string;
   @Input() placeholder = '';
@@ -32,12 +31,13 @@ export class AsiTextareaComponent extends DefaultControlValueAccessor implements
 
   @ViewChild('textarea') textareaElm: ElementRef;
 
-  constructor() {
+  constructor(private renderer: Renderer2,
+    private elementRef: ElementRef) {
     super();
   }
 
-  ngOnInit(): void {
-    this.class += ' label-' + this.labelPosition;
+  ngOnInit() {
+    this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
   }
 
   ngAfterViewInit(): void {

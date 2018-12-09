@@ -36,6 +36,7 @@ import { AsiValidatorsModule } from './validators/asi-validators.module';
 import { AsiIbanFRInputModule } from './components/asi-ibanfr-input/asi-ibanfr-input.module';
 import { AsiTreeViewModule } from './components/asi-tree-view/asi-tree-view.module';
 import { AsiNavGroupModule } from './components/asi-nav-group/asi-nav-group.module';
+import { AsiRadioButtonGroupModule } from './components/asi-radio-button-group/asi-radio-button-group.module';
 
 @NgModule({
   declarations: [],
@@ -44,6 +45,7 @@ import { AsiNavGroupModule } from './components/asi-nav-group/asi-nav-group.modu
     AsiInputNumberModule.forRoot(),
     AsiInputChipsModule.forRoot(),
     AsiRadioGroupModule.forRoot(),
+    AsiRadioButtonGroupModule.forRoot(),
     AsiSelectModule.forRoot(),
     AsiCheckBoxModule.forRoot(),
     AsiIconCheckBoxModule.forRoot(),
@@ -83,6 +85,7 @@ import { AsiNavGroupModule } from './components/asi-nav-group/asi-nav-group.modu
     AsiInputNumberModule,
     AsiInputChipsModule,
     AsiRadioGroupModule,
+    AsiRadioButtonGroupModule,
     AsiSelectModule,
     AsiCheckBoxModule,
     AsiIconCheckBoxModule,

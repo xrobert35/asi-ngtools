@@ -4,19 +4,15 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import {
   Component, Input, EventEmitter, Output, forwardRef, AfterViewInit,
-  OnChanges, ViewChild, HostBinding, OnInit
+  OnChanges, ViewChild, OnInit, ElementRef, Renderer2
 } from '@angular/core';
 import { AsiFileService } from './../../services/asi-file.service';
 
 import * as nh from '../../native-helper';
 
-/**
- * Composant permettant la selection d'un fichier
- * Exemple d'utilisation :
- * <asi-file-chooser (onValueChanged)="fileSelected($event)" formControlName="logo" (onError)="imageError($event)"></asi-file-chooser>
- */
 @Component({
   selector: 'asi-file-chooser',
+  host: { 'class': 'asi-component asi-file-chooser' },
   templateUrl: './asi-file-chooser.component.html',
   providers: [
     {
@@ -27,8 +23,6 @@ import * as nh from '../../native-helper';
   ]
 })
 export class AsiFileChooserComponent extends DefaultControlValueAccessor implements AfterViewInit, OnChanges, OnInit {
-
-  @HostBinding('class') class = 'asi-component asi-file-chooser';
 
   @Input() label: string;
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
@@ -51,12 +45,14 @@ export class AsiFileChooserComponent extends DefaultControlValueAccessor impleme
 
   file: File;
 
-  constructor(private fileService: AsiFileService) {
+  constructor(private fileService: AsiFileService,
+    private renderer: Renderer2,
+    private elementRef: ElementRef) {
     super();
   }
 
   ngOnInit() {
-    this.class += ' label-' + this.labelPosition;
+    this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
   }
 
   ngAfterViewInit() {

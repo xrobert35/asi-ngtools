@@ -1,6 +1,7 @@
 {
     "extends": "../../tslint.json",
     "rules": {
+        "use-host-property-decorator" : false,
         "directive-selector": [
             true,
             "attribute",

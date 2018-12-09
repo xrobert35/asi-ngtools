@@ -1,15 +1,14 @@
 import {
   Component, Input, Output, ViewChild, ElementRef, OnInit, OnChanges,
-  SimpleChanges, Renderer2, EventEmitter, HostBinding
+  SimpleChanges, Renderer2, EventEmitter
 } from '@angular/core';
 
 @Component({
   selector: 'asi-fa-icon',
+  host: { 'class': 'asi-component asi-fa-icon' },
   templateUrl: './asi-fa-icon.component.html'
 })
 export class AsiFaIconComponent implements OnInit, OnChanges {
-
-  @HostBinding('class') class = 'asi-component asi-fa-icon';
 
   @Input() icon: string;
   @Input() label: string;
@@ -26,10 +25,11 @@ export class AsiFaIconComponent implements OnInit, OnChanges {
   @ViewChild('tooltipView') tooltipElement: ElementRef;
   @ViewChild('icon') iconElement: ElementRef;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) {
+  }
 
   ngOnInit() {
-    this.class += ' label-' + this.labelPosition;
+    this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
     this.renderer.addClass(this.tooltipElement.nativeElement, 'tooltip-' + this.tooltipPosition);
 
     if (this.icon != null) {

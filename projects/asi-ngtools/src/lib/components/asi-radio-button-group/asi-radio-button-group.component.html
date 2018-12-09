@@ -1,0 +1,9 @@
+<label class="input-label" *ngIf="label != null">{{label | translate}}</label>
+<div class="asi-radio-button-container">
+  <asi-radio-button-element *ngFor="let radio of getRadios()"
+  [radio]="radio"
+  [disabled]="disabled"
+  [value]="radio.active"
+  (onValueChange)="onRadioChecked($event)">
+  </asi-radio-button-element>
+</div>

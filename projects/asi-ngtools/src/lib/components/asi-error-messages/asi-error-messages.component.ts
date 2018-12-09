@@ -3,27 +3,15 @@ import { Injector } from '@angular/core';
 import { AsiMessage } from './asi-message.directive';
 import {
   Component, Input, ElementRef, OnInit, ContentChildren,
-  AfterContentInit, QueryList, Inject, forwardRef, HostBinding
+  AfterContentInit, QueryList, Inject, forwardRef,
 } from '@angular/core';
 
-/**
- * Composant de gestion des messages d'erreur sur un champ de formulaire
- * for : valeur du champ de validation a ecouter : exemple (loginForm.get('password').errors)
- *
- * Exemple d'utilisation :
- *
- *  <error-messages [for]="loginForm.get('password')">
- *        <message error="required" value="VALIDATIONS.required"></message>
- *        <message error="minlength" value="VALIDATIONS.minLength" [onSubmit]="true"></message>
- *  </error-messages>
- */
 @Component({
   selector: 'error-messages , asi-error-messages',
+  host: { 'class': 'asi-component asi-error-messages' },
   templateUrl: 'asi-error-messages.component.html'
 })
 export class AsiErrorMessages implements OnInit, AfterContentInit {
-
-  @HostBinding('class') class = 'asi-component asi-error-messages';
 
   @Input() for: FormControl;
   @Input() forName: string;
@@ -34,7 +22,6 @@ export class AsiErrorMessages implements OnInit, AfterContentInit {
   errorMessages: Array<AsiMessage> = [];
   submitted = false;
 
-  // @Inject(forwardRef(() => FormGroupName)) private formGroupNameDirective: FormGroupName
   constructor(private element: ElementRef,
     @Inject(forwardRef(() => FormGroupDirective)) private formGroupDirective: FormGroupDirective,
     private injector: Injector) {

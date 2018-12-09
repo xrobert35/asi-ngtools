@@ -3,16 +3,15 @@ import { AsiTableSelectionModel } from './asi-table-config';
 import { AsiTableRequest } from './asi-table-request';
 import { AsiTableData } from './asi-table-data';
 import { AsiTableColumn } from './asi-table-column.directive';
-import { Component, QueryList, ContentChildren, AfterContentInit, Input, ViewChild, ElementRef, HostBinding } from '@angular/core';
+import { Component, QueryList, ContentChildren, AfterContentInit, Input, ViewChild, ElementRef } from '@angular/core';
 import * as nh from '../../native-helper';
 
 @Component({
   selector: 'asi-table',
+  host: { 'class': 'asi-component asi-table' },
   templateUrl: 'asi-table.component.html'
 })
 export class AsiTable<T> implements AfterContentInit {
-
-  @HostBinding('class') class = 'asi-component asi-table';
 
   @ContentChildren(AsiTableColumn) queryColumns: QueryList<AsiTableColumn>;
 

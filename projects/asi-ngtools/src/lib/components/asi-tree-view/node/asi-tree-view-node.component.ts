@@ -9,11 +9,11 @@ import * as nh from '../../../native-helper';
 
 @Component({
   selector: 'asi-tree-view-node',
+  host: { 'class': 'asi-component asi-tree-view-node' },
   templateUrl: 'asi-tree-view-node.component.html'
 })
 export class AsiTreeViewNodeComponent implements OnInit {
 
-  @HostBinding('class') class = 'asi-component asi-tree-view-node';
   @HostBinding('class.found') found = false;
 
   @Input() level: number;

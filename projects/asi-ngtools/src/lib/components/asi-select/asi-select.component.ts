@@ -1,6 +1,6 @@
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Component, Input, ContentChild, OnInit, OnChanges, forwardRef, HostBinding } from '@angular/core';
+import { Component, Input, ContentChild, OnInit, OnChanges, forwardRef, Renderer2, ElementRef } from '@angular/core';
 
 import {
   AsiComponentTemplateOptionDef, AsiComponentTemplateEmptyDef,
@@ -11,6 +11,7 @@ import * as nh from '../../native-helper';
 
 @Component({
   selector: 'asi-select',
+  host: { 'class': 'asi-component asi-select' },
   templateUrl: 'asi-select.component.html',
   providers: [
     {
@@ -21,8 +22,6 @@ import * as nh from '../../native-helper';
   ]
 })
 export class AsiSelectComponent extends DefaultControlValueAccessor implements OnInit, OnChanges {
-
-  @HostBinding('class') class = 'asi-component asi-select';
 
   @Input() label: string;
   @Input() disabled = false;
@@ -43,12 +42,13 @@ export class AsiSelectComponent extends DefaultControlValueAccessor implements O
   open = false;
   allChecked = false;
 
-  constructor() {
+  constructor(private renderer: Renderer2,
+    private elementRef: ElementRef) {
     super();
   }
 
-  ngOnInit(): void {
-    this.class += ' label-' + this.labelPosition;
+  ngOnInit() {
+    this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
   }
 
   onDropdownClose() {
