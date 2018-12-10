@@ -84,7 +84,7 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
     if (value != null) {
       if (this.pattern.test(value)) {
         this.inputControl.setValue(value, { emitEvent: false });
-        this.value = value;
+        this._value = value;
       } else {
         this.inputElm.nativeElement.value = 'NaN';
       }
