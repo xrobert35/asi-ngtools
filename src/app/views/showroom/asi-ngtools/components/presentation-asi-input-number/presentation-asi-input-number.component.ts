@@ -18,6 +18,10 @@ export class PresentationAsiInputNumberComponent {
     });
   }
 
+  valueChange($event) {
+    console.log($event);
+  }
+
   submit() {
   }
 }

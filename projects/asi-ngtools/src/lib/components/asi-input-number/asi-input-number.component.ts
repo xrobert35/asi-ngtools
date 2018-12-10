@@ -67,16 +67,16 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
   increase() {
     if (this.value == null) {
       this.inputControl.setValue(0);
-    } else if (this.max == null || this.value < this.max) {
-      this.inputControl.setValue(this.value + this.step);
+    } else if (this.max == null || this.inputControl.value < this.max) {
+      this.inputControl.setValue(this.inputControl.value + this.step);
     }
   }
 
   decrease() {
     if (this.value == null) {
       this.inputControl.setValue(0);
-    } else if (this.min == null || this.value > this.min) {
-      this.inputControl.setValue(this.value - this.step);
+    } else if (this.min == null || this.inputControl.value > this.min) {
+      this.inputControl.setValue(this.inputControl.value - this.step);
     }
   }
 

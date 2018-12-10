@@ -12,7 +12,7 @@
     <asi-tab label="Demo">
       <div fxLayout="column">
         <h3 translate="COMMON.withNgModel"></h3>
-        <asi-input-number label="asi-input" labelPosition="left" [(ngModel)]="inputValue"></asi-input-number>
+        <asi-input-number label="asi-input" labelPosition="left" [(ngModel)]="inputValue" (onValueChange)="valueChange($event)" [delay]="500"></asi-input-number>
 
         <h3 translate="COMMON.withFormControl"></h3>
         <form [formGroup]="myForm" fxFlex (ngSubmit)="submit()">
