@@ -1,7 +1,7 @@
 <label *ngIf="label != null">{{label | translate}}</label>
 <div class="number-select">
-  <asi-button *ngIf="!hiddeAction" class="minus" size="mini" [disabled]="disabled" type="button" (click)="decrease()">-</asi-button>
+  <asi-button *ngIf="!hideAction" class="minus" size="mini" [disabled]="disabled" type="button" (click)="decrease()">-</asi-button>
   <input #input [attr.disabled]="disabled || disableInput ? '' : null"
   [attr.id]="id" [attr.name]="name" type="text" class="asi-focus-error" [formControl]="inputControl" />
-  <asi-button *ngIf="!hiddeAction" class="plus" size="mini" [disabled]="disabled" type="button" (click)="increase()">+</asi-button>
+  <asi-button *ngIf="!hideAction" class="plus" size="mini" [disabled]="disabled" type="button" (click)="increase()">+</asi-button>
 </div>

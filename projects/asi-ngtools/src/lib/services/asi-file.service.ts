@@ -105,7 +105,7 @@ export class AsiFileService {
    * @param response The blob response
    */
   private getFileFromBlobResponse(response: any): File {
-    let blob: any = response.blob();
+    const blob: any = response.body;
     // May be null if the server doesn't explicitly add the content-disposition in the headers
     let originalFileName = response.headers.get('content-disposition');
     if (originalFileName) {
@@ -127,7 +127,7 @@ export class AsiFileService {
   }
 
   getFileAsBlob(fileUrl: string): Observable<File> {
-    return this.http.get(fileUrl, { responseType: 'blob' }).pipe(map((response) => {
+    return this.http.get(fileUrl, { responseType: 'blob', observe : 'response' }).pipe(map((response) => {
       return this.getFileFromBlobResponse(response);
     }));
   }

@@ -26,7 +26,7 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
   @Input() step = 1;
   @Input() disableInput = false;
 
-  @Input() hiddeAction = false;
+  @Input() hideAction = false;
 
   @Input() min: number;
   @Input() max: number;
@@ -36,7 +36,8 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
   @ViewChild('input') inputElm: ElementRef;
 
   inputControl = new FormControl();
-  pattern = new RegExp('^-*[0-9]*$');
+
+  @Input() pattern = new RegExp('^-*[0-9,\.]*$');
 
   constructor(private renderer: Renderer2,
     private elementRef: ElementRef) {
