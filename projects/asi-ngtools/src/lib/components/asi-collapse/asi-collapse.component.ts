@@ -20,10 +20,14 @@ import { AsiComponentTemplateCollapseHeaderDef } from '../common/asi-component-t
 })
 export class AsiCollapseComponent  {
 
+  /** Collapse label */
   @Input() label: string;
+  /** Is collapsed  */
   @Input() collapsed = true;
+  /** is enabled/disabled */
   @Input() disabled = false;
 
+  /** Event emitted with the collapse status change */
   @Output() onCollapse = new EventEmitter<Boolean>();
 
   @ContentChild(AsiComponentTemplateCollapseHeaderDef) headerDef: AsiComponentTemplateCollapseHeaderDef;

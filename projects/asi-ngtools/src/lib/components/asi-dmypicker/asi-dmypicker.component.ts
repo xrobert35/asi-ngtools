@@ -22,9 +22,12 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class AsiDmyPickerComponent extends DefaultControlValueAccessor implements OnInit {
 
+  /** label */
   @Input() label: string;
+  /** label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
+  /** hide day list */
   @Input() dayHidden = false;
 
   day: number;
