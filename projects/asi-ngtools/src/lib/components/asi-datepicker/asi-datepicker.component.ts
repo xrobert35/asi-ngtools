@@ -19,15 +19,22 @@ import moment from 'moment';
 })
 export class AsiDatePickerComponent extends DefaultControlValueAccessor implements OnInit, AfterViewInit {
 
+  /** label */
   @Input() label: string;
-  @Input() placeholder = '';
+  /** label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
+  /** placeholder if not null else will be the date display pattern */
+  @Input() placeholder = null;
 
+  /** date display pattern */
   @Input() pattern = 'DD/MM/YYYY';
 
+  /** min date available */
   @Input() minDate: Date;
+  /** max date available */
   @Input() maxDate: Date;
 
+  /** open automatically when the input is focused*/
   @Input() autoOpen = true;
 
   inputControl = new FormControl();
@@ -43,7 +50,9 @@ export class AsiDatePickerComponent extends DefaultControlValueAccessor implemen
 
   ngOnInit() {
     this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
-    this.placeholder = this.pattern.toLowerCase();
+    if (this.placeholder == null) {
+      this.placeholder = this.pattern.toLowerCase();
+    }
   }
 
   ngAfterViewInit() {
@@ -52,7 +61,7 @@ export class AsiDatePickerComponent extends DefaultControlValueAccessor implemen
       if (val === '' || val == null) {
         this.value = null;
       } else {
-        let momentTest = moment(val, this.pattern);
+        let momentTest = moment.utc(val, this.pattern);
         if (momentTest.isValid()) {
           if (val.length === this.pattern.length) {
             this.value = momentTest.toDate();
@@ -80,7 +89,7 @@ export class AsiDatePickerComponent extends DefaultControlValueAccessor implemen
 
   writeValue(value: Date) {
     if (value != null) {
-      let momentValue = moment(value);
+      let momentValue = moment.utc(value);
       this._value = momentValue.toDate();
       let formattedValue = momentValue.format(this.pattern);
       this.inputControl.setValue(formattedValue, { emitEvent: false });

@@ -1,7 +1,7 @@
 <label class="input-label" *ngIf="label != null">{{label | translate}}</label>
 
 <div class="autocomplete">
-  <input [attr.disabled]="disabled ? '' : null" class="asi-focus-error" [placeholder]="placeholder" *ngIf="value == null" [formControl]="autoCompleteControl" />
+  <input [attr.id]="id" [attr.name]="name" [attr.disabled]="disabled ? '' : null" class="asi-focus-error" [placeholder]="placeholder" *ngIf="value == null" [formControl]="autoCompleteControl" />
   <button [disabled]="disabled" type="button" class="clean-a autocomplete-header" *ngIf="value != null">
     <div class="select-value">
       <ng-template [ngTemplateOutlet]="selectedDef.template" [ngTemplateOutletContext]="{$implicit : value}"></ng-template>

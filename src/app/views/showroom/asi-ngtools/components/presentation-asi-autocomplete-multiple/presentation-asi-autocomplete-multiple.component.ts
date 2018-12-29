@@ -3,10 +3,10 @@ import { Referentiel } from './../presentation-asi-select/referentiel';
 import { Component, HostBinding } from '@angular/core';
 
 @Component({
-  selector: 'presentation-asi-autocomplete',
-  templateUrl: './presentation-asi-autocomplete.component.html',
+  selector: 'presentation-asi-autocomplete-multiple',
+  templateUrl: './presentation-asi-autocomplete-multiple.component.html',
 })
-export class PresentationAsiAutoCompleteComponent {
+export class PresentationAsiAutoCompleteMultipleComponent {
 
   @HostBinding('class') class = 'flex';
 
@@ -19,13 +19,15 @@ export class PresentationAsiAutoCompleteComponent {
   new Referentiel('Code7', 'Libelle7'),
   new Referentiel('Code8', 'Libelle8')];
 
-  autoCompleteValue: any;
+  autoCompleteMultipleValue: any;
+
+  ref = new Referentiel('Code2', 'Libelle');
 
   // Form declaration
-  myForm: FormGroup;
+  myFormMultiple: FormGroup;
 
   constructor(fb: FormBuilder) {
-    this.myForm = fb.group({
+    this.myFormMultiple = fb.group({
       myModel: [null, Validators.required]
     });
   }

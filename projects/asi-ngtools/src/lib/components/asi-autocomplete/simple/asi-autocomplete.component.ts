@@ -26,20 +26,24 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class AsiAutoCompleteComponent extends DefaultControlValueAccessor implements OnInit, OnChanges {
 
-  /** Label to display */
+  /** html id */
+  @Input() id: string;
+  /** html name */
+  @Input() name: string;
+
+  /** Label to display (is translated) */
   @Input() label: string;
+
   /** Label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
-  /** Delay between the moment you stop typing and dropdown is display */
+  /** Delay between the moment you stop typing and onRequestData is called */
   @Input() delay = 500;
 
-  /** Data to display in the dropdown : change input reference to make it display */
-  @Input() data: Array<any>;
-
+  /** A placeholder if needed */
   @Input() placeholder = '';
 
-  /** Event emitted to request new data when delay is past */
+  /** Function called to request new data : Throw error if null */
   @Input() onRequestData: Function;
 
   @ContentChild(AsiComponentTemplateOptionDef) optionDef: AsiComponentTemplateOptionDef;
@@ -48,7 +52,10 @@ export class AsiAutoCompleteComponent extends DefaultControlValueAccessor implem
   @ViewChild('dropdown') dropdown: AsiDropDown;
 
   autoCompleteControl = new FormControl();
+
   open = false;
+
+  data: Array<any>;
 
   // Var used to manage component initialization
   firstRequestDone: Boolean = null;
@@ -60,7 +67,15 @@ export class AsiAutoCompleteComponent extends DefaultControlValueAccessor implem
     super();
   }
 
+  private checkInput() {
+    if (null == this.onRequestData) {
+      throw new Error('AsiAutoCompleteComponent : @Input \'onRequestData\' is required');
+    }
+  }
+
   ngOnInit() {
+    this.checkInput();
+
     this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
 
     this.autoCompleteControl.valueChanges.pipe(debounceTime(this.delay))

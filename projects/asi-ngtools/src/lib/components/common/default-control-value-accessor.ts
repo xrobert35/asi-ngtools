@@ -6,8 +6,10 @@ export class DefaultControlValueAccessor implements ControlValueAccessor {
   // tslint:disable-next-line:no-input-rename
   @Input('value') _value: any;
 
+  /** is enabled/disabled */
   @Input() disabled = false;
 
+  /** Event emitted when component value changed */
   @Output() onValueChange = new EventEmitter();
 
   onChange: any = () => { };

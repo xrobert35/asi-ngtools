@@ -62,6 +62,7 @@ import { PresentationAsiNavGroupComponent } from './components/presentation-asi-
 import { PresentationAsiNavViewComponent } from './components/presentation-asi-nav-group/nav/presentation-asi-nav-view.component';
 // tslint:disable-next-line:max-line-length
 import { PresentationAsiRadioButtonGroupComponent } from './components/presentation-asi-radio-button-group/presentation-asi-radio-button-group.component';
+import { PresentationAsiAutoCompleteMultipleComponent } from './components/presentation-asi-autocomplete-multiple/presentation-asi-autocomplete-multiple.component';
 
 const asiNgToolsRoutes: Routes = [{
   path: '',
@@ -86,6 +87,7 @@ const asiNgToolsRoutes: Routes = [{
         { path: 'asi-datepicker', component: PresentationAsiDatepickerComponent },
         { path: 'asi-table', component: PresentationAsiTableComponent },
         { path: 'asi-dialog', component: PresentationAsiDialogComponent },
+        { path: 'asi-dropdown', component: PresentationAsiDropdownComponent },
         { path: 'asi-switch', component: PresentationAsiSwitchComponent },
         { path: 'asi-checkbox', component: PresentationAsiCheckboxComponent },
         { path: 'asi-tab-group', component: PresentationAsiTabGroupComponent },
@@ -114,6 +116,7 @@ const asiNgToolsRoutes: Routes = [{
           ]
         },
         { path: 'asi-autocomplete', component: PresentationAsiAutoCompleteComponent },
+        { path: 'asi-autocomplete-multiple', component: PresentationAsiAutoCompleteMultipleComponent },
         { path: 'asi-image-chooser', component: PresentationAsiImageChooserComponent },
         { path: 'asi-fa-icon', component: PresentationAsiFaIconComponent },
         { path: 'asi-file-chooser', component: PresentationAsiFileChooserComponent },
@@ -183,6 +186,7 @@ export const asiNgToolsPresentationRouting: ModuleWithProviders = RouterModule.f
     PresentationAsiTinyMCEComponent,
     PresentationAsiImageChooserComponent,
     PresentationAsiAutoCompleteComponent,
+    PresentationAsiAutoCompleteMultipleComponent,
     PresentationAsiDmyPickerComponent,
     PresentationAsiMenuComponent,
     PresentationAsiDialogComponent,

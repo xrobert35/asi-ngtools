@@ -1,17 +1,18 @@
-<h1 class="title"> asi-table </h1>
+<h1> asi-table </h1>
 
 <div fxLayout="column" class="fixed-panel">
   <h2 translate="COMMON.installation"></h2>
   <div class="install">
-    <code> import AsiNgToolsModule or AsiTableModule </code>
+    <asi-code-viewer value="import { AsiTableModule } from '@asi-ngtools/lib'"></asi-code-viewer>
   </div>
 </div>
 
 <div class="flex-panel">
   <asi-tab-group>
     <asi-tab label="Demo">
-      <label> Nb items selected  : {{mySelectionModel.nbItemsSelected}}</label>
-      <asi-table [rowClass]="{ 'row-class' : rowClassMethod() && '{row}.col2%2 == 0'}" [autoPaginate]="true" [nbElementParPage]="5" [autoSort]="true" [selectionModel]="mySelectionModel" [onRequestData]="refreshTable"
+      <label> Nb items selected : {{mySelectionModel.nbItemsSelected}}</label>
+      <asi-table [rowClass]="{ 'row-class' : rowClassMethod() && '{row}.col2%2 == 0'}" [autoPaginate]="true"
+        [nbElementParPage]="5" [autoSort]="true" [selectionModel]="mySelectionModel" [onRequestData]="refreshTable"
         fxFlex>
         <asi-table-column type="checkbox"></asi-table-column>
         <asi-table-column name="col1" libelle="Libelle column" sortable="true">
@@ -19,7 +20,7 @@
           <asi-header *asiTableHeaderDef="let row">{{row.libelle}}</asi-header>
         </asi-table-column>
         <asi-table-column name="col2" libelle="Libelle 2" [columnClass]="{ 'valid' : checked}">
-            <asi-cell *asiCellDef="let row"> Col {{row.col2}} </asi-cell>
+          <asi-cell *asiCellDef="let row"> Col {{row.col2}} </asi-cell>
         </asi-table-column>
         <asi-table-column name="col3" libelle="Libelle 3">
           <asi-cell *asiCellDef="let row">
@@ -220,76 +221,6 @@
             <td>#inliner</td>
             <td>row </td>
             <td>Template of the inlined td</td>
-          </tr>
-        </tbody>
-      </table>
-    </asi-tab>
-    <asi-tab label="Style Override">
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>@asi-table-border</td>
-            <td>Table border</td>
-          </tr>
-          <tr>
-            <td>@asi-table-header-height</td>
-            <td>Table head height</td>
-          </tr>
-          <tr>
-            <td>@asi-table-header-th-border</td>
-            <td>Table head cells borders</td>
-          </tr>
-          <tr>
-            <td>@asi-table-header-tr-border</td>
-            <td>Table head rows borders</td>
-          </tr>
-          <tr>
-            <td>@asi-table-header-background-color</td>
-            <td>Table head background-color</td>
-          </tr>
-          <tr>
-            <td>@asi-table-header-text-color</td>
-            <td>Table head text color</td>
-          </tr>
-          <tr>
-            <td>@asi-table-header-box-shadow</td>
-            <td>Table head box-shadow</td>
-          </tr>
-          <tr>
-            <td>@asi-table-body-1-color</td>
-            <td>Table body background color (even child)</td>
-          </tr>
-          <tr>
-            <td>@asi-table-body-2-color</td>
-            <td>Table body background color (odd child)</td>
-          </tr>
-          <tr>
-            <td>@asi-table-body-line1-color</td>
-            <td>Table body rows background color (even child)</td>
-          </tr>
-          <tr>
-            <td>@asi-table-body-line2-color</td>
-            <td>Table body rows background color (odd child)</td>
-          </tr>
-          <tr>
-            <td>@asi-table-body-line-height</td>
-            <td>Tabme body rows height</td>
-          </tr>
-          <tr>
-            <td>@asi-table-body-tr-border</td>
-            <td>Table body rows borders</td>
-          </tr>
-          <tr>
-            <td>@asi-table-body-td-border</td>
-            <td>Table body cells borders</td>
-          </tr>
-          <tr>
-            <td>@asi-table-body-td-text-color</td>
-            <td>Table body cells text color</td>
           </tr>
         </tbody>
       </table>

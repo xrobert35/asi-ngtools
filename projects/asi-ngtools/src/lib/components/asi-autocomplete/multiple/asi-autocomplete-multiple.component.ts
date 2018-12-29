@@ -24,30 +24,35 @@ import * as nh from '../../../native-helper'
 })
 export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccessor implements OnInit, OnChanges {
 
-  /** Label to display */
+  /** html id */
+  @Input() id: string;
+  /** html name */
+  @Input() name: string;
+
+  /** Label to display (is translated) */
   @Input() label: string;
 
   /** Label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
+  /** Placeholder if needed */
   @Input() placeholder = '';
 
-  /** Delay between the moment you stop typing and dropdown is display */
+  /** Delay between the moment you stop typing and onRequestData is called */
   @Input() delay = 500;
-
-  /** Data to display in the dropdown : change input reference to make it display */
-  @Input() data: Array<any>;
 
   /** Option to keep the list open once an item is selected */
   @Input() closeAfterSelect = false;
 
-  /** Event emitted to request new data when delay is past */
+  /** Function called to request new data : Throw error if null */
   @Input() onRequestData: Function;
 
   @ContentChild(AsiComponentTemplateOptionDef) optionDef: AsiComponentTemplateOptionDef;
   @ContentChild(AsiComponentTemplateTagDef) tagDef: AsiComponentTemplateTagDef;
 
   @ViewChild('container') container: ElementRef;
+
+  data: Array<any>;
 
   autoCompleteControl = new FormControl();
   open = false;
@@ -56,13 +61,21 @@ export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccesso
   firstRequestDone: Boolean = null;
   init = false;
 
-  private currentValue: any = null;
+  currentValue: any = null;
 
   constructor(private renderer: Renderer2) {
     super();
   }
 
-  ngOnInit(): void {
+  private checkInput() {
+    if (null == this.onRequestData) {
+      throw new Error('AsiAutoCompleteComponent : @Input \'onRequestData\' is required');
+    }
+  }
+
+  ngOnInit() {
+    this.checkInput();
+
     this.renderer.addClass(this.container.nativeElement, 'label-' + this.labelPosition);
     this.autoCompleteControl.valueChanges.pipe(debounceTime(this.delay))
       .subscribe(value => {

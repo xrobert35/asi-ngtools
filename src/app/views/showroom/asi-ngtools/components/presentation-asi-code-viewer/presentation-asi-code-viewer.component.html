@@ -1,52 +1,42 @@
-<h1 class="title"> asi-code-viewer </h1>
+<h1> asi-code-viewer </h1>
+<h3> Allow you to bind html code from a file or simple text value </h3>
 
 <div class="fixed-panel">
   <h2 translate="COMMON.installation"></h2>
   <div class="install">
-    <code>import AsiNgToolsModule or AsiCodeViewerModule</code>
-    <code>This component is an integration of the Prism library, see : http://prismjs.com </code>
-
-    <code> In your package.json add the dependency :  </code>
-    <code> "prismjs": "1.6.0" </code>
-    <code> In your angular-cli.json add  in scripts : </code>
-    <code>
-      "../node_modules/prismjs/prism.js",
-    </code>
-    <code> In your angular-cli.json add  in styles : </code>
-    <code>"../node_modules/prismjs/themes/prism.css" </code>
-    <code> For specifique language you must add scripts : example for typescript add </code>
-    <code>
-      "../node_modules/prismjs/components/prism-typescript"
-    </code>
+    <asi-code-viewer value="import { AsiCodeViewerModule } from '@asi-ngtools/lib'"></asi-code-viewer>
+    <span>This component is an integration of the Prism library, see : <a href="http://prismjs.com">http://prismjs.com</a>
+    </span>
+    <span>In your package.json add the dependency : <b>"prismjs": "1.6.0" </b></span>
+    <span>In your angular-cli.json add in scripts : <b>"../node_modules/prismjs/prism.js"</b></span>
+    <span>In your angular-cli.json add in styles : <b>"../node_modules/prismjs/themes/prism.css"</b></span>
+    <span>For specifique language you must add scripts : example for typescript add <b>"../node_modules/prismjs/components/prism-typescript.js"</b></span>
   </div>
 </div>
 
 <div class="fixed-panel">
-  <asi-tab-group>
-    <asi-tab label="Demo">
-      <asi-code-viewer language="html" fromUrl="assets/demo/asi-code-viewer/asi-code-viewer.component.html"></asi-code-viewer>
-    </asi-tab>
-    <asi-tab label="Attributes">
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>[language]</td>
-            <td>Language to display : 'html', 'typescript', 'css' etc... see primjs documentation</td>
-          </tr>
-          <tr>
-            <td>[fromUrl]</td>
-            <td>Url of the file to display</td>
-          </tr>
-          <tr>
-            <td>[value]</td>
-            <td>Display a value</td>
-          </tr>
-        </tbody>
-      </table>
-    </asi-tab>
-  </asi-tab-group>
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <asi-code-viewer value="import { AsiBindHtmlModule } from '@asi-ngtools/lib'"></asi-code-viewer>
+  </div>
+</div>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.usage"></h2>
+  <asi-code-viewer language="html" value="<asi-code-viewer value='<h1> Hello </h1>' language='html'></asi-code-viewer>"></asi-code-viewer>
+</div>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.result"></h2>
+  <asi-code-viewer value="<h1> Hello </h1>" language="html"></asi-code-viewer>
+</div>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.props"></h2>
+  <asi-code-viewer value="/** language of the code to be displayed */
+@Input() language = 'typescript';
+/** load code from url */
+@Input() fromUrl: string;
+/** code from string value */
+@Input() value: string;"></asi-code-viewer>
 </div>

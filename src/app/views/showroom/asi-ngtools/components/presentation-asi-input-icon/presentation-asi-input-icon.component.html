@@ -3,7 +3,7 @@
 <div class="fixed-panel">
   <h2 translate="COMMON.installation"></h2>
   <div class="install">
-    <code>import AsiNgToolsModule or AsiInputModule</code>
+    <asi-code-viewer value="import { AsiInputModule } from '@asi-ngtools/lib'"></asi-code-viewer>
   </div>
 </div>
 
@@ -16,7 +16,8 @@
         <h3 translate="COMMON.withFormControl"></h3>
         <form [formGroup]="myForm" fxFlex (ngSubmit)="submit()">
           <div class="asi-container">
-            <asi-input-icon icon="fa fa-bars" iconPosition="right" label="asi-input" labelPosition="left" formControlName="myModel"></asi-input-icon>
+            <asi-input-icon icon="fa fa-bars" iconPosition="right" label="asi-input" labelPosition="left"
+              formControlName="myModel"></asi-input-icon>
             <error-messages forName="myModel">
               <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
             </error-messages>
@@ -49,13 +50,13 @@
             <td>Component label position in 'top' , 'left' , 'right' , 'bottom</td>
           </tr>
           <tr>
-              <td>[icon]</td>
-              <td>Component icon (font awesome)</td>
-            </tr>
-            <tr>
-              <td>[iconPosition]</td>
-              <td>Component icon position in 'left' , 'right'</td>
-            </tr>
+            <td>[icon]</td>
+            <td>Component icon (font awesome)</td>
+          </tr>
+          <tr>
+            <td>[iconPosition]</td>
+            <td>Component icon position in 'left' , 'right'</td>
+          </tr>
           <tr>
             <td>[placeholder]</td>
             <td>Allow you to define a placeholder when the input is empty</td>
@@ -79,44 +80,6 @@
           <tr>
             <td>(iconClicked)</td>
             <td>Event emitted when the icon is clicked</td>
-          </tr>
-        </tbody>
-      </table>
-    </asi-tab>
-    <asi-tab label="Style Override">
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>@asi-input-icon-height</td>
-            <td>Height of the input</td>
-          </tr>
-          <tr>
-            <td>@asi-input-icon-label-color</td>
-            <td>Label color</td>
-          </tr>
-          <tr>
-            <td>@asi-input-icon-border</td>
-            <td>Border of the input</td>
-          </tr>
-          <tr>
-            <td>@asi-input-icon-border-radius</td>
-            <td>Border radius of the input</td>
-          </tr>
-          <tr>
-            <td>@asi-input-icon-outline-border</td>
-            <td>Border of the input when focused</td>
-          </tr>
-          <tr>
-            <td>@asi-input-icon-icon-color</td>
-            <td>Icon color</td>
-          </tr>
-          <tr>
-            <td>@asi-input-icon-icon-background-color</td>
-            <td>Background color of the icon div</td>
           </tr>
         </tbody>
       </table>

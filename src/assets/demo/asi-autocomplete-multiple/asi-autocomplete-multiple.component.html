@@ -1,14 +1,14 @@
-<h3> With ngModel</h3>
-<asi-autocomplete-multiple [onRequestData]="requestDataMultiple" label="label-autocomplete" [data]="datasMultiple" [(ngModel)]="autoCompleteMultipleValue">
+<!-- [(ngModel)] -->
+<asi-autocomplete-multiple label="label-autocomplete" [onRequestData]="requestDataMultiple" [(ngModel)]="autoCompleteMultipleValue">
   <asi-tag *asiTagDef="let data">{{data?.code}}</asi-tag>
   <asi-selected *asiSelectedDef="let data">{{data?.code}} - {{data?.libelle}}</asi-selected>
   <asi-option *asiOptionDef="let data">{{data?.code}} - {{data?.libelle}}</asi-option>
 </asi-autocomplete-multiple>
 
-<h3> With formControl</h3>
+<!-- [formGroup] -->
 <form [formGroup]="myFormMultiple">
   <div class="asi-container">
-    <asi-autocomplete-multiple [onRequestData]="requestDataFormMultiple" label="label-autocomplete" [data]="datasFormMultiple"
+    <asi-autocomplete-multiple label="label-autocomplete" [onRequestData]="requestDataFormMultiple"
       formControlName="myModel">
       <asi-tag *asiTagDef="let data">{{data?.code}}</asi-tag>
       <asi-selected *asiSelectedDef="let data">{{data?.code}} - {{data?.libelle}}</asi-selected>

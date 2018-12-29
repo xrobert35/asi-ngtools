@@ -1,8 +1,8 @@
-<h3> With ngModel</h3>
+<!-- [(ngModel)] -->
 <asi-datepicker [(ngModel)]="date" label="datepicker" labelPosition="left" [minDate]="minDate"></asi-datepicker>
 <span> {{date | asiDate }}</span>
 
-<h3> With formControl</h3>
+<!-- [fromGroup] -->
 <form [formGroup]="myForm" (ngSubmit)="submit()">
   <div fxLayout="row">
     <div class="asi-container">

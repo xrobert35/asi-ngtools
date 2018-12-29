@@ -1,7 +1,6 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, HostBinding } from '@angular/core';
 import { AsiValidators } from '@asi-ngtools/lib';
-
 @Component({
   selector: 'presentation-asi-datepicker',
   templateUrl: './presentation-asi-datepicker.component.html',
@@ -11,6 +10,7 @@ export class PresentationAsiDatepickerComponent {
   @HostBinding('class') class = 'flex';
 
   date: Date;
+
   myForm: FormGroup;
   minDate: Date = new Date();
 
@@ -27,6 +27,6 @@ export class PresentationAsiDatepickerComponent {
   }
 
   submit() {
-    if (this.myForm.valid) {}
+    if (this.myForm.valid) { }
   }
 }

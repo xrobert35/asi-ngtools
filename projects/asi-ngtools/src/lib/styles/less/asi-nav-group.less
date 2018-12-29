@@ -19,7 +19,8 @@ asi-nav-group {
       max-height: @asi-nav-height;
       height: auto;
       background-color: @asi-nav-background-color;
-      border-bottom: 1px solid #3eaaaf;
+      border-bottom: @asi-nav-border-bottom;
+      margin : 0px 2px 0px 2px;
 
       button {
         outline: none;
@@ -43,7 +44,7 @@ asi-nav-group {
         &.active {
           background-color: @asi-nav-active-background-color;
           border-bottom: @asi-nav-active-border-bottom;
-          box-shadow: 0 0 1px #3eaaaf;
+          box-shadow:  @asi-nav-active-box-shadow;
           color: @asi-nav-active-label-color;
           font-weight: bold;
         }

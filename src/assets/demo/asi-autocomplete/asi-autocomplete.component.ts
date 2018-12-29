@@ -13,9 +13,9 @@ export class PresentationAsiAutoCompleteComponent {
 
   autoCompleteValue: any;
 
-  ref = new Referentiel("Code2", "Libelle");
+  ref = new Referentiel('Code2', 'Libelle');
 
-  //Form declaration
+  // Form declaration
   myForm: FormGroup;
 
   constructor(fb: FormBuilder) {
@@ -24,12 +24,13 @@ export class PresentationAsiAutoCompleteComponent {
     });
   }
 
-  requestData() {
+  // Use Arrow function else "this" would be the AsiAutoCompleteComponent
+  requestData = () => {
     this.datas = this.datas.concat([this.ref]);
   }
 
-  requestDataForm() {
+  // Use Arrow function else "this" would be the AsiAutoCompleteComponent
+  requestDataForm = () => {
     this.datasForm = this.datas.concat([this.ref]);
   }
-
 }

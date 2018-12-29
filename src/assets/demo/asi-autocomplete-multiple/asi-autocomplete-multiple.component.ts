@@ -13,10 +13,9 @@ export class PresentationAsiAutoCompleteMultipleComponent {
 
   autoCompleteMultipleValue: any;
 
-  ref = new Referentiel("Code2", "Libelle");
+  ref = new Referentiel('Code2', 'Libelle');
 
-  //Form declaration
-  myForm: FormGroup;
+  // Form declaration
   myFormMultiple: FormGroup;
 
   constructor(fb: FormBuilder) {
@@ -25,11 +24,15 @@ export class PresentationAsiAutoCompleteMultipleComponent {
     });
   }
 
-  requestDataMultiple() {
+  // Use Arrow function else "this" would be the AsiAutoCompleteMultipleComponent
+  // This function can be async
+  requestDataMultiple = () => {
     this.datasMultiple = this.datasMultiple.concat([this.ref]);
   }
 
-  requestDataFormMultiple() {
+  // Use Arrow function else "this" would be the AsiAutoCompleteMultipleComponent
+  // This function can be async
+  requestDataFormMultiple = () => {
     this.datasFormMultiple = this.datasMultiple.concat([this.ref]);
   }
 

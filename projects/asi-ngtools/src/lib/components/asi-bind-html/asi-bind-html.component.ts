@@ -9,7 +9,10 @@ export class AsiBindHtml implements OnChanges {
 
   @HostBinding('class') class = 'asi-component asi-bind-html';
 
+  /** Bind html from string value */
   @Input() value: string;
+
+  /** Load html from an url */
   @Input() fromUrl: string;
 
   constructor(private renderer: Renderer, private elementRef: ElementRef, private fileService: AsiFileService) {

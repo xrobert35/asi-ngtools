@@ -12,14 +12,17 @@ export class AsiDialogTestComponent {
   }
 
   showDialog() {
-    let asiDialog = this.asiDialogService.fromComponent(DialogComponent, null);
-    asiDialog.onDialogCancel().subscribe(()=>{
-      console.log("Cancel !!");
+    let asiDialog = this.asiDialogService.fromComponent(DialogComponent, {
+      class: 'presentation', // add a class to the dialog
+      over: false // is supposed to be displayed over another dialog (loading dialog for exemple)
     });
-    asiDialog.onDialogClose().subscribe((item)=>{
-      console.log("Dialog close !!" + item);
+    asiDialog.onDialogCancel().subscribe(() => {
+      console.log('Cancel !!');
+    });
+    asiDialog.onDialogClose().subscribe((item) => {
+      console.log('Dialog close !!' + item);
     });
 
-    asiDialog.getComponent().message = "My dialog";
+    asiDialog.getComponent().message = 'My dialog';
   }
 }

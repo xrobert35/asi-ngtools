@@ -15,15 +15,17 @@
   </asi-header>
   <asi-menu [vertical]="true">
     <asi-menu-item [routerLink]="['components/asi-autocomplete']"> asi-autocomplete </asi-menu-item>
-    <asi-menu-item [routerLink]="['components/asi-button']"> asi-button </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-autocomplete-multiple']"> asi-autocomplete-multiple </asi-menu-item>
     <asi-menu-item [routerLink]="['components/asi-bind-html']"> asi-bind-html </asi-menu-item>
     <asi-menu-item [routerLink]="['components/asi-breadcrumb']"> asi-breadcrumb </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-button']"> asi-button </asi-menu-item>
     <asi-menu-item [routerLink]="['components/asi-checkbox']"> asi-checkbox </asi-menu-item>
     <asi-menu-item [routerLink]="['components/asi-code-viewer']"> asi-code-viewer </asi-menu-item>
     <asi-menu-item [routerLink]="['components/asi-collapse']"> asi-collapse </asi-menu-item>
     <asi-menu-item [routerLink]="['components/asi-datepicker']"> asi-datepicker </asi-menu-item>
     <asi-menu-item [routerLink]="['components/asi-dialog']"> asi-dialog </asi-menu-item>
     <asi-menu-item [routerLink]="['components/asi-dmypicker']"> asi-dmypicker </asi-menu-item>
+    <asi-menu-item [routerLink]="['components/asi-dropdown']"> asi-dropdown </asi-menu-item>
     <asi-menu-item [routerLink]="['components/asi-error-messages']"> asi-error-messages </asi-menu-item>
     <asi-menu-item [routerLink]="['components/asi-fa-icon']"> asi-fa-icon </asi-menu-item>
     <asi-menu-item [routerLink]="['components/asi-file-chooser']"> asi-file-chooser </asi-menu-item>
@@ -50,8 +52,6 @@
   <asi-header *asiCollapseHeaderDef="let data">
     <div fxLayout="row" fxLayoutAlign="space-between center">
       <span>Pipes</span>
-      <!-- <asi-fa-icon *ngIf="data.collapsed" icon="fa fa-chevron-right"></asi-fa-icon>
-      <asi-fa-icon *ngIf="!data.collapsed" icon="fa fa-chevron-down"></asi-fa-icon> -->
     </div>
   </asi-header>
   <asi-menu [vertical]="true">
@@ -66,8 +66,6 @@
   <asi-header *asiCollapseHeaderDef="let data">
     <div fxLayout="row" fxLayoutAlign="space-between center">
       <span>Services</span>
-      <!-- <asi-fa-icon *ngIf="data.collapsed" icon="fa fa-chevron-right"></asi-fa-icon>
-      <asi-fa-icon *ngIf="!data.collapsed" icon="fa fa-chevron-down"></asi-fa-icon> -->
     </div>
   </asi-header>
   <asi-menu [vertical]="true">
@@ -83,8 +81,6 @@
   <asi-header *asiCollapseHeaderDef="let data">
     <div fxLayout="row" fxLayoutAlign="space-between center">
       <span>Validators</span>
-      <!-- <asi-fa-icon *ngIf="data.collapsed" icon="fa fa-chevron-right"></asi-fa-icon>
-      <asi-fa-icon *ngIf="!data.collapsed" icon="fa fa-chevron-down"></asi-fa-icon> -->
     </div>
   </asi-header>
   <asi-menu [vertical]="true">

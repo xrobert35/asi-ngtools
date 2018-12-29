@@ -2,12 +2,11 @@ import { Referentiel } from './../presentation-asi-select/referentiel';
 import { AsiTableData, AsiTableRequest } from '@asi-ngtools/lib';
 import { AsiTable, AsiTableSelectionModel } from '@asi-ngtools/lib';
 import { TableRow } from './tableRow';
-import { Component, ViewChild, AfterContentInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-table',
   templateUrl: './presentation-asi-table.component.html',
-  host: { 'class': 'page' }
 })
 export class PresentationAsiTableComponent {
 
@@ -27,12 +26,13 @@ export class PresentationAsiTableComponent {
     return this.mySelectionModel.nbItemsSelected >= 2;
   }
 
-  refreshTable(tableRequest: AsiTableRequest) {
+  // Use Arrow function else "this" would be the AsiTableComponent
+  refreshTable = async (_tableRequest: AsiTableRequest) => {
     const asiTableData = new AsiTableData<TableRow>();
 
     const results = new Array<TableRow>();
     for (let index = 0; index < 100; index++) {
-      results.push(new TableRow(' Row ' + index, index, new Date(), new Referentiel('code', 'libelle')));
+      results.push(new TableRow(' Row ' + index, index, null, null, new Referentiel('code-' + index, 'libelle-' + index)));
     }
 
     // Working with async
@@ -40,6 +40,9 @@ export class PresentationAsiTableComponent {
 
     asiTableData.results = results;
     asiTableData.paginate = true;
+
+    // reset the selection model if you need to
+    this.mySelectionModel = new AsiTableSelectionModel('col2', true);
 
     return asiTableData;
   }

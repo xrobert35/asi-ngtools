@@ -9,9 +9,14 @@ export class AsiBreadcrumbComponent<T> implements OnInit, DoCheck, AfterViewInit
 
   @HostBinding('class') class = 'asi-component asi-breadcrumb';
 
-  @Input() public data: Array<T>;
-  @Input() public trackBy: string;
-  @Input() public hideHome: boolean;
+  /** List of items to be displayed */
+  @Input() data: Array<T>;
+
+  /** */
+  @Input() trackBy: string;
+
+  /** Allow you to add the home button */
+  @Input() hideHome: boolean;
 
   @ViewChild('asiBreadcrumbDropdownDots') asiBreadcrumbDropdownDots: ElementRef;
 
@@ -34,15 +39,18 @@ export class AsiBreadcrumbComponent<T> implements OnInit, DoCheck, AfterViewInit
     this.differ = this.differs.find([]).create(null);
   }
 
-  ngOnInit() {
-    if (!this.trackBy) {
-      console.error('Please provide a trackBy element!');
-      return;
+  private checkInput() {
+    if (null == this.trackBy) {
+      throw new Error('AsiBreadcrumbComponent : @Input \'trackBy\' is required');
     }
+
     if (!this.data) {
-      console.error('Please provide the elements through the [data] property');
-      return;
+      throw new Error('AsiBreadcrumbComponent : @Input \'data\' is required');
     }
+  }
+
+  ngOnInit() {
+    this.checkInput();
   }
 
   // Using ngDoCheck instead of ngChanges to update on deep change (push/pop into the array)

@@ -1,25 +1,39 @@
 <h1> asi-dropdown </h1>
+<h3> This component allow you to display a dropdown based on a component position</h3>
+<h3> he's used on asi-select / asi-autocomplete / asi-calendar </h3>
 
 <div class="fixed-panel">
   <h2 translate="COMMON.installation"></h2>
   <div class="install">
-    <code> import AsiNgToolsModule or AsiBreadcrumbModule </code>
+    <asi-code-viewer value="import { AsiBreadcrumbModule } from '@asi-ngtools/lib'"></asi-code-viewer>
   </div>
 </div>
 
-<div class="flex-panel">
-  <asi-tab-group>
-    <asi-tab label="Demo">
-      <div class="margin10" fxLayout="column">
+<div class="fixed-panel">
+    <h2 translate="COMMON.demo"></h2>
+    <div class="margin10" fxLayout="column">
         <asi-checkbox label="Match width with relative node" labelPosition="left" [(ngModel)]="calculateWidth"></asi-checkbox>
-        <button #testAsiDropdown style="width:500px; height: 50px; background-color: yellow;" (click)="openDropdown = true">Open dropdown</button>
-        <asi-dropdown [relativeTo]="elementRefTest" [calculWidth]="calculateWidth" [open]="openDropdown" (onClose)="openDropdown = false">
+        <asi-button #testAsiDropdown (click)="openDropdown = true">Open dropdown</asi-button>
+        <asi-dropdown [relativeTo]="testAsiDropdown" [calculWidth]="calculateWidth" [open]="openDropdown" (onClose)="openDropdown = false">
           <div class="test-dropdown">
-            <span>You can add everything you want here</span>
+            <span>Here is the dropdown : You can add everything you want here</span>
           </div>
         </asi-dropdown>
       </div>
-    </asi-tab>
+  </div>
+
+<div class="flex-panel">
+  <asi-tab-group>
+      <asi-tab label="COMMON.props">
+          <asi-code-viewer value="/** Change to true to open the drowndrop */
+@Input() open = false;
+/** fix the width to the relative component width */
+@Input() calculWidth = true;
+/** link the dropdown to the component position */
+@Input() relativeTo: ElementRef;
+/** Event emitted when dropdown is closed (you should put you open var to false to be able to reopen) */
+@Output() onClose = new EventEmitter();"></asi-code-viewer>
+        </asi-tab>
     <asi-tab label="HTML">
       <asi-code-viewer language="html" fromUrl="assets/demo/asi-dropdown/asi-dropdown.component.html"></asi-code-viewer>
     </asi-tab>

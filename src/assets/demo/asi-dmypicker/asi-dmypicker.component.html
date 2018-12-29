@@ -1,8 +1,8 @@
 <div fxLayout="column" fxFlex="50">
-  <h3> With ngModel</h3>
+  <!-- [(ngModel)] -->
   <asi-dmypicker [(ngModel)]="dmy" label="dmypicker"></asi-dmypicker>
 
-  <h3> With formControl</h3>
+  <!-- [fromGroup] -->
   <form [formGroup]="myForm" (ngSubmit)="submitBro()">
     <div class="asi-container">
       <asi-dmypicker formControlName="myModel" label="dmypicker"></asi-dmypicker>

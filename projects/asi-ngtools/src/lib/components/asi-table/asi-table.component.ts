@@ -79,7 +79,6 @@ export class AsiTable<T> implements AfterContentInit {
   public fireRefresh() {
     this.data.pageIndex = 1;
     this.requestData();
-    this.resetSelectionModel();
   }
 
   public updateData(data: AsiTableData<T>) {
@@ -202,14 +201,6 @@ export class AsiTable<T> implements AfterContentInit {
     });
   }
 
-  resetSelectionModel() {
-    this.selectionModel.allChecked = false;
-    this.selectionModel.nbItemsSelected = 0;
-    this.selectionModel.itemsExcluded = [];
-    this.selectionModel.itemsIncluded = [];
-    this.initCheckbox();
-  }
-
   onAllChecked(column: AsiTableColumn): void {
     this.selectionModel.allChecked = this.allChecked;
 
@@ -307,7 +298,6 @@ export class AsiTable<T> implements AfterContentInit {
     });
     if (this.fireRefreshOnInit) {
       this.requestData();
-      this.resetSelectionModel();
     }
   }
 }

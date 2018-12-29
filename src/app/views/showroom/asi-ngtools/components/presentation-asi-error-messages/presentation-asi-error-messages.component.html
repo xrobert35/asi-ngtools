@@ -1,46 +1,64 @@
-<h1 class="title"> asi-error-messages </h1>
-
+<h1> asi-error-messages </h1>
+<h3> An ellegante way to display validation messages </h3>
 <div class="fixed-panel">
   <h2 translate="COMMON.installation"></h2>
   <div class="install">
-    <code>import AsiNgToolsModule or AsiErrorMessagesModule</code>
+    <asi-code-viewer value="import { AsiErrorMessagesModule } from '@asi-ngtools/lib'"></asi-code-viewer>
   </div>
+</div>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.demo"></h2>
+  <form [formGroup]="myForm" (ngSubmit)="submit()">
+    <h3> Required element</h3>
+    <div class="asi-container">
+      <asi-input label="asi-input" formControlName="myModel"></asi-input>
+      <asi-error-messages forName="myModel">
+        <asi-message error="required" value="VALIDATIONS.required" [onSubmit]="true"></asi-message>
+        <asi-message error="minlength" value="min length validation"></asi-message>
+        <asi-message error="maxlength" value="max length validation"></asi-message>
+      </asi-error-messages>
+    </div>
+    <h4> An asi-message managing the 'required' error will automatically add the class 'asi-required' to the parent if the input </h4>
+    <h3> None required element</h3>
+    <div class="asi-container">
+      <asi-input label="asi-input" formControlName="myModel2"></asi-input>
+      <asi-error-messages forName="myModel2" [showOne]="true">
+        <asi-message error="email" value="email validation"></asi-message>
+        <asi-message error="minlength" value="min length validation"></asi-message>
+        <asi-message error="maxlength" value="max length validation"></asi-message>
+      </asi-error-messages>
+    </div>
+    <div fxLayout="row">
+      <asi-button type="submit">Submit</asi-button>
+    </div>
+  </form>
+
 </div>
 
 <div class="flex-panel">
   <asi-tab-group>
-    <asi-tab label="Demo">
-      <form [formGroup]="myForm" (ngSubmit)="submit()">
-        <h3> Required element</h3>
-        <div class="asi-container">
-          <asi-input label="asi-input" formControlName="myModel"></asi-input>
-          <asi-error-messages forName="myModel">
-            <asi-message error="required" value="VALIDATIONS.required" [onSubmit]="true"></asi-message>
-            <asi-message error="minlength" value="min length validation"></asi-message>
-            <asi-message error="maxlength" value="max length validation"></asi-message>
-          </asi-error-messages>
-        </div>
-        <h3> None required element</h3>
-        <div class="asi-container">
-          <asi-input label="asi-input" formControlName="myModel2"></asi-input>
-          <asi-error-messages forName="myModel2" [showOne]="true">
-            <asi-message error="email" value="email validation"></asi-message>
-            <asi-message error="minlength" value="min length validation"></asi-message>
-            <asi-message error="maxlength" value="max length validation"></asi-message>
-          </asi-error-messages>
-        </div>
-        <div fxLayout="row">
-          <asi-button type="submit">Submit</asi-button>
-        </div>
-      </form>
-    </asi-tab>
-    <asi-tab label="TS">
-      <asi-code-viewer readOnly="true" language="typescript" fromUrl="assets/demo/asi-error-messages/asi-error-messages.component.ts"></asi-code-viewer>
+    <asi-tab label="COMMON.props">
+      <h3> AsiErrorMessages </h3>
+      <asi-code-viewer value="/** link the error messages to a formControl */
+@Input() for: FormControl;
+/** link the error messages to a formControl by is name */
+@Input() forName: string;
+/** Display error one by one */
+@Input() showOne = false;"></asi-code-viewer>
+      <h3> AsiMessage </h3>
+      <asi-code-viewer value="/** Error name to be captured, based on validator */
+@Input() error: string;
+/** message to display (is translated) */
+@Input() value: string;
+/** display message only on submit */
+@Input() onSubmit: false;"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="HTML">
       <asi-code-viewer readOnly="true" language="html" fromUrl="assets/demo/asi-error-messages/asi-error-messages.component.html"></asi-code-viewer>
     </asi-tab>
-    <asi-tab label="Attributes"></asi-tab>
-    <asi-tab label="Style Override"></asi-tab>
+    <asi-tab label="TS">
+      <asi-code-viewer readOnly="true" language="typescript" fromUrl="assets/demo/asi-error-messages/asi-error-messages.component.ts"></asi-code-viewer>
+    </asi-tab>
   </asi-tab-group>
 </div>

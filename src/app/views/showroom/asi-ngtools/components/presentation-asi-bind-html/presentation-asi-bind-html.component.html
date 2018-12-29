@@ -1,54 +1,30 @@
-<h1 class="title"> asi-bind-html </h1>
+<h1> asi-bind-html </h1>
+<h3> Allow you to bind html from a file or from a string value </h3>
 
 <div class="fixed-panel">
   <h2 translate="COMMON.installation"></h2>
   <div class="install">
-    <code>import AsiNgToolsModule or AsiBindHtmlModule</code>
+    <asi-code-viewer value="import { AsiBindHtmlModule } from '@asi-ngtools/lib'"></asi-code-viewer>
   </div>
 </div>
 
 <div class="fixed-panel">
-  <asi-tab-group>
-    <asi-tab label="Demo">
-    </asi-tab>
-    <asi-tab label="HTML">
-    </asi-tab>
-    <asi-tab label="TS">
-    </asi-tab>
-    <asi-tab label="Attributes">
-    </asi-tab>
-  </asi-tab-group>
-</div>
-
-<h1 class="title"> asi-bind-and-compile-html </h1>
-
-<div class="fixed-panel">
-  <h2 translate="COMMON.installation"></h2>
-  <div class="install">
-    <code>import AsiNgToolsModule or AsiBindAndCompileHtmlModule</code>
-    <code> import  DynamicComponentModule :   DynamicComponentModule.forRoot({{ '{' }} imports: [CommonModule] {{ '}' }}) </code>
-    <code> Use the imports list to be able to use custom  directive and components from external module </code>
-    <code>This component is an integration of ng-dynamic, see : https://github.com/lacolaco/ng-dynamic </code>
-  </div>
-  <label> This component is not supposed to work if you use aot compilation </label>
+  <h2 translate="COMMON.result"></h2>
+  <asi-bind-html value="<h1> Hello </h1>"></asi-bind-html>
 </div>
 
 <div class="fixed-panel">
   <asi-tab-group>
-    <asi-tab label="Demo">
-      <h3> From Url </h3>
-      <!-- <asi-bind-and-compile-html fromUrl="assets/demo/asi-bind-and-compile-html/asi-bind-and-compile-demo.component.html"></asi-bind-and-compile-html> -->
+    <asi-tab label="COMMON.props">
+      <asi-code-viewer value="/** Bind html from string value */
+@Input() value: string;
 
-      <h3> From Value </h3>
-      <!-- <asi-bind-and-compile-html [value]="myTemplate"></asi-bind-and-compile-html> -->
+/** Load html from an url */
+@Input() fromUrl: string;">
+      </asi-code-viewer>
     </asi-tab>
     <asi-tab label="HTML">
-      <asi-code-viewer fromUrl="assets/demo/asi-bind-and-compile-html/asi-bind-and-compile-html.component.html"></asi-code-viewer>
-    </asi-tab>
-    <asi-tab label="TS">
-      <asi-code-viewer fromUrl="assets/demo/asi-bind-and-compile-html/asi-bind-and-compile-html.component.ts"></asi-code-viewer>
-    </asi-tab>
-    <asi-tab label="Attributes">
+      <asi-code-viewer language="html" value="<asi-bind-html value='<h1> Hello </h1>'></asi-bind-html>"></asi-code-viewer>
     </asi-tab>
   </asi-tab-group>
 </div>

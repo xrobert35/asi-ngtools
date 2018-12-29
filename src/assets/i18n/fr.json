@@ -26,8 +26,12 @@
     "importStyleWithCssLine2": "\"styles\": [ \"../node_modules/@asi-ngtools/lib/styles/asingtools.css\", ... ]"
   },
   "COMMON" : {
-    "withNgModel" : "with ngModel",
-    "withFormControl" : "with formControl",
-    "installation" : "Installation"
+    "withNgModel" : "[(ngModel)]",
+    "withFormControl" : "[formGroup]",
+    "installation" : "Installation",
+    "usage": "Usage",
+    "result" : "Result",
+    "props" : "Properties",
+    "demo" : "Demo"
   }
 }

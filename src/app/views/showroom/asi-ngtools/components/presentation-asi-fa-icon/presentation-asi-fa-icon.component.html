@@ -3,7 +3,7 @@
 <div class="fixed-panel">
   <h2 translate="COMMON.installation"></h2>
   <div class="install">
-    <code>import AsiNgToolsModule or AsiFaIconModule</code>
+    <asi-code-viewer value="import { AsiFaIconModule } from '@asi-ngtools/lib'"></asi-code-viewer>
   </div>
 </div>
 
@@ -27,10 +27,11 @@
         <asi-fa-icon icon="fa fa-spinner fa-spin" size="5x"></asi-fa-icon>
       </div>
       <div fxLayout="row">
-        <asi-fa-icon icon="fa fa-check-circle-o" size="2x" label="tooltip" labelPosition="bottom" tooltip="1x right" tooltipPosition="right"
-          [disabled]="true"></asi-fa-icon>
-        <asi-fa-icon icon="fa fa-check-circle-o" size="2x" label="click me!" labelPosition="bottom" (onClick)="action()"></asi-fa-icon>
-        <asi-fa-icon icon="fa fa-check-circle-o" size="2x" label="click only on icon!" labelPosition="bottom" noClickOnLabel="true" (onClick)="action()"></asi-fa-icon>
+        <asi-fa-icon icon="far fa-check-circle" size="2x" label="tooltip" labelPosition="bottom" tooltip="1x right"
+          tooltipPosition="right" [disabled]="true"></asi-fa-icon>
+        <asi-fa-icon icon="far fa-check-circle" size="2x" label="click me!" labelPosition="bottom" (onClick)="action()"></asi-fa-icon>
+        <asi-fa-icon icon="far fa-check-circle" size="2x" label="click only on icon!" labelPosition="bottom"
+          noClickOnLabel="true" (onClick)="action()"></asi-fa-icon>
       </div>
       <!-- <div fxLayout="column">
         <asi-input [(ngModel)]="dynamicIcon" placeholder="Font Awesome icon"></asi-input>
@@ -86,32 +87,6 @@
           <tr>
             <td>(onClick)</td>
             <td>Event fired when the icon or label is clicked</td>
-          </tr>
-        </tbody>
-      </table>
-    </asi-tab>
-    <asi-tab label="Style Override">
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>@asi-fa-icon-label-color</td>
-            <td>Label color of the fa-icon</td>
-          </tr>
-          <tr>
-            <td>@asi-fa-icon-border</td>
-            <td>Border of the fa-icon</td>
-          </tr>
-          <tr>
-            <td>@asi-fa-icon-outline-border</td>
-            <td>Border of the fa-icon when focused</td>
-          </tr>
-          <tr>
-            <td>@asi-fa-icon-color</td>
-            <td>Color of the label</td>
           </tr>
         </tbody>
       </table>

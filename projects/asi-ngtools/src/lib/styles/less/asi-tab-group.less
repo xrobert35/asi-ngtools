@@ -19,7 +19,8 @@ asi-tab-group {
       max-height: @asi-tab-height;
       height: auto;
       background-color: @asi-tab-background-color;
-      border-bottom: 1px solid #3eaaaf;
+      border-bottom: @asi-tab-border-bottom;
+      margin : 0px 2px 0px 2px;
 
       button {
         outline: none;
@@ -43,7 +44,7 @@ asi-tab-group {
         &.active {
           background-color: @asi-tab-active-background-color;
           border-bottom: @asi-tab-active-border-bottom;
-          box-shadow: 0 0 1px #3eaaaf;
+          box-shadow:  @asi-tab-active-box-shadow;
           color: @asi-tab-active-label-color;
           font-weight: bold;
         }

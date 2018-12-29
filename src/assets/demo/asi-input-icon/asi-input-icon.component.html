@@ -1,8 +1,8 @@
 <div fxLayout="column">
-  <h3> With ngModel</h3>
+  <!-- [(ngModel)] -->
   <asi-input-icon icon="fa fa-bars" label="asi-input" labelPosition="left" [(ngModel)]="inputValue" (iconClicked)="console.log($event)"></asi-input-icon>
 
-  <h3> With formControl</h3>
+  <!-- [fromGroup] -->
   <form [formGroup]="myForm" fxFlex (ngSubmit)="submit()">
     <div class="asi-container">
       <asi-input-icon icon="fa fa-bars" iconPosition="right" label="asi-input" labelPosition="left" formControlName="myModel"></asi-input-icon>

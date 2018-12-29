@@ -14,12 +14,11 @@ export class PresentationAsiTableComponent {
 
   @ViewChild(AsiTable) asiTable: AsiTable<TableRow>;
 
-  mySelectionModel = new AsiTableSelectionModel('col2' , true);
+  mySelectionModel = new AsiTableSelectionModel('col2', true);
 
   checked: boolean;
 
-  constructor() {
-  }
+  constructor() {}
 
   isChecked() {
     return false;
@@ -30,7 +29,8 @@ export class PresentationAsiTableComponent {
     return this.mySelectionModel.nbItemsSelected >= 2;
   }
 
-  refreshTable(_tableRequest: AsiTableRequest) {
+  // arrow function else "this" would be the AsiTableComponent
+  refreshTable = async (_tableRequest: AsiTableRequest) => {
     const asiTableData = new AsiTableData<TableRow>();
 
     const results = new Array<TableRow>();
@@ -43,6 +43,9 @@ export class PresentationAsiTableComponent {
 
     asiTableData.results = results;
     asiTableData.paginate = true;
+
+    // reset the selection model if you need to
+    this.mySelectionModel = new AsiTableSelectionModel('col2', true);
 
     return asiTableData;
   }

@@ -14,7 +14,10 @@ export class PresentationAsiDialogComponent {
   }
 
   showDialog() {
-    let asiDialog = this.asiDialogService.fromComponent(DialogComponent, { class: 'presentation' });
+    let asiDialog = this.asiDialogService.fromComponent(DialogComponent, {
+      class: 'presentation', // add a class to the dialog
+      over: false // is supposed to be displayed over another dialog (loading dialog for exemple)
+    });
     asiDialog.onDialogCancel().subscribe(() => {
       console.log('Cancel !!');
     });

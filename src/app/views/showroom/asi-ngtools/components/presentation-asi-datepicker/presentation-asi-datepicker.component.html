@@ -1,113 +1,77 @@
-<h1 class="title"> asi-datepicker </h1>
+<h1> asi-datepicker </h1>
+<h3>A DatePicker working with UTC date</h3>
 
 <div class="fixed-panel">
   <h2 translate="COMMON.installation"></h2>
   <div class="install">
-    <code>import AsiNgToolsModule or AsiDatepickerModule</code>
+      <asi-code-viewer value="import { AsiDatepickerModule } from '@asi-ngtools/lib'"></asi-code-viewer>
   </div>
 </div>
 
 <div class="fixed-panel">
-  <asi-tab-group>
-    <asi-tab label="Demo">
-      <h3 translate="COMMON.withNgModel"></h3>
-      <asi-datepicker [(ngModel)]="date" label="datepicker" labelPosition="left" [minDate]="minDate"></asi-datepicker>
-      <span> {{date | asiDate }}</span>
+    <h2 translate="COMMON.demo"></h2>
+    <h3 translate="COMMON.withNgModel"></h3>
+    <asi-datepicker [(ngModel)]="date" label="datepicker" labelPosition="left" [minDate]="minDate"></asi-datepicker>
+    <span> {{date | asiDate }}</span>
 
-      <h3 translate="COMMON.withFormControl"></h3>
-      <form [formGroup]="myForm" (ngSubmit)="submit()">
-        <div fxLayout="row">
-          <div class="asi-container">
-            <asi-datepicker formControlName="from" label="From : " labelPosition="left" [maxDate]="myForm.value.to"></asi-datepicker>
-            <span> {{myForm.value.myModel | asiDate }}</span>
-            <error-messages forName="from">
-              <message error="required" value="VALIDATIONS.required"></message>
-              <message error="maxDate" value="Date trop grande"></message>
-            </error-messages>
-          </div>
-          <div class="asi-container">
-            <asi-datepicker formControlName="to" label="To : " labelPosition="left" [minDate]="myForm.value.from"></asi-datepicker>
-            <span> {{myForm.value.myModel | asiDate }}</span>
-            <error-messages forName="to">
-              <message error="required" value="VALIDATIONS.required"></message>
-              <message error="minDate" value="Date trop petite"></message>
-            </error-messages>
-          </div>
+    <h3 translate="COMMON.withFormControl"></h3>
+    <form [formGroup]="myForm" (ngSubmit)="submit()">
+      <div fxLayout="row">
+        <div class="asi-container">
+          <asi-datepicker formControlName="from" label="From : " labelPosition="left" [maxDate]="myForm.value.to"></asi-datepicker>
+          <span> {{myForm.value.myModel | asiDate }}</span>
+          <error-messages forName="from">
+            <message error="required" value="VALIDATIONS.required"></message>
+            <message error="maxDate" value="Date trop grande"></message>
+          </error-messages>
         </div>
-        <div fxLayout="row">
-          <asi-button type="submit">Submit</asi-button>
+        <div class="asi-container">
+          <asi-datepicker formControlName="to" label="To : " labelPosition="left" [minDate]="myForm.value.from"></asi-datepicker>
+          <span> {{myForm.value.myModel | asiDate }}</span>
+          <error-messages forName="to">
+            <message error="required" value="VALIDATIONS.required"></message>
+            <message error="minDate" value="Date trop petite"></message>
+          </error-messages>
         </div>
-      </form>
+      </div>
+      <div fxLayout="row">
+        <asi-button type="submit">Submit</asi-button>
+      </div>
+    </form>
+  </div>
+
+<div class="fixed-panel">
+  <asi-tab-group>
+    <asi-tab label="COMMON.props">
+        <asi-code-viewer value="/** label */
+@Input() label: string;
+/** label position */
+@Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
+/** placeholder if not null else will be the date display pattern */
+@Input() placeholder = null;
+
+/** date display pattern */
+@Input() pattern = 'DD/MM/YYYY';
+
+/** min date available */
+@Input() minDate: Date;
+/** max date available */
+@Input() maxDate: Date;
+
+/** open automatically when the input is focused*/
+@Input() autoOpen = true;
+
+/** is enabled/disabled */
+@Input() disabled = false;
+
+/** Event emitted when component value changed */
+@Output() onValueChange = new EventEmitter();"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="HTML">
       <asi-code-viewer language="html" fromUrl="assets/demo/asi-datepicker/asi-datepicker.component.html"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="TS">
       <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-datepicker/asi-datepicker.component.ts"></asi-code-viewer>
-    </asi-tab>
-    <asi-tab label="Attributes">
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>[label]</td>
-            <td>Component label</td>
-          </tr>
-          <tr>
-            <td>[labelPosition]</td>
-            <td>Component label position in 'top' , 'left' , 'right' , 'bottom</td>
-          </tr>
-          <tr>
-            <td>[placeholder]</td>
-            <td>Allows you to define a placeholder when the input is empty</td>
-          </tr>
-          <tr>
-            <td>[patern]</td>
-            <td>Allows you to define the date pattern. Default value = "DD/MM/YYYY"</td>
-          </tr>
-          <tr>
-            <td>[minDate]</td>
-            <td>The minimum date you can pick</td>
-          </tr>
-          <tr>
-            <td>[maxDate]</td>
-            <td>The maximum date you can pick</td>
-          </tr>
-          <tr>
-            <td>[autoOpen]</td>
-            <td>Automatically opens the datepicker when clicking on it instead of the button. Default value = "true"</td>
-          </tr>
-        </tbody>
-      </table>
-    </asi-tab>
-    <asi-tab label="Style Override">
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>@asi-datepicker-outline-border</td>
-            <td>Border color when focused</td>
-          </tr>
-          <tr>
-            <td>@asi-datepicker-height</td>
-            <td>The height of the input field</td>
-          </tr>
-          <tr>
-            <td>@asi-datepicker-border</td>
-            <td>Border of the input field</td>
-          </tr>
-          <tr>
-            <td>@asi-datepicker-border-radius</td>
-            <td>Border radius of the input field</td>
-          </tr>
-        </tbody>
-      </table>
     </asi-tab>
   </asi-tab-group>
 </div>

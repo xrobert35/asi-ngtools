@@ -16,9 +16,12 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class AsiCheckboxComponent extends DefaultControlValueAccessor implements OnInit {
 
+  /** Label (is translated) */
   @Input() label: string;
+  /** Label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
+  /** design : checkbox (square) or radio (round) */
   @Input() type: 'checkbox' | 'radio' = 'checkbox';
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {

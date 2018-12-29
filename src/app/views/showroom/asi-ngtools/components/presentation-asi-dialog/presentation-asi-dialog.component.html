@@ -1,20 +1,22 @@
-<h1 class="title"> asi-dialog </h1>
+<h1> asi-dialog </h1>
 
 <div class="fixed-panel">
   <h2 translate="COMMON.installation"></h2>
   <div class="install">
-    <code> import AsiNgToolsModule or AsiDialogModule </code>
-    <code> add public viewContainerRef : viewContainerRef in your root component constructor </code>
+    <asi-code-viewer value="import { AsiDialogModule } from '@asi-ngtools/lib'"></asi-code-viewer>
+    <span><b>add public viewContainerRef : viewContainerRef in your root component constructor </b></span>
+  </div>
+</div>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.demo"></h2>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <asi-button (click)="showDialog()"> Show dialog </asi-button>
   </div>
 </div>
 
 <div fxLayout="row" class="flex-panel">
   <asi-tab-group>
-    <asi-tab label="Présentation">
-      <div fxLayout="row" fxLayoutAlign="center">
-        <asi-button (click)="showDialog()"> Show dialog </asi-button>
-      </div>
-    </asi-tab>
     <asi-tab label="TS1">
       <asi-code-viewer readOnly="true" language="typescript" fromUrl="assets/demo/asi-dialog/asi-dialog.component.ts"></asi-code-viewer>
     </asi-tab>
@@ -23,28 +25,6 @@
     </asi-tab>
     <asi-tab label="HTML">
       <asi-code-viewer readOnly="true" language="html" fromUrl="assets/demo/asi-dialog/dialog.component.html"></asi-code-viewer>
-    </asi-tab>
-    <asi-tab label="Style Override">
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>@asi-dialog-backdrop-color</td>
-            <td>Background color of the backdrop</td>
-          </tr>
-          <tr>
-            <td>@asi-dialog-background-color</td>
-            <td>Background color of the dialog</td>
-          </tr>
-          <tr>
-            <td>@asi-dialog-border-color</td>
-            <td>Border color of the dialog</td>
-          </tr>
-        </tbody>
-      </table>
     </asi-tab>
   </asi-tab-group>
 </div>

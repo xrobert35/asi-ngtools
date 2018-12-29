@@ -12,8 +12,11 @@ import { Directive, Input } from '@angular/core';
 })
 export class AsiMessage {
 
+  /** Error name to be captured, based on validator */
   @Input() error: string;
+  /** message to display (is translated) */
   @Input() value: string;
+  /** display message only on submit */
   @Input() onSubmit: false;
 
   constructor() {

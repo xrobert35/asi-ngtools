@@ -1,9 +1,9 @@
-<h1 class="title"> asi-input-number </h1>
+<h1> asi-input-number </h1>
 
 <div class="fixed-panel">
   <h2 translate="COMMON.installation"></h2>
   <div class="install">
-    <code>import AsiNgToolsModule or AsiInputNumberModule</code>
+    <asi-code-viewer value="import { AsiInputNumberModule } from '@asi-ngtools/lib'"></asi-code-viewer>
   </div>
 </div>
 
@@ -12,7 +12,8 @@
     <asi-tab label="Demo">
       <div fxLayout="column">
         <h3 translate="COMMON.withNgModel"></h3>
-        <asi-input-number label="asi-input" labelPosition="left" [(ngModel)]="inputValue" (onValueChange)="valueChange($event)" [delay]="500"></asi-input-number>
+        <asi-input-number label="asi-input" labelPosition="left" [(ngModel)]="inputValue" (onValueChange)="valueChange($event)"
+          [delay]="500"></asi-input-number>
 
         <h3 translate="COMMON.withFormControl"></h3>
         <form [formGroup]="myForm" fxFlex (ngSubmit)="submit()">
@@ -75,28 +76,6 @@
               <span>Event emitted when value change</span>
               <span>$event will be the model value (input value)</span>
             </div>
-          </tr>
-        </tbody>
-      </table>
-    </asi-tab>
-    <asi-tab label="Style Override">
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>@asi-input-height</td>
-            <td>Height of the input</td>
-          </tr>
-          <tr>
-            <td>@asi-input-label-color</td>
-            <td>Label color</td>
-          </tr>
-          <tr>
-            <td>@asi-input-border</td>
-            <td>Border of the input</td>
           </tr>
         </tbody>
       </table>

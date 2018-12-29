@@ -11,7 +11,7 @@
 <div class="autocomplete-container" #container>
   <label class="input-label" *ngIf="label != null">{{label | translate}}</label>
   <div class="autocomplete">
-    <input [attr.disabled]="disabled ? '' : null" class="asi-focus-error" [placeholder]="placeholder" [formControl]="autoCompleteControl"/>
+    <input [attr.id]="id" [attr.name]="name" [attr.disabled]="disabled ? '' : null" class="asi-focus-error" [placeholder]="placeholder" [formControl]="autoCompleteControl"/>
 
     <asi-dropdown [open]="open" (onClose)="onDropdownClose()" #dropdown>
       <div class="drop-down-autocomplete-multiple">

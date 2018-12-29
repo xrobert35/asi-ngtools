@@ -11,14 +11,16 @@ declare const Prism: any;
 })
 export class AsiCodeViewer implements OnInit, OnChanges {
 
+  /** language of the code to be displayed */
   @Input() language = 'typescript';
+  /** load code from url */
   @Input() fromUrl: string;
+  /** code from string value */
   @Input() value: string;
 
   hightlightCode: any;
 
-  constructor(private fileService: AsiFileService, @Inject(PLATFORM_ID) private platformId: any) {
-  }
+  constructor(private fileService: AsiFileService, @Inject(PLATFORM_ID) private platformId: any) { }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {

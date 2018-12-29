@@ -7,10 +7,18 @@ import { Component, Input, OnInit, Renderer2, ElementRef } from '@angular/core';
 })
 export class AsiButtonComponent implements OnInit {
 
+  /** html id */
   @Input() id: string;
-  @Input() design: 'flat' | 'raised' | 'bordered' = 'flat';
+  /** html name */
+  @Input() name: string;
+  /** html type */
   @Input() type: 'submit' | 'button' = 'button';
+
+  /** button design */
+  @Input() design: 'flat' | 'raised' | 'bordered' = 'flat';
+  /** button size */
   @Input() size: 'standard' | 'small' | 'mini' = 'standard';
+  /** ensable/disable the button */
   @Input() disabled = false;
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {

@@ -13,8 +13,11 @@ import {
 })
 export class AsiErrorMessages implements OnInit, AfterContentInit {
 
+  /** link the error messages to a formControl */
   @Input() for: FormControl;
+  /** link the error messages to a formControl by is name */
   @Input() forName: string;
+  /** Display error one by one */
   @Input() showOne = false;
 
   @ContentChildren(AsiMessage) messages: QueryList<AsiMessage>;

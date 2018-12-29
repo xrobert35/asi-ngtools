@@ -1,28 +1,30 @@
-<h1> asi-autocomplete </h1>
-<h3> Simple autocomplete component working with async function </h3>
+<h1> asi-autocomplete-multiple </h1>
+<h3> multiple autocomplete component working with async function </h3>
 
 <div class="fixed-panel">
   <h2 translate="COMMON.installation"></h2>
   <div class="install">
-    <asi-code-viewer value="import { AsiAutoCompleteModule } from '@asi-ngtools/lib'"></asi-code-viewer>
+    <asi-code-viewer value="import { AsiAutoCompleteMultipleModule } from '@asi-ngtools/lib'"></asi-code-viewer>
   </div>
 </div>
 
 <div class="fixed-panel">
   <h2 translate="COMMON.demo"></h2>
   <h3 translate="COMMON.withNgModel"></h3>
-  <asi-autocomplete label="label-autocomplete" [onRequestData]="requestData" [(ngModel)]="autoCompleteValue">
+  <asi-autocomplete-multiple [onRequestData]="requestData" label="label-autocomplete" [(ngModel)]="autoCompleteMultipleValue">
+    <asi-tag *asiTagDef="let data">{{data?.code}}</asi-tag>
     <asi-selected *asiSelectedDef="let data">{{data?.code}} - {{data?.libelle}}</asi-selected>
     <asi-option *asiOptionDef="let data">{{data?.code}} - {{data?.libelle}}</asi-option>
-  </asi-autocomplete>
+  </asi-autocomplete-multiple>
 
   <h3 translate="COMMON.withFormControl"></h3>
-  <form [formGroup]="myForm">
+  <form [formGroup]="myFormMultiple">
     <div class="asi-container">
-      <asi-autocomplete label="label-autocomplete" [onRequestData]="requestData" formControlName="myModel">
+      <asi-autocomplete-multiple [onRequestData]="requestData" label="label-autocomplete" formControlName="myModel">
+        <asi-tag *asiTagDef="let data">{{data?.code}}</asi-tag>
         <asi-selected *asiSelectedDef="let data">{{data?.code}} - {{data?.libelle}}</asi-selected>
         <asi-option *asiOptionDef="let data">{{data?.code}} - {{data?.libelle}}</asi-option>
-      </asi-autocomplete>
+      </asi-autocomplete-multiple>
       <error-messages forName="myModel">
         <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
       </error-messages>
@@ -36,7 +38,6 @@
 <div class="fixed-panel">
   <asi-tab-group>
     <asi-tab label="COMMON.props">
-
       <asi-code-viewer value="/** html id */
 @Input() id: string;
 /** html name */
@@ -48,11 +49,14 @@
 /** Label position */
 @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
+/** Placeholder if needed */
+@Input() placeholder = '';
+
 /** Delay between the moment you stop typing and onRequestData is called */
 @Input() delay = 500;
 
-/** A placeholder if needed */
-@Input() placeholder = '';
+/** Option to keep the list open once an item is selected */
+@Input() closeAfterSelect = false;
 
 /** Function called to request new data : Throw error if null */
 @Input() onRequestData: Function;
@@ -64,10 +68,10 @@
 @Output() onValueChange = new EventEmitter();"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="HTML">
-      <asi-code-viewer language="html" fromUrl="assets/demo/asi-autocomplete/asi-autocomplete.component.html"></asi-code-viewer>
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-autocomplete-multiple/asi-autocomplete-multiple.component.html"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="TS">
-      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-autocomplete/asi-autocomplete.component.ts"></asi-code-viewer>
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-autocomplete-multiple/asi-autocomplete-multiple.component.ts"></asi-code-viewer>
     </asi-tab>
   </asi-tab-group>
 </div>

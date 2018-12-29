@@ -11,10 +11,13 @@ import { AsiDropdownService } from './asi-dropdown.service';
 })
 export class AsiDropDown implements OnChanges {
 
+  /** Change to true to open the drowndrop */
   @Input() open = false;
-
+  /** fix the width to the relative component width */
   @Input() calculWidth = true;
+  /** link the dropdown to the component position */
   @Input() relativeTo: ElementRef;
+  /** Event emitted when dropdown is closed (you should put you open var to false to be able to reopen) */
   @Output() onClose = new EventEmitter();
 
   private dropdown: ComponentRef<AsiDropdownContainer>;
@@ -31,8 +34,13 @@ export class AsiDropDown implements OnChanges {
         setTimeout(() => {
           if (this.relativeTo == null) {
             this.dropdown = this.asiDropdownService.showDropdown(this.elementRef.nativeElement.parentElement, this);
-          } else {
+          } else if (this.relativeTo.nativeElement) {
             this.dropdown = this.asiDropdownService.showDropdown(this.relativeTo.nativeElement, this);
+          } else if (this.relativeTo['elementRef'].nativeElement) {
+            this.dropdown = this.asiDropdownService.showDropdown(this.relativeTo['elementRef'].nativeElement, this);
+          } else {
+            console.warn('Default choice for the down down cannot find nativeElement on the relativeTo element');
+            this.dropdown = this.asiDropdownService.showDropdown(this.elementRef.nativeElement.parentElement, this);
           }
           this.dropdown.instance.setCalculWidth(this.calculWidth);
           this.dropdown.instance.onClose().subscribe(() => {
