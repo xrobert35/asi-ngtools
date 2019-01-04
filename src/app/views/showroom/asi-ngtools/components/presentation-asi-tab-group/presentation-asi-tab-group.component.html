@@ -8,39 +8,31 @@
 </div>
 
 <div class="fixed-panel">
+  <h2 translate="COMMON.demo"></h2>
+
   <asi-tab-group>
-    <asi-tab label="Demo">
-      <div class="fixed-panel">
-        <asi-tab-group>
-          <asi-tab label="tab 1">
-            <p>Content 1</p>
-          </asi-tab>
-          <asi-tab label="tab 2">
-            <p>Content 2</p>
-          </asi-tab>
-        </asi-tab-group>
-      </div>
+    <asi-tab label="tab 1">
+      <p>Content 1</p>
+    </asi-tab>
+    <asi-tab label="tab 2">
+      <p>Content 2</p>
+    </asi-tab>
+  </asi-tab-group>
+</div>
+
+
+<div class="fixed-panel">
+  <asi-tab-group>
+    <asi-tab label="COMMON.props">
+      <h3> AsiTab </h3>
+      <asi-code-viewer value="/** Label to display (is translated) */
+      @Input() label: string;"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="HTML">
       <asi-code-viewer language="html" fromUrl="assets/demo/asi-tab-group/asi-tab-group.component.html"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="TS">
       <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-tab-group/asi-tab-group.component.ts"></asi-code-viewer>
-    </asi-tab>
-    <asi-tab label="Attributes">
-      <h3>asi-tab</h3>
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>[label]</td>
-            <td>Label value of the tab</td>
-          </tr>
-        </tbody>
-      </table>
     </asi-tab>
   </asi-tab-group>
 </div>

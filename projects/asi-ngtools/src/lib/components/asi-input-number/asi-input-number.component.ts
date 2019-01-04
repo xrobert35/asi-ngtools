@@ -18,26 +18,40 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class AsiInputNumberComponent extends DefaultControlValueAccessor implements OnInit {
 
+  /** html id */
   @Input() id: string;
+  /** html name */
   @Input() name: string;
 
+  /** Label to display (is translated) */
   @Input() label: string;
+  /** Label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
+
+  /** Increment value when click on + or - */
   @Input() step = 1;
+
+  /** Allow you to disable the input */
   @Input() disableInput = false;
 
+  /** Allow you to hide the action button */
   @Input() hideAction = false;
 
+  /** Min value */
   @Input() min: number;
+
+  /** Max value */
   @Input() max: number;
 
+  /** Delay before value change */
   @Input() delay = 0;
+
+  /** Number regex */
+  @Input() pattern = new RegExp('^-*[0-9,\.]*$');
 
   @ViewChild('input') inputElm: ElementRef;
 
   inputControl = new FormControl();
-
-  @Input() pattern = new RegExp('^-*[0-9,\.]*$');
 
   constructor(private renderer: Renderer2,
     private elementRef: ElementRef) {

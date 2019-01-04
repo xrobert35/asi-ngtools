@@ -24,18 +24,27 @@ import * as nh from '../../native-helper';
 })
 export class AsiFileChooserComponent extends DefaultControlValueAccessor implements AfterViewInit, OnChanges, OnInit {
 
+  /** html id */
+  @Input() id: string;
+  /** html name */
+  @Input() name: string;
+   /** Label to display (is translated) */
   @Input() label: string;
+  /** Label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
-
+  /** Preload filechooser with an url */
   @Input() fileSrc: string = null;
+  /** Allow you to force the name of the file */
   @Input() fileName: string = null;
-
+  /** Liste of mimetype : "application/pdf" */
   @Input() accept: Array<AsiMimeType> | AsiMimeType;
-  acceptAttribute = '';
-
+  /** Icon to display */
   @Input() icon = 'fa fa-paperclip';
 
+  /** Event emitted when an error occured with the selected file */
   @Output() onError = new EventEmitter<any>();
+
+  acceptAttribute = '';
 
   @ViewChild('fileInput') fileInput: any;
 

@@ -8,21 +8,40 @@ import { AsiComponentTemplateTableHeaderDef, AsiComponentTemplateCellDef } from 
 })
 export class AsiTableColumn implements AfterContentInit {
 
+  /** Column name (used to extract data from bean if cell template not defined) */
   @Input() name: string;
+  /** name of the bean attribute used to sort the column */
   @Input() sortName: string;
+  /** Libelle of the header (is template not defined) */
   @Input() libelle: string;
+
+  /** ngIf for column */
   @Input() showIf: boolean;
+  /** !ngif for column */
   @Input() hideIf: boolean;
+
+  /** Sort in reserve */
   @Input() inversSort = false;
+
+  /** Is the column sortable */
   @Input() sortable = false;
+
+  /** Autosort this column when you give new data */
   @Input() sortByDefault: boolean;
+
+  /** Add a class to this column */
   @Input() columnClass: any;
 
+  /** The column will be inlined */
   @Input() inlineColumn = false;
 
+  /** Type of the column (checkbox will display checkbox column) */
   @Input() type: 'text' | 'checkbox' = 'text';
 
+  /** Event emitted when checkbox is checked */
   @Output() onChecked = new EventEmitter<any>();
+
+  /** Event emitted when the 'allcheckbox' is checked */
   @Output() onAllChecked = new EventEmitter<boolean>();
 
   asc: boolean = null;

@@ -17,24 +17,35 @@ import * as nh from '../../native-helper';
 })
 export class AsiInputChipsComponent extends DefaultControlValueAccessor implements OnInit {
 
-  @ViewChild('asiInputChips') inputElm: ElementRef;
-
+  /** html id */
   @Input() id: string;
+  /** html name */
   @Input() name: string;
 
+  /** Label to display (is translated) */
   @Input() label: string;
-  @Input() placeholder = '';
+  /**Label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
+  /** Placeholder to display */
+  @Input() placeholder = '';
+
+  /** Max length of the text */
   @Input() maxlength = -1;
 
+  /** Must be a number (internaly set the regex to ^-*[0-9,\.]*$ */
   @Input() number = false;
 
+  /** Delay before the component change value */
   @Input() delay = 0;
 
+  /** Allow you to define only one value */
   @Input() uniq = false;
 
+  /** Init data */
   @Input() chips: Array<string>;
+
+  @ViewChild('asiInputChips') inputElm: ElementRef;
 
   private _inputValue: any;
   private onChangeCallback: (_: any) => void = () => { };

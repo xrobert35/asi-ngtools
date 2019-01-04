@@ -1,4 +1,4 @@
-<h1> asi-radio-group </h1>
+<h1> asi-radio-button-group </h1>
 
 <div class="fixed-panel">
   <h2 translate="COMMON.installation"> Installation </h2>
@@ -8,77 +8,64 @@
 </div>
 
 <div class="fixed-panel">
-  <asi-tab-group>
-    <asi-tab label="Demo">
-      <h3 translate="COMMON.withNgModel"></h3>
-      <asi-radio-button-group [(ngModel)]="radioValue" label="Radio Group" trackBy="code">
-        <asi-radio-button [value]="model1">Radio 1</asi-radio-button>
-        <asi-radio-button [value]="model2">Radio 2</asi-radio-button>
-        <asi-radio-button [value]="model3">Radio 3</asi-radio-button>
+  <h2 translate="COMMON.demo"></h2>
+  <h3 translate="COMMON.withNgModel"></h3>
+  <asi-radio-button-group [(ngModel)]="radioValue" label="Radio Group" trackBy="code">
+    <asi-radio-button [value]="model1">Radio 1</asi-radio-button>
+    <asi-radio-button [value]="model2">Radio 2</asi-radio-button>
+    <asi-radio-button [value]="model3">Radio 3</asi-radio-button>
+  </asi-radio-button-group>
+  {{radioValue?.libelle}}
+  <h3 translate="COMMON.withFormControl"></h3>
+  <form [formGroup]="myForm" (ngSubmit)="submitting()">
+    <div class="asi-container">
+      <asi-radio-button-group formControlName="radios" label="Radio Group" trackBy="code">
+        <asi-radio-button [value]="fcontrol1">Radio 1</asi-radio-button>
+        <asi-radio-button [value]="fcontrol2">Radio 2</asi-radio-button>
+        <asi-radio-button [value]="fcontrol3">Radio 3</asi-radio-button>
       </asi-radio-button-group>
-      {{radioValue?.libelle}}
-      <h3 translate="COMMON.withFormControl"></h3>
-      <form [formGroup]="myForm" (ngSubmit)="submitting()">
-        <div class="asi-container">
-          <asi-radio-button-group formControlName="radios" label="Radio Group" trackBy="code">
-            <asi-radio-button [value]="fcontrol1">Radio 1</asi-radio-button>
-            <asi-radio-button [value]="fcontrol2">Radio 2</asi-radio-button>
-            <asi-radio-button [value]="fcontrol3">Radio 3</asi-radio-button>
-          </asi-radio-button-group>
-          <error-messages forName="radios">
-            <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
-          </error-messages>
-        </div>
-        <div fxLayout="row">
-          <asi-button type="submit">Submit</asi-button>
-        </div>
-      </form>
+      <error-messages forName="radios">
+        <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+      </error-messages>
+    </div>
+    <div fxLayout="row">
+      <asi-button type="submit">Submit</asi-button>
+    </div>
+  </form>
+</div>
+
+<div fxLayout="row" class="flex-panel">
+  <asi-tab-group>
+    <asi-tab label="COMMON.props">
+      <div fxLayout="column">
+        <h3> AsiRadioButtonGroup </h3>
+        <asi-code-viewer value="/** Label to display (is translated) */
+@Input() label: string;
+
+/** Label position */
+@Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
+
+/** Vertical / Horizontal */
+@Input() vertical = false;
+
+/** Track data base on a sub attribute rather than reference  */
+@Input() trackBy: string = null;
+
+/** is enabled/disabled */
+@Input() disabled = false;
+
+/** Event emitted when component value changed */
+@Output() onValueChange = new EventEmitter();"></asi-code-viewer>
+        <h3> AsiRadioButton </h3>
+        <asi-code-viewer value="/** Value of the radio button */
+@Input() value: any;"></asi-code-viewer>
+      </div>
     </asi-tab>
     <asi-tab label="HTML">
-      <asi-code-viewer language="html" fromUrl="assets/demo/asi-radio-group/asi-radio-group.component.html"></asi-code-viewer>
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-radio-button-group/asi-radio-button-group.component.html"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="TS">
-      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-radio-group/asi-radio-group.component.ts"></asi-code-viewer>
-    </asi-tab>
-    <asi-tab label="Attributes">
-      <h3>asi-radio-group</h3>
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>[label]</td>
-            <td>Component label</td>
-          </tr>
-          <tr>
-            <td>[labelPosition]</td>
-            <td>Component label position in 'top' , 'left' , 'right' , 'bottom</td>
-          </tr>
-          <tr>
-            <td>[vertical]</td>
-            <td>Place the radio elements vertically</td>
-          </tr>
-          <tr>
-            <td>[trackBy]</td>
-            <td>Define on which value the radio buttons must seek to be active.</td>
-          </tr>
-        </tbody>
-      </table>
-      <h3>asi-radio</h3>
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>[value]</td>
-            <td>Value of the radio label</td>
-          </tr>
-        </tbody>
-      </table>
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-radio-button-group/asi-radio-button-group.component.ts"></asi-code-viewer>
     </asi-tab>
   </asi-tab-group>
 </div>

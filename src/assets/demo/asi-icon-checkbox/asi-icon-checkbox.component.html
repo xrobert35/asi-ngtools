@@ -1,13 +1,15 @@
-<!-- [(ngModel)] -->
-<asi-checkbox [(ngModel)]="check" label="checkbox" labelPosition="left"></asi-checkbox>
+<h3 translate="COMMON.withNgModel"></h3>
+<asi-icon-checkbox label="checkbox" labelPosition="left" [(ngModel)]="check" icon="fa fa-home"></asi-icon-checkbox>
 
-<!-- [fromGroup] -->
+<h3 translate="COMMON.withFormControl"></h3>
 <form [formGroup]="myForm">
   <div class="asi-container">
-    <asi-checkbox formControlName="myModel" label="checkbox" labelPosition="left"></asi-checkbox>
+    <asi-icon-checkbox formControlName="myModel" icon="fa fa-home" label="checkbox" labelPosition="left"></asi-icon-checkbox>
     <error-messages forName="myModel">
       <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
     </error-messages>
   </div>
-  <asi-button type="submit">Submit</asi-button>
+  <div fxLayout="row">
+    <asi-button type="submit">Submit</asi-button>
+  </div>
 </form>

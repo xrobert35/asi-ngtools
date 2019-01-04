@@ -20,9 +20,15 @@ import {
 })
 export class AsiRadioGroupComponent extends DefaultControlValueAccessor implements OnInit, AfterContentInit {
 
+  /** Label to display (is translated) */
   @Input() label: string;
+  /** Label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
+
+  /** Vertical / Horizontal */
   @Input() vertical = false;
+
+  /** Track data base on a sub attribute rather than reference */
   @Input() trackBy: string = null;
 
   @ContentChildren(AsiRadioComponent) queryRadios: QueryList<AsiRadioComponent>;

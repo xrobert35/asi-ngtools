@@ -16,8 +16,10 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class AsiSwitchComponent extends DefaultControlValueAccessor implements OnInit {
 
+  /** Label to display (is translated) */
   @Input() label: string;
-  @Input() disabled = false;
+
+  /** Label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
   constructor(private renderer: Renderer2,

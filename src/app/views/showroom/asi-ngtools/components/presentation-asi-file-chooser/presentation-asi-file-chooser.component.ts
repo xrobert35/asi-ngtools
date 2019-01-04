@@ -1,5 +1,6 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, HostBinding } from '@angular/core';
+import { AsiMimeType } from 'projects/asi-ngtools/src/public_api';
 
 @Component({
   selector: 'presentation-asi-file-chooser',
@@ -11,8 +12,9 @@ export class PresentationAsiFileChooserComponent {
 
   myForm: FormGroup;
 
-  constructor(fb: FormBuilder) {
+  pdfMimeType = AsiMimeType.PDF;
 
+  constructor(fb: FormBuilder) {
     this.myForm = fb.group({
       myModel: [null, Validators.required]
     });

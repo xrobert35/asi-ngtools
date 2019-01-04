@@ -6,9 +6,13 @@ import { TemplateRef, Input, EventEmitter, Output, Component, ViewChild } from '
 })
 export class AsiMenuItem {
 
+  /** routerLink directive parameter */
   @Input() routerLink: string;
-  @Input() disabled: Boolean = false;
 
+  /** is enabled/disabled */
+  @Input() disabled = false;
+
+  /** Event emitted when menu item is clicked */
   @Output() onClick = new EventEmitter();
 
   @ViewChild(TemplateRef) template: TemplateRef<any>;

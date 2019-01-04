@@ -14,21 +14,24 @@ export class AsiTreeViewComponent {
   private baseData: Array<any> = [];
   filteredData: Array<any> = [];
 
-  @Output() onNodeSelected = new EventEmitter<any>();
-
   @ContentChild(AsiComponentTemplateTreeNodeDef) nodeDef: AsiComponentTemplateTreeNodeDef;
   @ContentChild(AsiComponentTemplateTreeLeafDef) leafDef: AsiComponentTemplateTreeLeafDef;
 
+  /** List of data to display */
   @Input()
   set data(data: Array<any>) {
     this.baseData = data;
     this.filteredData = data;
   };
 
+  /** define the name of the sub nodes to display  */
   @Input() nodeName = '';
 
-  /** If this function is define it's used to define of the node is a leaf */
+  /** If this function is define it's used to define if the node is a leaf */
   @Input() isLeaf: Function = null;
+
+  /** Event emitted when a node is selected */
+  @Output() onNodeSelected = new EventEmitter<any>();
 
   @ViewChildren(AsiTreeViewNodeComponent) nodes: QueryList<AsiTreeViewNodeComponent>;
 

@@ -7,14 +7,17 @@
   </div>
 </div>
 
-<div fxLayout="row">
-  <asi-button (click)="openNode()"> Open File 1 </asi-button>
-  <asi-button (click)="closeAll()"> Close all </asi-button>
-  <asi-button (click)="openAll()"> Open all </asi-button>
-</div>
 
-<asi-tab-group>
-  <asi-tab label="Demo">
+<div class="fixed-panel">
+  <div fxLayout="column">
+    <h2 translate="COMMON.demo"></h2>
+
+    <div fxLayout="row">
+      <asi-button (click)="openNode()"> Open File 1 </asi-button>
+      <asi-button (click)="closeAll()"> Close all </asi-button>
+      <asi-button (click)="openAll()"> Open all </asi-button>
+    </div>
+
     <asi-input label="Filter (keep leaves)" [delay]="500" (onValueChange)="filterTreeDataKeepLeaves($event)"></asi-input>
     <asi-input label="Filter" [delay]="500" (onValueChange)="filterTreeData($event)"></asi-input>
 
@@ -26,6 +29,23 @@
         <asi-fa-icon [label]="node.data.name" labelPosition="right" icon="fa fa-file-o"></asi-fa-icon>
       </asi-tree-leaf>
     </asi-tree-view>
+  </div>
+</div>
+
+
+<asi-tab-group>
+  <asi-tab label="COMMON.props">
+    <asi-code-viewer value="/** List of data to display */
+@Input() data: Array<any>;
+
+/** define the name of the sub nodes to display  */
+@Input() nodeName = '';
+
+/** If this function is define it's used to define if the node is a leaf */
+@Input() isLeaf: Function = null;
+
+/** Event emitted when a node is selected */
+@Output() onNodeSelected = new EventEmitter<any>();"></asi-code-viewer>
   </asi-tab>
   <asi-tab label="HTML">
     <asi-code-viewer language="html" fromUrl="assets/demo/asi-tree-view/asi-tree-view.component.html"></asi-code-viewer>

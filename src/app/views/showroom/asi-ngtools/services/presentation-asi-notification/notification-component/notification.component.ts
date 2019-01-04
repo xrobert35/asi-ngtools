@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'notification-test',
+  selector: 'presentation-notification',
   templateUrl: './notification.component.html',
 })
 export class NotificationComponent {
 
-  public message : string = "";
+  public message = '';
 
-  constructor(){
+  constructor() {
   }
 }

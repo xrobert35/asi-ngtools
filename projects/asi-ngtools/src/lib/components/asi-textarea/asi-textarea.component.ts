@@ -18,13 +18,27 @@ import * as nh from '../../native-helper';
 })
 export class AsiTextareaComponent extends DefaultControlValueAccessor implements OnInit, AfterViewInit {
 
+  /** html id */
+  @Input() id: string;
+  /** html name */
+  @Input() name: string;
+  /** Label to display (is translated) */
   @Input() label: string;
-  @Input() placeholder = '';
+  /** Label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
+  /** Placeholder to display (is translated) */
+  @Input() placeholder = '';
+
+  /** number of rows to display */
   @Input() rows = 2;
+
+  /** number of cols */
   @Input() cols = 100;
+
+  /** max length of the text */
   @Input() maxlength = -1;
 
+  /** Allow you to define a regex that the input must respect */
   @Input() pattern: RegExp;
 
   textareaControl = new FormControl();

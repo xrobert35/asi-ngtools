@@ -7,7 +7,9 @@ import { AsiComponentTemplateCellDef } from '../common/asi-component-template';
 })
 export class AsiTableInliner {
 
+  /** Colspan of the column */
   @Input() colSpan: number;
+
   @ContentChild(AsiComponentTemplateCellDef) cellDef: AsiComponentTemplateCellDef;
 
 }

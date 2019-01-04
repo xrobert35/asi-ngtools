@@ -15,13 +15,29 @@ export class AsiTable<T> implements AfterContentInit {
 
   @ContentChildren(AsiTableColumn) queryColumns: QueryList<AsiTableColumn>;
 
+  /** Sorte table automatically */
   @Input() autoSort = false;
+
+  /** Auto paginate the table */
   @Input() autoPaginate = false;
+
+  /** Nb element by page */
   @Input() nbElementParPage = 25;
+
+  /** Define a selection model */
   @Input() selectionModel = new AsiTableSelectionModel('id', false);
+
+  /** Use a ngClass expression to add a class on a row*/
   @Input() rowClass: any;
+
+  /** Will call onRequestData when init */
   @Input() fireRefreshOnInit = true;
+
+  /** Focus to the top of the table when page chanched */
   @Input() changePageOnTop = false;
+
+  /** Method called when table will ask for data */
+  /** (on init , on sort ( autoSort is false), on page changed (autoPaginate is false) */
   @Input() onRequestData: Function;
 
   @ViewChild('table') topElement: ElementRef;

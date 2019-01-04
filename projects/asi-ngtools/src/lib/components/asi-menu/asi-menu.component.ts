@@ -12,12 +12,19 @@ import {
 })
 export class AsiMenu implements AfterContentInit {
 
+  /** is enabled/disabled */
   @Input() disabled = false;
+
+  /** change to a menu burger */
   @Input() burger = false;
+
+  /** horizontal/vertical */
   @Input() vertical = false;
-  @Input() items = new Array<AsiMenuItem>();
+
+  items = new Array<AsiMenuItem>();
 
   @ContentChildren(AsiMenuItem) queryItems: QueryList<AsiMenuItem>;
+
   @ContentChild('burger') burgerTemplate: TemplateRef<any>;
 
   burgerOpen: Boolean;

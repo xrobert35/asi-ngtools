@@ -1,4 +1,4 @@
-<label *ngIf="label != null">{{label | translate}}</label>
+<label class="input-label" *ngIf="label != null">{{label | translate}}</label>
 <div class="number-select">
   <asi-button *ngIf="!hideAction" class="minus" size="mini" [disabled]="disabled" type="button" (click)="decrease()">-</asi-button>
   <input #input [attr.disabled]="disabled || disableInput ? '' : null"

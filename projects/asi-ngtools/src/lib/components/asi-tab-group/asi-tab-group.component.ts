@@ -10,6 +10,7 @@ import { Component, QueryList, ContentChildren, ViewChild, AfterContentInit } fr
 export class AsiTabGroup implements AfterContentInit {
 
   @ContentChildren(AsiTab) queryTabs: QueryList<AsiTab>;
+
   @ViewChild(AsiTabContent) asiTableContent: AsiTabContent;
 
   tabs = new Array<AsiTab>();

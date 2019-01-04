@@ -10,16 +10,26 @@ import {
 })
 export class AsiFaIconComponent implements OnInit, OnChanges {
 
+  /** icon from fontawesome website */
   @Input() icon: string;
-  @Input() label: string;
-  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
-  @Input() submit = false;
-
+  /** icon size */
   @Input() size: '1x' | '2x' | '3x' | '4x';
+  /** label to display (is translated) */
+  @Input() label: string;
+  /** label position */
+  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
+  /** Click on the icon submit form */
+  @Input() submit = false;
+  /** is enabled/disabled */
   @Input() disabled: boolean;
+  /** tooltip when mouse over */
   @Input() tooltip: boolean;
+  /** tooltip position */
   @Input() tooltipPosition: 'top' | 'left' | 'right' | 'bottom' = 'bottom';
+  /** disable click on label */
   @Input() noClickOnLabel = false;
+
+  /** event emitted when click on label or icon */
   @Output() onClick = new EventEmitter<MouseEvent>();
 
   @ViewChild('tooltipView') tooltipElement: ElementRef;

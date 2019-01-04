@@ -40,14 +40,16 @@ import { PresentationAsiTinyMCEComponent } from './components/presentation-asi-t
 import { PresentationAsiImageChooserComponent } from './components/presentation-asi-image-chooser/presentation-asi-image-chooser.component';
 import { PresentationAsiAutoCompleteComponent } from './components/presentation-asi-autocomplete/presentation-asi-autocomplete.component';
 import { PresentationAsiMenuComponent } from './components/presentation-asi-menu/presentation-asi-menu.component';
-import { PresentationAsiDialogComponent } from './components/presentation-asi-dialog/presentation-asi-dialog.component';
+import { PresentationAsiDialogComponent } from './services/presentation-asi-dialog/presentation-asi-dialog.component';
 import { PresentationAsiSwitchComponent } from './components/presentation-asi-switch/presentation-asi-switch.component';
-import { PresentationAsiNotificationComponent } from './components/presentation-asi-notification/presentation-asi-notification.component';
+import { PresentationAsiNotificationComponent }
+  from './services/presentation-asi-notification/presentation-asi-notification.component';
+import { NotificationComponent }
+  from './services/presentation-asi-notification/notification-component/notification.component';
 import { PresentationAsiSelectComponent } from './components/presentation-asi-select/presentation-asi-select.component';
 import { PresentationAsiTableComponent } from './components/presentation-asi-table/presentation-asi-table.component';
 import { PresentationAsiTreeViewComponent } from './components/presentation-asi-tree-view/presentation-asi-tree-view.component';
-import { DialogComponent } from './components/presentation-asi-dialog/dialog-component/dialog.component';
-import { NotificationComponent } from './components/presentation-asi-notification/notification-component/notification.component';
+import { DialogComponent } from './services/presentation-asi-dialog/dialog-component/dialog.component';
 import { PresentationAsiBreadcrumbComponent } from './components/presentation-asi-breadcrumb/presentation-asi-breadcrumb.component';
 import { PresentationAsiDropdownComponent } from './components/presentation-asi-dropdown/presentation-asi-dropdown.component';
 import { PresentationAsiIconCheckboxComponent } from './components/presentation-asi-icon-checkbox/presentation-asi-icon-checkbox.component';
@@ -62,7 +64,9 @@ import { PresentationAsiNavGroupComponent } from './components/presentation-asi-
 import { PresentationAsiNavViewComponent } from './components/presentation-asi-nav-group/nav/presentation-asi-nav-view.component';
 // tslint:disable-next-line:max-line-length
 import { PresentationAsiRadioButtonGroupComponent } from './components/presentation-asi-radio-button-group/presentation-asi-radio-button-group.component';
-import { PresentationAsiAutoCompleteMultipleComponent } from './components/presentation-asi-autocomplete-multiple/presentation-asi-autocomplete-multiple.component';
+import { PresentationAsiAutoCompleteMultipleComponent }
+  from './components/presentation-asi-autocomplete-multiple/presentation-asi-autocomplete-multiple.component';
+import { PresentationAsiMenuViewComponent } from './components/presentation-asi-menu/menu/presentation-asi-menu-view.component';
 
 const asiNgToolsRoutes: Routes = [{
   path: '',
@@ -110,9 +114,10 @@ const asiNgToolsRoutes: Routes = [{
         {
           path: 'asi-menu', component: PresentationAsiMenuComponent,
           children: [
-            { path: 'root', component: PresentationAsiSelectComponent },
-            { path: 'root1', component: PresentationAsiTableComponent },
-            { path: 'root2', component: PresentationAsiDialogComponent }
+            { path: 'asi-menu-1', component: PresentationAsiMenuViewComponent, data: { menu: '1' } },
+            { path: 'asi-menu-2', component: PresentationAsiMenuViewComponent, data: { menu: '2' } },
+            { path: 'asi-menu-3', component: PresentationAsiMenuViewComponent, data: { menu: '3' } },
+            { path: '', redirectTo: 'asi-menu-3', pathMatch: 'full' },
           ]
         },
         { path: 'asi-autocomplete', component: PresentationAsiAutoCompleteComponent },
@@ -189,6 +194,7 @@ export const asiNgToolsPresentationRouting: ModuleWithProviders = RouterModule.f
     PresentationAsiAutoCompleteMultipleComponent,
     PresentationAsiDmyPickerComponent,
     PresentationAsiMenuComponent,
+    PresentationAsiMenuViewComponent,
     PresentationAsiDialogComponent,
     PresentationAsiCollapseComponent,
     PresentationAsiSwitchComponent,

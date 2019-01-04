@@ -7,78 +7,73 @@
   </div>
 </div>
 
+<div class="fixed-panel">
+  <h2 translate="COMMON.demo"></h2>
+  <div fxLayout="column">
+    <h3 translate="COMMON.withNgModel"></h3>
+    <asi-input-number label="asi-input" labelPosition="left" [(ngModel)]="inputValue" (onValueChange)="valueChange($event)"
+      [delay]="500"></asi-input-number>
+
+    <h3 translate="COMMON.withFormControl"></h3>
+    <form [formGroup]="myForm" fxFlex (ngSubmit)="submit()">
+      <div class="asi-container">
+        <asi-input-number label="asi-input" labelPosition="left" formControlName="myModel"></asi-input-number>
+        <error-messages forName="myModel">
+          <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+        </error-messages>
+      </div>
+      <div fxLayout="row">
+        <asi-button type="submit">Submit</asi-button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <div fxLayout="row" class="flex-panel">
   <asi-tab-group>
-    <asi-tab label="Demo">
-      <div fxLayout="column">
-        <h3 translate="COMMON.withNgModel"></h3>
-        <asi-input-number label="asi-input" labelPosition="left" [(ngModel)]="inputValue" (onValueChange)="valueChange($event)"
-          [delay]="500"></asi-input-number>
+    <asi-tab label="COMMON.props">
+        <asi-code-viewer value="/** html id */
+@Input() id: string;
+/** html name */
+@Input() name: string;
 
-        <h3 translate="COMMON.withFormControl"></h3>
-        <form [formGroup]="myForm" fxFlex (ngSubmit)="submit()">
-          <div class="asi-container">
-            <asi-input-number label="asi-input" labelPosition="left" formControlName="myModel"></asi-input-number>
-            <error-messages forName="myModel">
-              <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
-            </error-messages>
-          </div>
-          <div fxLayout="row">
-            <asi-button type="submit">Submit</asi-button>
-          </div>
-        </form>
-      </div>
+/** Label to display (is translated) */
+@Input() label: string;
+/** Label position */
+@Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
+
+/** Increment value when click on + or - */
+@Input() step = 1;
+
+/** Allow you to disable the input */
+@Input() disableInput = false;
+
+/** Allow you to hide the action button */
+@Input() hideAction = false;
+
+/** Min value */
+@Input() min: number;
+
+/** Max value */
+@Input() max: number;
+
+/** Delay before value change */
+@Input() delay = 0;
+
+/** Number regex */
+@Input() pattern = new RegExp('^-*[0-9,\.]*$');
+
+/** is enabled/disabled */
+@Input() disabled = false;
+
+/** Event emitted when component value changed */
+@Output() onValueChange = new EventEmitter();"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="HTML">
       <asi-code-viewer language="html" fromUrl="assets/demo/asi-input/asi-input.component.html"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="TS">
       <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-input/asi-input.component.ts"></asi-code-viewer>
-    </asi-tab>
-    <asi-tab label="Attributes">
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>[label]</td>
-            <td>Component label</td>
-          </tr>
-          <tr>
-            <td>[labelPosition]</td>
-            <td>Component label position in 'top' , 'left' , 'right' , 'bottom</td>
-          </tr>
-          <tr>
-            <td>[disabled]</td>
-            <td>Allow you to disable the input</td>
-          </tr>
-          <tr>
-            <td>[placeholder]</td>
-            <td>Allow you to define a placeholder when the input is empty</td>
-          </tr>
-          <tr>
-            <td>[pattern]</td>
-            <td>Define a 'RegExp' pattern to respect while typing</td>
-          </tr>
-          <tr>
-            <td>[maxlength]</td>
-            <td>Define the max length of the input</td>
-          </tr>
-          <tr>
-            <td>[number]</td>
-            <td>If true the input only accept number by respecting pattern : "^-*[0-9,\.]*$"</td>
-          </tr>
-          <tr>
-            <td>(onValueChange)</td>
-            <div fxLayout="column">
-              <span>Event emitted when value change</span>
-              <span>$event will be the model value (input value)</span>
-            </div>
-          </tr>
-        </tbody>
-      </table>
     </asi-tab>
   </asi-tab-group>
 </div>

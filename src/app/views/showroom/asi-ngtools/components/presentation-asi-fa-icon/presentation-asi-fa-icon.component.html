@@ -1,5 +1,5 @@
 <h1> asi-fa-icon </h1>
-
+<h3> Allow you to simply integration fontawesome icon </h3>
 <div class="fixed-panel">
   <h2 translate="COMMON.installation"></h2>
   <div class="install">
@@ -7,89 +7,57 @@
   </div>
 </div>
 
+<div class="fixed-panel">
+  <h2 translate="COMMON.demo"></h2>
+  <div fxLayout="row">
+    <asi-fa-icon icon="fa fa-check-circle" size="1x"></asi-fa-icon>
+    <asi-fa-icon icon="fa fa-check-circle" size="lg"></asi-fa-icon>
+    <asi-fa-icon icon="fa fa-check-circle" size="2x"></asi-fa-icon>
+    <asi-fa-icon icon="fa fa-check-circle" size="3x"></asi-fa-icon>
+    <asi-fa-icon icon="fa fa-check-circle" size="4x"></asi-fa-icon>
+    <asi-fa-icon icon="fa fa-check-circle" size="5x"></asi-fa-icon>
+  </div>
+  <div fxLayout="row">
+    <asi-fa-icon icon="fa fa-spinner fa-spin" size="1x"></asi-fa-icon>
+    <asi-fa-icon icon="fa fa-spinner fa-spin" size="lg"></asi-fa-icon>
+    <asi-fa-icon icon="fa fa-spinner fa-spin" size="2x"></asi-fa-icon>
+    <asi-fa-icon icon="fa fa-spinner fa-spin" size="3x"></asi-fa-icon>
+    <asi-fa-icon icon="fa fa-spinner fa-spin" size="4x"></asi-fa-icon>
+    <asi-fa-icon icon="fa fa-spinner fa-spin" size="5x"></asi-fa-icon>
+  </div>
+  <div fxLayout="row">
+    <asi-fa-icon icon="far fa-check-circle" size="2x" label="tooltip" labelPosition="bottom" tooltip="1x right"
+      tooltipPosition="right" [disabled]="true"></asi-fa-icon>
+    <asi-fa-icon icon="far fa-check-circle" size="2x" label="click me!" labelPosition="bottom" (onClick)="action()"></asi-fa-icon>
+    <asi-fa-icon icon="far fa-check-circle" size="2x" label="click only on icon!" labelPosition="bottom"
+      noClickOnLabel="true" (onClick)="action()"></asi-fa-icon>
+  </div>
+</div>
+
 <div fxLayout="row" class="fixed-panel">
   <asi-tab-group>
-    <asi-tab label="Demo">
-      <div fxLayout="row">
-        <asi-fa-icon icon="fa fa-check-circle-o" size="1x"></asi-fa-icon>
-        <asi-fa-icon icon="fa fa-check-circle-o" size="lg"></asi-fa-icon>
-        <asi-fa-icon icon="fa fa-check-circle-o" size="2x"></asi-fa-icon>
-        <asi-fa-icon icon="fa fa-check-circle-o" size="3x"></asi-fa-icon>
-        <asi-fa-icon icon="fa fa-check-circle-o" size="4x"></asi-fa-icon>
-        <asi-fa-icon icon="fa fa-check-circle-o" size="5x"></asi-fa-icon>
-      </div>
-      <div fxLayout="row">
-        <asi-fa-icon icon="fa fa-spinner fa-spin" size="1x"></asi-fa-icon>
-        <asi-fa-icon icon="fa fa-spinner fa-spin" size="lg"></asi-fa-icon>
-        <asi-fa-icon icon="fa fa-spinner fa-spin" size="2x"></asi-fa-icon>
-        <asi-fa-icon icon="fa fa-spinner fa-spin" size="3x"></asi-fa-icon>
-        <asi-fa-icon icon="fa fa-spinner fa-spin" size="4x"></asi-fa-icon>
-        <asi-fa-icon icon="fa fa-spinner fa-spin" size="5x"></asi-fa-icon>
-      </div>
-      <div fxLayout="row">
-        <asi-fa-icon icon="far fa-check-circle" size="2x" label="tooltip" labelPosition="bottom" tooltip="1x right"
-          tooltipPosition="right" [disabled]="true"></asi-fa-icon>
-        <asi-fa-icon icon="far fa-check-circle" size="2x" label="click me!" labelPosition="bottom" (onClick)="action()"></asi-fa-icon>
-        <asi-fa-icon icon="far fa-check-circle" size="2x" label="click only on icon!" labelPosition="bottom"
-          noClickOnLabel="true" (onClick)="action()"></asi-fa-icon>
-      </div>
-      <!-- <div fxLayout="column">
-        <asi-input [(ngModel)]="dynamicIcon" placeholder="Font Awesome icon"></asi-input>
-        <asi-fa-icon [icon]="dynamicIcon" size="2x" label="Dynamic icon" labelPosition="left" (click)="update()"></asi-fa-icon>
-      </div> -->
+    <asi-tab label="COMMON.props">
+        <asi-code-viewer value="/** icon from fontawesome website */
+@Input() icon: string;
+/** icon size */
+@Input() size: '1x' | '2x' | '3x' | '4x';
+/** label to display */
+@Input() label: string;
+/** label position */
+@Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
+/** Click on the icon submit form */
+@Input() submit = false;
+/** is enabled/disabled */
+@Input() disabled: boolean;
+/** tooltip when mouse over */
+@Input() tooltip: boolean;
+/** tooltip position */
+@Input() tooltipPosition: 'top' | 'left' | 'right' | 'bottom' = 'bottom';
+/** disable click on label */
+@Input() noClickOnLabel = false;"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="HTML">
       <asi-code-viewer language="html" fromUrl="assets/demo/asi-fa-icon/asi-fa-icon.component.html"></asi-code-viewer>
-    </asi-tab>
-    <asi-tab label="Attributes">
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>[icon]</td>
-            <td>Name of the fa-icon (Font Awesome), rendered as a css class</td>
-          </tr>
-          <tr>
-            <td>[label]</td>
-            <td>Component label</td>
-          </tr>
-          <tr>
-            <td>[labelPosition]</td>
-            <td>Component label position in 'top', 'left', 'right', 'bottom</td>
-          </tr>
-          <tr>
-            <td>[submit]</td>
-            <td>[boolean] true for a submit type, false for a button type</td>
-          </tr>
-          <tr>
-            <td>[size]</td>
-            <td>Size of the fa-icon within '1x', 'lg', '2x', '3x', '4x', '5x'</td>
-          </tr>
-          <tr>
-            <td>[disabled]</td>
-            <td>[boolean] true to disable click on the fa-icon, false else</td>
-          </tr>
-          <tr>
-            <td>[tooltip]</td>
-            <td>Text to display on a tooltip</td>
-          </tr>
-          <tr>
-            <td>[tooltipPosition]</td>
-            <td>Tooltip position within 'rigth', 'left', 'top', 'bottom', bottom by default</td>
-          </tr>
-          <tr>
-            <td>[noClickOnLabel]</td>
-            <td>Disable click on label only</td>
-          </tr>
-          <tr>
-            <td>(onClick)</td>
-            <td>Event fired when the icon or label is clicked</td>
-          </tr>
-        </tbody>
-      </table>
     </asi-tab>
   </asi-tab-group>
 </div>

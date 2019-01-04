@@ -6,6 +6,7 @@ import { Input, Component, TemplateRef, ViewChild } from '@angular/core';
 })
 export class AsiRadioButtonComponent {
 
+  /** Value of the radio button */
   @Input() value: any;
 
   @ViewChild(TemplateRef) template: TemplateRef<any>;

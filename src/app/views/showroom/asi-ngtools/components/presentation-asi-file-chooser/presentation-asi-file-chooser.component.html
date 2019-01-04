@@ -7,12 +7,11 @@
   </div>
 </div>
 
-<div fxLayout="row" class="fixed-panel">
-  <asi-tab-group>
-    <asi-tab label="Demo">
-      <form [formGroup]="myForm">
+<div class="fixed-panel">
+    <h2 translate="COMMON.demo"></h2>
+    <form [formGroup]="myForm">
         <div class="asi-container">
-          <asi-file-chooser label="file-chooser" labelPosition="left" (onValueChange)="fileSelected($event)"
+          <asi-file-chooser label="file-chooser" labelPosition="left" [accept]="pdfMimeType"(onValueChange)="fileSelected($event)"
             formControlName="myModel"></asi-file-chooser>
           <error-messages forName="myModel">
             <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
@@ -22,42 +21,41 @@
           <asi-button type="submit">Submit</asi-button>
         </div>
       </form>
+</div>
+<div fxLayout="row" class="fixed-panel">
+  <asi-tab-group>
+    <asi-tab label="COMMON.props">
+        <asi-code-viewer value="/** html id */
+@Input() id: string;
+/** html name */
+@Input() name: string;
+  /** Label to display (is translated) */
+@Input() label: string;
+/** Label position */
+@Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
+/** Preload filechooser with an url */
+@Input() fileSrc: string = null;
+/** Allow you to force the name of the file */
+@Input() fileName: string = null;
+/** Liste of mimetype */
+@Input() accept: Array<AsiMimeType> | AsiMimeType;
+/** Icon to display */
+@Input() icon = 'fa fa-paperclip';
+
+/** is enabled/disabled */
+@Input() disabled = false;
+
+/** Event emitted when component value changed */
+@Output() onValueChange = new EventEmitter<any>();
+
+/** Event emitted when an error occured with the selected file */
+@Output() onError = new EventEmitter<any>();"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="HTML">
-      <!-- <asi-code-viewer language="html" fromUrl="assets/demo/asi-file-chooser/asi-file-chooser.component.html"></asi-code-viewer> -->
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-file-chooser/asi-file-chooser.component.html"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="TS">
-      <!-- <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-file-chooser/asi-file-chooser.component.ts"></asi-code-viewer> -->
-    </asi-tab>
-    <asi-tab label="Attributes">
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>[label]</td>
-            <td>Component label</td>
-          </tr>
-          <tr>
-            <td>[labelPosition]</td>
-            <td>Component label position in 'top' , 'left' , 'right' , 'bottom</td>
-          </tr>
-          <tr>
-            <td>[fileSrc]</td>
-            <td>The link to the chosen file</td>
-          </tr>
-          <tr>
-            <td>[fileName]</td>
-            <td>The name to give to the file, overriding its real name</td>
-          </tr>
-          <tr>
-            <td>[accept]</td>
-            <td>List of file type to accept. Use 'AsiMimeType'</td>
-          </tr>
-        </tbody>
-      </table>
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-file-chooser/asi-file-chooser.component.ts"></asi-code-viewer>
     </asi-tab>
   </asi-tab-group>
 </div>

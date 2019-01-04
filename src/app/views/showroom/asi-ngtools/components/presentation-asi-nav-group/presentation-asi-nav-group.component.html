@@ -1,45 +1,32 @@
-<h1> asi-tab-group </h1>
+<h1> asi-nav-group </h1>
 
 <div class="fixed-panel">
   <h2 translate="COMMON.installation"></h2>
   <div class="install">
-    <asi-code-viewer value="import { AsiTabGroupModule } from '@asi-ngtools/lib'"></asi-code-viewer>
+    <asi-code-viewer value="import { AsiNavGroupModule } from '@asi-ngtools/lib'"></asi-code-viewer>
   </div>
 </div>
 
 <div class="fixed-panel">
-  <asi-tab-group>
-    <asi-tab label="Demo">
-      <div class="fixed-panel">
-        <asi-nav-group>
-          <asi-nav label="tab 1" routerLink="asi-nav-1"></asi-nav>
-          <asi-nav label="tab 2" routerLink="asi-nav-2"></asi-nav>
-          <asi-nav label="tab 3" routerLink="asi-nav-3"></asi-nav>
-        </asi-nav-group>
+  <h2 translate="COMMON.demo"></h2>
+  <div class="fixed-panel">
+    <asi-nav-group>
+      <asi-nav label="tab 1" routerLink="asi-nav-1"></asi-nav>
+      <asi-nav label="tab 2" routerLink="asi-nav-2"></asi-nav>
+      <asi-nav label="tab 3" routerLink="asi-nav-3"></asi-nav>
+    </asi-nav-group>
 
-        <router-outlet></router-outlet>
-      </div>
-    </asi-tab>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<div fxLayout="row" class="flex-panel">
+  <asi-tab-group>
     <asi-tab label="HTML">
       <asi-code-viewer language="html" fromUrl="assets/demo/asi-nav-group/asi-nav-group.component.html"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="TS">
       <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-nav-group/asi-nav-group.component.ts"></asi-code-viewer>
-    </asi-tab>
-    <asi-tab label="Attributes">
-      <h3>asi-tab</h3>
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>[label]</td>
-            <td>Label value of the tab</td>
-          </tr>
-        </tbody>
-      </table>
     </asi-tab>
   </asi-tab-group>
 </div>

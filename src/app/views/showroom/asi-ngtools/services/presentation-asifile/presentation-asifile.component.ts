@@ -1,6 +1,6 @@
 import { AsiFileService, AsiNotificationService, AsiNotificationPosition, AsiNotificationType } from '@asi-ngtools/lib';
 import { Component, HostBinding } from '@angular/core';
-import { NotificationComponent } from '../../components/presentation-asi-notification/notification-component/notification.component';
+import { NotificationComponent } from '../../services/presentation-asi-notification/notification-component/notification.component';
 
 const _apiDoc = require('./asifile-api.json');
 

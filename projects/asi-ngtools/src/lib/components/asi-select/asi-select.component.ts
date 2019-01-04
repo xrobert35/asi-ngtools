@@ -23,14 +23,22 @@ import * as nh from '../../native-helper';
 })
 export class AsiSelectComponent extends DefaultControlValueAccessor implements OnInit, OnChanges {
 
+  /** Label to display (is translated) */
   @Input() label: string;
-  @Input() disabled = false;
+
+  /** Label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
+  /** Data to display  */
   @Input() data: Array<any>;
+
+  /** Multi selection  */
   @Input() multiple = false;
+
+  /** Track data base on a sub attribute rather than reference  */
   @Input() trackBy: string;
 
+  /** Add an empty value (template must be define) */
   @Input() withEmptyValue = false;
 
   @ContentChild(AsiComponentTemplateOptionDef) optionDef: AsiComponentTemplateOptionDef;

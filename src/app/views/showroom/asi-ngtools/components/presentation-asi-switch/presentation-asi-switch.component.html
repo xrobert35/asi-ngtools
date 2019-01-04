@@ -8,38 +8,31 @@
 </div>
 
 <div class="fixed-panel">
+  <h2 translate="COMMON.demo"></h2>
+  <asi-switch [(ngModel)]="value" label="switch"></asi-switch>
+  {{value}}
+</div>
+
+<div class="fixed-panel">
   <asi-tab-group>
-    <asi-tab label="Demo">
-      <asi-switch [(ngModel)]="value" label="switch"></asi-switch>
-      {{value}}
+    <asi-tab label="COMMON.props">
+      <asi-code-viewer value="/** Label to display (is translated) */
+@Input() label: string;
+
+/** Label position */
+@Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
+
+/** is enabled/disabled */
+@Input() disabled = false;
+
+/** Event emitted when component value changed */
+@Output() onValueChange = new EventEmitter();"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="HTML">
       <asi-code-viewer language="html" fromUrl="assets/demo/asi-switch/asi-switch.component.html"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="TS">
       <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-switch/asi-switch.component.ts"></asi-code-viewer>
-    </asi-tab>
-    <asi-tab label="Attributes">
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>[label]</td>
-            <td>Component label</td>
-          </tr>
-          <tr>
-            <td>[labelPosition]</td>
-            <td>Component label position in 'top' , 'left' , 'right' , 'bottom</td>
-          </tr>
-          <tr>
-            <td>[disabled]</td>
-            <td>Allows you to disable the switch</td>
-          </tr>
-        </tbody>
-      </table>
     </asi-tab>
   </asi-tab-group>
 </div>

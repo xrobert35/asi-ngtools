@@ -7,71 +7,64 @@
   </div>
 </div>
 
+<div class="fixed-panel">
+  <h2 translate="COMMON.demo"></h2>
+  <div fxLayout="column">
+    <h3 translate="COMMON.withNgModel"></h3>
+    <asi-textarea label="asi-textarea" labelPosition="left" [(ngModel)]="textareaValue"></asi-textarea>
+
+    <h3 translate="COMMON.withFormControl"></h3>
+    <form [formGroup]="myForm">
+      <div class="asi-container">
+        <asi-textarea label="asi-textarea" labelPosition="left" formControlName="myModel"></asi-textarea>
+        <error-messages forName="myModel">
+          <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
+        </error-messages>
+      </div>
+      <div fxLayout="row">
+        <asi-button type="submit">Submit</asi-button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <div fxLayout="row" class="flex-panel">
   <asi-tab-group>
-    <asi-tab label="Demo">
-      <div fxLayout="column">
-        <h3 translate="COMMON.withNgModel"></h3>
-        <asi-textarea label="asi-textarea" labelPosition="left" [(ngModel)]="textareaValue"></asi-textarea>
+    <asi-tab label="COMMON.props">
+      <asi-code-viewer value="/** html id */
+@Input() id: string;
+/** html name */
+@Input() name: string;
+/** Label to display (is translated) */
+@Input() label: string;
+/** Label position */
+@Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
+/** Placeholder to display (is translated) */
+@Input() placeholder = '';
 
-        <h3 translate="COMMON.withFormControl"></h3>
-        <form [formGroup]="myForm">
-          <div class="asi-container">
-            <asi-textarea label="asi-textarea" labelPosition="left" formControlName="myModel"></asi-textarea>
-            <error-messages forName="myModel">
-              <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
-            </error-messages>
-          </div>
-          <div fxLayout="row">
-            <asi-button type="submit">Submit</asi-button>
-          </div>
-        </form>
-      </div>
+/** number of rows to display */
+@Input() rows = 2;
+
+/** number of cols */
+@Input() cols = 100;
+
+/** max length of the text */
+@Input() maxlength = -1;
+
+/** Allow you to define a regex that the input must respect */
+@Input() pattern: RegExp;
+
+/** is enabled/disabled */
+@Input() disabled = false;
+
+/** Event emitted when component value changed */
+@Output() onValueChange = new EventEmitter();"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="HTML">
       <asi-code-viewer language="html" fromUrl="assets/demo/asi-textarea/asi-textarea.component.html"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="TS">
       <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-textarea/asi-textarea.component.ts"></asi-code-viewer>
-    </asi-tab>
-    <asi-tab label="Attributes">
-      <table class="presentation-table">
-        <thead>
-          <th> Name </th>
-          <th> Description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td>[label]</td>
-            <td>Component label</td>
-          </tr>
-          <tr>
-            <td>[labelPosition]</td>
-            <td>Component label position in 'top' , 'left' , 'right' , 'bottom</td>
-          </tr>
-          <tr>
-            <td>[disabled]</td>
-            <td>Allow you to disable the textarea</td>
-          </tr>
-          <tr>
-            <td>[placeholder]</td>
-            <td>Allow you to define a placeholder when the textarea is empty</td>
-          </tr>
-          <tr>
-            <td>[maxlength]</td>
-            <td>Define the max length of the textarea</td>
-          </tr>
-          <tr>
-            <td>(onValueChange)</td>
-            <td>
-              <div fxLayout="column">
-                <span>Event emitted when value change</span>
-                <span>$event will be the model value (textarea string)</span>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </asi-tab>
   </asi-tab-group>
 </div>

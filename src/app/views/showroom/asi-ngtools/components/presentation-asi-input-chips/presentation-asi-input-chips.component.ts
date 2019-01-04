@@ -10,7 +10,9 @@ export class PresentationAsiInputChipsComponent {
   @HostBinding('class') class = 'flex';
 
   myForm: FormGroup;
+
   inputValue = '';
+  uniqueInputValue = '';
   initialChips = ['Typescript', 'Java'];
 
   constructor(fb: FormBuilder) {

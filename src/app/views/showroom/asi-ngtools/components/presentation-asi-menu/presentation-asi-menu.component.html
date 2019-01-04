@@ -7,15 +7,45 @@
   </div>
 </div>
 
-<div fxLayout="row" fxLayoutAlign="start">
+<div class="fixed-panel">
+  <h2 translate="COMMON.demo"></h2>
   <asi-menu vertical="false">
     <ng-template #burger>
       <asi-button>burger</asi-button>
     </ng-template>
-    <asi-menu-item [routerLink]="['./root']">item1</asi-menu-item>
-    <asi-menu-item [routerLink]="['./root1']">item2</asi-menu-item>
-    <asi-menu-item [routerLink]="['./root2']">item3</asi-menu-item>
+    <asi-menu-item [routerLink]="['./asi-menu-1']">item1</asi-menu-item>
+    <asi-menu-item [routerLink]="['./asi-menu-2']">item2</asi-menu-item>
+    <asi-menu-item [routerLink]="['./asi-menu-3']">item3</asi-menu-item>
   </asi-menu>
+
+  <router-outlet></router-outlet>
 </div>
 
-<router-outlet></router-outlet>
+<div fxLayout="row" class="flex-panel">
+  <asi-tab-group>
+    <asi-tab label="COMMON.props">
+      <h3> AsiMenu </h3>
+      <asi-code-viewer value="/** is enabled/disabled */
+@Input() disabled = false;
+
+/** change to a menu burger */
+@Input() burger = false;
+
+/** horizontal/vertical */
+@Input() vertical = false;"></asi-code-viewer>
+
+      <h3> AsiMenuItem </h3>
+      <asi-code-viewer value="/** routerLink directive parameter */
+@Input() routerLink: string;
+
+/** is enabled/disabled */
+@Input() disabled = false;
+
+/** Event emitted when menu item is clicked */
+@Output() onClick = new EventEmitter();"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="HTML">
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-menu/asi-menu.component.html"></asi-code-viewer>
+    </asi-tab>
+  </asi-tab-group>
+</div>

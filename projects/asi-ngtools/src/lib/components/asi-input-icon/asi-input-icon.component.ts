@@ -22,28 +22,39 @@ import * as nh from '../../native-helper';
 })
 export class AsiInputIconComponent extends DefaultControlValueAccessor implements OnInit, AfterViewInit {
 
+  /** html id */
   @Input() id: string;
+  /** html name */
   @Input() name: string;
-
-  @Input() label: string;
-  @Input() placeholder = '';
-  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
-
-  @Input() icon: string;
-  @Input() iconPosition: 'left' | 'right' = 'left';
-
-  @Input() pattern: RegExp;
-
-  @Input() maxlength = -1;
-
-  @Input() delay = 0;
-
-  @Input() number = false;
-
+  /** html input type */
   @Input() type: 'password' | 'text' = 'text';
 
-  @Output('iconClicked')
-  public iconClicked: EventEmitter<any> = new EventEmitter<any>();
+  /** Label to display (is translated) */
+  @Input() label: string;
+  /** Label position */
+  @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
+  /** Placeholder to display */
+  @Input() placeholder = '';
+
+  /** Icon to display */
+  @Input() icon: string;
+  /** Icon position */
+  @Input() iconPosition: 'left' | 'right' = 'left';
+
+  /** Allow you to define a regex that the input must respect */
+  @Input() pattern: RegExp;
+
+  /** Max length of the text */
+  @Input() maxlength = -1;
+
+  /** Delay before the component change value */
+  @Input() delay = 0;
+
+  /** Must be a number (internaly set the regex to ^-*[0-9,\.]*$ */
+  @Input() number = false;
+
+  /** Event emitted when the icon is clicked */
+  @Output('iconClicked') iconClicked = new EventEmitter<any>();
 
   inputControl = new FormControl();
 

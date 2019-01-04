@@ -16,11 +16,15 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class AsiIconCheckboxComponent extends DefaultControlValueAccessor implements OnInit {
 
+  /** Label to display (is translated) */
   @Input() label: string;
+  /** Label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
-  @Input() disabled = false;
+  /** font awesome icon to use */
   @Input() icon = 'fa fa-question';
+
+  /** icon size */
   @Input() size = '2x';
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {

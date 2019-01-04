@@ -1,0 +1,46 @@
+<h1> asi-notification </h1>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <asi-code-viewer value="import { AsiNotificationModule } from '@asi-ngtools/lib'"></asi-code-viewer>
+    <code> add public viewContainerRef : viewContainerRef in your root component constructor </code>
+  </div>
+</div>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.demo"></h2>
+  <div class="fixed-panel">
+    <asi-input label="Delay" step="100" [number]="true" placeholder="Delay" [(ngModel)]="delay"></asi-input>
+    <asi-select [data]="types" [(ngModel)]="toastType">
+      <asi-selected *asiSelectedDef="let data">{{data.toString()}}</asi-selected>
+      <asi-option *asiOptionDef="let data">{{data.toString()}}</asi-option>
+    </asi-select>
+  </div>
+  <div fxLayout="column">
+    <div fxLayout="row">
+      <asi-button (click)="showNotif_TopLeft()" type="button"> Top Left </asi-button>
+      <asi-button (click)="showNotif_TopCenter()" design="raised" type="button"> Top Center </asi-button>
+      <asi-button (click)="showNotif_TopRight()" type="button"> Top Right </asi-button>
+    </div>
+    <div fxLayout="row">
+      <asi-button (click)="showNotif_BottomLeft()" design="bordered" type="button"> Bottom Left </asi-button>
+      <asi-button (click)="showNotif_BottomCenter()" type="button"> Bottom Center </asi-button>
+      <asi-button (click)="showNotif_BottomRight()" design="bordered" type="button"> Bottom Right </asi-button>
+    </div>
+  </div>
+</div>
+
+<div class="flex-panel">
+  <asi-tab-group>
+    <asi-tab label="COMMON.props">
+
+    </asi-tab>
+    <asi-tab label="TS1">
+      <asi-code-viewer readOnly="true" language="typescript" fromUrl="assets/demo/asi-notification/asi-notification.component.ts"></asi-code-viewer>
+    </asi-tab>
+    <asi-tab label="TS2">
+      <asi-code-viewer readOnly="true" language="typescript" fromUrl="assets/demo/asi-notification/notification.component.ts"></asi-code-viewer>
+    </asi-tab>
+  </asi-tab-group>
+</div>

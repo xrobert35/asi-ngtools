@@ -1,8 +1,12 @@
 <label> Nb items selected  : {{mySelectionModel.nbItemsSelected}}</label>
-<asi-table [rowClass]="{ 'row-class' : rowClassMethod() && '{row}.col2%2 == 0'}" [autoPaginate]="true" [nbElementParPage]="5" [autoSort]="true" [selectionModel]="mySelectionModel" [onRequestData]="refreshTable"
+<asi-table [rowClass]="{ 'row-class' : rowClassMethod() && '{row}.col2%2 == 0'}"
+[autoPaginate]="true"
+[nbElementParPage]="5" [autoSort]="true"
+[selectionModel]="mySelectionModel"
+[onRequestData]="refreshTable"
   fxFlex>
   <asi-table-column type="checkbox"></asi-table-column>
-  <asi-table-column name="col1" libelle="Libelle column" sortable="true">
+  <asi-table-column name="col1" libelle="Libelle column" [sortable]="true">
     <asi-cell *asiCellDef="let row"> {{row.col2}} {{row.col1}} </asi-cell>
     <asi-header *asiTableHeaderDef="let row">{{row.libelle}}</asi-header>
   </asi-table-column>

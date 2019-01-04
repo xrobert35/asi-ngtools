@@ -19,9 +19,9 @@ import moment from 'moment';
 })
 export class AsiDatePickerComponent extends DefaultControlValueAccessor implements OnInit, AfterViewInit {
 
-  /** label */
+  /** Label to display (is translated) */
   @Input() label: string;
-  /** label position */
+  /** Label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
   /** placeholder if not null else will be the date display pattern */
   @Input() placeholder = null;

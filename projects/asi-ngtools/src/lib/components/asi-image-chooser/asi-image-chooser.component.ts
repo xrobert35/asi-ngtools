@@ -20,18 +20,27 @@ import {
 })
 export class AsiImageChooserComponent extends DefaultControlValueAccessor implements AfterViewInit, OnInit {
 
+  /** html id */
   @Input() id: string;
+  /** html name */
   @Input() name: string;
 
+  /** Label to display (is translated) */
   @Input() label: string;
+  /** Label position */
   @Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
 
+  /** Init the image chooser with an url */
   @Input() imageSrc: string;
+  /** Init the image chooser with a base64 */
   @Input() image64: string;
 
-  @Input() icon = 'fa fa-picture-o';
+  /** Icon to display when empty */
+  @Input() icon = 'far fa-image';
 
+  /** Event emitted when an image is selected */
   @Output() onImageSelected = new EventEmitter<File>();
+  /** Event emitted when an error occured with the selected image */
   @Output() onError = new EventEmitter<any>();
 
   @ViewChild('asiFileInput') fileInput: any;
