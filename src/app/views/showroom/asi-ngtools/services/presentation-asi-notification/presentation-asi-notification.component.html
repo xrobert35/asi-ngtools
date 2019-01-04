@@ -4,7 +4,7 @@
   <h2 translate="COMMON.installation"></h2>
   <div class="install">
     <asi-code-viewer value="import { AsiNotificationModule } from '@asi-ngtools/lib'"></asi-code-viewer>
-    <code> add public viewContainerRef : viewContainerRef in your root component constructor </code>
+    <span><b> add public viewContainerRef : viewContainerRef in your root component constructor </b></span>
   </div>
 </div>
 
@@ -33,8 +33,8 @@
 
 <div class="flex-panel">
   <asi-tab-group>
-    <asi-tab label="COMMON.props">
-
+    <asi-tab label="Api" class="api">
+        <app-asi-ngtools-api [functions]='apiDoc.functionsDoc' [summary]="apiDoc.summary"></app-asi-ngtools-api>
     </asi-tab>
     <asi-tab label="TS1">
       <asi-code-viewer readOnly="true" language="typescript" fromUrl="assets/demo/asi-notification/asi-notification.component.ts"></asi-code-viewer>

@@ -60,10 +60,10 @@ export class AsiNgToolsApiComponent implements OnInit {
   constructor(private fctToHtml: ApiFunctionAsHTMLService) { }
 
   ngOnInit() {
-    this.functions.forEach((fct) => {
+    this.functions.forEach((fct: any) => {
       const parsedFct = this.fctToHtml.parseFunctionStringToHtml(fct.functionName);
-      fct.functionName = parsedFct.functionName;
-      fct.htmlSignature = parsedFct.htmlSignature;
+      fct.displayFunctionName = parsedFct.functionName;
+      fct.displayHtmlSignature = parsedFct.htmlSignature;
       this.fcts.push(fct);
     });
   }

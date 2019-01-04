@@ -1,0 +1,26 @@
+{
+  "summary": "This service is used to display notification message.",
+  "functionsDoc": [
+    {
+      "functionName": "fromComponent(content: ComponentType, config: AsiNotificationConfig): AsiNotification",
+      "description": "Open a new notification by using an entry component.",
+      "parameters": [
+        {
+          "name": "content",
+          "type": "ComponentType<T>",
+          "description": "Type of the component"
+        },
+        {
+          "name": "config",
+          "type": "AsiNotificationConfig",
+          "description": "Notification configuration"
+        }
+      ],
+      "return": {
+        "name": "return",
+        "type": "AsiNotification",
+        "description": "Returns the instance of the notification"
+      }
+    }
+  ]
+}

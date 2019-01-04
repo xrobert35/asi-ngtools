@@ -1,5 +1,6 @@
 import { Component, HostBinding } from '@angular/core';
-import { AsiSessionStorageService } from '@asi-ngtools/lib';
+
+const _apiDoc = require('./asiSessionStorage-api.json');
 
 @Component({
   selector: 'presentation-asisessionstorage',
@@ -9,15 +10,8 @@ export class PresentationAsiSessionStorageComponent {
 
   @HostBinding('class') class = 'flex';
 
-  constructor(public sessionStorage: AsiSessionStorageService) {
-  }
+  apiDoc = _apiDoc;
 
-  setItem(key: string, value: string) {
-    sessionStorage.setItem(key, value);
-  }
-
-  getItem(key: string) {
-    sessionStorage.getItem(key);
-  }
+  constructor() {}
 
 }

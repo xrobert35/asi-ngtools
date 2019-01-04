@@ -20,7 +20,7 @@ export class AsiLocalStorageService {
     return this.localStorage.getItem(key);
   }
 
-  setObjectItem(key: string, value: string): void {
+  setObjectItem(key: string, value: any): void {
     let strValue: string = null;
     if (value != null) {
       strValue = JSON.stringify(value);

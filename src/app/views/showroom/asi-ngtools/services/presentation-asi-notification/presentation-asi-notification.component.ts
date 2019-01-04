@@ -2,6 +2,8 @@ import { AsiNotificationService, AsiNotificationPosition, AsiNotificationType } 
 import { NotificationComponent } from './notification-component/notification.component';
 import { Component, HostBinding } from '@angular/core';
 
+const _apiDoc = require('./asiNotification-api.json');
+
 @Component({
   selector: 'presentation-asi-notification',
   templateUrl: './presentation-asi-notification.component.html',
@@ -9,6 +11,8 @@ import { Component, HostBinding } from '@angular/core';
 export class PresentationAsiNotificationComponent {
 
   @HostBinding('class') class = 'flex';
+
+  public apiDoc = _apiDoc;
 
   delay = 4000;
   toastType: AsiNotificationType = AsiNotificationType.SUCCESS;
@@ -76,7 +80,4 @@ export class PresentationAsiNotificationComponent {
     });
     asiNotificationTR.getComponent().message = 'Bottom Center';
   }
-
-
-
 }

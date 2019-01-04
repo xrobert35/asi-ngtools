@@ -1,0 +1,26 @@
+{
+  "summary": "This service is used to display a dialog.",
+  "functionsDoc": [
+    {
+      "functionName": "fromComponent(content: ComponentType, config: AsiDialogConfig): AsiDialog",
+      "description": "Open a new dialog by using an entry component.",
+      "parameters": [
+        {
+          "name": "content",
+          "type": "ComponentType<T>",
+          "description": "Type of the component"
+        },
+        {
+          "name": "config",
+          "type": "AsiDialogConfig",
+          "description": "Dialog configuration"
+        }
+      ],
+      "return": {
+        "name": "return",
+        "type": "AsiDialog",
+        "description": "Returns the instance of the dialog"
+      }
+    }
+  ]
+}

@@ -1,18 +1,18 @@
 <h3> Overview </h3>
 <ul class="overview">
   <li *ngFor="let f of fcts; trackBy: trackByFctName">
-    <a routerLink="." fragment="{{f.functionName}}" [innerHTML]="f.htmlSignature"></a>
+    <a routerLink="." fragment="{{f.displayFunctionName}}" [innerHTML]="f.displayHtmlSignature"></a>
   </li>
 </ul>
 <div id="overViewDescription" class="description">
   <h3> Description </h3>
   <p id="summary">{{summary}}</p>
   <ul class="functions">
-    <li [scrollFragment]="f.functionName" *ngFor="let f of fcts; trackBy: trackByFctName">
-      <h4 class="displayOnHover"><a routerLink="." fragment="{{f.functionName}}" class="fa fa-link link"></a> {{f.functionName}} </h4>
+    <li [scrollFragment]="f.displayFunctionName" *ngFor="let f of fcts; trackBy: trackByFctName">
+      <h4 class="displayOnHover"><a routerLink="." fragment="{{f.displayFunctionName}}" class="fa fa-link link"></a> {{f.displayFunctionName}} </h4>
       <div class="funcDescription">
         <p>{{f.description}}</p>
-        <div>
+        <div *ngIf="f.parameters != null">
           <h5>Parameters:</h5>
           <ul class="parameters" *ngFor="let p of f.parameters">
             <li>

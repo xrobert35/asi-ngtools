@@ -1,0 +1,84 @@
+{
+  "summary": "This service is used to handle sessionstorage",
+  "functionsDoc": [
+    {
+      "functionName": "setItem(key: string, value: string): void",
+      "description": "set a string item in the sessionstorage.",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "string",
+          "description": "key of the item"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "description": "value of the item"
+        }
+      ]
+    },
+    {
+      "functionName": "getItem(key: string): string",
+      "description": "get a string item from the sessionstorage.",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "string",
+          "description": "key of the item"
+        }
+      ],
+      "return": {
+        "name": "return",
+        "type": "string",
+        "description": "The string value from the sessionstorage"
+      }
+    },
+    {
+      "functionName": "setObjectItem(key: string, value: any): void",
+      "description": "Set an object value into the sessionstorage.",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "string",
+          "description": "key of the item"
+        },
+        {
+          "name": "value",
+          "type": "any",
+          "description": "value of the item"
+        }
+      ]
+    },
+    {
+      "functionName": "getObjectItem(key: string): any",
+      "description": "get an object item from the sessionstorage.",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "string",
+          "description": "key of the item"
+        }
+      ],
+      "return": {
+        "name": "return",
+        "type": "any",
+        "description": "The value from the sessionstorage"
+      }
+    },
+    {
+      "functionName": "removeItem(key: string): void",
+      "description": "Remove an item from the sessionstorage.",
+      "parameters": [
+        {
+          "name": "key",
+          "type": "string",
+          "description": "key of the item to remove"
+        }
+      ]
+    },
+    {
+      "functionName": "clear(): void",
+      "description": "Clear the sessionstorage"
+    }
+  ]
+}

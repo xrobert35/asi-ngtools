@@ -17,6 +17,9 @@
 
 <div fxLayout="row" class="flex-panel">
   <asi-tab-group>
+    <asi-tab label="Api" class="api">
+      <app-asi-ngtools-api [functions]='apiDoc.functionsDoc' [summary]="apiDoc.summary"></app-asi-ngtools-api>
+    </asi-tab>
     <asi-tab label="TS1">
       <asi-code-viewer readOnly="true" language="typescript" fromUrl="assets/demo/asi-dialog/asi-dialog.component.ts"></asi-code-viewer>
     </asi-tab>

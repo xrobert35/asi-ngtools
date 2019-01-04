@@ -26,7 +26,7 @@ export class ApiFunctionAsHTMLService {
    * @return {ParsedFunction} Return an object representing the function values
    */
   public divideFunctionInValues(fctString: string): ParsedFunction {
-    if ( !fctString ) {
+    if (!fctString) {
       throw new Error('Please provide a function signature in parameters');
     }
 
@@ -46,10 +46,10 @@ export class ApiFunctionAsHTMLService {
       genericType: array[4] // returns undefined if there is no generic type
     };
     // Split the matched parameters string into pairs of <param, type>
-    const parameters = array[2].split(',').map((param) => {
+    let parameters = array[2].split(',').map((param) => {
       const regexParamRes = parametersRegex.exec(param);
       if (!regexParamRes) {
-        throw new Error('Can\'t parse function parameters correctly.');
+        return null;
       }
       // For each parameter we have its name and type
       const variable = regexParamRes[1];
@@ -66,6 +66,9 @@ export class ApiFunctionAsHTMLService {
         type,
       };
     });
+
+    // remove null value
+    parameters = parameters.filter((param) => param);
 
     const parsedFunction: ParsedFunction = {
       functionName: fctName,

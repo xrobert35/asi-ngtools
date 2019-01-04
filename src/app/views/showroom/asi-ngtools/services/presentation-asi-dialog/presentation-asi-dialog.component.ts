@@ -2,6 +2,8 @@ import { DialogComponent } from './dialog-component/dialog.component';
 import { AsiDialogService } from '@asi-ngtools/lib';
 import { Component, HostBinding } from '@angular/core';
 
+const _apiDoc = require('./asiDialog-api.json');
+
 @Component({
   selector: 'presentation-asi-dialog',
   templateUrl: './presentation-asi-dialog.component.html',
@@ -9,6 +11,8 @@ import { Component, HostBinding } from '@angular/core';
 export class PresentationAsiDialogComponent {
 
   @HostBinding('class') class = 'flex';
+
+  public apiDoc = _apiDoc;
 
   constructor(private asiDialogService: AsiDialogService) {
   }
