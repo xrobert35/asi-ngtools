@@ -9,6 +9,9 @@ export class AsiRadioButtonComponent {
   /** Value of the radio button */
   @Input() value: any;
 
+  /** asi-button design */
+  @Input() design = 'flat';
+
   @ViewChild(TemplateRef) template: TemplateRef<any>;
 
   public active: boolean;

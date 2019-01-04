@@ -10,12 +10,11 @@
 <div class="fixed-panel">
   <h2 translate="COMMON.demo"></h2>
   <h3 translate="COMMON.withNgModel"></h3>
-  <asi-radio-button-group [(ngModel)]="radioValue" label="Radio Group" trackBy="code">
-    <asi-radio-button [value]="model1">Radio 1</asi-radio-button>
-    <asi-radio-button [value]="model2">Radio 2</asi-radio-button>
-    <asi-radio-button [value]="model3">Radio 3</asi-radio-button>
+  <asi-radio-button-group [(ngModel)]="radioValue" label="Radio Group" [multiple]="true" trackBy="code">
+    <asi-radio-button design="raised" [value]="model1">Radio 1</asi-radio-button>
+    <asi-radio-button design="raised" [value]="model2">Radio 2</asi-radio-button>
+    <asi-radio-button design="raised" [value]="model3">Radio 3</asi-radio-button>
   </asi-radio-button-group>
-  {{radioValue?.libelle}}
   <h3 translate="COMMON.withFormControl"></h3>
   <form [formGroup]="myForm" (ngSubmit)="submitting()">
     <div class="asi-container">
@@ -58,7 +57,10 @@
 @Output() onValueChange = new EventEmitter();"></asi-code-viewer>
         <h3> AsiRadioButton </h3>
         <asi-code-viewer value="/** Value of the radio button */
-@Input() value: any;"></asi-code-viewer>
+@Input() value: any;
+
+/** asi-button design */
+@Input() design = 'flat';"></asi-code-viewer>
       </div>
     </asi-tab>
     <asi-tab label="HTML">

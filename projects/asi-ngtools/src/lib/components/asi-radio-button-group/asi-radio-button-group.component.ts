@@ -6,6 +6,8 @@ import {
   forwardRef, OnInit, AfterContentInit, ElementRef, Renderer2
 } from '@angular/core';
 
+import * as nh from '../../native-helper'
+
 @Component({
   selector: 'asi-radio-button-group',
   templateUrl: 'asi-radio-button-group.component.html',
@@ -27,6 +29,9 @@ export class AsiRadioButtonGroupComponent extends DefaultControlValueAccessor im
 
   /** Vertical / Horizontal */
   @Input() vertical = false;
+
+  /** Allow you to select multiple value */
+  @Input() multiple = false;
 
   /** Track data base on a sub attribute rather than reference  */
   @Input() trackBy: string = null;
@@ -54,21 +59,39 @@ export class AsiRadioButtonGroupComponent extends DefaultControlValueAccessor im
   }
 
   onRadioChecked(radioEvent: { index: number, value: boolean }) {
+    const radio = this.getRadioForIndex(radioEvent.index);
     if (radioEvent.value) {
-      this.radios.forEach((radio) => {
-        if (radio.index === radioEvent.index) {
-          radio.active = true;
-          this.value = radio.value;
-        } else {
-          radio.active = false;
+      if (this.multiple) {
+        if (this.value == null) {
+          this.value = [];
         }
-      });
+        this._value.push(radio.value);
+      } else {
+        this._value = radio.value;
+      }
     } else {
-      this.radios.forEach((radio) => {
-        radio.active = false;
-      });
-      this.value = null;
+      if (this.multiple) {
+        nh.remove(this._value, (value) => {
+          if (this.trackBy != null) {
+            return radio.value[this.trackBy] === value[this.trackBy];
+          } else {
+            return radio.value === value;
+          }
+        });
+      } else {
+        this._value = null;
+      }
     }
+
+    // fire model change
+    this.value = this._value;
+    this.initRadioButton(this.value);
+  }
+
+  private getRadioForIndex(index: number) {
+    return nh.find(this.radios, (radio) => {
+      return radio.index === index;
+    });
   }
 
   ngAfterContentInit() {
@@ -78,28 +101,45 @@ export class AsiRadioButtonGroupComponent extends DefaultControlValueAccessor im
       this.radios.push(radio)
     });
 
-    this.initValue(this.value);
+    this.initRadioButton(this.value);
   }
 
   writeValue(value: any) {
-    this._value = value;
-    this.initValue(value);
+    if (this.multiple && !nh.isArray(value) && value != null) {
+      value = [value];
+    }
+    this.value = value;
+    this.initRadioButton(value);
   }
 
-  private initValue(value: any) {
-    if (value == null) {
+  private initRadioButton(value: any) {
+    if (nh.isEmpty(value)) {
       this.radios.forEach((radio) => {
         radio.active = false;
       });
     } else {
-      if (this.trackBy != null) {
+      if (nh.isArray(value)) {
         this.radios.forEach((radio) => {
-          radio.active = radio.value[this.trackBy] === value[this.trackBy];
+          if (this.trackBy != null) {
+            radio.active = nh.find(this.value, (val) => {
+              return radio.value[this.trackBy] === val[this.trackBy];
+            }) != null;
+          } else {
+            radio.active = nh.find(this.value, (val) => {
+              return radio.value === val;
+            }) != null;
+          }
         });
       } else {
-        this.radios.forEach((radio) => {
-          radio.active = (radio.value === value)
-        });
+        if (this.trackBy != null) {
+          this.radios.forEach((radio) => {
+            radio.active = radio.value[this.trackBy] === value[this.trackBy];
+          });
+        } else {
+          this.radios.forEach((radio) => {
+            radio.active = (radio.value === value)
+          });
+        }
       }
     }
   }
