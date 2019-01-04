@@ -8,4 +8,6 @@ export class PresentationAsiFaIconComponent {
 
   @HostBinding('class') class = 'flex';
 
+
+  action() {}
 }
