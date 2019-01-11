@@ -21,7 +21,7 @@ export function isArray(array: any): boolean {
 
 export function times(howManyTimes: number, iteratee: (value?: any) => any) {
   const res = [];
-  let index = 0;
+  let index = -1;
   while (++index < howManyTimes) {
     res.push(iteratee(index));
   }

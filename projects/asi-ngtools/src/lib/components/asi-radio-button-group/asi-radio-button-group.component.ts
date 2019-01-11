@@ -63,7 +63,7 @@ export class AsiRadioButtonGroupComponent extends DefaultControlValueAccessor im
     if (radioEvent.value) {
       if (this.multiple) {
         if (this.value == null) {
-          this.value = [];
+          this._value = [];
         }
         this._value.push(radio.value);
       } else {
@@ -99,6 +99,15 @@ export class AsiRadioButtonGroupComponent extends DefaultControlValueAccessor im
     this.queryRadios.forEach(radio => {
       radio.index = ++index;
       this.radios.push(radio)
+    });
+
+    this.queryRadios.changes.subscribe((items) => {
+      this.radios = [];
+      index = -1;
+      items.forEach(radio => {
+        radio.index = ++index;
+        this.radios.push(radio)
+      });
     });
 
     this.initRadioButton(this.value);

@@ -3,7 +3,8 @@ import { Component, Input, Output, EventEmitter, HostBinding } from '@angular/co
 
 @Component({
   selector: 'asi-radio-button-element',
-  templateUrl: 'asi-radio-button-element.component.html'
+  templateUrl: 'asi-radio-button-element.component.html',
+  host: { 'class': 'asi-component asi-radio-button-group' },
 })
 export class AsiRadioButtonElement {
 
