@@ -121,7 +121,7 @@ export function cloneDeep(object: any) {
 }
 
 export function isEmpty(item: any) {
-  return !item || item.length === 0
+  return item == null || item.length === 0
 }
 
 export function join(items: Array<any>, separator: string) {

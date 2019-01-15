@@ -17,8 +17,10 @@ export class AsiDialogService {
     let containerRef = this.getContainer();
 
     containerRef.instance.onContainerEmpty().subscribe(() => {
-      this.dialogContainer.destroy();
-      this.dialogContainer = null;
+      if (this.dialogContainer != null) {
+        this.dialogContainer.destroy();
+        this.dialogContainer = null;
+      }
     });
 
 
