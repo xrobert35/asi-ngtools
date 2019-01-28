@@ -4,11 +4,13 @@ import { AsiDialogConfig } from './asi-dialog-config';
 import { AsiDialogContainer } from './container/asi-dialog-container.component';
 import { ComponentType } from './../common/component-type';
 import { Injectable, ComponentFactory, ComponentFactoryResolver, ComponentRef, ApplicationRef } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Injectable()
 export class AsiDialogService {
 
   private dialogContainer: ComponentRef<AsiDialogContainer>;
+  private dialogEmptySubscription: Subscription;
 
   constructor(private resolver: ComponentFactoryResolver, private appRef: ApplicationRef) {
   }
@@ -16,13 +18,13 @@ export class AsiDialogService {
   fromComponent<T extends AsiDialogView>(content: ComponentType<T>, config: AsiDialogConfig): AsiDialog<T> {
     let containerRef = this.getContainer();
 
-    containerRef.instance.onContainerEmpty().subscribe(() => {
-      if (this.dialogContainer != null) {
+    if (!this.dialogEmptySubscription || this.dialogEmptySubscription.closed) {
+      this.dialogEmptySubscription = containerRef.instance.onContainerEmpty().subscribe(() => {
+        this.dialogEmptySubscription.unsubscribe();
         this.dialogContainer.destroy();
         this.dialogContainer = null;
-      }
-    });
-
+      });
+    }
 
     let dialogRef = this.createDialog(content, containerRef, config);
     containerRef.instance.addDialog(dialogRef);
@@ -68,7 +70,7 @@ export class AsiDialogService {
     // Ajout de la reference du composant dans le AsiDialog
     asiDialogRef.instance['_component'] = contentComponent;
 
-    contentComponent.registerDialog( asiDialogRef.instance);
+    contentComponent.registerDialog(asiDialogRef.instance);
 
     // Deplacement du contenu dans la div dialog-panel
     asiDialogRef.location.nativeElement.children[0].appendChild(contentRef.location.nativeElement);

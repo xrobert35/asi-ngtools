@@ -276,9 +276,11 @@ export class AsiTable<T> implements AfterContentInit {
 
   private updateAllChecked() {
     if (this.selectionModel.config.multipage) {
-      this.allChecked = this.selectionModel.nbItemsSelected === this.data.totalElements;
+      this.allChecked = this.selectionModel.nbItemsSelected > 0
+        && this.selectionModel.nbItemsSelected === this.data.totalElements;
     } else {
-      this.allChecked = this.selectionModel.nbItemsSelected === this.data.results.length;
+      this.allChecked = this.selectionModel.nbItemsSelected > 0
+        && this.selectionModel.nbItemsSelected === this.data.results.length;
     }
   }
 

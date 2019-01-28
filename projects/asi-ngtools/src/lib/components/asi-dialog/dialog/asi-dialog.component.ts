@@ -38,6 +38,7 @@ export class AsiDialog<T> {
     this.dialogClose.next(param);
     this.dialogClose.complete();
 
+    // notify the container
     this._dialogDestroy.next();
     this._dialogDestroy.complete();
   }
