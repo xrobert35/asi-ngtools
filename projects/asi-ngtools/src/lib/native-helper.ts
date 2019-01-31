@@ -106,7 +106,13 @@ export function replace(str: string, reg: RegExp, newVal: string) {
 export function orderBy(array: Array<any>, key: string, asc: 'asc' | 'desc') {
   const order = asc === 'asc' ? -1 : 1;
   array.sort((a, b) => {
-    if (a[key] < b[key]) {
+    if (!a[key] && !b[key]) {
+      return 0;
+    } else if (a[key] && !b[key]) {
+      return -1;
+    } else if (!a[key] && b[key]) {
+      return 1;
+    } else if (a[key] < b[key]) {
       return order;
     } else if (a[key] > b[key]) {
       return -order;

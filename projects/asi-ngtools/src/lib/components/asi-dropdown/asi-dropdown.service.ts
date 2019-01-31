@@ -29,8 +29,6 @@ export class AsiDropdownService {
       nh.remove(this.containers, (container) => {
         return containerToRemove.index === container.instance.index;
       });
-
-      console.log(this.containers.length);
     });
 
     this.containers.push(containerRef);

@@ -1,12 +1,12 @@
 import { AsiTableInliner } from './asi-table-inliner.directive';
-import { Directive, Input, ContentChild, EventEmitter, Output, AfterContentInit, ContentChildren, QueryList } from '@angular/core';
+import { Directive, Input, ContentChild, EventEmitter, Output, AfterContentInit, ContentChildren, QueryList, OnInit } from '@angular/core';
 import { AsiComponentTemplateTableHeaderDef, AsiComponentTemplateCellDef } from '../common/asi-component-template';
 
 @Directive({
   /* tslint:disable-next-line:directive-selector */
   selector: 'asi-table-column',
 })
-export class AsiTableColumn implements AfterContentInit {
+export class AsiTableColumn implements AfterContentInit, OnInit {
 
   /** Column name (used to extract data from bean if cell template not defined) */
   @Input() name: string;
@@ -52,7 +52,9 @@ export class AsiTableColumn implements AfterContentInit {
   @ContentChildren(AsiTableInliner) queryColumns: QueryList<AsiTableInliner>;
   inliners: Array<AsiTableInliner> = new Array<AsiTableInliner>();
 
-  constructor() {
+  constructor() {}
+
+  ngOnInit() {
     this.asc = this.sortByDefault;
   }
 
