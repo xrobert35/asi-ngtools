@@ -26,6 +26,21 @@ export class AsiCalendarComponent extends DefaultControlValueAccessor implements
   @Input() minDate: Date;
   @Input() maxDate: Date;
 
+  private _disableDayOfWeek: number[];
+
+  /** allow you to disable day of week exemple [disableDayOfWeek]="[1, 2]"" while disabled monday and tusday */
+  @Input()
+  set disableDayOfWeek(daysOfWeek) {
+    if (!daysOfWeek) {
+      this._disableDayOfWeek = [];
+    } else if (nh.isArray(daysOfWeek)) {
+      this._disableDayOfWeek = daysOfWeek;
+    } else {
+      this._disableDayOfWeek = [daysOfWeek];
+    }
+  }
+
+
   @Output() onDatePicked = new EventEmitter<Date>();
 
   days: Array<calendarConst.Day>;
@@ -175,10 +190,12 @@ export class AsiCalendarComponent extends DefaultControlValueAccessor implements
 
     this.dayOfMonths = result;
 
-    this.manageMinAndMaxDate();
+    this.manageDisabledDate();
   }
 
-  private manageMinAndMaxDate() {
+  private manageDisabledDate() {
+    const dayOfWeekDisabled = !nh.isEmpty(this._disableDayOfWeek);
+
     if (this.dayOfMonths) {
       nh.forEach(this.dayOfMonths, (dayItem) => {
         if (this.minDate != null) {
@@ -190,6 +207,9 @@ export class AsiCalendarComponent extends DefaultControlValueAccessor implements
           if (dayItem.date > this.maxDate) {
             dayItem.class = 'disabled';
           }
+        }
+        if (dayOfWeekDisabled && this._disableDayOfWeek.includes(<number>dayItem.date.getDay())) {
+          dayItem.class = 'disabled';
         }
       });
     }

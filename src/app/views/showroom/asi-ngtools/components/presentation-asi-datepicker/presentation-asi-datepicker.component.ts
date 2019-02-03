@@ -21,9 +21,9 @@ export class PresentationAsiDatepickerComponent {
     });
 
     this.myForm.controls.from.setValidators([Validators.required,
-    AsiValidators.maxDateFromControl(this.myForm.controls.to)]);
+    AsiValidators.maxDateFromControl(this.myForm.controls.to), AsiValidators.dateFormat]);
     this.myForm.controls.to.setValidators([Validators.required,
-    AsiValidators.minDateFromControl(this.myForm.controls.from)]);
+    AsiValidators.minDateFromControl(this.myForm.controls.from), AsiValidators.dateFormat]);
   }
 
   submit() {

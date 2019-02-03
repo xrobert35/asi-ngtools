@@ -42,6 +42,16 @@ export class AsiValidators {
     return validator;
   }
 
+  static dateFormat(control: AbstractControl): ValidationErrors | null {
+    if (control.value != null && control.value.error) {
+      return {
+        format: { valid: false }
+      };
+    } else {
+      return null;
+    }
+  }
+
   static fileSize(maxSize: number): ValidatorFn {
     const validator = (control: AbstractControl): ValidationErrors | null => {
       const rightSize = control.value == null || control.value.size <= maxSize;

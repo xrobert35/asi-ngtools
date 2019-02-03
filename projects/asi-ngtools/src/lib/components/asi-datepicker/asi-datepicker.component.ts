@@ -37,12 +37,13 @@ export class AsiDatePickerComponent extends DefaultControlValueAccessor implemen
   /** open automatically when the input is focused*/
   @Input() autoOpen = true;
 
+  /** allow you to disable day of week exemple [disableDayOfWeek]="[1, 2]"" while disabled monday and tusday */
+  @Input() disableDayOfWeek: number | Array<number>;
+
   inputControl = new FormControl();
 
   @ViewChild('input') inputElement: ElementRef;
   @ViewChild('calendar') calendarElement: AsiCalendarComponent;
-
-  dateValid = true;
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {
     super();
@@ -57,7 +58,6 @@ export class AsiDatePickerComponent extends DefaultControlValueAccessor implemen
 
   ngAfterViewInit() {
     this.inputControl.valueChanges.subscribe((val) => {
-      this.dateValid = true;
       if (val === '' || val == null) {
         this.value = null;
       } else {
@@ -66,11 +66,16 @@ export class AsiDatePickerComponent extends DefaultControlValueAccessor implemen
           if (val.length === this.pattern.length) {
             this.value = momentTest.toDate();
           } else {
-            this.value = null;
+            this.value = {
+              error: 'Invalid_Date',
+              value: val
+            };
           }
         } else {
-          this.value = null;
-          this.dateValid = false;
+          this.value = {
+            error: 'Invalid_Date',
+            value: val
+          };
         }
       }
     });
