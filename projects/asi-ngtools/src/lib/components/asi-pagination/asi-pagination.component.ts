@@ -49,13 +49,17 @@ export class AsiPaginationComponent {
   }
 
   goLastPage() {
-    this.selectedPagination = this.nbElements;
-    this.onPaginationChanged.emit(this.selectedPagination);
+    if (this.selectedPagination !== this.nbElements) {
+      this.selectedPagination = this.nbElements;
+      this.onPaginationChanged.emit(this.selectedPagination);
+    }
   }
 
   goFirstPage() {
-    this.selectedPagination = 1;
-    this.onPaginationChanged.emit(this.selectedPagination);
+    if (this.selectedPagination !== 1) {
+      this.selectedPagination = 1;
+      this.onPaginationChanged.emit(this.selectedPagination);
+    }
   }
 
   getPaginationItems() {
