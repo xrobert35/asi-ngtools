@@ -8,7 +8,7 @@
     <input #fileInput type="file" [attr.id]="id" [attr.name]="name" [disabled]="disabled" name="file" [accept]="acceptAttribute" (change)="handleInputChange($event)" />
   </label>
   <div class="file-link" *ngIf="value != null">
-    <a [innerHTML]="value.name" download [href]="getFileUrl()" target="_empty"></a>
+    <a [title]="value.name" [innerHTML]="value.name" download [href]="getFileUrl()" target="_empty"></a>
     <asi-fa-icon (onClick)="clean()" icon="fa fa-trash-o" size="lg"></asi-fa-icon>
   </div>
 </div>
