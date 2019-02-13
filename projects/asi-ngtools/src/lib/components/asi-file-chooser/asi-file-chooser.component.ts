@@ -87,6 +87,7 @@ export class AsiFileChooserComponent extends DefaultControlValueAccessor impleme
   }
 
   openFileInput() {
+    this.fileInput.nativeElement.value = null;
     this.fileInput.nativeElement.click();
   }
 
