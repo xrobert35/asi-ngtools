@@ -116,7 +116,7 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
   }
 
   increase() {
-    if (this.value == null) {
+    if (this.inputControl.value == null || this.inputControl.value === '') {
       this.inputControl.setValue('1');
     } else {
       const number = Number(this.inputControl.value);
@@ -125,7 +125,7 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
   }
 
   decrease() {
-    if (this.value == null) {
+    if (this.inputControl.value == null || this.inputControl.value === '') {
       this.inputControl.setValue('0');
     } else {
       const number = Number(this.inputControl.value);
