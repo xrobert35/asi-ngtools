@@ -71,7 +71,10 @@
 
 /** Method called when table will ask for data */
 /** (on init , on sort ( autoSort is false), on page changed (autoPaginate is false) */
-@Input() onRequestData: Function;"></asi-code-viewer>
+@Input() onRequestData: Function;
+
+/** If this function is define it's used to define a custom sort on table*/
+@Input() customSort: Function;"></asi-code-viewer>
 
       <h3> AsiTableColumn </h3>
       <asi-code-viewer value="/** Column name (used to extract data from bean if cell template not defined) */
@@ -108,7 +111,10 @@
 @Output() onChecked = new EventEmitter<any>();
 
 /** Event emitted when the 'allcheckbox' is checked */
-@Output() onAllChecked = new EventEmitter<boolean>();"></asi-code-viewer>
+@Output() onAllChecked = new EventEmitter<boolean>();
+
+/** If this function is define it's used to define a custom sort on column */
+@Input() customSort: Function;"></asi-code-viewer>
 
 
       <h3> AsiTableInliner </h3>

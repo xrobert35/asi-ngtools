@@ -38,6 +38,9 @@ export class AsiTableColumn implements AfterContentInit, OnInit {
   /** Type of the column (checkbox will display checkbox column) */
   @Input() type: 'text' | 'checkbox' = 'text';
 
+  /** If this function is define it's used to define a custom sort on column */
+  @Input() customSort: Function;
+
   /** Event emitted when checkbox is checked */
   @Output() onChecked = new EventEmitter<any>();
 

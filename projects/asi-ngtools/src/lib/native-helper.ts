@@ -122,6 +122,30 @@ export function orderBy(array: Array<any>, key: string, asc: 'asc' | 'desc') {
   return array;
 }
 
+export function orderByWithoutCase(array: Array<any>, key: string, asc: 'asc' | 'desc') {
+  const order = asc === 'asc' ? -1 : 1;
+  array.sort((a, b) => {
+
+    if (!a[key] && !b[key]) {
+      return 0;
+    } else if (a[key] && !b[key]) {
+      return -1;
+    } else if (!a[key] && b[key]) {
+      return 1;
+    }
+
+    const value1 = a[key].toLowerCase();
+    const value2 = b[key].toLowerCase();
+    if (value1 < value2) {
+      return order;
+    } else if (value1 > value2) {
+      return -order;
+    }
+    return 0;
+  });
+  return array;
+}
+
 export function cloneDeep(object: any) {
   return extCloneDeep(object);
 }

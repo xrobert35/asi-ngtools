@@ -40,6 +40,9 @@ export class AsiTable<T> implements AfterContentInit {
   /** (on init , on sort ( autoSort is false), on page changed (autoPaginate is false) */
   @Input() onRequestData: Function;
 
+  /** If this function is define it's used to define a custom sort on table*/
+  @Input() customSort: Function;
+
   @ViewChild('table') topElement: ElementRef;
 
   columns = new Array<AsiTableColumn>();
@@ -171,15 +174,29 @@ export class AsiTable<T> implements AfterContentInit {
   private sortDatas() {
     if (this.sortedColumn != null) {
       if (!this.autoPaginate) {
-        this.data.results = nh.orderBy(this.data.results, this.sortedColumn.getSortName(),
-          this.sortedColumn.getAsc() ? 'asc' : 'desc');
+        this.data.results = this.internalSortData(this.data.results);
       } else {
-        nh.orderBy(this.noPaginateResults, this.sortedColumn.getSortName(),
-          this.sortedColumn.getAsc() ? 'asc' : 'desc');
+        this.noPaginateResults = this.internalSortData(this.noPaginateResults);
         this.paginateDatas();
       }
       this.loading = false;
     }
+  }
+
+  private internalSortData(data: any[]): any[] {
+    const sortInformation = {
+      sort: this.sortedColumn.getSortName(),
+      asc: this.sortedColumn.getAsc()
+    };
+    if (this.sortedColumn.customSort) {
+      this.sortedColumn.customSort(data, sortInformation);
+    } else if (this.customSort) {
+      this.customSort(data, sortInformation);
+    } else {
+      nh.orderByWithoutCase(data, this.sortedColumn.getSortName(),
+        this.sortedColumn.getAsc() ? 'asc' : 'desc');
+    }
+    return data;
   }
 
   /** Recupere la valeur à afficher pour une cellule */
