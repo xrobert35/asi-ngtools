@@ -49,6 +49,8 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
   /** Number regex */
   @Input() pattern = new RegExp('^-*[0-9,\.]*$');
 
+  @Input() noDecimal = false;
+
   @ViewChild('input') inputElm: ElementRef;
 
   inputControl = new FormControl();
@@ -59,6 +61,10 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
   }
 
   ngOnInit() {
+    if (this.noDecimal) {
+      this.pattern = new RegExp('^-*[0-9]*$');
+    }
+
     this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
 
     this.inputControl.valueChanges.pipe(debounceTime(this.delay)).subscribe((value) => {
@@ -67,31 +73,34 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
       }
       if (value != null && this.pattern.test(value)) {
         if (this.max != null && value > this.max) {
-          value = this.max;
+          value = Number(value).toString().substr(0, this.max.toString().length);
         }
         if (this.min != null && value < this.min) {
           value = this.min;
         }
-        this.value = Number(value);
+        if (!isNaN(Number(value))) {
+          this.value = Number(value);
+        }
       } else if (value == null) {
-        this.value = Number(value);
+        this.value = value;
       }
-      this.inputElm.nativeElement.value = this._value;
+      this.inputControl.setValue(this._value, { emitEvent: false});
     });
   }
+
   increase() {
     if (this.value == null) {
-      this.inputControl.setValue(0);
-    } else if (this.max == null || this.inputControl.value < this.max) {
-      this.inputControl.setValue(this.inputControl.value + this.step);
+      this.inputControl.setValue(1);
+    } else if (this.max == null || this.value < this.max) {
+      this.inputControl.setValue(this.value + this.step);
     }
   }
 
   decrease() {
     if (this.value == null) {
       this.inputControl.setValue(0);
-    } else if (this.min == null || this.inputControl.value > this.min) {
-      this.inputControl.setValue(this.inputControl.value - this.step);
+    } else if (this.min == null || this.value > this.min) {
+      this.inputControl.setValue(this.value - this.step);
     }
   }
 
@@ -101,7 +110,7 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
         this.inputControl.setValue(value, { emitEvent: false });
         this._value = value;
       } else {
-        this.inputElm.nativeElement.value = 'NaN';
+        this.inputControl.setValue(null, { emitEvent: false });
       }
     }
   }
