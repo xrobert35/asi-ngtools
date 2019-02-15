@@ -91,7 +91,7 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
           // The value is a number
           if (!(this.max != null && value > this.max)
             && !(this.min != null && value < this.min) && !tolerateValue) {
-              this.outputDelayValue.next(Number(value));
+            this.outputDelayValue.next(Number(value));
             this.oldValideValue = Number(value);
             return;
           }
@@ -117,17 +117,19 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
 
   increase() {
     if (this.value == null) {
-      this.inputControl.setValue(1);
-    } else if (this.max == null || this.value < this.max) {
-      this.inputControl.setValue(this.value + this.step);
+      this.inputControl.setValue('1');
+    } else {
+      const number = Number(this.inputControl.value);
+      this.inputControl.setValue(number + this.step + '');
     }
   }
 
   decrease() {
     if (this.value == null) {
-      this.inputControl.setValue(0);
-    } else if (this.min == null || this.value > this.min) {
-      this.inputControl.setValue(this.value - this.step);
+      this.inputControl.setValue('0');
+    } else {
+      const number = Number(this.inputControl.value);
+      this.inputControl.setValue(number - this.step + '');
     }
   }
 
