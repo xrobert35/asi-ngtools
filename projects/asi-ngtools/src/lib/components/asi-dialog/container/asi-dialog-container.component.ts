@@ -39,10 +39,18 @@ export class AsiDialogContainer implements AfterContentInit {
       }
       this.visibleDialog = dialogRef;
       this.visibleDialog.location.nativeElement.style.display = 'block';
+
+
       if (dialogRef.instance.getConfig().over) {
-        this.shadow.nativeElement.style.zIndex = 2;
-        this.visibleDialog.location.nativeElement.style.position = 'absolute';
-        this.visibleDialog.location.nativeElement.style.zIndex = 3;
+        // if the dialog is still open
+        const stillOpen = this.dialogs.find((dialog) => {
+          return dialog.instance === dialogRef.instance;
+        }) != null;
+        if (stillOpen) {
+          this.shadow.nativeElement.style.zIndex = 2;
+          this.visibleDialog.location.nativeElement.style.position = 'absolute';
+          this.visibleDialog.location.nativeElement.style.zIndex = 3;
+        }
       }
     }, 200);
 
