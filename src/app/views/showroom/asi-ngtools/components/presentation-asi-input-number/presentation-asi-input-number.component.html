@@ -12,7 +12,7 @@
   <div fxLayout="column">
     <h3 translate="COMMON.withNgModel"></h3>
     <asi-input-number label="asi-input" labelPosition="left" [(ngModel)]="inputValue" (onValueChange)="valueChange($event)"
-      [delay]="500"></asi-input-number>
+    [max]="9999.99" [min]="0" [delay]="500"></asi-input-number>
 
     <h3 translate="COMMON.withFormControl"></h3>
     <form [formGroup]="myForm" fxFlex (ngSubmit)="submit()">
@@ -62,6 +62,12 @@
 
 /** Number regex */
 @Input() pattern = new RegExp('^-*[0-9,\.]*$');
+
+/** Pattern used to managed typed value, if this pattern is true the 'value' will be the last valide one */
+@Input() toleratePattern = new RegExp('^[0-9]*[,\.]{1}$');
+
+/** Use a non decimal pattern '^-?[0-9]*$' */
+@Input() noDecimal = false;
 
 /** is enabled/disabled */
 @Input() disabled = false;

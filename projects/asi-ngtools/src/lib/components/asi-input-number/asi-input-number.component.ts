@@ -2,6 +2,7 @@ import { DefaultControlValueAccessor } from './../common/default-control-value-a
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { Component, forwardRef, Input, ElementRef, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import { debounceTime } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -47,13 +48,20 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
   @Input() delay = 0;
 
   /** Number regex */
-  @Input() pattern = new RegExp('^-*[0-9,\.]*$');
+  @Input() pattern = new RegExp('^-?[0-9]*[,\.]{0,1}[0-9]{0,2}$');
 
+  /** pattern used to managed typed value, if this pattern is true the 'value' will be the last valide one */
+  @Input() toleratePattern = new RegExp('^[0-9]*[,\.]{1}$');
+
+  /** use a non decimal pattern '^-?[0-9]*$' */
   @Input() noDecimal = false;
 
   @ViewChild('input') inputElm: ElementRef;
 
   inputControl = new FormControl();
+  private oldValideValue: number;
+
+  outputDelayValue = new Subject<number>();
 
   constructor(private renderer: Renderer2,
     private elementRef: ElementRef) {
@@ -62,29 +70,48 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
 
   ngOnInit() {
     if (this.noDecimal) {
-      this.pattern = new RegExp('^-*[0-9]*$');
+      this.pattern = new RegExp('^-?[0-9]*$');
     }
 
     this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
 
-    this.inputControl.valueChanges.pipe(debounceTime(this.delay)).subscribe((value) => {
-      if (value === '') {
-        value = null;
+    this.inputControl.valueChanges.subscribe((value) => {
+      if (value === '' || value == null) {
+        this.outputDelayValue.next(null);
+        this.oldValideValue = null;
+        return;
       }
-      if (value != null && this.pattern.test(value)) {
-        if (this.max != null && value > this.max) {
-          value = Number(value).toString().substr(0, this.max.toString().length);
-        }
-        if (this.min != null && value < this.min) {
-          value = this.min;
-        }
+
+      const tolerateValue = !this.noDecimal && this.toleratePattern.test(value);
+
+      value = value.replace(',', '\.');
+
+      if (this.pattern.test(value)) {
         if (!isNaN(Number(value))) {
-          this.value = Number(value);
+          // The value is a number
+          if (!(this.max != null && value > this.max)
+            && !(this.min != null && value < this.min) && !tolerateValue) {
+              this.outputDelayValue.next(Number(value));
+            this.oldValideValue = Number(value);
+            return;
+          }
+        } else if (value.length === 1 && value.indexOf('-') !== -1) {
+          this.outputDelayValue.next(null);
+          this.oldValideValue = null;
+          return;
         }
-      } else if (value == null) {
-        this.value = value;
       }
-      this.inputControl.setValue(this._value, { emitEvent: false});
+
+      if (!tolerateValue && !(value.length === 1 && value.indexOf('-') !== -1)) {
+        this.inputControl.setValue(this.oldValideValue, { emitEvent: false });
+      } else {
+        this.oldValideValue = value;
+        this.inputControl.setValue(value, { emitEvent: false });
+      }
+    });
+
+    this.outputDelayValue.pipe(debounceTime(this.delay)).subscribe((value) => {
+      this.value = value;
     });
   }
 
@@ -105,13 +132,13 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
   }
 
   writeValue(value: any) {
-    if (value != null) {
-      if (this.pattern.test(value)) {
-        this.inputControl.setValue(value, { emitEvent: false });
-        this._value = value;
-      } else {
-        this.inputControl.setValue(null, { emitEvent: false });
-      }
+    if (value != null && this.pattern.test(value)) {
+      this.inputControl.setValue(value, { emitEvent: false });
+      this._value = value;
+    } else {
+      this.inputControl.setValue(null, { emitEvent: false });
+      this._value = null;
     }
+    this.oldValideValue = this._value;
   }
 }
