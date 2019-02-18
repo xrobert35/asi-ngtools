@@ -59,7 +59,7 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
   @ViewChild('input') inputElm: ElementRef;
 
   inputControl = new FormControl();
-  private oldValideValue: number;
+  private oldValideValue: any;
 
   outputDelayValue = new Subject<number>();
 
@@ -83,6 +83,7 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
       }
 
       const tolerateValue = !this.noDecimal && this.toleratePattern.test(value);
+      const minusPossible = (this.min == null || this.min < 0) && value.length === 1 && value.indexOf('-') !== -1;
 
       value = value.replace(',', '\.');
 
@@ -92,17 +93,21 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
           if (!(this.max != null && value > this.max)
             && !(this.min != null && value < this.min) && !tolerateValue) {
             this.outputDelayValue.next(Number(value));
-            this.oldValideValue = Number(value);
-            return;
+            if (Number(value) !== 0) {
+              this.oldValideValue = value;
+              return;
+            } else {
+              this.oldValideValue = 0;
+            }
           }
-        } else if (value.length === 1 && value.indexOf('-') !== -1) {
+        } else if (minusPossible) {
           this.outputDelayValue.next(null);
-          this.oldValideValue = null;
+          this.oldValideValue = value;
           return;
         }
       }
 
-      if (!tolerateValue && !(value.length === 1 && value.indexOf('-') !== -1)) {
+      if (!tolerateValue && !minusPossible) {
         this.inputControl.setValue(this.oldValideValue, { emitEvent: false });
       } else {
         this.oldValideValue = value;
