@@ -8,4 +8,7 @@ export class PresentationAsiButtonComponent {
 
   @HostBinding('class') class = 'flex';
 
+  hello() {
+    console.log('hello');
+  }
 }

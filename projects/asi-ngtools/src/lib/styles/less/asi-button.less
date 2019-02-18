@@ -3,6 +3,10 @@ asi-button {
   .base-component;
   flex: 0 0 auto;
 
+  &.disabled {
+    pointer-events: none;
+  }
+
   > button {
     .clean-button;
 
@@ -44,6 +48,7 @@ asi-button {
       min-width: 25px;
       height: 25px;
       min-height: 25px;
+
       > asi-fa-icon {
         width: 20px;
         height: 20px;
@@ -59,6 +64,7 @@ asi-button {
       min-width: 35px;
       height: 35px;
       min-height: 35px;
+
       > asi-fa-icon {
         width: 30px;
         height: 30px;
@@ -68,9 +74,10 @@ asi-button {
   }
 
   &.button-raised {
-    > button:not([disabled]) {
+    > button {
       box-shadow: @asi-button-raised-box-shadow;
-
+    }
+    > button:not([disabled]) {
       &:hover {
         border: @asi-button-hover-border;
         background-color: @asi-button-hover-background-color;
@@ -94,6 +101,7 @@ asi-button {
         border: @asi-button-hover-border;
         background-color: @asi-button-hover-background-color;
       }
+
       .asi-fa-icon {
         label.input-label {
           color: white;

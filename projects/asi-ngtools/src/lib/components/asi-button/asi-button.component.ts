@@ -1,11 +1,11 @@
-import { Component, Input, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, Renderer2, ElementRef, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'asi-button',
   host: { 'class': 'asi-component asi-button' },
   templateUrl: 'asi-button.component.html',
 })
-export class AsiButtonComponent implements OnInit {
+export class AsiButtonComponent implements OnInit, OnChanges {
 
   /** html id */
   @Input() id: string;
@@ -27,5 +27,13 @@ export class AsiButtonComponent implements OnInit {
   ngOnInit() {
     this.renderer.addClass(this.elementRef.nativeElement, `button-${this.design}`);
     this.renderer.addClass(this.elementRef.nativeElement, `button-${this.size}`);
+  }
+
+  ngOnChanges() {
+    if (this.disabled) {
+      this.renderer.addClass(this.elementRef.nativeElement, 'disabled');
+    } else {
+      this.renderer.removeClass(this.elementRef.nativeElement, 'disabled');
+    }
   }
 }

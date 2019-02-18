@@ -10,12 +10,21 @@
 <div class="fixed-panel">
   <h2 translate="COMMON.demo"></h2>
   <h3> Simple Button </h3>
-  <div fxLayout="row">
-    <asi-button design="flat">Flat Button</asi-button>
-    <asi-button design="raised">Raised Button</asi-button>
-    <asi-button design="bordered">Bordered Button</asi-button>
+  <div fxLayout="column">
+    <div fxLayout="row">
+      <asi-button design="flat">Flat Button</asi-button>
+      <asi-button design="raised">Raised Button</asi-button>
+      <asi-button design="bordered">Bordered Button</asi-button>
+    </div>
+    <div fxLayout="row">
+      <asi-button design="flat" [disabled]="true" (click)="hello()"> Disabled Flat Button</asi-button>
+      <asi-button design="raised" [disabled]="true" (click)="hello()"> Disabled Raised Button</asi-button>
+      <asi-button design="bordered" [disabled]="true" (click)="hello()"> Disabled Bordered Button</asi-button>
+    </div>
   </div>
-  <h3> Button with link element </h3>
+</div>
+<h3> Button with link element </h3>
+<div fxLayout="column">
   <div fxLayout="row">
     <asi-link-button design="flat" href="https://ngtools.asi.fr/views/showroom/asi-ngtools/components/asi-button">Link
       Flat Button</asi-link-button>
@@ -23,6 +32,14 @@
       Raised Button</asi-link-button>
     <asi-link-button design="bordered" href="https://ngtools.asi.fr/views/showroom/asi-ngtools/components/asi-button">Link
       Bordered Button</asi-link-button>
+  </div>
+  <div fxLayout="row">
+    <asi-link-button design="flat" [disabled]="true" (click)="hello()" href="https://ngtools.asi.fr/views/showroom/asi-ngtools/components/asi-button">
+      Disabled Link Button</asi-link-button>
+    <asi-link-button design="raised" [disabled]="true" (click)="hello()" href="https://ngtools.asi.fr/views/showroom/asi-ngtools/components/asi-button">
+      Disabled Link Raised Button</asi-link-button>
+    <asi-link-button design="bordered" [disabled]="true" (click)="hello()" href="https://ngtools.asi.fr/views/showroom/asi-ngtools/components/asi-button">
+      Disabled Link Bordered Button</asi-link-button>
   </div>
 </div>
 

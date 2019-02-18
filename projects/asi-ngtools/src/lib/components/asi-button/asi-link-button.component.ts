@@ -1,11 +1,11 @@
-import { Component, Input, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, Renderer2, ElementRef, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'asi-link-button',
   host: { 'class': 'asi-component asi-link-button' },
   templateUrl: 'asi-link-button.component.html'
 })
-export class AsiLinkButtonComponent implements OnInit {
+export class AsiLinkButtonComponent implements OnInit, OnChanges {
 
   @Input() design: 'flat' | 'raised' | 'bordered' = 'flat';
   @Input() href = '';
@@ -17,5 +17,13 @@ export class AsiLinkButtonComponent implements OnInit {
 
   ngOnInit() {
     this.renderer.addClass(this.elementRef.nativeElement, `link-button-${this.design}`);
+  }
+
+  ngOnChanges() {
+    if (this.disabled) {
+      this.renderer.addClass(this.elementRef.nativeElement, 'disabled');
+    } else {
+      this.renderer.removeClass(this.elementRef.nativeElement, 'disabled');
+    }
   }
 }
