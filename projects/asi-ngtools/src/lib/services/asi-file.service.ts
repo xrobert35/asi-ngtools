@@ -107,12 +107,14 @@ export class AsiFileService {
   private getFileFromBlobResponse(response: any): File {
     const blob: any = response.body;
     // May be null if the server doesn't explicitly add the content-disposition in the headers
-    let originalFileName = response.headers.get('content-disposition');
-    if (originalFileName) {
-      originalFileName = originalFileName.substring(originalFileName.lastIndexOf('filename=') + 9);
+    if (blob.name == null) {
+      let originalFileName = response.headers.get('content-disposition');
+      if (originalFileName) {
+        originalFileName = originalFileName.substring(originalFileName.lastIndexOf('filename=') + 9);
+      }
+      // The two attributes missing to a Blob to be a File
+      blob.name = originalFileName;
     }
-    // The two attributes missing to a Blob to be a File
-    blob.name = originalFileName;
     blob.lastModifiedDate = new Date();
     return <File>blob;
   }
