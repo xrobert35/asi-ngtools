@@ -3,7 +3,7 @@ import { SafeResourceUrl } from '@angular/platform-browser';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DefaultControlValueAccessor } from './../common/default-control-value-accessor';
 import {
-  Component, Input, EventEmitter, Output, forwardRef, AfterViewInit,
+  Component, Input, EventEmitter, Output, forwardRef,
   OnChanges, ViewChild, OnInit, ElementRef, Renderer2
 } from '@angular/core';
 import { AsiFileService } from './../../services/asi-file.service';
@@ -22,7 +22,7 @@ import * as nh from '../../native-helper';
     }
   ]
 })
-export class AsiFileChooserComponent extends DefaultControlValueAccessor implements AfterViewInit, OnChanges, OnInit {
+export class AsiFileChooserComponent extends DefaultControlValueAccessor implements OnChanges, OnInit {
 
   /** html id */
   @Input() id: string;
@@ -62,9 +62,6 @@ export class AsiFileChooserComponent extends DefaultControlValueAccessor impleme
 
   ngOnInit() {
     this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
-  }
-
-  ngAfterViewInit() {
     if (this.fileSrc != null) {
       this.fileService.getFileAsBlob(this.fileSrc).subscribe(blob => {
         const fileName = this.fileSrc.split('/').pop();

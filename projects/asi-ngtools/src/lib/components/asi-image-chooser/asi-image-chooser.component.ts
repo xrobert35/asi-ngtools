@@ -64,7 +64,7 @@ export class AsiImageChooserComponent extends DefaultControlValueAccessor implem
   ngAfterViewInit() {
     if (this.imageSrc != null) {
       this.fileService.getBlobImage(this.imageSrc).subscribe(blob => {
-        this.fileService.blobToBase64(blob).subscribe((base64) => {
+        this.fileService.blobToBase64(blob, true).subscribe((base64) => {
           this.image64 = base64;
         });
         const imageName = this.imageSrc.split('/').pop();
