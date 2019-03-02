@@ -1,5 +1,6 @@
 import { AbstractControl, ValidationErrors, Validators, ValidatorFn } from '@angular/forms';
 
+import * as nh from '../native-helper';
 import moment from 'moment';
 
 /**
@@ -54,14 +55,19 @@ export class AsiValidators {
 
   static fileSize(maxSize: number): ValidatorFn {
     const validator = (control: AbstractControl): ValidationErrors | null => {
-      const rightSize = control.value == null || control.value.size <= maxSize;
-      if (!rightSize) {
-        return {
-          fileSize: { valid: false }
-        };
-      } else {
+      const rightSize = !control.value || control.value.size <= maxSize;
+      return rightSize ? null : { 'fileSize': { valid: false } };
+    };
+    return validator;
+  }
+
+  static fileExtension(extensions: Array<String>): ValidatorFn {
+    const validator = (control: AbstractControl): ValidationErrors | null => {
+      if (!control.value || !control.value.name) {
         return null;
       }
+      const rightExtension = nh.find(extensions, (extension) => control.value.name.endsWith(extension));
+      return rightExtension ? null : { fileExtension: { valid: false } };
     };
     return validator;
   }
