@@ -46,7 +46,7 @@ export class AsiFileService {
           content = <string>reader['content'];
         }
         if (sanitize) {
-          content = this.sanitizer.bypassSecurityTrustUrl(content);
+          content = this.sanitizer.bypassSecurityTrustResourceUrl(content);
         }
         observer.next(content);
         observer.complete();
@@ -108,7 +108,7 @@ export class AsiFileService {
     const blob: any = response.body;
     // May be null if the server doesn't explicitly add the content-disposition in the headers
     if (blob.name == null) {
-      let originalFileName = response.headers.get('content-disposition');
+      let originalFileName = response.headers.get('content-disposition').replace(/ /g, '');
       if (originalFileName) {
         originalFileName = originalFileName.substring(originalFileName.lastIndexOf('filename=') + 9);
       }
@@ -129,7 +129,7 @@ export class AsiFileService {
   }
 
   getFileAsBlob(fileUrl: string): Observable<File> {
-    return this.http.get(fileUrl, { responseType: 'blob', observe : 'response' }).pipe(map((response) => {
+    return this.http.get(fileUrl, { responseType: 'blob', observe: 'response' }).pipe(map((response) => {
       return this.getFileFromBlobResponse(response);
     }));
   }
