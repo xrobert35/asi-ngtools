@@ -4,12 +4,12 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { IntArrayPipe } from './intArray.pipe';
 import { AsiConcatPipe } from './asi-concat.pipe';
 import { AsiFilterPipe } from './asi-filter.pipe';
-import { AsiConcatTranslatePipe } from "./asi-concat-translate.pipe";
+import { AsiConcatTranslatePipe } from './asi-concat-translate.pipe';
 
 export * from './intArray.pipe';
 export * from './asi-concat.pipe';
 export * from './asi-filter.pipe';
-export * from "./asi-concat-translate.pipe";
+export * from './asi-concat-translate.pipe';
 export * from './asi-date.pipe';
 
 

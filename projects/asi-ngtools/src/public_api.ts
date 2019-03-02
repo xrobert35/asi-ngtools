@@ -35,5 +35,6 @@ export * from './lib/components/asi-tree-view/asi-tree-view.module';
 export * from './lib/pipes/asi-pipes.module';
 export * from './lib/validators/asi-validators.module';
 export * from './lib/services/asi-services.module';
+export * from './lib/interceptors/asi-refreshtoken.interceptor';
 export * from './lib/asi-ngtools-base.module';
 export * from './lib/asi-ngtools.module';

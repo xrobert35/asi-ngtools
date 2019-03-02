@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 
 /**
  * Pipe permettant de filter une liste d'information
@@ -14,7 +14,7 @@ export class AsiFilterPipe implements PipeTransform {
       if (this.isFunction(filter)) {
         result = items.filter(item => { return filter(item, value); });
       } else if (value != null) {
-        result = items.filter(item => { item[value].indexOf(value) !== -1 });
+        result = items.filter(item => item[value].indexOf(value) !== -1);
       }
     }
     return result;
