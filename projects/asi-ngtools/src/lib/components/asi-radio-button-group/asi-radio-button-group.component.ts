@@ -117,7 +117,7 @@ export class AsiRadioButtonGroupComponent extends DefaultControlValueAccessor im
     if (this.multiple && !nh.isArray(value) && value != null) {
       value = [value];
     }
-    this.value = value;
+    this._value = value;
     this.initRadioButton(value);
   }
 
