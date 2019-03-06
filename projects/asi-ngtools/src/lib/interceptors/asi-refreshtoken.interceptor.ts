@@ -1,5 +1,5 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { Observable, throwError, BehaviorSubject } from 'rxjs';
+import { Observable, throwError, BehaviorSubject, Subject } from 'rxjs';
 import { tap, catchError, switchMap, take } from 'rxjs/operators';
 
 export abstract class AsiRefreshTokenInceptor implements HttpInterceptor {
@@ -10,7 +10,7 @@ export abstract class AsiRefreshTokenInceptor implements HttpInterceptor {
   private loginUrl;
   private refreshTokenUrl;
 
-  private refreshTokenSubject = new BehaviorSubject<any>(null);
+  private refreshTokenSubject = new Subject<any>();
 
   constructor() {
     this.refreshTokenUrl = this.getRefreshTokenUrl();
@@ -25,12 +25,13 @@ export abstract class AsiRefreshTokenInceptor implements HttpInterceptor {
     }), catchError((err) => {
 
       // Not a 401 or fail on login page
-      if (err.status !== AsiRefreshTokenInceptor.UNAUTHORIZED || req.url.includes(this.loginUrl)) {
+      if (err.status !== AsiRefreshTokenInceptor.UNAUTHORIZED && req.url.includes(this.loginUrl)) {
         return throwError(err);
       }
 
       // Fail to refresh the token, go to login page
       if (req.url.includes(this.refreshTokenUrl)) {
+        this.refreshingToken = false;
         this.goToLoginPage(req, err);
         return throwError(err);
       }
@@ -41,7 +42,6 @@ export abstract class AsiRefreshTokenInceptor implements HttpInterceptor {
           return next.handle(this.addAuthenticationToken(req));
         }));
       } else {
-
         this.refreshingToken = true;
         // get and save the refresh token and unlock requests
         return this.callAndSaveRefreshToken().pipe(switchMap((token: any) => {
