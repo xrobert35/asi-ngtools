@@ -4,7 +4,7 @@ import { tap, catchError, switchMap, take } from 'rxjs/operators';
 
 export abstract class AsiRefreshTokenInceptor implements HttpInterceptor {
 
-  private static readonly UNAUTHORIZED = '401';
+  private static readonly UNAUTHORIZED = 401;
   private refreshingToken = false;
 
   private loginUrl;
@@ -25,7 +25,7 @@ export abstract class AsiRefreshTokenInceptor implements HttpInterceptor {
     }), catchError((err) => {
 
       // Not a 401 or fail on login page
-      if (err.status !== AsiRefreshTokenInceptor.UNAUTHORIZED && req.url.includes(this.loginUrl)) {
+      if (err.status != AsiRefreshTokenInceptor.UNAUTHORIZED && req.url.includes(this.loginUrl)) {
         return throwError(err);
       }
 
