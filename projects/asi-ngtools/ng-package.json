@@ -5,5 +5,5 @@
   "lib": {
     "entryFile": "src/public_api.ts"
   },
-  "whitelistedNonPeerDependencies": ["moment", "clone-deep"]
+  "whitelistedNonPeerDependencies": ["moment", "lodash.clonedeep"]
 }

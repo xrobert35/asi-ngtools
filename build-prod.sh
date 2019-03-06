@@ -1,5 +1,5 @@
 ### Build in prod mode
-ng run asi-ngtools:build
+ng run asi-ngtools:build:production
 
 echo "Copy and build styles..."
 ### Copy styles

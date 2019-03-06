@@ -1,5 +1,5 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { Observable, throwError, BehaviorSubject, Subject } from 'rxjs';
+import { Observable, throwError, Subject } from 'rxjs';
 import { tap, catchError, switchMap, take } from 'rxjs/operators';
 
 export abstract class AsiRefreshTokenInceptor implements HttpInterceptor {

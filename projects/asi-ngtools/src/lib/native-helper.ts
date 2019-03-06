@@ -1,5 +1,4 @@
-import { clone } from 'shallow-clone';
-import { kindOf } from 'kind-of';
+import { cloneDeep as cloneDeepExt}  from 'lodash'
 
 export function map(array: Array<any>, mapper: (value: any, index?: number) => any) {
   if (array) {
@@ -147,11 +146,15 @@ export function orderByWithoutCase(array: Array<any>, key: string, asc: 'asc' | 
 }
 
 export function cloneDeep(object: any) {
-  return extCloneDeep(object);
+  return cloneDeepExt(object);
 }
 
 export function isEmpty(item: any) {
   return item == null || item.length === 0
+}
+
+export function isObject(val: any) {
+  return typeof val === 'object';
 }
 
 export function join(items: Array<any>, separator: string) {
@@ -159,41 +162,4 @@ export function join(items: Array<any>, separator: string) {
     return items.join(separator);
   }
   return items;
-}
-
-// external
-export function extCloneDeep(val, instanceClone?) {
-  switch (kindOf(val)) {
-    case 'object':
-      return extCloneObjectDeep(val, instanceClone);
-    case 'array':
-      return extCloneArrayDeep(val, instanceClone);
-    default: {
-      return clone(val);
-    }
-  }
-}
-
-export function extCloneObjectDeep(val, instanceClone?) {
-  if (typeof instanceClone === 'function') {
-    return instanceClone(val);
-  }
-  if (kindOf(val) === 'object') {
-    const res = new val.constructor();
-    for (const key in val) {
-      if (val.hasOwnProperty(key)) {
-        res[key] = extCloneDeep(val[key], instanceClone);
-      }
-    }
-    return res;
-  }
-  return val;
-}
-
-export function extCloneArrayDeep(val, instanceClone?) {
-  const res = new val.constructor(val.length);
-  for (let i = 0; i < val.length; i++) {
-    res[i] = extCloneDeep(val[i], instanceClone);
-  }
-  return res;
 }
