@@ -1,8 +1,13 @@
 <div #treeNode class="tree-node" (click)="onNodeCliked()">
-  <ng-template [ngTemplateOutlet]="template" [ngTemplateOutletContext]="{$implicit : { data : data, open : open, firstNode : firstNode, lastNode : lastNode}}"></ng-template>
+  <asi-fa-icon [icon]="open ? iconClose : iconOpen" *ngIf="!isLeaf(data)"></asi-fa-icon>
+  <div class="tree-node-content" (click)="onNodeContentClicked()">
+    <ng-template [ngTemplateOutlet]="template"
+                 [ngTemplateOutletContext]="{$implicit : { data : data, open : open, firstNode : firstNode, lastNode : lastNode}}"></ng-template>
+  </div>
 </div>
 <div class="childNodes" [hidden]="!open">
-  <asi-tree-view-node *ngFor="let nodeData of subData; let first = first; let last = last" [nodeData]="nodeData" [level]="level + 1"
-    [asiTreeView]="asiTreeView" [nodeName]="nodeName" [nodeDef]="nodeDef" [leafDef]="leafDef" [isLeaf]="isLeaf" [firstNode]="first"
-    [lastNode]="last"></asi-tree-view-node>
+  <asi-tree-view-node *ngFor="let nodeData of subData; let first = first; let last = last" [nodeData]="nodeData"
+                      [level]="level + 1" [iconOpen]="iconOpen" [iconClose]="iconClose"
+                      [asiTreeView]="asiTreeView" [nodeName]="nodeName" [nodeDef]="nodeDef" [leafDef]="leafDef"
+                      [isLeaf]="isLeaf" [firstNode]="first" [lastNode]="last"></asi-tree-view-node>
 </div>

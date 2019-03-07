@@ -48,6 +48,7 @@ import { NotificationComponent }
   from './services/presentation-asi-notification/notification-component/notification.component';
 import { PresentationAsiSelectComponent } from './components/presentation-asi-select/presentation-asi-select.component';
 import { PresentationAsiTableComponent } from './components/presentation-asi-table/presentation-asi-table.component';
+import { PresentationAsiTreeSelectComponent } from './components/presentation-asi-tree-select/presentation-asi-tree-select.component';
 import { PresentationAsiTreeViewComponent } from './components/presentation-asi-tree-view/presentation-asi-tree-view.component';
 import { DialogComponent } from './services/presentation-asi-dialog/dialog-component/dialog.component';
 import { PresentationAsiBreadcrumbComponent } from './components/presentation-asi-breadcrumb/presentation-asi-breadcrumb.component';
@@ -126,6 +127,7 @@ const asiNgToolsRoutes: Routes = [{
         { path: 'asi-fa-icon', component: PresentationAsiFaIconComponent },
         { path: 'asi-file-chooser', component: PresentationAsiFileChooserComponent },
         { path: 'asi-tree-view', component: PresentationAsiTreeViewComponent },
+        { path: 'asi-tree-select', component: PresentationAsiTreeSelectComponent },
         { path: '', redirectTo: 'asi-autocomplete', pathMatch: 'full' },
       ]
     },
@@ -215,6 +217,7 @@ export const asiNgToolsPresentationRouting: ModuleWithProviders = RouterModule.f
     PresentationAsiErrorMessagesComponent,
     PresentationAsiValidators,
     PresentationAsiEmailComponent,
+    PresentationAsiTreeSelectComponent,
     PresentationAsiTreeViewComponent,
     PresentationAsiBreadcrumbComponent,
     PresentationAsiDropdownComponent,

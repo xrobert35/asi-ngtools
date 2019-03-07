@@ -105,4 +105,3 @@ export class AsiComponentTemplateTreeLeafDef {
   constructor(public template: TemplateRef<any>) {
   }
 }
-

@@ -34,6 +34,9 @@ export class AsiTreeViewNodeComponent implements OnInit {
   @Input() firstNode: boolean;
   @Input() lastNode: boolean;
 
+  @Input() iconOpen: string;
+  @Input() iconClose: string;
+
   @ViewChild('treeNode') treeNode: ElementRef;
   @ViewChildren(AsiTreeViewNodeComponent) public childNodes: QueryList<AsiTreeViewNodeComponent>;
 
@@ -102,7 +105,10 @@ export class AsiTreeViewNodeComponent implements OnInit {
   }
 
   onNodeCliked() {
-    this.asiTreeView.onNodeClicked(this);
     this.toggleNode();
+  }
+
+  onNodeContentClicked() {
+    this.asiTreeView.onNodeClicked(this);
   }
 }

@@ -1,49 +1,53 @@
 <form [formGroup]="exempleForm" (ngSubmit)="createContent()">
 
-    <!-- Sexe -->
+  <!-- Sexe -->
+  <div class="asi-container">
+    <asi-radio-group label="Sexe :" labelPosition="left" formControlName="sexe">
+      <asi-radio value="man">Man</asi-radio>
+      <asi-radio value="woman">Woman</asi-radio>
+    </asi-radio-group>
+    <asi-error-messages forName="sexe">
+      <asi-message error="required" value="VALIDATIONS.required" [onSubmit]="true"></asi-message>
+    </asi-error-messages>
+  </div>
+
+  <!-- Firstname -->
+  <div fxLayout="row">
     <div class="asi-container">
-      <asi-radio-group label="Sexe :" labelPosition="left" formControlName="sexe">
-        <asi-radio value="man">Man</asi-radio>
-        <asi-radio value="woman">Woman</asi-radio>
-      </asi-radio-group>
-      <error-messages forName="sexe">
-        <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
-      </error-messages>
+      <asi-input label="Firstname :" formControlName="firstname" placeholder="Firstname"></asi-input>
+      <asi-error-messages forName="firstname">
+        <asi-message error="required" value="VALIDATIONS.required" [onSubmit]="true"></asi-message>
+      </asi-error-messages>
     </div>
 
-    <!-- Firstname -->
-    <div fxLayout="row">
-      <div class="asi-container">
-        <asi-input label="Firstname :" formControlName="firstname" placeholder="Firstname"></asi-input>
-        <error-messages forName="firstname">
-          <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
-        </error-messages>
-      </div>
-
-      <!-- Lastname -->
-      <div class="asi-container">
-        <asi-input label="Lastname :" formControlName="lastname" placeholder="Lastname"></asi-input>
-        <error-messages forName="lastname">
-          <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
-        </error-messages>
-      </div>
-    </div>
-
-    <!-- Email -->
+    <!-- Lastname -->
     <div class="asi-container">
-      <asi-input-icon label="Email :" [email]="true" icon="far fa-envelope" formControlName="email" placeholder="Email"></asi-input-icon>
-      <error-messages forName="email">
-        <message error="email" value="VALIDATIONS.email" [onSubmit]="true"></message>
-      </error-messages>
+      <asi-input label="Lastname :" formControlName="lastname" placeholder="Lastname"></asi-input>
+      <asi-error-messages forName="lastname">
+        <asi-message error="required" value="VALIDATIONS.required" [onSubmit]="true"></asi-message>
+      </asi-error-messages>
     </div>
+  </div>
 
-    <!-- Birthdate -->
-    <div class="asi-container">
-      <asi-datepicker label="Birthdate :" formControlName="birthdate" [maxDate]="today"></asi-datepicker>
-      <error-messages forName="birthdate">
-        <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
-      </error-messages>
-    </div>
+  <!-- Email -->
+  <div class="asi-container">
+    <asi-input-icon label="Email :" [email]="true" icon="far fa-envelope" formControlName="email"
+                    placeholder="Email"></asi-input-icon>
+    <asi-error-messages forName="email">
+      <asi-message error="email" value="VALIDATIONS.email" [onSubmit]="true"></asi-message>
+    </asi-error-messages>
+  </div>
+
+  <!-- Birthdate -->
+  <div class="asi-container">
+    <asi-datepicker label="Birthdate :" formControlName="birthdate" [maxDate]="today"></asi-datepicker>
+    <asi-error-messages forName="birthdate">
+      <asi-message error="required" value="VALIDATIONS.required" [onSubmit]="true"></asi-message>
+    </asi-error-messages>
+  </div>
+
+  <fieldset formGroupName="other">
+    <legend>Other</legend>
 
     <!-- Job -->
     <div class="asi-container">
@@ -52,43 +56,70 @@
         <asi-selected *asiSelectedDef="let data">{{data}}</asi-selected>
         <asi-option *asiOptionDef="let data">{{data}}</asi-option>
       </asi-select>
-      <error-messages forName="job">
-        <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
-      </error-messages>
+      <asi-error-messages forName="job">
+        <asi-message error="required" value="VALIDATIONS.required" [onSubmit]="true"></asi-message>
+      </asi-error-messages>
     </div>
 
     <!-- Town -->
-    <div fxLayout="row">
-      <div class="asi-container">
-        <asi-autocomplete [onRequestData]="requestTown" label="Town :" placeholder="Please tell us your town" formControlName="town">
-          <asi-selected *asiSelectedDef="let data">{{data}}</asi-selected>
-          <asi-option *asiOptionDef="let data">{{data}}</asi-option>
-        </asi-autocomplete>
-        <error-messages forName="town">
-          <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
-        </error-messages>
-      </div>
-
-      <!-- Hobbies -->
-      <div class="asi-container">
-        <asi-autocomplete-multiple [onRequestData]="requestHobbies" label="Hobbies :" placeholder="Please tell us your hobbies" formControlName="hobbies">
-          <asi-tag *asiTagDef="let data">{{data}}</asi-tag>
-          <asi-selected *asiSelectedDef="let data">{{data}}</asi-selected>
-          <asi-option *asiOptionDef="let data">{{data}}</asi-option>
-        </asi-autocomplete-multiple>
-        <error-messages forName="hobbies">
-          <message error="required" value="VALIDATIONS.required" [onSubmit]="true"></message>
-        </error-messages>
-      </div>
+    <div class="asi-container">
+      <asi-autocomplete [onRequestData]="requestTown" label="Town :" placeholder="Please tell us your town"
+                        formControlName="town">
+        <asi-selected *asiSelectedDef="let data">{{data}}</asi-selected>
+        <asi-option *asiOptionDef="let data">{{data}}</asi-option>
+      </asi-autocomplete>
+      <asi-error-messages forName="town">
+        <asi-message error="required" value="VALIDATIONS.required" [onSubmit]="true"></asi-message>
+      </asi-error-messages>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="end center">
-      <asi-button (click)="enableForm(false)" [disabled]="exempleForm.disabled">
-        <asi-fa-icon icon="fas fa-ban" [disabled]="exempleForm.disabled" label="Disable form" labelPosition="right"></asi-fa-icon>
-      </asi-button>
-      <asi-button (click)="enableForm(true)" [disabled]="!exempleForm.disabled"> Enable form </asi-button>
-      <asi-button type="submit" design="bordered" [disabled]="exempleForm.disabled">
-        <asi-fa-icon icon="fas fa-save" label="save" labelPosition="right" [disabled]="exempleForm.disabled"></asi-fa-icon>
-      </asi-button>
+    <!-- Hobbies -->
+    <div class="asi-container">
+      <asi-autocomplete-multiple [onRequestData]="requestHobbies" label="Hobbies :"
+                                 placeholder="Please tell us your hobbies" formControlName="hobbies">
+        <asi-tag *asiTagDef="let data">{{data}}</asi-tag>
+        <asi-selected *asiSelectedDef="let data">{{data}}</asi-selected>
+        <asi-option *asiOptionDef="let data">{{data}}</asi-option>
+      </asi-autocomplete-multiple>
+      <asi-error-messages forName="hobbies">
+        <asi-message error="required" value="VALIDATIONS.required" [onSubmit]="true"></asi-message>
+      </asi-error-messages>
     </div>
-  </form>
+
+    <div class="asi-container">
+      <asi-switch label="Good boy :"></asi-switch>
+    </div>
+
+  </fieldset>
+
+
+  <!-- Children -->
+  <div class="asi-container">
+    <asi-tree-select [data]="items" [filter]="childrenTreeSelectFilter" formControlName="children"
+                     label="Children" placeholder="Placeholder">
+      <asi-tree-node *asiTreeNodeDef="let node">
+        {{node.data.label}}
+      </asi-tree-node>
+
+      <asi-tree-leaf *asiTreeLeafDef="let node">
+        {{ node.data.label }}
+      </asi-tree-leaf>
+    </asi-tree-select>
+
+    <asi-error-messages forName="children">
+      <asi-message error="required" value="VALIDATIONS.required" [onSubmit]="true"></asi-message>
+    </asi-error-messages>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="end center">
+    <asi-button (click)="enableForm(false)" [disabled]="exempleForm.disabled">
+      <asi-fa-icon icon="fas fa-ban" [disabled]="exempleForm.disabled" label="Disable form"
+                   labelPosition="right"></asi-fa-icon>
+    </asi-button>
+    <asi-button (click)="enableForm(true)" [disabled]="!exempleForm.disabled"> Enable form</asi-button>
+    <asi-button type="submit" design="bordered" [disabled]="exempleForm.disabled">
+      <asi-fa-icon icon="fas fa-save" label="save" labelPosition="right"
+                   [disabled]="exempleForm.disabled"></asi-fa-icon>
+    </asi-button>
+  </div>
+</form>

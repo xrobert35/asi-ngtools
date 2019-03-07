@@ -31,6 +31,7 @@ export * from './lib/components/asi-icon-checkbox/asi-icon-checkbox.module';
 export * from './lib/components/asi-radio-group/asi-radio-group.module';
 export * from './lib/components/asi-dropdown/asi-dropdown.module';
 export * from './lib/components/asi-ibanfr-input/asi-ibanfr-input.module';
+export * from './lib/components/asi-tree-select/asi-tree-select.module';
 export * from './lib/components/asi-tree-view/asi-tree-view.module';
 export * from './lib/pipes/asi-pipes.module';
 export * from './lib/validators/asi-validators.module';
