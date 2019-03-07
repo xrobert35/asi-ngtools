@@ -1,6 +1,6 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable, throwError, Subject } from 'rxjs';
-import { tap, catchError, switchMap, take } from 'rxjs/operators';
+import { tap, catchError, switchMap, first } from 'rxjs/operators';
 
 export abstract class AsiRefreshTokenInceptor implements HttpInterceptor {
 
@@ -39,21 +39,21 @@ export abstract class AsiRefreshTokenInceptor implements HttpInterceptor {
 
       if (this.refreshingToken) {
         // refresh token is in progress, we subscribe to the unlocking event
-        return this.refreshTokenSubject.asObservable().pipe(take(1), switchMap(() => {
+        return this.refreshTokenSubject.pipe(first(), switchMap(() => {
           return next.handle(this.addAuthenticationToken(req, true));
         }));
       } else {
         this.refreshingToken = true;
         // get and save the refresh token and unlock requests
-        return this.callAndSaveRefreshToken().pipe(switchMap((token: any) => {
+        return this.callAndSaveRefreshToken().pipe(first(), switchMap((token: any) => {
           this.refreshingToken = false;
           this.refreshTokenSubject.next(token);
           return next.handle(this.addAuthenticationToken(req, true));
-        }, catchError((error) => {
+        }), catchError((error) => {
           this.refreshingToken = false;
           this.goToLoginPage(req, error)
           return throwError(error);
-        })));
+        }));
       }
     }));
   }
