@@ -18,13 +18,14 @@ export abstract class AsiRefreshTokenInceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
-    req = this.addAuthenticationToken(req);
+    req = this.addAuthenticationToken(req, false);
 
     return next.handle(req).pipe(tap(evt => {
       this.onRequestSuccess(evt);
     }), catchError((err) => {
 
       // Not a 401 or fail on login page
+      // tslint:disable-next-line:triple-equals
       if (err.status != AsiRefreshTokenInceptor.UNAUTHORIZED && req.url.includes(this.loginUrl)) {
         return throwError(err);
       }
@@ -39,7 +40,7 @@ export abstract class AsiRefreshTokenInceptor implements HttpInterceptor {
       if (this.refreshingToken) {
         // refresh token is in progress, we subscribe to the unlocking event
         return this.refreshTokenSubject.asObservable().pipe(take(1), switchMap(() => {
-          return next.handle(this.addAuthenticationToken(req));
+          return next.handle(this.addAuthenticationToken(req, true));
         }));
       } else {
         this.refreshingToken = true;
@@ -47,7 +48,7 @@ export abstract class AsiRefreshTokenInceptor implements HttpInterceptor {
         return this.callAndSaveRefreshToken().pipe(switchMap((token: any) => {
           this.refreshingToken = false;
           this.refreshTokenSubject.next(token);
-          return next.handle(this.addAuthenticationToken(req));
+          return next.handle(this.addAuthenticationToken(req, true));
         }, catchError((error) => {
           this.refreshingToken = false;
           this.goToLoginPage(req, error)
@@ -62,8 +63,9 @@ export abstract class AsiRefreshTokenInceptor implements HttpInterceptor {
   /**
    *  Add auth token to the request header
    * @param req  the request
+   * @param replay is the token replayed
    */
-  abstract addAuthenticationToken(req: HttpRequest<any>): HttpRequest<any>;
+  abstract addAuthenticationToken(req: HttpRequest<any>, replay: boolean): HttpRequest<any>;
 
   /**
    *  Get the refresh token endpoint url
