@@ -1,2 +1,4 @@
-<asi-tree-view-node *ngFor="let nodeData of filteredData; let first = first; let last = last" [nodeData]="nodeData" [asiTreeView]="this"
-  [level]="1" [nodeName]="nodeName" [nodeDef]="nodeDef" [leafDef]="leafDef" [isLeaf]="isLeaf" [firstNode]="first" [lastNode]="last"></asi-tree-view-node>
+<asi-tree-view-node *ngFor="let nodeData of filteredData; let first = first; let last = last"
+                    [iconOpen]="iconOpen" [iconClose]="iconClose" [nodeData]="nodeData" [asiTreeView]="this"
+                    [level]="1" [nodeName]="nodeName" [nodeDef]="nodeDef" [leafDef]="leafDef" [isLeaf]="isLeaf"
+                    [firstNode]="first" [lastNode]="last"></asi-tree-view-node>

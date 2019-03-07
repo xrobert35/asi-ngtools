@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import * as lodash from 'lodash';
 
 @Component({
-  selector: 'full-form',
+  selector: 'presentation-full-form',
   templateUrl: './full-form.component.html',
-  host: { 'class': 'flex' }
 })
 export class FullFormComponent {
+
+  @HostBinding('class') class = 'flex';
 
   exempleForm: FormGroup;
 
@@ -55,6 +56,45 @@ export class FullFormComponent {
     'Shīnḏanḏ'
   ];
 
+  items = [
+    {
+      id: 1,
+      label: 'niveau 1',
+      children: [
+        {
+          id: 2,
+          label: 'niveau 1-1',
+          children: [
+            {
+              id: 3,
+              label: 'niveau 1-1-1',
+              children: []
+            },
+            {
+              id: 4,
+              label: 'niveau 1-1-2',
+              children: []
+            }
+          ]
+        },
+        {
+          id: 5,
+          label: 'niveau 1-2',
+          children: []
+        },
+        {
+          id: 6,
+          label: 'niveau 1-3',
+          children: []
+        }
+      ]
+    }, {
+      id: 7,
+      label: 'niveau 2',
+      children: []
+    }
+  ];
+
   constructor(fb: FormBuilder) {
     this.exempleForm = fb.group({
       sexe: [null, Validators.required],
@@ -62,9 +102,12 @@ export class FullFormComponent {
       lastname: [null, Validators.required],
       birthdate: [null, Validators.required],
       email: [null, Validators.email],
-      job: [null, Validators.required],
-      town: [null, Validators.required],
-      hobbies : [null, Validators.required]
+      other: fb.group({
+        job: [null, Validators.required],
+        town: [null, Validators.required],
+        hobbies : [null, Validators.required]
+      }),
+      children: [null, Validators.required]
     });
   }
 
@@ -91,4 +134,9 @@ export class FullFormComponent {
   }
 
   createContent() {}
+
+  childrenTreeSelectFilter = (item: any, filter: string) => {
+    return item && item['label'] && item['label'].indexOf(filter) >= 0;
+  }
+
 }

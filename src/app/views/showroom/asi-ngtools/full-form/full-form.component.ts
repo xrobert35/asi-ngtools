@@ -56,6 +56,45 @@ export class FullFormComponent {
     'Shīnḏanḏ'
   ];
 
+  items = [
+    {
+      id: 1,
+      label: 'niveau 1',
+      children: [
+        {
+          id: 2,
+          label: 'niveau 1-1',
+          children: [
+            {
+              id: 3,
+              label: 'niveau 1-1-1',
+              children: []
+            },
+            {
+              id: 4,
+              label: 'niveau 1-1-2',
+              children: []
+            }
+          ]
+        },
+        {
+          id: 5,
+          label: 'niveau 1-2',
+          children: []
+        },
+        {
+          id: 6,
+          label: 'niveau 1-3',
+          children: []
+        }
+      ]
+    }, {
+      id: 7,
+      label: 'niveau 2',
+      children: []
+    }
+  ];
+
   constructor(fb: FormBuilder) {
     this.exempleForm = fb.group({
       sexe: [null, Validators.required],
@@ -67,7 +106,8 @@ export class FullFormComponent {
         job: [null, Validators.required],
         town: [null, Validators.required],
         hobbies : [null, Validators.required]
-      })
+      }),
+      children: [null, Validators.required]
     });
   }
 
@@ -94,4 +134,9 @@ export class FullFormComponent {
   }
 
   createContent() {}
+  
+  childrenTreeSelectFilter = (item: any, filter: string) => {
+    return item && item['label'] && item['label'].indexOf(filter) >= 0;
+  }
+
 }

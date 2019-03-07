@@ -34,6 +34,7 @@ import { AsiRadioGroupModule } from './components/asi-radio-group/asi-radio-grou
 import { AsiDropdownModule } from './components/asi-dropdown/asi-dropdown.module';
 import { AsiValidatorsModule } from './validators/asi-validators.module';
 import { AsiIbanFRInputModule } from './components/asi-ibanfr-input/asi-ibanfr-input.module';
+import { AsiTreeSelectModule } from './components/asi-tree-select/asi-tree-select.module';
 import { AsiTreeViewModule } from './components/asi-tree-view/asi-tree-view.module';
 import { AsiNavGroupModule } from './components/asi-nav-group/asi-nav-group.module';
 import { AsiRadioButtonGroupModule } from './components/asi-radio-button-group/asi-radio-button-group.module';
@@ -78,6 +79,7 @@ import { AsiRadioButtonGroupModule } from './components/asi-radio-button-group/a
     AsiInputIconModule.forRoot(),
     AsiIbanFRInputModule.forRoot(),
     AsiValidatorsModule.forRoot(),
+    AsiTreeSelectModule.forRoot(),
     AsiTreeViewModule.forRoot()
   ],
   exports: [
@@ -118,6 +120,7 @@ import { AsiRadioButtonGroupModule } from './components/asi-radio-button-group/a
     AsiInputIconModule,
     AsiIbanFRInputModule,
     AsiValidatorsModule,
+    AsiTreeSelectModule,
     AsiTreeViewModule
   ],
   entryComponents: [],
