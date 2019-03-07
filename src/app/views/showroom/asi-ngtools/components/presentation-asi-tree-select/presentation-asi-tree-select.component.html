@@ -1,0 +1,119 @@
+<h1> asi-tree-select </h1>
+
+<div class="fixed-panel">
+  <h2 translate="COMMON.installation"></h2>
+  <div class="install">
+    <asi-code-viewer value="import { AsiTreeSelectModule } from '@asi-ngtools/lib'"></asi-code-viewer>
+  </div>
+</div>
+
+
+<div class="fixed-panel">
+  <div fxLayout="column">
+    <h2 translate="COMMON.demo"></h2>
+
+    <asi-tree-select [data]="items" [filter]="filter" label="Label" placeholder="Placeholder">
+      <asi-tree-node *asiTreeNodeDef="let node">
+        {{node.data.label}}
+      </asi-tree-node>
+
+      <asi-tree-leaf *asiTreeLeafDef="let node">
+        {{ node.data.label }}
+      </asi-tree-leaf>
+    </asi-tree-select>
+  </div>
+</div>
+
+
+<asi-tab-group>
+  <asi-tab label="COMMON.props">
+    <asi-code-viewer value="/** html id */
+@Input() id: string;
+
+/** html name */
+@Input() name: string;
+
+/** Label to display (is translated) */
+@Input() label: string;
+
+/** Label position */
+@Input() labelPosition: 'top' | 'left' | 'right' | 'bottom' | 'bottom-center' | 'top-center' = 'top';
+
+/** Placeholder */
+@Input() placeholder: string;
+
+/** Select data */
+@Input() data: any[];
+
+/** Field containing the label of the item to display */
+@Input() labelField = 'label';
+
+/** Field containing the children of an item */
+@Input() childrenField = 'children';
+
+/** Allow selection of nodes which have children */
+@Input() allowParentSelection = false;
+
+/** Functions used to decide if an item should be displayed when a filter is applied (returns a boolean) */
+@Input() filter: (item: any, filter: string) => boolean;
+
+/** Event when the selected item changes (returns the new item selected) */
+@Output() onSelectionChange = new EventEmitter<any>();"></asi-code-viewer>
+  </asi-tab>
+  <asi-tab label="HTML">
+    <asi-code-viewer language="html" fromUrl="assets/demo/asi-tree-select/asi-tree-select.component.html"></asi-code-viewer>
+  </asi-tab>
+  <asi-tab label="TS">
+    <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-tree-select/asi-tree-select.component.ts"></asi-code-viewer>
+  </asi-tab>
+  <asi-tab label="Attributes">
+    <table class="presentation-table">
+      <thead>
+      <th> Name</th>
+      <th> Description</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>[label]</td>
+        <td>Label to display (is translated)</td>
+      </tr>
+      <tr>
+        <td>[labelPosition]</td>
+        <td>Label position</td>
+      </tr>
+      <tr>
+        <td>[placeholder]</td>
+        <td>Placeholder</td>
+      </tr>
+      <tr>
+        <td>[disabled]</td>
+        <td>Disable the component</td>
+      </tr>
+      <tr>
+        <td>[data]</td>
+        <td>Select data</td>
+      </tr>
+      <tr>
+        <td>[labelField]</td>
+        <td>Field containing the label of the item to display</td>
+      </tr>
+      <tr>
+        <td>[childrenField]</td>
+        <td>Field containing the children of an item</td>
+      </tr>
+      <tr>
+        <td>[allowParentSelection]</td>
+        <td>Allow selection of nodes which have children</td>
+      </tr>
+      <tr>
+        <td>[filter]</td>
+        <td>Function used to decide if an item should be displayed when a filter is applied (returns a boolean)</td>
+      </tr>
+      <tr>
+        <td>(onSelectionChange)</td>
+        <td>Function used to decide if an item should be displayed when a filter is applied (returns a boolean)</td>
+      </tr>
+      </tbody>
+    </table>
+  </asi-tab>
+</asi-tab-group>

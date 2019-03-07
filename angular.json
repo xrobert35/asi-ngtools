@@ -82,7 +82,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "asi-ngtools-app:build"
+            "browserTarget": "asi-ngtools-app:build",
+            "host": "0.0.0.0"
           },
           "configurations": {
             "production": {

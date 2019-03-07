@@ -11,11 +11,18 @@ asi-tree-view, .asi-tree-view {
       display: flex;
       flex-direction: row;
       flex: 1 0 auto;
+      align-items: center;
       padding: 5px 5px 5px 10px;
       margin-bottom: 5px;
       border: 1px solid grey;
+
       &.found {
         border: 1px solid orange;
+      }
+
+      div.tree-node-content {
+        display: flex;
+        flex: 1 0 auto;
       }
     }
   }

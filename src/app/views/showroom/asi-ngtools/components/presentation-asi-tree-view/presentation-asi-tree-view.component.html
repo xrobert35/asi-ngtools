@@ -21,12 +21,13 @@
     <asi-input label="Filter (keep leaves)" [delay]="500" (onValueChange)="filterTreeDataKeepLeaves($event)"></asi-input>
     <asi-input label="Filter" [delay]="500" (onValueChange)="filterTreeData($event)"></asi-input>
 
-    <asi-tree-view [nodeName]="nodeName" [data]="data" [isLeaf]="isLeaf" (onNodeSelected)="onNodeSelected($event)">
+    <asi-tree-view [nodeName]="nodeName" [data]="data" [isLeaf]="isLeaf" (onNodeSelected)="onNodeSelected($event)"
+                   iconClose="far fa-folder-open" iconOpen="far fa-folder">
       <asi-tree-node *asiTreeNodeDef="let node">
-        <asi-fa-icon [label]="node.data.name" labelPosition="right" [icon]="node.open ? 'fa-folder-open-o' : 'fa-folder-o'"></asi-fa-icon>
+        {{ node.data.name }}
       </asi-tree-node>
       <asi-tree-leaf *asiTreeLeafDef="let node">
-        <asi-fa-icon [label]="node.data.name" labelPosition="right" icon="fa fa-file-o"></asi-fa-icon>
+        <asi-fa-icon [label]="node.data.name" labelPosition="right" icon="far fa-file"></asi-fa-icon>
       </asi-tree-leaf>
     </asi-tree-view>
   </div>
@@ -43,6 +44,12 @@
 
 /** If this function is define it's used to define if the node is a leaf */
 @Input() isLeaf: Function = null;
+
+/** Open icon (fontawesome) */
+@Input() iconOpen = 'fas fa-chevron-down';
+
+/** Close icon (fontawesome) */
+@Input() iconClose = 'fas fa-chevron-up';
 
 /** Event emitted when a node is selected */
 @Output() onNodeSelected = new EventEmitter<any>();"></asi-code-viewer>
@@ -71,6 +78,14 @@
         <tr>
           <td>[isLeaf]</td>
           <td>Function used to know of a node is a leaf</td>
+        </tr>
+        <tr>
+          <td>[iconOpen]</td>
+          <td>Icon to display for closed nodes (to open)</td>
+        </tr>
+        <tr>
+          <td>[iconClose]</td>
+          <td>Icon to display for opened nodes (to close)</td>
         </tr>
         <tr>
           <td>(onNodeSelected)</td>

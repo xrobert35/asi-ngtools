@@ -17,6 +17,11 @@ export class AsiTreeViewComponent {
   @ContentChild(AsiComponentTemplateTreeNodeDef) nodeDef: AsiComponentTemplateTreeNodeDef;
   @ContentChild(AsiComponentTemplateTreeLeafDef) leafDef: AsiComponentTemplateTreeLeafDef;
 
+  /** Open icon (fontawesome) */
+  @Input() iconOpen = 'fas fa-chevron-down';
+  /** Close icon (fontawesome) */
+  @Input() iconClose = 'fas fa-chevron-up';
+
   /** List of data to display */
   @Input()
   set data(data: Array<any>) {
