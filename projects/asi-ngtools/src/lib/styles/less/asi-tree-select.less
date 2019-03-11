@@ -5,6 +5,7 @@ asi-tree-select, .asi-tree-select {
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
+    background-color: @asi-select-header-background-color;
 
     &.disabled {
       background-color: @asi-disabled-background-color;
@@ -68,9 +69,13 @@ asi-tree-select, .asi-tree-select {
         display: flex;
         flex-direction: row;
         flex: 1 0 auto;
-        padding: 5px 5px 5px 10px;
         margin-bottom: 5px;
+        padding: 0;
         border: none;
+
+        .tree-node-content {
+          padding: 5px 5px 5px 10px;;
+        }
 
         &.found {
           border: none;

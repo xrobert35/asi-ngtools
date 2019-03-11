@@ -1,16 +1,16 @@
 <label class="input-label" *ngIf="label">{{label | translate}}</label>
 
 <div class="select" [class.disabled]="disabled">
-  <div class="header asi-focus-error">
+  <div class="header asi-focus-error" (click)="toggleDropdown()" #selectHeader>
     <asi-input [placeholder]="placeholder" [formControl]="formControl"
-               [disabled]="disabled" [id]="id" [name]="name" (onValueChange)="onFilter($event)"
-               (click)="toggleDropdown()"></asi-input>
+               [disabled]="disabled" [id]="id" [name]="name" (onValueChange)="onFilter($event)"></asi-input>
     <asi-fa-icon [icon]="(dropdownOpened) ? 'fa fa-chevron-up' : 'fa fa-chevron-down'"
                  [disabled]="disabled"></asi-fa-icon>
   </div>
 
   <div class="options">
-    <asi-dropdown [calculWidth]="true" [open]="dropdownOpened" (onClose)="onDropdownClosed()">
+    <asi-dropdown [relativeTo]="selectHeaderContainer" [calculWidth]="true" [open]="dropdownOpened"
+                  (onClose)="onDropdownClosed()">
       <div class="drop-down-tree-select">
         <div class="drop-down-panel">
           <asi-tree-view [data]="data" [isLeaf]="isLeaf" [nodeName]="childrenField"

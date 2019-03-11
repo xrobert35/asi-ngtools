@@ -1,12 +1,11 @@
-import { Component, Input, Output, EventEmitter, ViewChild, OnInit, Renderer2, ElementRef, forwardRef, ContentChild } from '@angular/core';
+import { Component, Input, ViewChild, OnInit, Renderer2, ElementRef, forwardRef, ContentChild } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { AsiComponentTemplateTreeLeafDef, AsiComponentTemplateTreeNodeDef } from '../common/asi-component-template';
 import { AsiTreeViewComponent } from '../asi-tree-view/asi-tree-view.component';
 import { AsiTreeViewNodeComponent } from '../asi-tree-view/node/asi-tree-view-node.component';
 import { DefaultControlValueAccessor } from '../common/default-control-value-accessor';
-
 import * as nh from '../../native-helper';
-import { AsiComponentTemplateTreeLeafDef, AsiComponentTemplateTreeNodeDef } from '../common/asi-component-template';
 
 @Component({
   selector: 'asi-tree-select',
@@ -52,9 +51,7 @@ export class AsiTreeSelectComponent extends DefaultControlValueAccessor implemen
   /** Functions used to decide if an item should be displayed when a filter is applied (returns a boolean) */
   @Input() filter: (item: any, filter: string) => boolean;
 
-  /** Event when the selected item changes (returns the new item selected) */
-  @Output() onSelectionChange = new EventEmitter<any>();
-
+  @ViewChild('selectHeader') selectHeaderContainer: ElementRef;
   @ViewChild(AsiTreeViewComponent) asiTreeView: AsiTreeViewComponent;
 
   @ContentChild(AsiComponentTemplateTreeNodeDef) nodeDef: AsiComponentTemplateTreeNodeDef;
