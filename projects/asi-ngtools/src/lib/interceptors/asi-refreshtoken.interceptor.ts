@@ -26,7 +26,8 @@ export abstract class AsiRefreshTokenInceptor implements HttpInterceptor {
 
       // Not a 401 or fail on login page
       // tslint:disable-next-line:triple-equals
-      if (err.status != AsiRefreshTokenInceptor.UNAUTHORIZED && req.url.includes(this.loginUrl)) {
+      if ((err.status != AsiRefreshTokenInceptor.UNAUTHORIZED && !req.url.includes(this.refreshTokenUrl))
+        || req.url.includes(this.loginUrl)) {
         return throwError(err);
       }
 
