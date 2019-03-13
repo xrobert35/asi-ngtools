@@ -57,7 +57,7 @@
           <!-- Job -->
           <div class="asi-container">
             <asi-select label="Job :" [data]="jobs" [withEmptyValue]="true" formControlName="job">
-              <asi-empty *asiEmptyData="let data">Please tell us your job</asi-empty>
+              <asi-empty *asiEmptyDef="let data">Please tell us your job</asi-empty>
               <asi-selected *asiSelectedDef="let data">{{data}}</asi-selected>
               <asi-option *asiOptionDef="let data">{{data}}</asi-option>
             </asi-select>

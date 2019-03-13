@@ -64,7 +64,7 @@ export class AsiTextareaComponent extends DefaultControlValueAccessor implements
         // si la taille n'est pas respectée on coupe
         this.value = value.substr(0, this.maxlength);
       }
-      this.textareaElm.nativeElement.value = this._value;
+      this.textareaElm.nativeElement.value = this._value || '';
     });
   }
 

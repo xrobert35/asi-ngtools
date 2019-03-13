@@ -15,7 +15,7 @@
     <div fxLayout="row" fxLayoutAlign="space-between center">
       <asi-select label="Referentiel" labelPosition="top" [data]="datas" withEmptyValue="true" [(ngModel)]="selectValue"
         (onValueChange)="valueChange()">
-        <asi-empty *asiEmptyData="let data">
+        <asi-empty *asiEmptyDef="let data">
           <div>Please select a value</div>
         </asi-empty>
         <asi-selected *asiSelectedDef="let data">{{data.code}}</asi-selected>
@@ -28,7 +28,7 @@
       <div class="asi-container">
         <asi-select label="Referentiel" labelPosition="left" multiple="true" [data]="datas" formControlName="myModel"
           (onValueChange)="valueChange()">
-          <asi-empty *asiEmptyData="let data">Please select a value</asi-empty>
+          <asi-empty *asiEmptyDef="let data">Please select a value</asi-empty>
           <asi-selected *asiSelectedDef="let data">{{data?.length}}</asi-selected>
           <asi-option *asiOptionDef="let data">{{data?.code}} - {{data?.libelle}}</asi-option>
         </asi-select>

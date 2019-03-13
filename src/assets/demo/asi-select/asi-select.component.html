@@ -1,6 +1,6 @@
 <h3> With ngModel </h3>
 <asi-select label="Referentiel" labelPosition="left" [data]="datas" [withEmptyValue]="true" [(ngModel)]="selectValue" (onValueChange)="valueChange($event)">
-  <asi-empty *asiEmptyData="let data">Please select a value<</asi-empty>
+  <asi-empty *asiEmptyDef="let data">Please select a value<</asi-empty>
   <asi-selected *asiSelectedDef="let data">{{data.code}}</asi-selected>
   <asi-option *asiOptionDef="let data">{{data.code}} - {{data.libelle}}</asi-option>
 </asi-select>
@@ -9,7 +9,7 @@
 <form [formGroup]="myForm">
   <div class="asi-container">
     <asi-select label="Referentiel" multiple="true" [data]="datas" formControlName="myModel" (onValueChange)="valueChange($event)">
-        <asi-empty *asiEmptyData="let data">Please select a value<</asi-empty>
+        <asi-empty *asiEmptyDef="let data">Please select a value<</asi-empty>
         <asi-selected *asiSelectedDef="let data">{{data.code}}</asi-selected>
         <asi-option *asiOptionDef="let data">{{data.code}} - {{data.libelle}}</asi-option>
     </asi-select>
