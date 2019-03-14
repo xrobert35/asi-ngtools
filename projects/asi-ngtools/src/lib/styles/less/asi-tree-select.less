@@ -42,6 +42,12 @@ asi-tree-select, .asi-tree-select {
           }
         }
       }
+
+      asi-fa-icon, .asi-fa-icon {
+        &.smaller button {
+          font-size: 0.7rem;
+        }
+      }
     }
   }
 }
@@ -60,6 +66,20 @@ asi-tree-select, .asi-tree-select {
     padding-bottom: 1px;
     box-sizing: border-box;
 
+    div.clear-value-item {
+      margin: 5px 5px 0 5px;
+      padding: 5px 5px 5px 10px;
+
+      &.found {
+        border: none;
+      }
+
+      &:hover {
+        box-shadow: @asi-select-hover-left-box-shadow;
+        background-color: #F3F3F3;
+      }
+    }
+
     asi-tree-view-node, .asi-tree-view-node {
       display: flex;
       flex-direction: column;
@@ -74,7 +94,7 @@ asi-tree-select, .asi-tree-select {
         border: none;
 
         .tree-node-content {
-          padding: 5px 5px 5px 10px;;
+          padding: 5px 5px 5px 10px;
         }
 
         &.found {

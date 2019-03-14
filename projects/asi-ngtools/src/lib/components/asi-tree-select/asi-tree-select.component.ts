@@ -1,7 +1,11 @@
 import { Component, Input, ViewChild, OnInit, Renderer2, ElementRef, forwardRef, ContentChild } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { AsiComponentTemplateTreeLeafDef, AsiComponentTemplateTreeNodeDef } from '../common/asi-component-template';
+import {
+  AsiComponentTemplateTreeLeafDef,
+  AsiComponentTemplateTreeNodeDef,
+  AsiComponentTemplateClearDef
+} from '../common/asi-component-template';
 import { AsiTreeViewComponent } from '../asi-tree-view/asi-tree-view.component';
 import { AsiTreeViewNodeComponent } from '../asi-tree-view/node/asi-tree-view-node.component';
 import { DefaultControlValueAccessor } from '../common/default-control-value-accessor';
@@ -51,9 +55,13 @@ export class AsiTreeSelectComponent extends DefaultControlValueAccessor implemen
   /** Functions used to decide if an item should be displayed when a filter is applied (returns a boolean) */
   @Input() filter: (item: any, filter: string) => boolean;
 
+  /** Display a clear button */
+  @Input() clearButton = false;
+
   @ViewChild('selectHeader') selectHeaderContainer: ElementRef;
   @ViewChild(AsiTreeViewComponent) asiTreeView: AsiTreeViewComponent;
 
+  @ContentChild(AsiComponentTemplateClearDef) clearDef: AsiComponentTemplateClearDef;
   @ContentChild(AsiComponentTemplateTreeNodeDef) nodeDef: AsiComponentTemplateTreeNodeDef;
   @ContentChild(AsiComponentTemplateTreeLeafDef) leafDef: AsiComponentTemplateTreeLeafDef;
 
@@ -109,8 +117,14 @@ export class AsiTreeSelectComponent extends DefaultControlValueAccessor implemen
     this.dropdownOpened = false;
   }
 
-  setDisabledState(disabled: boolean): void {
-    this.disabled = disabled;
+  clear() {
+    this.dropdownOpened = false;
+    this.value = null;
+    this.formControl.reset();
+  }
+
+  displayClearButton(): boolean {
+    return this.clearButton && this.value;
   }
 
   // override DefaultControlValueAccessor#writeValue
@@ -118,6 +132,8 @@ export class AsiTreeSelectComponent extends DefaultControlValueAccessor implemen
     this._value = value;
     if (this.value && this.value[this.labelField]) {
       this.formControl.setValue(this.value[this.labelField], { emitEvent: false });
+    } else {
+      this.formControl.reset();
     }
   }
 

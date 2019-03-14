@@ -1,4 +1,6 @@
-<asi-tree-select [data]="items" [filter]="filter" label="Label" placeholder="Placeholder">
+<asi-tree-select [data]="items" [filter]="filter" [clearButton]="true" label="Label" placeholder="Placeholder">
+  <asi-clear *asiClearDef>None</asi-clear>
+
   <asi-tree-node *asiTreeNodeDef="let node">
     {{node.data.label}}
   </asi-tree-node>

@@ -1,11 +1,14 @@
 <label class="input-label" *ngIf="label">{{label | translate}}</label>
 
 <div class="select" [class.disabled]="disabled">
-  <div class="header asi-focus-error" (click)="toggleDropdown()" #selectHeader>
+  <div class="header asi-focus-error" #selectHeader>
     <asi-input [placeholder]="placeholder" [formControl]="formControl"
-               [disabled]="disabled" [id]="id" [name]="name" (onValueChange)="onFilter($event)"></asi-input>
+               [disabled]="disabled" [id]="id" [name]="name" (onValueChange)="onFilter($event)"
+               (click)="toggleDropdown()"></asi-input>
+    <asi-fa-icon *ngIf="displayClearButton()" (click)="clear()" icon="fas fa-times"
+                 class="smaller"></asi-fa-icon>
     <asi-fa-icon [icon]="(dropdownOpened) ? 'fa fa-chevron-up' : 'fa fa-chevron-down'"
-                 [disabled]="disabled"></asi-fa-icon>
+                 [disabled]="disabled" (click)="toggleDropdown()"></asi-fa-icon>
   </div>
 
   <div class="options">
@@ -13,6 +16,10 @@
                   (onClose)="onDropdownClosed()">
       <div class="drop-down-tree-select">
         <div class="drop-down-panel">
+          <div *ngIf="clearDef" (click)="clear()" class="clear-value-item">
+            <ng-template [ngTemplateOutlet]="clearDef.template"></ng-template>
+          </div>
+
           <asi-tree-view [data]="data" [isLeaf]="isLeaf" [nodeName]="childrenField"
                          (onNodeSelected)="onNodeSelected($event)"
                          iconOpen="far fa-plus-square" iconClose="far fa-minus-square">
