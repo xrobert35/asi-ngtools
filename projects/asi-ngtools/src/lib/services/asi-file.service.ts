@@ -2,7 +2,7 @@ import { Observable, Subscriber } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 /**
  * Service de gestion de fichier
@@ -135,7 +135,7 @@ export class AsiFileService {
   }
 
   getFileAsBlobFromPostRequest(fileUrl: string, body: any): Observable<File> {
-    return this.http.post(fileUrl, body, { responseType: 'blob' }).pipe(map((response) => {
+    return this.http.post(fileUrl, body, { responseType: 'blob', observe: 'response' }).pipe(map((response) => {
       return this.getFileFromBlobResponse(response);
     }));
   }
@@ -145,14 +145,10 @@ export class AsiFileService {
    * @param fileUrl The url of the downloadable file
    * @param fileName [Optional] The new name of the downloaded file
    */
-  downloadFile(fileUrl: string, fileName?: string): Observable<void> {
-    return Observable.create((observer: Subscriber<any>) => {
-      this.getFileAsBlob(fileUrl).subscribe((fileAsBlob) => {
-        this.saveToFile(fileAsBlob, fileName);
-        observer.next();
-        observer.complete();
-      });
-    });
+  downloadFile(fileUrl: string, fileName?: string): Observable<File> {
+    return this.getFileAsBlob(fileUrl).pipe(tap((fileAsBlob) => {
+      this.saveToFile(fileAsBlob, fileName);
+    }));
   }
 
   /**
@@ -161,15 +157,10 @@ export class AsiFileService {
    * @param body the POST request body
    * @param fileName [Optional] The new name of the downloaded file
    */
-  downloadFileFromPostRequest(fileUrl: string, body: any, fileName?: string): Observable<void> {
-    return Observable.create((observer: Subscriber<any>) => {
-      this.getFileAsBlobFromPostRequest(fileUrl, body).subscribe((fileAsBlob) => {
-        this.saveToFile(fileAsBlob, fileName);
-
-        observer.next();
-        observer.complete();
-      });
-    });
+  downloadFileFromPostRequest(fileUrl: string, body: any, fileName?: string): Observable<File> {
+    return this.getFileAsBlobFromPostRequest(fileUrl, body).pipe(tap((fileAsBlob) => {
+      this.saveToFile(fileAsBlob, fileName);
+    }));
   }
 
   getBlobImage(fileUrl: string): Observable<Blob> {
