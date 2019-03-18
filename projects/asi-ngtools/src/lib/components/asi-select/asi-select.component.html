@@ -17,7 +17,7 @@
     </span>
   </button>
 
-  <asi-dropdown [open]="open" (onClose)="onDropdownClose()">
+  <asi-dropdown [open]="open" (onClose)="onDropdownClose()" dropDownClass="asi-select-dropdown">
     <div class="drop-down-select">
       <div class="drop-down-panel">
         <button type="button" class="drop-down-item" [ngClass]="{'empty' : data == null , 'selected' : data?.selected}" (keyup.esc)="toggleSelect()"

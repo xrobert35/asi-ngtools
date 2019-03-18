@@ -1,19 +1,17 @@
 import { AsiDropdownService } from './../asi-dropdown.service';
-import { TemplateRef, Component, ElementRef, ViewChild, HostListener, Inject, Input, HostBinding } from '@angular/core';
+import { TemplateRef, Component, ElementRef, ViewChild, HostListener, Inject, Input, Renderer2 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { AsiDropDown } from './../asi-dropdown.component';
 import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
   selector: 'asi-dropdown-container',
+  host: { 'class': 'asi-component asi-dropdown-container' },
   templateUrl: 'asi-dropdown-container.component.html'
 })
 export class AsiDropdownContainer {
 
   private static BASE_INDEX = 125;
-
-  @HostBinding('class') class = 'asi-component asi-dropdown-container';
-
 
   index: number;
 
@@ -28,15 +26,14 @@ export class AsiDropdownContainer {
   public template: TemplateRef<any>;
   private referenceElement: any;
 
-  constructor( @Inject(DOCUMENT) private document: any, private element: ElementRef) {
+  constructor( @Inject(DOCUMENT) private document: any, private renderer: Renderer2, private elementRef: ElementRef) {
   }
 
   @HostListener('document:mouseup', ['$event'])
   documentClick(event: MouseEvent) {
     if (!this.drop.nativeElement.contains(event.target) && this.asiDropDownService.canClose(this.index)) {
       setTimeout(() => {
-        this.subjectContainer.next(this);
-        this.subjectContainer.complete();
+        this.close();
       });
     }
   }
@@ -84,6 +81,9 @@ export class AsiDropdownContainer {
       this.template = asiDrownDown.contentTemplate;
       let visibility = this.drop.nativeElement.style.visibility;
       this.drop.nativeElement.style.visibility = 'hidden';
+      if (asiDrownDown.dropDownClass) {
+        this.renderer.addClass(this.elementRef.nativeElement, asiDrownDown.dropDownClass);
+      }
       setTimeout(() => {
         let dropRight = this.drop.nativeElement.offsetLeft + this.drop.nativeElement.offsetWidth;
         if (dropRight > this.document.documentElement.clientWidth) {
@@ -101,7 +101,7 @@ export class AsiDropdownContainer {
 
   public setIndex(index: number) {
     this.index = index;
-    this.element.nativeElement.style.zIndex = AsiDropdownContainer.BASE_INDEX + index;
+    this.elementRef.nativeElement.style.zIndex = AsiDropdownContainer.BASE_INDEX + index;
   }
 
   public setCalculWidth(calculWidth: boolean) {

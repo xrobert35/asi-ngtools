@@ -11,7 +11,7 @@
     </button>
   </button>
 
-  <asi-dropdown [open]="open" (onClose)="onDropdownClose()" #dropdown>
+  <asi-dropdown [open]="open" (onClose)="onDropdownClose()" dropDownClass="asi-autocomplete-dropdown">
     <div class="drop-down-autocomplete">
       <div class="drop-down-panel">
         <button type="button" class="drop-down-item" (click)="selectValue(aData)" *ngFor="let aData of data">

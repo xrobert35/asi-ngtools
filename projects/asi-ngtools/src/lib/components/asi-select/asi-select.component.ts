@@ -73,6 +73,7 @@ export class AsiSelectComponent extends DefaultControlValueAccessor implements O
 
   private initData() {
     this.selectDatas = [];
+    this.data = this.data || [];
 
     if (this.withEmptyValue) {
       this.selectDatas.push(null);
@@ -191,5 +192,10 @@ export class AsiSelectComponent extends DefaultControlValueAccessor implements O
 
   onModelChange(value: any) {
     this.value = value;
+    if (this.value != null) {
+      this.renderer.addClass(this.elementRef.nativeElement, 'has-value');
+    } else {
+      this.renderer.removeClass(this.elementRef.nativeElement, 'has-value');
+    }
   }
 }

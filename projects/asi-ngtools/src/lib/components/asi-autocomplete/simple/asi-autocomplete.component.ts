@@ -1,12 +1,11 @@
 import {
-  Component, Input, forwardRef, ContentChild, ViewChild, OnInit, OnChanges, Renderer2, ElementRef
+  Component, Input, forwardRef, ContentChild, OnInit, OnChanges, Renderer2, ElementRef
 } from '@angular/core';
 
 import { DefaultControlValueAccessor } from './../../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 
 import { AsiComponentTemplateOptionDef, AsiComponentTemplateSelectedDef } from './../../common/asi-component-template';
-import { AsiDropDown } from './../../asi-dropdown/asi-dropdown.component';
 import { debounceTime } from 'rxjs/operators';
 
 /**
@@ -48,8 +47,6 @@ export class AsiAutoCompleteComponent extends DefaultControlValueAccessor implem
 
   @ContentChild(AsiComponentTemplateOptionDef) optionDef: AsiComponentTemplateOptionDef;
   @ContentChild(AsiComponentTemplateSelectedDef) selectedDef: AsiComponentTemplateSelectedDef;
-
-  @ViewChild('dropdown') dropdown: AsiDropDown;
 
   autoCompleteControl = new FormControl();
 
