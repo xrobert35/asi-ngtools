@@ -5,11 +5,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 import {
-  AsiComponentTemplateOptionDef, AsiComponentTemplateEmptyDef, AsiComponentTemplateTagDef,
-  AsiComponentTemplateCellDef, AsiComponentTemplateSelectedDef, AsiComponentTemplateColumnDef,
-  AsiComponentTemplateTabHeaderDef, AsiComponentTemplateTableHeaderDef,
-  AsiComponentTemplateTreeNodeDef, AsiComponentTemplateTreeLeafDef,
-  AsiComponentTemplate, AsiComponentTemplateCollapseHeaderDef, AsiComponentTemplateNavHeaderDef
+  AsiComponentTemplateOptionDef, AsiComponentTemplateEmptyDef, AsiComponentTemplateClearDef,
+  AsiComponentTemplateTagDef, AsiComponentTemplateCellDef, AsiComponentTemplateSelectedDef,
+  AsiComponentTemplateColumnDef, AsiComponentTemplateTabHeaderDef, AsiComponentTemplateTableHeaderDef,
+  AsiComponentTemplateTreeNodeDef, AsiComponentTemplateTreeLeafDef, AsiComponentTemplate,
+  AsiComponentTemplateCollapseHeaderDef, AsiComponentTemplateNavHeaderDef
 } from './components/common/asi-component-template';
 
 export * from './components/common/default-control-value-accessor';
@@ -21,6 +21,7 @@ export * from './components/common/asi-component-template';
     AsiComponentTemplateTableHeaderDef,
     AsiComponentTemplateOptionDef,
     AsiComponentTemplateEmptyDef,
+    AsiComponentTemplateClearDef,
     AsiComponentTemplateSelectedDef,
     AsiComponentTemplateColumnDef,
     AsiComponentTemplateCellDef,
@@ -44,6 +45,7 @@ export * from './components/common/asi-component-template';
     AsiComponentTemplateTableHeaderDef,
     AsiComponentTemplateOptionDef,
     AsiComponentTemplateEmptyDef,
+    AsiComponentTemplateClearDef,
     AsiComponentTemplateSelectedDef,
     AsiComponentTemplateTagDef,
     AsiComponentTemplateColumnDef,
