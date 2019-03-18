@@ -64,10 +64,10 @@ export class AsiFileChooserComponent extends DefaultControlValueAccessor impleme
     this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
     if (this.fileSrc != null) {
       this.fileService.getFileAsBlob(this.fileSrc).subscribe(blob => {
-        const fileName = this.fileSrc.split('/').pop();
+        const fileName = this.fileName || this.fileSrc.split('/').pop();
         const file: any = new Blob([blob], { type: blob.type });
         file.name = fileName;
-        this.value = blob;
+        this.value = file;
       });
     }
   }
@@ -130,6 +130,12 @@ export class AsiFileChooserComponent extends DefaultControlValueAccessor impleme
       file.name = this.fileName;
     }
     this.value = file;
+  }
+
+  downloadForIE() {
+    if (navigator.msSaveBlob) {
+      navigator.msSaveBlob(this.value, this.value.name);
+    }
   }
 
   private isValideMimeType(mimeType: string): boolean {
