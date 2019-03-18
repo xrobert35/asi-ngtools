@@ -15,8 +15,7 @@ export class AsiTabGroup implements AfterContentInit {
 
   tabs = new Array<AsiTab>();
 
-  constructor() {
-  }
+  constructor() { }
 
   showTab(tab: AsiTab) {
     this.asiTableContent.showTab(tab);
@@ -27,8 +26,13 @@ export class AsiTabGroup implements AfterContentInit {
   }
 
   ngAfterContentInit() {
+    this.manageTabContent(this.queryTabs.toArray())
+    this.queryTabs.changes.subscribe(this.manageTabContent);
+  }
+
+  private manageTabContent(asiTabs: AsiTab[]) {
     let index = -1;
-    this.queryTabs.forEach(tab => {
+    asiTabs.forEach(tab => {
       tab.index = ++index;
       this.tabs.push(tab)
     });
