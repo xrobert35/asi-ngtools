@@ -1,7 +1,7 @@
 import { Directive, TemplateRef, Component } from '@angular/core';
 
 @Component({
-  selector: 'asi-option, asi-tag, asi-selected, asi-empty, asi-header, asi-cell, asi-tree-node, asi-tree-leaf',
+  selector: 'asi-option, asi-tag, asi-selected, asi-empty, asi-header, asi-cell, asi-tree-node, asi-tree-leaf, asi-clear',
   template: '<ng-content></ng-content>'
 })
 export class AsiComponentTemplate {
@@ -38,6 +38,14 @@ export class AsiComponentTemplateSelectedDef {
   selector: '[asiEmptyDef]',
 })
 export class AsiComponentTemplateEmptyDef {
+  constructor(public template: TemplateRef<any>) {
+  }
+}
+
+@Directive({
+  selector: '[asiClearDef]',
+})
+export class AsiComponentTemplateClearDef {
   constructor(public template: TemplateRef<any>) {
   }
 }

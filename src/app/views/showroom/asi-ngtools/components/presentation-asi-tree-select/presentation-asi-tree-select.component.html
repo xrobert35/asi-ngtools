@@ -12,7 +12,9 @@
   <div fxLayout="column">
     <h2 translate="COMMON.demo"></h2>
 
-    <asi-tree-select [data]="items" [filter]="filter" label="Label" placeholder="Placeholder">
+    <asi-tree-select [data]="items" [filter]="filter" [clearButton]="true" label="Label" placeholder="Placeholder">
+      <asi-clear *asiClearDef>None</asi-clear>
+
       <asi-tree-node *asiTreeNodeDef="let node">
         {{node.data.label}}
       </asi-tree-node>
@@ -58,7 +60,10 @@
 @Input() filter: (item: any, filter: string) => boolean;
 
 /** Event when the selected item changes (returns the new item selected) */
-@Output() onSelectionChange = new EventEmitter<any>();"></asi-code-viewer>
+@Output() onValueChange = new EventEmitter<any>();
+
+/** Display a clear button */
+@Input() clearButton = false;"></asi-code-viewer>
   </asi-tab>
   <asi-tab label="HTML">
     <asi-code-viewer language="html" fromUrl="assets/demo/asi-tree-select/asi-tree-select.component.html"></asi-code-viewer>
@@ -110,8 +115,12 @@
         <td>Function used to decide if an item should be displayed when a filter is applied (returns a boolean)</td>
       </tr>
       <tr>
-        <td>(onSelectionChange)</td>
+        <td>(onValueChange)</td>
         <td>Function used to decide if an item should be displayed when a filter is applied (returns a boolean)</td>
+      </tr>
+      <tr>
+        <td>(clearButton)</td>
+        <td>Display a clear button</td>
       </tr>
       </tbody>
     </table>
