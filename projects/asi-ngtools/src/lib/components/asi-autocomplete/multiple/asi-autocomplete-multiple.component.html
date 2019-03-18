@@ -13,7 +13,7 @@
   <div class="autocomplete">
     <input [attr.id]="id" [attr.name]="name" [attr.disabled]="disabled ? '' : null" class="asi-focus-error" [placeholder]="placeholder" [formControl]="autoCompleteControl"/>
 
-    <asi-dropdown [open]="open" (onClose)="onDropdownClose()" >
+    <asi-dropdown [open]="open" (onClose)="onDropdownClose()" dropDownClass="asi-autocomplete-multiple-dropdown">
       <div class="drop-down-autocomplete-multiple">
         <div class="drop-down-panel" [ngClass]="{'open' : open }">
           <button type="button" class="drop-down-item" (click)="addValue(aData)" *ngFor="let aData of data">

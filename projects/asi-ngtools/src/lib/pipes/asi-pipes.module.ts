@@ -5,15 +5,16 @@ import { IntArrayPipe } from './intArray.pipe';
 import { AsiConcatPipe } from './asi-concat.pipe';
 import { AsiFilterPipe } from './asi-filter.pipe';
 import { AsiConcatTranslatePipe } from './asi-concat-translate.pipe';
+import { AsiHighlighPipe } from './asi-highlight.pipe';
 
 export * from './intArray.pipe';
 export * from './asi-concat.pipe';
 export * from './asi-filter.pipe';
 export * from './asi-concat-translate.pipe';
 export * from './asi-date.pipe';
+export * from './asi-highlight.pipe';
 
-
-const sharedDeclarations = [AsiFilterPipe, AsiConcatPipe, AsiDatePipe, AsiConcatTranslatePipe, IntArrayPipe];
+const sharedDeclarations = [AsiFilterPipe, AsiConcatPipe, AsiDatePipe, AsiConcatTranslatePipe, IntArrayPipe, AsiHighlighPipe];
 
 @NgModule({
   declarations: [...sharedDeclarations],

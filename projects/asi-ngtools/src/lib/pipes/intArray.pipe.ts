@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 
 /**
  * Pipe permettant de transformer un nombre en Array comprenant ce nombre ainsi que les autres le précedent
@@ -15,7 +15,7 @@ export class IntArrayPipe implements PipeTransform {
       step = 1;
     }
 
-    var results = [];
+    let results = [];
     if (!reverse) {
       let value = first;
       while (value <= max) {

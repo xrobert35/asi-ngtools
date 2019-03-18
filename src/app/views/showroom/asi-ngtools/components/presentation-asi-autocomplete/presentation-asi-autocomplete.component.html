@@ -13,7 +13,7 @@
   <h3 translate="COMMON.withNgModel"></h3>
   <asi-autocomplete label="label-autocomplete" [onRequestData]="requestData" [(ngModel)]="autoCompleteValue">
     <asi-selected *asiSelectedDef="let data">{{data?.code}} - {{data?.libelle}}</asi-selected>
-    <asi-option *asiOptionDef="let data">{{data?.code}} - {{data?.libelle}}</asi-option>
+    <asi-option *asiOptionDef="let data" [innerHTML]="(data?.code + '-' + data?.libelle) | asiHighligh : search"></asi-option>
   </asi-autocomplete>
 
   <h3 translate="COMMON.withFormControl"></h3>
@@ -63,10 +63,12 @@
 @Output() onValueChange = new EventEmitter();"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="HTML">
-      <asi-code-viewer language="html" fromUrl="assets/demo/asi-autocomplete/asi-autocomplete.component.html"></asi-code-viewer>
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-autocomplete/asi-autocomplete.component.html">
+      </asi-code-viewer>
     </asi-tab>
     <asi-tab label="TS">
-      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-autocomplete/asi-autocomplete.component.ts"></asi-code-viewer>
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-autocomplete/asi-autocomplete.component.ts">
+      </asi-code-viewer>
     </asi-tab>
   </asi-tab-group>
 </div>

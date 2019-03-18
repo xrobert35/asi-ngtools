@@ -24,13 +24,16 @@ export class PresentationAsiAutoCompleteComponent {
   // Form declaration
   myForm: FormGroup;
 
+  search: string;
+
   constructor(fb: FormBuilder) {
     this.myForm = fb.group({
       myModel: [null, Validators.required]
     });
   }
 
-  requestData = () => {
+  requestData = (searchText: string) => {
+    this.search = searchText;
     return this.data;
   }
 }
