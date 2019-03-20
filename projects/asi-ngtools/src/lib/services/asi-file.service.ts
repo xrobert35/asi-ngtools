@@ -115,7 +115,9 @@ export class AsiFileService {
       // The two attributes missing to a Blob to be a File
       blob.name = originalFileName;
     }
-    blob.lastModifiedDate = new Date();
+    if (blob.lastModifiedDate == null) {
+      blob.lastModifiedDate = new Date();
+    }
     return <File>blob;
   }
 

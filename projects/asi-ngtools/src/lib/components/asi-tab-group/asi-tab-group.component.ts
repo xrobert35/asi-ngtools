@@ -27,7 +27,9 @@ export class AsiTabGroup implements AfterContentInit {
 
   ngAfterContentInit() {
     this.manageTabContent(this.queryTabs.toArray())
-    this.queryTabs.changes.subscribe(this.manageTabContent);
+    this.queryTabs.changes.subscribe((asiTab) => {
+      this.manageTabContent(asiTab);
+    });
   }
 
   private manageTabContent(asiTabs: AsiTab[]) {
