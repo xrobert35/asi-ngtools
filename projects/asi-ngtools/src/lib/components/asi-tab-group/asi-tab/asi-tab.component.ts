@@ -7,8 +7,14 @@ import { AsiComponentTemplateTabHeaderDef } from '../../common/asi-component-tem
 })
 export class AsiTab {
 
+  /** Give an id to the tab  */
+  @Input() tabId: string;
+
   /** Label to display (is translated) */
   @Input() label: string;
+
+  /** Add a custom class to the tab */
+  @Input() tabClass: string;
 
   @ViewChild(TemplateRef) contentTemplate: TemplateRef<any>;
 

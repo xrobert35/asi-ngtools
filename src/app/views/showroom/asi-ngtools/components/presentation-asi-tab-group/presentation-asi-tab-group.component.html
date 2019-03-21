@@ -9,12 +9,11 @@
 
 <div class="fixed-panel">
   <h2 translate="COMMON.demo"></h2>
-
-  <asi-tab-group>
-    <asi-tab label="tab 1">
+  <asi-tab-group activeTab="tab2" (onTabChanged)="tabChanged($event)">
+    <asi-tab label="tab 1" tabId="tab1" tabClass="tabClass1">
       <p>Content 1</p>
     </asi-tab>
-    <asi-tab label="tab 2">
+    <asi-tab label="tab 2" tabId="tab2" tabClass="tabClass2">
       <p>Content 2</p>
     </asi-tab>
   </asi-tab-group>
@@ -24,15 +23,30 @@
 <div class="fixed-panel">
   <asi-tab-group>
     <asi-tab label="COMMON.props">
+      <h3> AsiTabGroup </h3>
+      <asi-code-viewer value="/** Event emitted when a tab is manually selected */
+@Output() onTabChange = new EventEmitter<AsiTab>()
+
+/** Active tab id */
+@Input() activeTab: string;"></asi-code-viewer>
+
       <h3> AsiTab </h3>
-      <asi-code-viewer value="/** Label to display (is translated) */
-      @Input() label: string;"></asi-code-viewer>
+      <asi-code-viewer value="/** Give an id to the tab  */
+@Input() tabId: string;
+
+/** Label to display (is translated) */
+@Input() label: string;
+
+/** Add a custom class to the tab */
+@Input() tabClass: string;"></asi-code-viewer>
     </asi-tab>
     <asi-tab label="HTML">
-      <asi-code-viewer language="html" fromUrl="assets/demo/asi-tab-group/asi-tab-group.component.html"></asi-code-viewer>
+      <asi-code-viewer language="html" fromUrl="assets/demo/asi-tab-group/asi-tab-group.component.html">
+      </asi-code-viewer>
     </asi-tab>
     <asi-tab label="TS">
-      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-tab-group/asi-tab-group.component.ts"></asi-code-viewer>
+      <asi-code-viewer language="typescript" fromUrl="assets/demo/asi-tab-group/asi-tab-group.component.ts">
+      </asi-code-viewer>
     </asi-tab>
   </asi-tab-group>
 </div>

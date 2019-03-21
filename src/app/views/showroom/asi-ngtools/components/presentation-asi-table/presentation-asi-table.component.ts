@@ -10,7 +10,7 @@ import { Referentiel } from '../presentation-asi-select/referentiel';
 })
 export class PresentationAsiTableComponent {
 
-  @HostBinding('class') class = 'flex';
+  @HostBinding('class') class = 'page';
 
   @ViewChild(AsiTable) asiTable: AsiTable<TableRow>;
 

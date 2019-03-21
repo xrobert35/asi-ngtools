@@ -1,4 +1,5 @@
 import { Component, HostBinding } from '@angular/core';
+import { AsiTab } from '@asi-ngtools/lib/public_api';
 
 @Component({
   selector: 'presentation-asi-tab',
@@ -6,7 +7,8 @@ import { Component, HostBinding } from '@angular/core';
 })
 export class PresentationAsiTabGroupComponent {
 
-  @HostBinding('class') class = 'flex';
+  @HostBinding('class') class = 'page';
 
+  tabChanged(asiTab: AsiTab) {}
 }
 
