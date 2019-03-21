@@ -5,6 +5,7 @@ import { AsiTableData } from './asi-table-data';
 import { AsiTableColumn } from './asi-table-column.directive';
 import { Component, QueryList, ContentChildren, AfterContentInit, Input, ViewChild, ElementRef } from '@angular/core';
 import * as nh from '../../native-helper';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'asi-table',
@@ -58,6 +59,8 @@ export class AsiTable<T> implements AfterContentInit {
 
   // Show allcheck checkbox allchecked
   allChecked = false;
+
+  private requestDataSubcription: Subscription;
 
   constructor(private paginateService: AsiPaginationService) {
   }
@@ -154,7 +157,11 @@ export class AsiTable<T> implements AfterContentInit {
   private requestData() {
     let request = this.getAsiTableRequest();
     if (this.onRequestData) {
-      Promise.resolve(this.onRequestData(request)).then((data: AsiTableData<T>) => {
+      if (this.requestDataSubcription != null) {
+        // Ignore previous request
+        this.requestDataSubcription.unsubscribe();
+      }
+      this.requestDataSubcription = nh.observe(this.onRequestData(request)).subscribe((data: AsiTableData<T>) => {
         this.updateData(data);
       });
     }
