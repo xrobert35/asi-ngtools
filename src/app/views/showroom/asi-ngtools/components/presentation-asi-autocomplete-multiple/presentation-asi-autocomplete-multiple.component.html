@@ -58,7 +58,7 @@
 /** Option to keep the list open once an item is selected */
 @Input() closeAfterSelect = false;
 
-/** Function called to request new data : Throw error if null */
+/** Function called to request new data (can return Observable/Promise/Object) : Throw error if null */
 @Input() onRequestData: Function;
 
 /** is enabled/disabled */

@@ -1,6 +1,8 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Referentiel } from './../presentation-asi-select/referentiel';
 import { Component, HostBinding } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'presentation-asi-autocomplete-multiple',
@@ -32,7 +34,17 @@ export class PresentationAsiAutoCompleteMultipleComponent {
     });
   }
 
-  requestData = () => {
-    return this.data;
+  /**
+   * You can return a promise or an observable
+   * if you use an observable request will be automatically
+   * cancelled if another search request happen
+   */
+  requestData = (searchText: string, init: boolean) => {
+    if (!init) {
+      return of(this.data).pipe(map((data) => {
+        return data.filter((item) => item.libelle.toLowerCase().includes(searchText.toLowerCase()));
+      }));
+    }
+    return [];
   }
 }

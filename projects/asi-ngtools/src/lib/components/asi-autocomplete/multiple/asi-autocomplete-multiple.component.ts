@@ -5,7 +5,7 @@ import {
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { DefaultControlValueAccessor } from './../../common/default-control-value-accessor';
 import { AsiComponentTemplateOptionDef, AsiComponentTemplateTagDef } from './../../common/asi-component-template';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, switchMap, tap } from 'rxjs/operators';
 import * as nh from '../../../native-helper'
 /**
  * asi-autocomplete-multiple component
@@ -44,7 +44,7 @@ export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccesso
   /** Option to keep the list open once an item is selected */
   @Input() closeAfterSelect = false;
 
-  /** Function called to request new data : Throw error if null */
+  /** Function called to request new data (can return Observable/Promise/Object) : Throw error if null */
   @Input() onRequestData: Function;
 
   @ContentChild(AsiComponentTemplateOptionDef) optionDef: AsiComponentTemplateOptionDef;
@@ -69,26 +69,23 @@ export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccesso
 
   private checkInput() {
     if (null == this.onRequestData) {
-      throw new Error('AsiAutoCompleteComponent : @Input \'onRequestData\' is required');
+      throw new Error('AsiAutoCompleteMultipleComponent : @Input \'onRequestData\' is required');
     }
   }
 
   ngOnInit() {
     this.checkInput();
-
     this.renderer.addClass(this.container.nativeElement, 'label-' + this.labelPosition);
-    this.autoCompleteControl.valueChanges.pipe(debounceTime(this.delay))
-      .subscribe(value => {
-        this.currentValue = value;
-        if (this.onRequestData) {
-          Promise.resolve(this.onRequestData(value)).then((data) => {
-            this.data = data;
-            if (this.firstRequestDone && data && data.length > 0) {
-              this.open = true;
-            }
-            this.firstRequestDone = true;
-          });
+
+    this.autoCompleteControl.valueChanges.pipe(debounceTime(this.delay),
+      tap(value => this.currentValue = value),
+      switchMap((value) => nh.observe(this.onRequestData(value, !this.firstRequestDone))))
+      .subscribe((data: any) => {
+        this.data = data;
+        if (this.firstRequestDone && data && data.length > 0) {
+          this.open = true;
         }
+        this.firstRequestDone = true;
       });
   }
 

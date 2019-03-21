@@ -1,4 +1,5 @@
 import { cloneDeep as cloneDeepExt}  from 'lodash'
+import { Observable, isObservable, of, from } from 'rxjs';
 
 export function map(array: Array<any>, mapper: (value: any, index?: number) => any) {
   if (array) {
@@ -162,4 +163,14 @@ export function join(items: Array<any>, separator: string) {
     return items.join(separator);
   }
   return items;
+}
+
+export function observe<T>(obs: Promise<T> | Observable<T>): Observable<T> {
+  if (isObservable(obs)) {
+    return obs;
+  } else if (obs instanceof Promise) {
+    return from(obs);
+  } else {
+    return of(<any>obs);
+  }
 }

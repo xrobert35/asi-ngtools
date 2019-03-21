@@ -13,7 +13,8 @@
   <h3 translate="COMMON.withNgModel"></h3>
   <asi-autocomplete label="label-autocomplete" [onRequestData]="requestData" [(ngModel)]="autoCompleteValue">
     <asi-selected *asiSelectedDef="let data">{{data?.code}} - {{data?.libelle}}</asi-selected>
-    <asi-option *asiOptionDef="let data" [innerHTML]="(data?.code + '-' + data?.libelle) | asiHighligh : search"></asi-option>
+    <asi-option *asiOptionDef="let data" [innerHTML]="(data?.code + '-' + data?.libelle) | asiHighligh : search">
+    </asi-option>
   </asi-autocomplete>
 
   <h3 translate="COMMON.withFormControl"></h3>
@@ -53,7 +54,7 @@
 /** A placeholder if needed */
 @Input() placeholder = '';
 
-/** Function called to request new data : Throw error if null */
+/** Function called to request new data (can return Observable/Promise/Object) : Throw error if null */
 @Input() onRequestData: Function;
 
 /** is enabled/disabled */

@@ -1,7 +1,14 @@
 <label class="input-label" *ngIf="label != null">{{label | translate}}</label>
 
 <div class="autocomplete">
-  <input [attr.id]="id" [attr.name]="name" [attr.disabled]="disabled ? '' : null" class="asi-focus-error" [placeholder]="placeholder" *ngIf="value == null" [formControl]="autoCompleteControl" />
+
+  <!-- typehead input -->
+  <input [attr.id]="id" [attr.name]="name"
+  [attr.disabled]="disabled ? '' : null"
+  class="asi-focus-error"
+  [placeholder]="placeholder" *ngIf="value == null" [formControl]="autoCompleteControl" />
+
+  <!-- data to display -->
   <button [disabled]="disabled" type="button" class="clean-a autocomplete-header" *ngIf="value != null">
     <div class="select-value">
       <ng-template [ngTemplateOutlet]="selectedDef.template" [ngTemplateOutletContext]="{$implicit : value}"></ng-template>
@@ -11,10 +18,11 @@
     </button>
   </button>
 
-  <asi-dropdown [open]="open" (onClose)="onDropdownClose()" dropDownClass="asi-autocomplete-dropdown">
+  <asi-dropdown [open]="open" (onClose)="onDropdownClose()" dropDownClass="asi-autocomplete-dropdown" #dropDown>
     <div class="drop-down-autocomplete">
       <div class="drop-down-panel">
-        <button type="button" class="drop-down-item" (click)="selectValue(aData)" *ngFor="let aData of data">
+        <button [id]="'asi-acddi-'+ id" type="button" class="drop-down-item" (click)="selectValue(aData)"
+        *ngFor="let aData of data, let id = index">
           <div class="option">
             <span class="item">
               <ng-template *ngIf="aData != null" [ngTemplateOutlet]="optionDef.template" [ngTemplateOutletContext]="{$implicit : aData}"></ng-template>

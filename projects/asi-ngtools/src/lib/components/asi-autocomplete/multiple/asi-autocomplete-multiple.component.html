@@ -11,12 +11,14 @@
 <div class="autocomplete-container" #container>
   <label class="input-label" *ngIf="label != null">{{label | translate}}</label>
   <div class="autocomplete">
-    <input [attr.id]="id" [attr.name]="name" [attr.disabled]="disabled ? '' : null" class="asi-focus-error" [placeholder]="placeholder" [formControl]="autoCompleteControl"/>
+    <input [attr.id]="id" [attr.name]="name"
+    [attr.disabled]="disabled ? '' : null" class="asi-focus-error"
+    [placeholder]="placeholder" [formControl]="autoCompleteControl"/>
 
     <asi-dropdown [open]="open" (onClose)="onDropdownClose()" dropDownClass="asi-autocomplete-multiple-dropdown">
       <div class="drop-down-autocomplete-multiple">
         <div class="drop-down-panel" [ngClass]="{'open' : open }">
-          <button type="button" class="drop-down-item" (click)="addValue(aData)" *ngFor="let aData of data">
+          <button [id]="'asi-acmddi-'+ id" type="button" class="drop-down-item" (click)="addValue(aData)" *ngFor="let aData of data">
             <div class="option">
               <span class="item">
                 <ng-template *ngIf="aData != null" [ngTemplateOutlet]="optionDef.template" [ngTemplateOutletContext]="{$implicit : aData}"></ng-template>

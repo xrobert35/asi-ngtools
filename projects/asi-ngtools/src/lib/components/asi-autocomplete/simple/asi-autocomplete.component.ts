@@ -1,12 +1,14 @@
 import {
-  Component, Input, forwardRef, ContentChild, OnInit, OnChanges, Renderer2, ElementRef
+  Component, Input, forwardRef, ContentChild, OnInit, OnChanges, Renderer2, ElementRef, ViewChild
 } from '@angular/core';
 
 import { DefaultControlValueAccessor } from './../../common/default-control-value-accessor';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 
 import { AsiComponentTemplateOptionDef, AsiComponentTemplateSelectedDef } from './../../common/asi-component-template';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, switchMap, tap } from 'rxjs/operators';
+import * as nh from '../../../native-helper'
+import { AsiDropDown } from '../../asi-dropdown/asi-dropdown.component';
 
 /**
  * asi-autocomplete component
@@ -42,11 +44,13 @@ export class AsiAutoCompleteComponent extends DefaultControlValueAccessor implem
   /** A placeholder if needed */
   @Input() placeholder = '';
 
-  /** Function called to request new data : Throw error if null */
+  /** Function called to request new data (can return Observable/Promise/Object): Throw error if null */
   @Input() onRequestData: Function;
 
   @ContentChild(AsiComponentTemplateOptionDef) optionDef: AsiComponentTemplateOptionDef;
   @ContentChild(AsiComponentTemplateSelectedDef) selectedDef: AsiComponentTemplateSelectedDef;
+
+  @ViewChild('dropDown') asiDropDown: AsiDropDown;
 
   autoCompleteControl = new FormControl();
 
@@ -72,19 +76,17 @@ export class AsiAutoCompleteComponent extends DefaultControlValueAccessor implem
 
   ngOnInit() {
     this.checkInput();
-
     this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
 
-    this.autoCompleteControl.valueChanges.pipe(debounceTime(this.delay))
-      .subscribe(value => {
-        this.currentValue = value;
-        Promise.resolve(this.onRequestData(value)).then((data) => {
-          this.data = data;
-          if (this.firstRequestDone && data && data.length > 0) {
-            this.open = true;
-          }
-          this.firstRequestDone = true;
-        });
+    this.autoCompleteControl.valueChanges.pipe(debounceTime(this.delay),
+      tap(value => this.currentValue = value),
+      switchMap((value) => nh.observe(this.onRequestData(value, !this.firstRequestDone))))
+      .subscribe((data: any) => {
+        this.data = data;
+        if (this.firstRequestDone && data && data.length > 0) {
+          this.open = true;
+        }
+        this.firstRequestDone = true;
       });
   }
 
@@ -114,10 +116,10 @@ export class AsiAutoCompleteComponent extends DefaultControlValueAccessor implem
   }
 
   writeValue(value: any) {
+    this._value = value;
     if (this.init === false) {
       this.autoCompleteControl.setValue(this.currentValue);
     } else {
-      this._value = value;
       this.currentValue = value;
       if (this.value == null) {
         this.autoCompleteControl.setValue(this.currentValue, { emitEvent: false });
