@@ -19,8 +19,10 @@ export class AsiDropDown implements OnChanges {
   @Input() relativeTo: ElementRef;
   /** Allow you to add a class to the down drop container */
   @Input() dropDownClass = '';
-/** Event emitted when dropdown is closed (you should put you open var to false to be able to reopen) */
+  /** Event emitted when dropdown is closed (you should put you open var to false to be able to reopen) */
   @Output() onClose = new EventEmitter();
+  /** Function to check if the dropdown can close on click, get the clicked element as parameter */
+  @Input() canClose: Function;
 
   private dropdown: ComponentRef<AsiDropdownContainer>;
 
@@ -35,14 +37,14 @@ export class AsiDropDown implements OnChanges {
       if (changes.open.currentValue) {
         setTimeout(() => {
           if (this.relativeTo == null) {
-            this.dropdown = this.asiDropdownService.showDropdown(this.elementRef.nativeElement.parentElement, this);
+            this.dropdown = this.asiDropdownService.showDropdown(this.elementRef.nativeElement.parentElement, this, this.canClose);
           } else if (this.relativeTo.nativeElement) {
-            this.dropdown = this.asiDropdownService.showDropdown(this.relativeTo.nativeElement, this);
+            this.dropdown = this.asiDropdownService.showDropdown(this.relativeTo.nativeElement, this, this.canClose);
           } else if (this.relativeTo['elementRef'].nativeElement) {
-            this.dropdown = this.asiDropdownService.showDropdown(this.relativeTo['elementRef'].nativeElement, this);
+            this.dropdown = this.asiDropdownService.showDropdown(this.relativeTo['elementRef'].nativeElement, this, this.canClose);
           } else {
             console.warn('Default choice for the down down cannot find nativeElement on the relativeTo element');
-            this.dropdown = this.asiDropdownService.showDropdown(this.elementRef.nativeElement.parentElement, this);
+            this.dropdown = this.asiDropdownService.showDropdown(this.elementRef.nativeElement.parentElement, this, this.canClose);
           }
           this.dropdown.instance.setCalculWidth(this.calculWidth);
           this.dropdown.instance.onClose().subscribe(() => {
