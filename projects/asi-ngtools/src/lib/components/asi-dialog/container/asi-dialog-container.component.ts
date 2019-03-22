@@ -69,8 +69,12 @@ export class AsiDialogContainer implements AfterContentInit {
     if (this.dialogs.length === 0) {
       this.shadow.nativeElement.style.opacity = '0';
       setTimeout(() => {
-        this.subjectContainer.next(this);
-        this.subjectContainer.complete();
+        if (this.dialogs.length === 0) {
+          this.subjectContainer.next(this);
+          this.subjectContainer.complete();
+        } else {
+          this.shadow.nativeElement.style.opacity = '0.5';
+        }
       }, 200);
     } else {
       this.visibleDialog = this.dialogs[this.dialogs.length - 1];
