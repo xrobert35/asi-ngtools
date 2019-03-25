@@ -19,8 +19,10 @@ export class AsiDropDown implements OnChanges {
   @Input() relativeTo: ElementRef;
   /** Allow you to add a class to the down drop container */
   @Input() dropDownClass = '';
-/** Event emitted when dropdown is closed (you should put you open var to false to be able to reopen) */
+  /** Event emitted when dropdown is closed (you should put you open var to false to be able to reopen) */
   @Output() onClose = new EventEmitter();
+  /** Function to check if the dropdown can close on click, get the clicked element as parameter */
+  @Input() canClose: Function;
 
   private dropdown: ComponentRef<AsiDropdownContainer>;
 
