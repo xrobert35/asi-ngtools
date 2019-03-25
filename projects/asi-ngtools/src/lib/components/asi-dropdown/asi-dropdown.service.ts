@@ -18,14 +18,14 @@ export class AsiDropdownService {
    * @param templateRef The template content of the dropdown
    * @param htmlElement The parent HTMLElement, where the dropdown should display
    */
-  showDropdown(elementRef: any, asiDropDown: AsiDropDown, canClose: Function): ComponentRef<AsiDropdownContainer> {
+  showDropdown(elementRef: any, asiDropDown: AsiDropDown): ComponentRef<AsiDropdownContainer> {
     let containerRef = this.getContainer();
 
     containerRef.instance.injectService(this);
     containerRef.instance.forElement(elementRef);
     containerRef.instance.show(asiDropDown);
     containerRef.instance.setIndex(this.containers.length);
-    containerRef.instance.canClose = canClose;
+    containerRef.instance.canClose = asiDropDown.canClose;
 
     containerRef.instance.onClose().subscribe((containerToRemove) => {
       nh.remove(this.containers, (container) => {

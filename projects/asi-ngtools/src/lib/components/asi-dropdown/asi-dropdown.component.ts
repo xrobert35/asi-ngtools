@@ -37,14 +37,14 @@ export class AsiDropDown implements OnChanges {
       if (changes.open.currentValue) {
         setTimeout(() => {
           if (this.relativeTo == null) {
-            this.dropdown = this.asiDropdownService.showDropdown(this.elementRef.nativeElement.parentElement, this, this.canClose);
+            this.dropdown = this.asiDropdownService.showDropdown(this.elementRef.nativeElement.parentElement, this);
           } else if (this.relativeTo.nativeElement) {
-            this.dropdown = this.asiDropdownService.showDropdown(this.relativeTo.nativeElement, this, this.canClose);
+            this.dropdown = this.asiDropdownService.showDropdown(this.relativeTo.nativeElement, this);
           } else if (this.relativeTo['elementRef'].nativeElement) {
-            this.dropdown = this.asiDropdownService.showDropdown(this.relativeTo['elementRef'].nativeElement, this, this.canClose);
+            this.dropdown = this.asiDropdownService.showDropdown(this.relativeTo['elementRef'].nativeElement, this);
           } else {
             console.warn('Default choice for the down down cannot find nativeElement on the relativeTo element');
-            this.dropdown = this.asiDropdownService.showDropdown(this.elementRef.nativeElement.parentElement, this, this.canClose);
+            this.dropdown = this.asiDropdownService.showDropdown(this.elementRef.nativeElement.parentElement, this);
           }
           this.dropdown.instance.setCalculWidth(this.calculWidth);
           this.dropdown.instance.onClose().subscribe(() => {
