@@ -3,6 +3,7 @@ import { AsiDropdownContainer } from './container/asi-dropdown-container.compone
 import { Injectable, ComponentFactory, ComponentFactoryResolver, ComponentRef, ApplicationRef } from '@angular/core';
 
 import * as nh from '../../native-helper';
+import { of, Observable } from 'rxjs';
 
 @Injectable()
 export class AsiDropdownService {
@@ -24,6 +25,7 @@ export class AsiDropdownService {
     containerRef.instance.forElement(elementRef);
     containerRef.instance.show(asiDropDown);
     containerRef.instance.setIndex(this.containers.length);
+    containerRef.instance.canClose = asiDropDown.canClose;
 
     containerRef.instance.onClose().subscribe((containerToRemove) => {
       nh.remove(this.containers, (container) => {
@@ -36,8 +38,12 @@ export class AsiDropdownService {
     return containerRef;
   }
 
-  canClose(index: number) {
-    return index >= this.containers.length - 1;
+  canClose(index: number, canClose: Function): Observable<any> {
+    if (index >= this.containers.length - 1) {
+      return nh.observe(canClose(document.activeElement));
+    } else {
+      return of(false);
+    }
   }
 
   private getContainer(): ComponentRef<AsiDropdownContainer> {
