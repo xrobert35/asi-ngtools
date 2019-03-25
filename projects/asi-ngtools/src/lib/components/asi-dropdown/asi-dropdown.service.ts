@@ -40,7 +40,11 @@ export class AsiDropdownService {
 
   canClose(index: number, canClose: Function): Observable<any> {
     if (index >= this.containers.length - 1) {
-      return nh.observe(canClose(document.activeElement));
+      if (canClose) {
+        return nh.observe(canClose(document.activeElement));
+      } else {
+        return of(true);
+      }
     } else {
       return of(false);
     }
