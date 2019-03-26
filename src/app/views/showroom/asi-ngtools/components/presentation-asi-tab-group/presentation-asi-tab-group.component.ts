@@ -9,6 +9,6 @@ export class PresentationAsiTabGroupComponent {
 
   @HostBinding('class') class = 'page';
 
-  tabChanged(asiTab: AsiTab) {}
+  tabChanged(_asiTab: AsiTab) {}
 }
 

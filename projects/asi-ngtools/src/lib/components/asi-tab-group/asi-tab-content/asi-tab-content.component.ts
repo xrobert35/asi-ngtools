@@ -30,6 +30,10 @@ export class AsiTabContent {
     return this.tabs;
   }
 
+  setTabs(tabs: Array<AsiTab>) {
+    this.tabs = tabs;
+  }
+
   showTabById(tabId: string) {
     if (tabId != null) {
       const tabToActive = nh.find(this.tabs, (tab) => {
@@ -37,7 +41,11 @@ export class AsiTabContent {
       });
       if (tabToActive) {
         this.showTab(tabToActive);
+        return;
       }
+    }
+    if (!nh.isEmpty(this.tabs)) {
+      this.showTab(this.tabs[0])
     }
   }
 
