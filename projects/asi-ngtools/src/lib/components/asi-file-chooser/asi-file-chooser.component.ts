@@ -125,10 +125,6 @@ export class AsiFileChooserComponent extends DefaultControlValueAccessor impleme
       return;
     }
     this.loaded = false;
-
-    if (this.fileName) {
-      file.name = this.fileName;
-    }
     this.value = file;
   }
 
