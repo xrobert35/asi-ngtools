@@ -1,6 +1,6 @@
 import { Subject, Observable } from 'rxjs';
 import { AsiDialogConfig } from './../asi-dialog-config';
-import { Component, ViewContainerRef, HostBinding } from '@angular/core';
+import { Component, ViewContainerRef, HostBinding, HostListener, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'asi-dialog',
@@ -16,7 +16,7 @@ export class AsiDialog<T> {
   private dialogClose: Subject<any> = new Subject();
   private dialogCancel: Subject<any> = new Subject();
 
-  constructor(public viewContainerRef: ViewContainerRef) {
+  constructor(public viewContainerRef: ViewContainerRef, private elementRef: ElementRef) {
   }
 
   getComponent(): T {
@@ -49,6 +49,15 @@ export class AsiDialog<T> {
 
     this._dialogDestroy.next();
     this._dialogDestroy.complete();
+  }
+
+  @HostListener('document:mouseup', ['$event'])
+  documentClick(event: MouseEvent) {
+    if (this._config.outsideDrop) {
+      if (!this.elementRef.nativeElement.contains(event.target)) {
+        this.close();
+      }
+    }
   }
 
   onDialogCancel(): Observable<any> {
