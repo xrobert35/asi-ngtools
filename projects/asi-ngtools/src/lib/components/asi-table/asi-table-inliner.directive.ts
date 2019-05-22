@@ -10,6 +10,8 @@ export class AsiTableInliner {
   /** Colspan of the column */
   @Input() colSpan: number;
 
+  @Input() columnClass: string;
+
   @ContentChild(AsiComponentTemplateCellDef) cellDef: AsiComponentTemplateCellDef;
 
 }

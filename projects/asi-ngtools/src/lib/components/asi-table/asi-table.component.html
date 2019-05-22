@@ -25,13 +25,13 @@
           <asi-checkbox *ngIf="column.type == 'checkbox'" [(ngModel)]="row.checked" (onValueChange)="onChecked(row, column)"></asi-checkbox>
         </td>
       </tr>
-      <tr *ngFor="let inlineColumn of getInlineColumns()" class="inlined">
-        <td *ngIf="inlineColumn.inliners.length == 0" [attr.colspan]="getColumns().length" class="inlined" [ngClass]="inlineColumn.columnClass">
+      <tr *ngFor="let inlineColumn of getInlineColumns()" class="inlined" [ngClass]="inlineColumn.columnClass">
+        <td *ngIf="inlineColumn.inliners.length == 0" [attr.colspan]="getColumns().length" class="inlined">
           <span *ngIf="!inlineColumn.cellDef">{{getCellValue(row, inlineColumn)}}</span>
           <ng-template *ngIf="inlineColumn.cellDef" [ngTemplateOutlet]="inlineColumn.cellDef.template" [ngTemplateOutletContext]="{$implicit : row}"></ng-template>
         </td>
         <ng-container *ngIf="inlineColumn.inliners.length > 0">
-          <td *ngFor="let inliner of inlineColumn.inliners" [attr.colspan]="inliner.colSpan">
+          <td *ngFor="let inliner of inlineColumn.inliners" [attr.colspan]="inliner.colSpan" [ngClass]="inliner.columnClass">
             <span *ngIf="!inliner.cellDef">{{getCellValue(row, inlineColumn)}}</span>
             <ng-template *ngIf="inliner.cellDef" [ngTemplateOutlet]="inliner.cellDef.template" [ngTemplateOutletContext]="{$implicit : row}"></ng-template>
           </td>
