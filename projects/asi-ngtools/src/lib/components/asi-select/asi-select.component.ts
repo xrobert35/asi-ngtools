@@ -57,6 +57,9 @@ export class AsiSelectComponent extends DefaultControlValueAccessor implements O
 
   ngOnInit() {
     this.renderer.addClass(this.elementRef.nativeElement, 'label-' + this.labelPosition);
+    if (this.multiple) {
+      this.renderer.addClass(this.elementRef.nativeElement, 'multiple');
+    }
   }
 
   onDropdownClose() {

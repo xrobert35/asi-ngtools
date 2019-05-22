@@ -1,31 +1,35 @@
 <label class="input-label" *ngIf="label != null">{{label | translate}}</label>
+
 <div class="asi-select-container" aria-labelledby="select">
-  <button type="button" class="asi-select-header asi-focus-error" [disabled]="disabled" (click)="toggleSelect()" (keyup.esc)="toggleSelect()">
-    <span>
-      <asi-checkbox *ngIf="multiple" [disabled]="disabled" [ngModel]="allChecked" (onValueChange)="checkAll($event)"></asi-checkbox>
-      <div class="item-container">
-        <span>
-          <div class="item">
-            <ng-template *ngIf="value != null" [ngTemplateOutlet]="selectedDef.template" [ngTemplateOutletContext]="{$implicit : value}"></ng-template>
-            <ng-template *ngIf="value == null" [ngTemplateOutlet]="emptyDef?.template" [ngTemplateOutletContext]="{$implicit : value}"></ng-template>
-          </div>
-          <div class="drop-icon-container">
-            <span class="drop-icon" [innerHtml]="'&#9660;'"></span>
-          </div>
-        </span>
-      </div>
-    </span>
-  </button>
+  <div class="asi-select-header asi-focus-error" (keyup.esc)="toggleSelect()">
+    <asi-checkbox *ngIf="multiple" [disabled]="disabled" [ngModel]="allChecked" (onValueChange)="checkAll($event)">
+    </asi-checkbox>
+    <button type="button" class="item-container" [disabled]="disabled" (click)="toggleSelect()">
+      <span>
+        <div class="item">
+          <ng-template *ngIf="value != null" [ngTemplateOutlet]="selectedDef.template"
+            [ngTemplateOutletContext]="{$implicit : value}"></ng-template>
+          <ng-template *ngIf="value == null" [ngTemplateOutlet]="emptyDef?.template"
+            [ngTemplateOutletContext]="{$implicit : value}"></ng-template>
+        </div>
+        <div class="drop-icon-container">
+          <span class="drop-icon" [innerHtml]="'&#9660;'"></span>
+        </div>
+      </span>
+    </button>
+  </div>
 
   <asi-dropdown [open]="open" (onClose)="onDropdownClose()" dropDownClass="asi-select-dropdown">
     <div class="drop-down-select">
       <div class="drop-down-panel">
-        <button type="button" class="drop-down-item" [ngClass]="{'empty' : data == null , 'selected' : data?.selected}" (keyup.esc)="toggleSelect()"
-          (click)="selectValue($event, data)" *ngFor="let data of selectDatas">
+        <button type="button" class="drop-down-item" [ngClass]="{'empty' : data == null , 'selected' : data?.selected}"
+          (keyup.esc)="toggleSelect()" (click)="selectValue($event, data)" *ngFor="let data of selectDatas">
           <span class="option">
-            <asi-checkbox *ngIf="multiple && data != null" [ngModel]="data.selected" (click)="selectValue($event, data)"></asi-checkbox>
+            <asi-checkbox *ngIf="multiple && data != null" [ngModel]="data.selected"
+              (click)="selectValue($event, data)"></asi-checkbox>
             <div class="item" aria-labelledby="item">
-              <ng-template *ngIf="data != null" [ngTemplateOutlet]="optionDef.template" [ngTemplateOutletContext]="{$implicit : data.value}"></ng-template>
+              <ng-template *ngIf="data != null" [ngTemplateOutlet]="optionDef.template"
+                [ngTemplateOutletContext]="{$implicit : data.value}"></ng-template>
             </div>
           </span>
         </button>
