@@ -23,7 +23,7 @@ export class AsiFaIconComponent implements OnInit, OnChanges {
   /** is enabled/disabled */
   @Input() disabled: boolean;
   /** tooltip when mouse over */
-  @Input() tooltip: boolean;
+  @Input() tooltip: string;
   /** tooltip position */
   @Input() tooltipPosition: 'top' | 'left' | 'right' | 'bottom' = 'bottom';
   /** disable click on label */

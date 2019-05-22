@@ -36,8 +36,10 @@ export class AsiFileChooserComponent extends DefaultControlValueAccessor impleme
   @Input() fileSrc: string = null;
   /** Allow you to force the name of the file */
   @Input() fileName: string = null;
-  /** Liste of mimetype : "application/pdf" */
+  /** Liste of mimetype : "application/pdf" used to display a correct selection view */
   @Input() accept: Array<AsiMimeType> | AsiMimeType;
+  /** By default we dont block the file is the user select a wrong type */
+  @Input() blockImport = false;
   /** Icon to display */
   @Input() icon = 'fa fa-paperclip';
 
@@ -117,7 +119,7 @@ export class AsiFileChooserComponent extends DefaultControlValueAccessor impleme
   handleInputChange(event: any) {
     const file = event.dataTransfer ? event.dataTransfer.files[0] : event.target.files[0];
 
-    if (!this.isValideMimeType(file.type)) {
+    if (this.blockImport && !this.isValideMimeType(file.type)) {
       this.onError.emit({
         error: 'FORMAT',
         file: file
