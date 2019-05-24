@@ -98,6 +98,7 @@ export class AsiSelectComponent extends DefaultControlValueAccessor implements O
         this.selectValue(null, data);
       }
     });
+    this.onModelChange(this._value);
   }
 
   updateAllChecked(): void {
@@ -142,14 +143,12 @@ export class AsiSelectComponent extends DefaultControlValueAccessor implements O
       }
 
       if (nh.isEmpty(this._value)) {
-        this.value = null;
+        this._value = null;
       }
 
       if (event != null) {
         this.updateAllChecked();
       }
-
-      this.onModelChange(this._value);
     } else {
       this.onModelChange(realValue);
       this.open = false;
