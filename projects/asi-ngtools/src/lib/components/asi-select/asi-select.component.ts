@@ -95,7 +95,7 @@ export class AsiSelectComponent extends DefaultControlValueAccessor implements O
     this.allChecked = value;
     this.selectDatas.forEach((data) => {
       if (data != null && (value !== data.selected)) {
-        this.selectValue(null, data);
+        this.internalSelectValue(null, data);
       }
     });
     this.onModelChange(this._value);
@@ -108,6 +108,11 @@ export class AsiSelectComponent extends DefaultControlValueAccessor implements O
   }
 
   selectValue(event: MouseEvent, data: any) {
+    this.internalSelectValue(event, data);
+    this.onModelChange(this._value);
+  }
+
+  private internalSelectValue(event: MouseEvent, data: any) {
     if (data == null) {
       this.onModelChange(null);
       this.open = false;
@@ -150,8 +155,8 @@ export class AsiSelectComponent extends DefaultControlValueAccessor implements O
         this.updateAllChecked();
       }
     } else {
-      this.onModelChange(realValue);
       this.open = false;
+      this._value = realValue;
     }
   }
 
