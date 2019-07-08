@@ -12,7 +12,7 @@ export class AsiRadioButtonComponent {
   /** asi-button design */
   @Input() design = 'flat';
 
-  @ViewChild(TemplateRef, {static: false}) template: TemplateRef<any>;
+  @ViewChild(TemplateRef, {static: true}) template: TemplateRef<any>;
 
   public active: boolean;
   public index: number;

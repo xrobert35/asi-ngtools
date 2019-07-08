@@ -12,7 +12,7 @@ export class AsiRadioComponent {
   /** Value of the radio button */
   @Input() value: any;
 
-  @ViewChild(TemplateRef, {static: false}) template: TemplateRef<any>;
+  @ViewChild(TemplateRef, {static: true}) template: TemplateRef<any>;
 
   public active: boolean;
   public index: number;

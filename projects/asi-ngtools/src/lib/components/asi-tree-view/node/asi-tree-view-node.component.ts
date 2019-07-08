@@ -37,7 +37,7 @@ export class AsiTreeViewNodeComponent implements OnInit {
   @Input() iconOpen: string;
   @Input() iconClose: string;
 
-  @ViewChild('treeNode', {static: false}) treeNode: ElementRef;
+  @ViewChild('treeNode', {static: true}) treeNode: ElementRef;
   @ViewChildren(AsiTreeViewNodeComponent) public childNodes: QueryList<AsiTreeViewNodeComponent>;
 
   template: TemplateRef<any>;

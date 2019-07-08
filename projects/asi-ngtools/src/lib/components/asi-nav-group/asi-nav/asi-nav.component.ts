@@ -10,7 +10,7 @@ export class AsiNav {
   @Input() label: string;
   @Input() routerLink: string;
 
-  @ViewChild(TemplateRef, {static: false}) contentTemplate: TemplateRef<any>;
+  @ViewChild(TemplateRef, {static: true}) contentTemplate: TemplateRef<any>;
 
   @ContentChild(AsiComponentTemplateTabHeaderDef, {static: false}) headerDef: AsiComponentTemplateTabHeaderDef;
 

@@ -58,7 +58,7 @@ export class AsiTreeSelectComponent extends DefaultControlValueAccessor implemen
   /** Display a clear button */
   @Input() clearButton = false;
 
-  @ViewChild('selectHeader', {static: false}) selectHeaderContainer: ElementRef;
+  @ViewChild('selectHeader', {static: true}) selectHeaderContainer: ElementRef;
   @ViewChild(AsiTreeViewComponent, {static: false}) asiTreeView: AsiTreeViewComponent;
 
   @ContentChild(AsiComponentTemplateClearDef, {static: false}) clearDef: AsiComponentTemplateClearDef;
