@@ -41,9 +41,9 @@ export class AsiSelectComponent extends DefaultControlValueAccessor implements O
   /** Add an empty value (template must be define) */
   @Input() withEmptyValue = false;
 
-  @ContentChild(AsiComponentTemplateOptionDef) optionDef: AsiComponentTemplateOptionDef;
-  @ContentChild(AsiComponentTemplateEmptyDef) emptyDef: AsiComponentTemplateEmptyDef;
-  @ContentChild(AsiComponentTemplateSelectedDef) selectedDef: AsiComponentTemplateSelectedDef;
+  @ContentChild(AsiComponentTemplateOptionDef, {static: false}) optionDef: AsiComponentTemplateOptionDef;
+  @ContentChild(AsiComponentTemplateEmptyDef, {static: false}) emptyDef: AsiComponentTemplateEmptyDef;
+  @ContentChild(AsiComponentTemplateSelectedDef, {static: false}) selectedDef: AsiComponentTemplateSelectedDef;
 
   // Copie des données d'entrée
   selectDatas: Array<any>;

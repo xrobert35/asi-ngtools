@@ -18,7 +18,7 @@ export class AsiBreadcrumbComponent<T> implements OnInit, DoCheck, AfterViewInit
   /** Allow you to add the home button */
   @Input() hideHome: boolean;
 
-  @ViewChild('asiBreadcrumbDropdownDots') asiBreadcrumbDropdownDots: ElementRef;
+  @ViewChild('asiBreadcrumbDropdownDots', {static: false}) asiBreadcrumbDropdownDots: ElementRef;
 
   private differ: any;
   private nbElementsMax: number;

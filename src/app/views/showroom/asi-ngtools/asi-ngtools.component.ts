@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AsiNgToolsPage {
 
-  version = '5.0.0';
+  version = '8.0.0';
 
-  constructor(){
+  constructor() {
   }
 
 }

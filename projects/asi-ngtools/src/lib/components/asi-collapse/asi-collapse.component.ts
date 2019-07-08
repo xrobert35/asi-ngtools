@@ -30,7 +30,7 @@ export class AsiCollapseComponent  {
   /** Event emitted with the collapse status change */
   @Output() onCollapse = new EventEmitter<Boolean>();
 
-  @ContentChild(AsiComponentTemplateCollapseHeaderDef) headerDef: AsiComponentTemplateCollapseHeaderDef;
+  @ContentChild(AsiComponentTemplateCollapseHeaderDef, {static: false}) headerDef: AsiComponentTemplateCollapseHeaderDef;
 
   state = 'collapsed';
 

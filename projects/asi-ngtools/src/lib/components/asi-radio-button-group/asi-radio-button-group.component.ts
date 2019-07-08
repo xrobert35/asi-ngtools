@@ -38,7 +38,7 @@ export class AsiRadioButtonGroupComponent extends DefaultControlValueAccessor im
 
   @ContentChildren(AsiRadioButtonComponent) queryRadios: QueryList<AsiRadioButtonComponent>;
 
-  @ViewChild(TemplateRef) contentTemplate: TemplateRef<any>;
+  @ViewChild(TemplateRef, {static: false}) contentTemplate: TemplateRef<any>;
 
   radios = new Array<AsiRadioButtonComponent>();
 

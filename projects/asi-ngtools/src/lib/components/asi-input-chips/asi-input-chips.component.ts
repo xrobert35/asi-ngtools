@@ -45,7 +45,7 @@ export class AsiInputChipsComponent extends DefaultControlValueAccessor implemen
   /** Init data */
   @Input() chips: Array<string>;
 
-  @ViewChild('asiInputChips') inputElm: ElementRef;
+  @ViewChild('asiInputChips', {static: false}) inputElm: ElementRef;
 
   private _inputValue: any;
   private onChangeCallback: (_: any) => void = () => { };

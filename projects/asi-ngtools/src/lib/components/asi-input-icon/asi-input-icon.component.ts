@@ -58,7 +58,7 @@ export class AsiInputIconComponent extends DefaultControlValueAccessor implement
 
   inputControl = new FormControl();
 
-  @ViewChild('asiInputIcon') inputElm: ElementRef;
+  @ViewChild('asiInputIcon', { static: false }) inputElm: ElementRef;
 
   constructor(private renderer: Renderer2,
     private elementRef: ElementRef) {

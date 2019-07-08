@@ -15,7 +15,7 @@ export class AsiMenuItem {
   /** Event emitted when menu item is clicked */
   @Output() onClick = new EventEmitter();
 
-  @ViewChild(TemplateRef) template: TemplateRef<any>;
+  @ViewChild(TemplateRef, {static: true}) template: TemplateRef<any>;
 
   emitClick($event: MouseEvent) {
     this.onClick.emit($event);

@@ -15,7 +15,7 @@ export class AsiDialogContainer implements AfterContentInit {
   dialogs: Array<ComponentRef<AsiDialog<any>>> = [];
   visibleDialog: ComponentRef<AsiDialog<any>>;
 
-  @ViewChild('shadow') shadow: any;
+  @ViewChild('shadow', {static: false}) shadow: any;
 
   private subjectContainer: Subject<AsiDialogContainer> = new Subject();
 

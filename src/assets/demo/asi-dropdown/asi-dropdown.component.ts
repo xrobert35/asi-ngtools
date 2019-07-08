@@ -7,7 +7,7 @@ import { Component, ViewChild, ElementRef} from '@angular/core';
 })
 export class PresentationAsiDropdownComponent {
 
-  @ViewChild('testAsiDropdown') elementRefTest: ElementRef;
+  @ViewChild('testAsiDropdown', /* TODO: add static flag */ {}) elementRefTest: ElementRef;
   public calculateWidth = false;
   public openDropdown = false;
 

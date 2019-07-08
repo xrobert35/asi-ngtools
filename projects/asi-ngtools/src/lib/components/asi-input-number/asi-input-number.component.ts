@@ -56,7 +56,7 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
   /** use a non decimal pattern '^-?[0-9]*$' */
   @Input() noDecimal = false;
 
-  @ViewChild('input') inputElm: ElementRef;
+  @ViewChild('input', {static: false}) inputElm: ElementRef;
 
   inputControl = new FormControl();
   private oldValideValue: any;

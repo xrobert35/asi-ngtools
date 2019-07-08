@@ -14,8 +14,8 @@ export class AsiTreeViewComponent {
   private baseData: Array<any> = [];
   filteredData: Array<any> = [];
 
-  @ContentChild(AsiComponentTemplateTreeNodeDef) nodeDef: AsiComponentTemplateTreeNodeDef;
-  @ContentChild(AsiComponentTemplateTreeLeafDef) leafDef: AsiComponentTemplateTreeLeafDef;
+  @ContentChild(AsiComponentTemplateTreeNodeDef, {static: false}) nodeDef: AsiComponentTemplateTreeNodeDef;
+  @ContentChild(AsiComponentTemplateTreeLeafDef, {static: false}) leafDef: AsiComponentTemplateTreeLeafDef;
 
   /** Open icon (fontawesome) */
   @Input() iconOpen = 'fas fa-chevron-down';

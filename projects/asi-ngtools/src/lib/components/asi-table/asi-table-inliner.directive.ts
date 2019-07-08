@@ -12,6 +12,6 @@ export class AsiTableInliner {
 
   @Input() columnClass: string;
 
-  @ContentChild(AsiComponentTemplateCellDef) cellDef: AsiComponentTemplateCellDef;
+  @ContentChild(AsiComponentTemplateCellDef, {static: false}) cellDef: AsiComponentTemplateCellDef;
 
 }

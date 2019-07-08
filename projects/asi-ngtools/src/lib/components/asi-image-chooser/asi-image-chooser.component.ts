@@ -43,7 +43,7 @@ export class AsiImageChooserComponent extends DefaultControlValueAccessor implem
   /** Event emitted when an error occured with the selected image */
   @Output() onError = new EventEmitter<any>();
 
-  @ViewChild('asiFileInput') fileInput: any;
+  @ViewChild('asiFileInput', {static: false}) fileInput: any;
 
   dragging = false;
   loaded = false;

@@ -52,7 +52,7 @@ export class PresentationAsiTreeViewComponent {
 
   nodeName = 'documents';
 
-  @ViewChild(AsiTreeViewComponent) asiTreeView: AsiTreeViewComponent;
+  @ViewChild(AsiTreeViewComponent, {static : false}) asiTreeView: AsiTreeViewComponent;
 
   constructor() {
   }

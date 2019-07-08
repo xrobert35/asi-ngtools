@@ -17,7 +17,8 @@ import { PresentationAsiCollapseComponent } from './components/presentation-asi-
 import { PresentationAsiBindHtmlComponent } from './components/presentation-asi-bind-html/presentation-asi-bind-html.component';
 import { PresentationAsiCodeViewerComponent } from './components/presentation-asi-code-viewer/presentation-asi-code-viewer.component';
 import { PresentationAsiFaIconComponent } from './components/presentation-asi-fa-icon/presentation-asi-fa-icon.component';
-import { PresentationAsiErrorMessagesComponent } from './components/presentation-asi-error-messages/presentation-asi-error-messages.component';
+import { PresentationAsiErrorMessagesComponent }
+  from './components/presentation-asi-error-messages/presentation-asi-error-messages.component';
 import { PresentationAsiButtonComponent } from './components/presentation-asi-button/presentation-asi-button.component';
 import { PresentationAsiDatepickerComponent } from './components/presentation-asi-datepicker/presentation-asi-datepicker.component';
 import { PresentationAsiRadioGroupComponent } from './components/presentation-asi-radio-group/presentation-asi-radio-group.component';
@@ -63,8 +64,8 @@ import { StyleOverrideComponent } from './style-override/style-override.componen
 import { PresentationAsiInputNumberComponent } from './components/presentation-asi-input-number/presentation-asi-input-number.component';
 import { PresentationAsiNavGroupComponent } from './components/presentation-asi-nav-group/presentation-asi-nav-group.component';
 import { PresentationAsiNavViewComponent } from './components/presentation-asi-nav-group/nav/presentation-asi-nav-view.component';
-// tslint:disable-next-line:max-line-length
-import { PresentationAsiRadioButtonGroupComponent } from './components/presentation-asi-radio-button-group/presentation-asi-radio-button-group.component';
+import { PresentationAsiRadioButtonGroupComponent }
+  from './components/presentation-asi-radio-button-group/presentation-asi-radio-button-group.component';
 import { PresentationAsiAutoCompleteMultipleComponent }
   from './components/presentation-asi-autocomplete-multiple/presentation-asi-autocomplete-multiple.component';
 import { PresentationAsiMenuViewComponent } from './components/presentation-asi-menu/menu/presentation-asi-menu-view.component';
@@ -163,7 +164,7 @@ const asiNgToolsRoutes: Routes = [{
 }
 ];
 
-export const asiNgToolsPresentationRouting: ModuleWithProviders = RouterModule.forChild(asiNgToolsRoutes);
+const asiNgToolsPresentationRouting: ModuleWithProviders = RouterModule.forChild(asiNgToolsRoutes);
 
 @NgModule({
   declarations: [

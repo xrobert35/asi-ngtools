@@ -43,7 +43,7 @@ export class AsiTextareaComponent extends DefaultControlValueAccessor implements
 
   textareaControl = new FormControl();
 
-  @ViewChild('textarea') textareaElm: ElementRef;
+  @ViewChild('textarea', {static: false}) textareaElm: ElementRef;
 
   constructor(private renderer: Renderer2,
     private elementRef: ElementRef) {

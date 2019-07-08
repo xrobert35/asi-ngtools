@@ -26,7 +26,7 @@ export class AsiDropDown implements OnChanges {
 
   private dropdown: ComponentRef<AsiDropdownContainer>;
 
-  @ViewChild(TemplateRef) contentTemplate: TemplateRef<any>;
+  @ViewChild(TemplateRef, {static: false}) contentTemplate: TemplateRef<any>;
 
   constructor(private asiDropdownService: AsiDropdownService, private elementRef: ElementRef) {
   }

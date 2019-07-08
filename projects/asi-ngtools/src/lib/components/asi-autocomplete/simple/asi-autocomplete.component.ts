@@ -47,10 +47,10 @@ export class AsiAutoCompleteComponent extends DefaultControlValueAccessor implem
   /** Function called to request new data (can return Observable/Promise/Object): Throw error if null */
   @Input() onRequestData: Function;
 
-  @ContentChild(AsiComponentTemplateOptionDef) optionDef: AsiComponentTemplateOptionDef;
-  @ContentChild(AsiComponentTemplateSelectedDef) selectedDef: AsiComponentTemplateSelectedDef;
+  @ContentChild(AsiComponentTemplateOptionDef, {static: false}) optionDef: AsiComponentTemplateOptionDef;
+  @ContentChild(AsiComponentTemplateSelectedDef, {static: false}) selectedDef: AsiComponentTemplateSelectedDef;
 
-  @ViewChild('dropDown') asiDropDown: AsiDropDown;
+  @ViewChild('dropDown', {static: false}) asiDropDown: AsiDropDown;
 
   autoCompleteControl = new FormControl();
 

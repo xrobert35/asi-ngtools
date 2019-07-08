@@ -47,7 +47,7 @@ export class AsiInputComponent extends DefaultControlValueAccessor implements On
 
   inputControl = new FormControl();
 
-  @ViewChild('asiInput') inputElm: ElementRef;
+  @ViewChild('asiInput', {static: false}) inputElm: ElementRef;
 
   constructor(private renderer: Renderer2,
     private elementRef: ElementRef) {

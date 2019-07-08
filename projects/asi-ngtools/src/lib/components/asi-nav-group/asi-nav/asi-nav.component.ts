@@ -10,9 +10,9 @@ export class AsiNav {
   @Input() label: string;
   @Input() routerLink: string;
 
-  @ViewChild(TemplateRef) contentTemplate: TemplateRef<any>;
+  @ViewChild(TemplateRef, {static: false}) contentTemplate: TemplateRef<any>;
 
-  @ContentChild(AsiComponentTemplateTabHeaderDef) headerDef: AsiComponentTemplateTabHeaderDef;
+  @ContentChild(AsiComponentTemplateTabHeaderDef, {static: false}) headerDef: AsiComponentTemplateTabHeaderDef;
 
   public active: boolean;
   public index: Number;

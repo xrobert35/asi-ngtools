@@ -32,8 +32,8 @@ export class AsiFaIconComponent implements OnInit, OnChanges {
   /** event emitted when click on label or icon */
   @Output() onClick = new EventEmitter<MouseEvent>();
 
-  @ViewChild('tooltipView') tooltipElement: ElementRef;
-  @ViewChild('icon') iconElement: ElementRef;
+  @ViewChild('tooltipView', {static: true}) tooltipElement: ElementRef;
+  @ViewChild('icon', {static: true}) iconElement: ElementRef;
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {
   }

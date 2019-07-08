@@ -12,13 +12,13 @@ export class PresentationAsiTableComponent {
 
   @HostBinding('class') class = 'page';
 
-  @ViewChild(AsiTable) asiTable: AsiTable<TableRow>;
+  @ViewChild(AsiTable, { static: false }) asiTable: AsiTable<TableRow>;
 
   mySelectionModel = new AsiTableSelectionModel('col2', true);
 
   checked: boolean;
 
-  constructor() {}
+  constructor() { }
 
   isChecked() {
     return false;
