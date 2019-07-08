@@ -8,7 +8,7 @@ const viewsRouter: Routes = [
   { path: 'home', component: HomePageComponent },
   {
     path: 'asi-ngtools',
-    loadChildren: 'src/app/views/showroom/asi-ngtools/asi-ngtools.module#AsiNgToolsPresentationModule'
+    loadChildren: () => import('src/app/views/showroom/asi-ngtools/asi-ngtools.module').then(m => m.AsiNgToolsPresentationModule)
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' }];
 
