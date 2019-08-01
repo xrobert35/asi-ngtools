@@ -9,6 +9,8 @@ export class AsiNav {
 
   @Input() label: string;
   @Input() routerLink: string;
+  @Input() readOnly: false;
+  @Input() navClass: '';
 
   @ViewChild(TemplateRef) contentTemplate: TemplateRef<any>;
 

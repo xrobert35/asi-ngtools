@@ -1,8 +1,8 @@
 <div class="asi-nav-group">
   <nav class="asi-nav-header">
     <ng-container *ngFor="let nav of navs">
-      <button type="button" *ngIf="nav.headerDef == null" [routerLink]="nav.routerLink" routerLinkActive="active" [translate]="nav.label"></button>
-      <button type="button" *ngIf="nav.headerDef != null" [routerLink]="nav.routerLink" routerLinkActive="active" [translate]="nav.label">
+      <button type="button" *ngIf="nav.headerDef == null" [attr.class]="nav.navClass" [disabled]="nav.readOnly" [routerLink]="nav.routerLink" routerLinkActive="active" [translate]="nav.label"></button>
+      <button type="button" *ngIf="nav.headerDef != null" [attr.class]="nav.navClass" [disabled]="nav.readOnly" [routerLink]="nav.routerLink" routerLinkActive="active" [translate]="nav.label">
         <ng-template [ngTemplateOutlet]="nav.headerDef.template" [ngTemplateOutletContext]="{$implicit : nav}"></ng-template>
       </button>
     </ng-container>

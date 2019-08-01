@@ -73,7 +73,7 @@ export class AsiTable<T> implements AfterContentInit {
 
   getInlineColumns() {
     return nh.filter(this.columns, (column) => {
-      return column.inlineColumn;
+      return this.filtreColumn(column) && column.inlineColumn;
     });
   }
 
