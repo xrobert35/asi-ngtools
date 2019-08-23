@@ -40,8 +40,6 @@ export class AsiImageChooserComponent extends DefaultControlValueAccessor implem
 
   /** Event emitted when an image is selected */
   @Output() onImageSelected = new EventEmitter<File>();
-  /** Event emitted when an error occured with the selected image */
-  @Output() onError = new EventEmitter<any>();
 
   @ViewChild('asiFileInput') fileInput: any;
 
@@ -101,20 +99,9 @@ export class AsiImageChooserComponent extends DefaultControlValueAccessor implem
 
   handleInputChange(event: any) {
     const imageFile = event.dataTransfer ? event.dataTransfer.files[0] : event.target.files[0];
-
-    const pattern = /image-*/;
     const reader = new FileReader();
 
-    if (!imageFile.type.match(pattern)) {
-      this.onError.emit({
-        error: 'FORMAT',
-        file: imageFile
-      });
-      return;
-    }
-
     this.loaded = false;
-
     this.imageFile = imageFile;
     reader.onload = this._handleReaderLoaded.bind(this);
     reader.readAsDataURL(imageFile);
