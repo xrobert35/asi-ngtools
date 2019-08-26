@@ -122,7 +122,7 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
 
   increase() {
     if (this.inputControl.value == null || this.inputControl.value === '') {
-      this.inputControl.setValue(this.step);
+      this.inputControl.setValue(this.step + '');
     } else {
       const number = Number(this.inputControl.value);
       this.inputControl.setValue(number + this.step + '');
@@ -131,7 +131,7 @@ export class AsiInputNumberComponent extends DefaultControlValueAccessor impleme
 
   decrease() {
     if (this.inputControl.value == null || this.inputControl.value === '') {
-      this.inputControl.setValue(-this.step);
+      this.inputControl.setValue(-this.step + '');
     } else {
       const number = Number(this.inputControl.value);
       this.inputControl.setValue(number - this.step + '');
