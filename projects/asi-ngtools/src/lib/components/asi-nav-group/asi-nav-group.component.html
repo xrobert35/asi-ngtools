@@ -1,4 +1,4 @@
-<div class="asi-nav-group">
+<div class="asi-nav-group-container">
   <nav class="asi-nav-header">
     <ng-container *ngFor="let nav of navs">
       <button type="button" *ngIf="nav.headerDef == null" [attr.class]="nav.navClass" [disabled]="nav.readOnly" [routerLink]="nav.routerLink" routerLinkActive="active" [translate]="nav.label"></button>
