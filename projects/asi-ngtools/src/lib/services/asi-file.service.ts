@@ -169,9 +169,10 @@ export class AsiFileService {
     return this.http.get(fileUrl, { responseType: 'blob' });
   }
 
-  uploadFile(url: string, file: File): Observable<any> {
+  uploadFile(url: string, file: File, reportProgress = false): Observable<any> {
     let formData: FormData = new FormData();
     formData.append('file', file, file.name);
-    return this.http.post(url, formData);
+    const observe: any = reportProgress ? 'events' : 'body';
+    return this.http.post(url, formData, { reportProgress: reportProgress, observe: observe });
   }
 }
