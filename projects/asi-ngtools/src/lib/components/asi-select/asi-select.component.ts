@@ -195,10 +195,15 @@ export class AsiSelectComponent extends DefaultControlValueAccessor implements O
       }
       this.updateAllChecked();
     }
+    this.manageHasValue();
   }
 
   onModelChange(value: any) {
     this.value = value;
+    this.manageHasValue();
+  }
+
+  private manageHasValue() {
     if (this.value != null) {
       this.renderer.addClass(this.elementRef.nativeElement, 'has-value');
     } else {
