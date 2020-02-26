@@ -5,8 +5,11 @@ asi-dialog-container, .asi-dialog-container {
   left: 0;
   height: 100%;
   width: 100%;
+
   display: flex;
   flex-direction: row;
+  flex: 1 0 auto;
+
   .dialog-backdrop {
     background-color: @asi-dialog-backdrop-color;
     top: 0;
@@ -20,17 +23,28 @@ asi-dialog-container, .asi-dialog-container {
   .dialog-container {
     display: flex;
     flex: 1 1 auto;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
     asi-dialog, .asi-dialog {
       background-color: @asi-dialog-background-color;
       box-shadow: 0 0 1px @asi-dialog-border-color;
       border-radius: @asi-dialog-border-radius;
-      width: auto;
-      height: auto;
       z-index: 1;
       display: none;
+      flex-direction: column;
+      flex: 1 1 auto;
+      min-height: 0px;
+      margin : 15px;
+
       .dialog-panel {
+
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        min-height: 0px;
+
         .dialog-header {
           padding: 10px;
           border-bottom: 1px solid @asi-dialog-border-color;
@@ -38,6 +52,8 @@ asi-dialog-container, .asi-dialog-container {
         .dialog-content {
           display: flex;
           flex-direction: column;
+          flex: 1 1 auto;
+          min-height: 0px;
           padding: 10px;
         }
         .dialog-action {

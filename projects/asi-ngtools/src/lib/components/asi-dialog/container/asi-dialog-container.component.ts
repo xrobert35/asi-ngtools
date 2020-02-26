@@ -38,7 +38,7 @@ export class AsiDialogContainer implements AfterContentInit {
         this.visibleDialog.location.nativeElement.style.display = 'none';
       }
       this.visibleDialog = dialogRef;
-      this.visibleDialog.location.nativeElement.style.display = 'block';
+      this.visibleDialog.location.nativeElement.style.display = 'flex';
 
 
       if (dialogRef.instance.getConfig().over) {
@@ -78,7 +78,7 @@ export class AsiDialogContainer implements AfterContentInit {
       }, 200);
     } else {
       this.visibleDialog = this.dialogs[this.dialogs.length - 1];
-      this.visibleDialog.location.nativeElement.style.display = 'block';
+      this.visibleDialog.location.nativeElement.style.display = 'flex';
     }
   }
 
