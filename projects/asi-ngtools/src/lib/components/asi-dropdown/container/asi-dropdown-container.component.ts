@@ -59,13 +59,45 @@ export class AsiDropdownContainer {
    */
   forElement(elementRef: any) {
     this.referenceElement = elementRef;
-    let rectPos = elementRef.getBoundingClientRect();
-    // Get the computed class margin (from both style + css class)
-    let bodyMTop = parseInt(getComputedStyle(this.document.body).marginTop.slice(0, -2), 10);
-    let bodyMLeft = parseInt(getComputedStyle(this.document.body).marginLeft.slice(0, -2), 10);
 
-    this.drop.nativeElement.style.top = rectPos.top + elementRef.offsetHeight + this.getScrollTopValue() - bodyMTop + 'px';
-    this.drop.nativeElement.style.left = rectPos.left + this.getScrollLeftValue() - bodyMLeft + 'px';
+    const rectPos = elementRef.getBoundingClientRect();
+
+    // Get the computed class margin (from both style + css class)
+    const bodyComputedStyle = getComputedStyle(this.document.body);
+
+    const bodyMarginTop = parseInt(bodyComputedStyle.marginTop.slice(0, -2), 10);
+    const bodyMarginLeft = parseInt(bodyComputedStyle.marginLeft.slice(0, -2), 10);
+
+    const topVerticalPosition = rectPos.top + this.getScrollTopValue() - bodyMarginTop;
+
+    if (topVerticalPosition > this.document.body.clientHeight / 2) {
+      // show over the element
+      this.drop.nativeElement.style.bottom = (this.document.body.clientHeight - topVerticalPosition) + 'px';
+      this.drop.nativeElement.style.marginBottom = '5px';
+    } else {
+      // show under the element
+      this.drop.nativeElement.style.top = (topVerticalPosition + elementRef.offsetHeight) + 'px';
+      this.drop.nativeElement.style.marginTop = '5px';
+    }
+
+    const screenVerticalPosition = rectPos.top - bodyMarginTop;
+    let bodyVerticalPosition;
+    if (screenVerticalPosition > this.document.body.clientHeight / 2) {
+      // show over the element
+      bodyVerticalPosition = this.document.body.clientHeight - (this.getScrollTopValue() + screenVerticalPosition);
+      this.drop.nativeElement.style.bottom = bodyVerticalPosition + 'px';
+      this.drop.nativeElement.style.marginBottom = '2px';
+    } else {
+      // show under the element
+      bodyVerticalPosition = this.getScrollTopValue() + screenVerticalPosition + elementRef.offsetHeight;
+      this.drop.nativeElement.style.top = bodyVerticalPosition + 'px';
+      this.drop.nativeElement.style.marginTop = '2px';
+    }
+
+
+
+
+    this.drop.nativeElement.style.left = rectPos.left + this.getScrollLeftValue() - bodyMarginLeft + 'px';
 
     this.drop.nativeElement.style.width = elementRef.offsetWidth + 'px';
   }

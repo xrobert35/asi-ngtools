@@ -19,7 +19,7 @@ export class AsiDropdownService {
    * @param htmlElement The parent HTMLElement, where the dropdown should display
    */
   showDropdown(elementRef: any, asiDropDown: AsiDropDown): ComponentRef<AsiDropdownContainer> {
-    let containerRef = this.getContainer();
+    let containerRef: ComponentRef<AsiDropdownContainer> = this.getContainer();
 
     containerRef.instance.injectService(this);
     containerRef.instance.forElement(elementRef);
@@ -51,14 +51,14 @@ export class AsiDropdownService {
   }
 
   private getContainer(): ComponentRef<AsiDropdownContainer> {
-    // Récuperation du rootComponent
+    // retreive rootComponent
     const rootComponent = this.appRef.components[0].instance;
     if (!rootComponent.viewContainerRef) {
       const appName = this.appRef.componentTypes[0].name;
       // tslint:disable-next-line:max-line-length
       throw new Error('AsiDropdown : Please add "viewContainerRef : ViewContainerRef" declaration in your root component constructor : ' + appName);
     }
-    // Création d'un AsiDropdownContainer
+    // Create an AsiDropdownContainer
     const asiDropdownContainerFactory: ComponentFactory<AsiDropdownContainer> = this.resolver.resolveComponentFactory(AsiDropdownContainer);
     let containerRef = rootComponent.viewContainerRef.createComponent(asiDropdownContainerFactory, 0);
 
