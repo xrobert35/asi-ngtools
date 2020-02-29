@@ -44,7 +44,7 @@ export class AsiTable<T> implements AfterContentInit {
   /** If this function is define it's used to define a custom sort on table*/
   @Input() customSort: Function;
 
-  @ViewChild('table') topElement: ElementRef;
+  @ViewChild('table', {static: false}) topElement: ElementRef;
 
   columns = new Array<AsiTableColumn>();
 

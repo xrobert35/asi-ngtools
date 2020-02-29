@@ -48,7 +48,7 @@ export class AsiFileChooserComponent extends DefaultControlValueAccessor impleme
 
   acceptAttribute = '';
 
-  @ViewChild('fileInput') fileInput: any;
+  @ViewChild('fileInput', {static: false}) fileInput: any;
 
   dragging = false;
   loaded = false;

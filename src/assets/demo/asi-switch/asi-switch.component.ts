@@ -1,5 +1,5 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, ViewChild, AfterContentInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-switch',

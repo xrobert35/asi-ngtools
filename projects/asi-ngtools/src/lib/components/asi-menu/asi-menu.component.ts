@@ -25,7 +25,7 @@ export class AsiMenu implements AfterContentInit {
 
   @ContentChildren(AsiMenuItem) queryItems: QueryList<AsiMenuItem>;
 
-  @ContentChild('burger') burgerTemplate: TemplateRef<any>;
+  @ContentChild('burger', {static: false}) burgerTemplate: TemplateRef<any>;
 
   burgerOpen: Boolean;
 

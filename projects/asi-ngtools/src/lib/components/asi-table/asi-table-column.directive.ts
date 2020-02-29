@@ -49,8 +49,8 @@ export class AsiTableColumn implements AfterContentInit, OnInit {
 
   asc: boolean = null;
 
-  @ContentChild(AsiComponentTemplateCellDef) cellDef: AsiComponentTemplateCellDef;
-  @ContentChild(AsiComponentTemplateTableHeaderDef) headerDef: AsiComponentTemplateTableHeaderDef;
+  @ContentChild(AsiComponentTemplateCellDef, {static: false}) cellDef: AsiComponentTemplateCellDef;
+  @ContentChild(AsiComponentTemplateTableHeaderDef, {static: false}) headerDef: AsiComponentTemplateTableHeaderDef;
 
   @ContentChildren(AsiTableInliner) queryColumns: QueryList<AsiTableInliner>;
   inliners: Array<AsiTableInliner> = new Array<AsiTableInliner>();

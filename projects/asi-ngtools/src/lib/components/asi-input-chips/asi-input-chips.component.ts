@@ -45,7 +45,7 @@ export class AsiInputChipsComponent extends DefaultControlValueAccessor implemen
   /** Init data */
   @Input() chips: Array<string>;
 
-  @ViewChild('asiInputChips') inputElm: ElementRef;
+  @ViewChild('asiInputChips', {static: false}) inputElm: ElementRef;
 
   private _inputValue: any;
   private onChangeCallback: (_: any) => void = () => { };
@@ -82,8 +82,6 @@ export class AsiInputChipsComponent extends DefaultControlValueAccessor implemen
     if (this.validateValue(inputValue)) {
       this.chips.push(inputValue);
       this.inputElm.nativeElement.value = '';
-    } else {
-      // TODO: Push alert
     }
   }
 

@@ -2,7 +2,7 @@ import { AsiDropdownService } from './../asi-dropdown.service';
 import { TemplateRef, Component, ElementRef, ViewChild, HostListener, Inject, Input, Renderer2 } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { AsiDropDown } from './../asi-dropdown.component';
-import { DOCUMENT } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'asi-dropdown-container',
@@ -18,7 +18,7 @@ export class AsiDropdownContainer {
 
   @Input() calculWidth = true;
 
-  @ViewChild('drop', { read: ElementRef }) drop: ElementRef;
+  @ViewChild('drop', { read: ElementRef, static: false }) drop: ElementRef;
 
   private subjectContainer: Subject<AsiDropdownContainer> = new Subject();
 

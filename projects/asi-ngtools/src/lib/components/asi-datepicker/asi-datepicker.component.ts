@@ -42,8 +42,8 @@ export class AsiDatePickerComponent extends DefaultControlValueAccessor implemen
 
   inputControl = new FormControl();
 
-  @ViewChild('input') inputElement: ElementRef;
-  @ViewChild('calendar') calendarElement: AsiCalendarComponent;
+  @ViewChild('input', {static: true}) inputElement: ElementRef;
+  @ViewChild('calendar', {static: true}) calendarElement: AsiCalendarComponent;
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {
     super();

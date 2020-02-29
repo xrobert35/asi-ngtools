@@ -16,9 +16,9 @@ export class AsiTab {
   /** Add a custom class to the tab */
   @Input() tabClass: string;
 
-  @ViewChild(TemplateRef) contentTemplate: TemplateRef<any>;
+  @ViewChild(TemplateRef, {static: true}) contentTemplate: TemplateRef<any>;
 
-  @ContentChild(AsiComponentTemplateTabHeaderDef) headerDef: AsiComponentTemplateTabHeaderDef;
+  @ContentChild(AsiComponentTemplateTabHeaderDef, {static: false}) headerDef: AsiComponentTemplateTabHeaderDef;
 
   public active: boolean;
   public index: Number;

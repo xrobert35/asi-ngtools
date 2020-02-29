@@ -41,7 +41,7 @@ export class AsiImageChooserComponent extends DefaultControlValueAccessor implem
   /** Event emitted when an image is selected */
   @Output() onImageSelected = new EventEmitter<File>();
 
-  @ViewChild('asiFileInput') fileInput: any;
+  @ViewChild('asiFileInput', {static: false}) fileInput: any;
 
   dragging = false;
   loaded = false;

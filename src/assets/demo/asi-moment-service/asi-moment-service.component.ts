@@ -14,11 +14,7 @@ export class PresentationAsiMomentComponent {
 
   constructor(private momentService: AsiMomentService) {}
 
-  private format() {
-    return this.momentService.formatDate(this.date);
-  }
-
-  private parseDate(event) {
+  parseDate() {
     this.date = this.momentService.parse(this.dateStr, this.pattern);
   }
 

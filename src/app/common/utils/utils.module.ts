@@ -8,7 +8,7 @@ import { AsiNgToolsModule } from '@asi-ngtools/lib';
 import { RouterModule } from '@angular/router';
 import { ApiFunctionAsHTMLService } from '@common/utils/apiFunctionAsHTMLService.service';
 
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 // Dialogs
 import { ConfirmDialog } from '@utils/dialog/confirm/confirm.dialog';
@@ -27,7 +27,7 @@ const sharedModules: Array<any> = [
 ];
 
 @NgModule({
-  imports: [CommonModule, HttpModule, RouterModule,
+  imports: [CommonModule, HttpClientModule, RouterModule,
     ...sharedModules,
     AsiNgToolsModule.forRoot()],
   declarations: [...declarations],

@@ -1,8 +1,8 @@
 import { AsiTabContent } from './asi-tab-content/asi-tab-content.component';
 import { AsiTab } from './asi-tab/asi-tab.component';
 import {
-  Component, QueryList, ContentChildren, ViewChild, AfterContentInit,
-  Output, EventEmitter, Input
+  Component, QueryList, ContentChildren, ViewChild,
+  Output, EventEmitter, Input, AfterContentInit
 } from '@angular/core';
 import * as nh from '../../native-helper';
 
@@ -15,7 +15,7 @@ export class AsiTabGroup implements AfterContentInit {
 
   @ContentChildren(AsiTab) queryTabs: QueryList<AsiTab>;
 
-  @ViewChild(AsiTabContent) asiTableContent: AsiTabContent;
+  @ViewChild(AsiTabContent, {static: true}) asiTableContent: AsiTabContent;
 
   /** Event emitted when a tab is manually selected */
   @Output() onTabChange = new EventEmitter<AsiTab>()

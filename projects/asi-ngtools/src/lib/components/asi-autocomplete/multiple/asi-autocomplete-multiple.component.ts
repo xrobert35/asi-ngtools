@@ -47,10 +47,10 @@ export class AsiAutoCompleteMultipleComponent extends DefaultControlValueAccesso
   /** Function called to request new data (can return Observable/Promise/Object) : Throw error if null */
   @Input() onRequestData: Function;
 
-  @ContentChild(AsiComponentTemplateOptionDef) optionDef: AsiComponentTemplateOptionDef;
-  @ContentChild(AsiComponentTemplateTagDef) tagDef: AsiComponentTemplateTagDef;
+  @ContentChild(AsiComponentTemplateOptionDef, {static: true}) optionDef: AsiComponentTemplateOptionDef;
+  @ContentChild(AsiComponentTemplateTagDef, {static: true}) tagDef: AsiComponentTemplateTagDef;
 
-  @ViewChild('container') container: ElementRef;
+  @ViewChild('container', {static: true}) container: ElementRef;
 
   data: Array<any>;
 

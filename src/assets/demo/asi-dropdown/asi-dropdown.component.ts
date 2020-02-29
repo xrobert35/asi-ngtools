@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef} from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'presentation-asi-dropdown',
@@ -7,7 +7,7 @@ import { Component, ViewChild, ElementRef} from '@angular/core';
 })
 export class PresentationAsiDropdownComponent {
 
-  @ViewChild('testAsiDropdown') elementRefTest: ElementRef;
+  @ViewChild('testAsiDropdown', { static: false }) elementRefTest: ElementRef;
   public calculateWidth = false;
   public openDropdown = false;
 

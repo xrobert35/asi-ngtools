@@ -10,9 +10,9 @@ import { Component, ViewChild } from '@angular/core';
 })
 export class PresentationAsiTableComponent {
 
-  @ViewChild(AsiTable) asiTable: AsiTable<TableRow>;
+  @ViewChild(AsiTable, { static: false }) asiTable: AsiTable<TableRow>;
 
-  mySelectionModel = new AsiTableSelectionModel('col2' , true);
+  mySelectionModel = new AsiTableSelectionModel('col2', true);
 
   constructor() {
   }

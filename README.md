@@ -2,7 +2,9 @@
 
 This project is a little components library, simple to use, which will help you to simplify your project.
 
-This library have an angular 4/5/6 version.
+##### To use it with angular 8 :
+
+`npm install -save @asi-ngtools/lib@^8.0.0`
 
 ##### To use it with angular 6 :
 
@@ -22,7 +24,7 @@ The documentation can be found on this website : https://ng-tools.asi.fr
 
 Here's the list of components that can be found in the library :
 
-|  Name | Description    |
+|  Name | Description |
 | :------------: | :------------: |
 | asi-select | A simple or multi selection listbox component |
 | asi-autocomplete | A typeahead component  |
@@ -68,11 +70,6 @@ Here's  the list of validators that can be found in the library :
 | AsiValidators.email | Allow you to validate a none required email  |
 | AsiValidators.minDateFromControl  | Allow you to dynamically validate a min date from formControl |
 | AsiValidators.minDateFromControl  | Allow you to dynamically validate a max date from formControl |
-
-## Greeting
-
-The base of this project library is created with : https://github.com/jvandemo/generator-angular2-library
-So, thanks @jvandemo @izifortune and other contributors !
 
 ## License
 
