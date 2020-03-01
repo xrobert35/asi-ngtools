@@ -1,6 +1,6 @@
 {
   "name": "@asi-ngtools/lib",
-  "version": "8.0.2",
+  "version": "8.0.3",
   "main": "bundles/asi-ngtools.umd.js",
   "module": "fesm5/asi-ngtools.js",
   "es2015": "fesm2015/asi-ngtools.js",
