@@ -16,6 +16,9 @@ export class AsiTable<T> implements AfterContentInit {
 
   @ContentChildren(AsiTableColumn) queryColumns: QueryList<AsiTableColumn>;
 
+  /** Allow you to give a unique identifier used when requesting data */
+  @Input() identifier: string;
+
   /** Sorte table automatically */
   @Input() autoSort = false;
 
@@ -44,7 +47,7 @@ export class AsiTable<T> implements AfterContentInit {
   /** If this function is define it's used to define a custom sort on table*/
   @Input() customSort: Function;
 
-  @ViewChild('table', {static: false}) topElement: ElementRef;
+  @ViewChild('table', { static: false }) topElement: ElementRef;
 
   columns = new Array<AsiTableColumn>();
 
@@ -175,6 +178,7 @@ export class AsiTable<T> implements AfterContentInit {
       request.tri = this.sortedColumn.getSortName();
       request.asc = this.sortedColumn.getAsc();
     }
+    request.identifier = this.identifier;
     return request;
   }
 

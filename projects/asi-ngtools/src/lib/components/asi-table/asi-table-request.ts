@@ -3,4 +3,5 @@ export class AsiTableRequest {
   nbElementsParPage: number;
   tri: string;
   asc: boolean;
+  identifier?: string;
 }
