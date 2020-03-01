@@ -52,6 +52,7 @@ export * from './components/common/asi-component-template';
     AsiComponentTemplateCellDef,
     AsiComponentTemplateTreeNodeDef,
     AsiComponentTemplateTreeLeafDef,
+    AsiComponentTemplateNavHeaderDef,
     AsiComponentTemplateCollapseHeaderDef,
     AsiComponentTemplate],
   entryComponents: [],
