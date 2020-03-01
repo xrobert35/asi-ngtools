@@ -18,7 +18,7 @@ export class AsiDropdownContainer {
 
   @Input() calculWidth = true;
 
-  @ViewChild('drop', { read: ElementRef, static: false }) drop: ElementRef;
+  @ViewChild('drop', { read: ElementRef, static: true }) drop: ElementRef;
 
   private subjectContainer: Subject<AsiDropdownContainer> = new Subject();
 
@@ -27,8 +27,7 @@ export class AsiDropdownContainer {
   public template: TemplateRef<any>;
   private referenceElement: any;
 
-  constructor(@Inject(DOCUMENT) private document: any, private renderer: Renderer2, private elementRef: ElementRef) {
-  }
+  constructor(@Inject(DOCUMENT) private document: any, private renderer: Renderer2, private elementRef: ElementRef) {}
 
   @HostListener('document:mouseup', ['$event'])
   documentClick(event: MouseEvent) {
