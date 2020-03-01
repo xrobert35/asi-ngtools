@@ -1,5 +1,5 @@
 import { Input, Component, TemplateRef, ViewChild, ContentChild } from '@angular/core';
-import { AsiComponentTemplateTabHeaderDef } from '../../common/asi-component-template';
+import { AsiComponentTemplateNavHeaderDef } from '../../common/asi-component-template';
 
 @Component({
   selector: 'asi-nav',
@@ -14,7 +14,7 @@ export class AsiNav {
 
   @ViewChild(TemplateRef, {static: true}) contentTemplate: TemplateRef<any>;
 
-  @ContentChild(AsiComponentTemplateTabHeaderDef, {static: false}) headerDef: AsiComponentTemplateTabHeaderDef;
+  @ContentChild(AsiComponentTemplateNavHeaderDef, {static: false}) headerDef: AsiComponentTemplateNavHeaderDef;
 
   public active: boolean;
   public index: Number;
