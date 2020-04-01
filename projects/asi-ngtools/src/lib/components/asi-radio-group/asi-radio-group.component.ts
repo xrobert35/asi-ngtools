@@ -79,6 +79,17 @@ export class AsiRadioGroupComponent extends DefaultControlValueAccessor implemen
     });
 
     this.initValue(this.value);
+
+    this.queryRadios.changes.subscribe((items) => {
+      index = -1;
+      this.radios = [];
+      items.forEach((radio) => {
+        radio.index = ++index;
+        this.radios.push(radio)
+      });
+
+      this.initValue(this.value);
+    });
   }
 
   writeValue(value: any) {
