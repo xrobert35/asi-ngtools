@@ -4,10 +4,10 @@
   </span>
   <ul class="asi-menu-panel">
     <li *ngIf="burgerOpen" class="items-container" [ngClass]="{'vertical' : vertical, 'burger' : burger }">
-      <button *ngFor="let item of items" class="item-container" routerLinkActive="active" [routerLink]="item.routerLink" [disabled]="disabled || item.disabled"
+      <a *ngFor="let item of items" class="item-container" routerLinkActive="active" [routerLink]="item.routerLink"
         (click)="item.emitClick($event)">
           <ng-template *ngIf="item.template != null" [ngTemplateOutlet]="item.template"></ng-template>
-      </button>
+    </a>
     </li>
   </ul>
 </div>

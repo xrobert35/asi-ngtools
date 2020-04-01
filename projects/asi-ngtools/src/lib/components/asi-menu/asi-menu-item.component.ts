@@ -9,9 +9,6 @@ export class AsiMenuItem {
   /** routerLink directive parameter */
   @Input() routerLink: string;
 
-  /** is enabled/disabled */
-  @Input() disabled = false;
-
   /** Event emitted when menu item is clicked */
   @Output() onClick = new EventEmitter();
 
