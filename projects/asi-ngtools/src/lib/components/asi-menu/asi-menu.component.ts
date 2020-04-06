@@ -12,9 +12,6 @@ import {
 })
 export class AsiMenu implements AfterContentInit {
 
-  /** is enabled/disabled */
-  @Input() disabled = false;
-
   /** change to a menu burger */
   @Input() burger = false;
 
