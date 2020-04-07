@@ -1,4 +1,4 @@
-FROM node:8.9.0-alpine
+FROM node:10.19.0-alpine
 
 RUN mkdir -p /app
 RUN mkdir -p /app/dist
@@ -11,13 +11,11 @@ ADD package*.json /app/
 
 RUN npm install
 RUN npm i -g less
-RUN npm i -g @angular/cli@~6.0.8
+RUN npm i -g @angular/cli@~8.1.0
 
 COPY . .
 
-
-
-RUN ./build.sh
+RUN ./build-prod.sh
 RUN npm run build-universal
 
 CMD ls -l && npm run server
