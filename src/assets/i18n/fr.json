@@ -12,6 +12,7 @@
     "angular4": "with angular 4",
     "angular5": "with angular 5",
     "angular6": "with angular 6",
+    "angular8": "with angular 8",
     "peerDependencies" : "Peer Dependencies",
     "importModule": "2. Import module(s)",
     "importModuleLine1": "Import the AsiNgToolsModule or components modules separately in your application module",
