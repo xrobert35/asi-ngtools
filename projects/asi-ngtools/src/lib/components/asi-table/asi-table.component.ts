@@ -67,7 +67,7 @@ export class AsiTable<T> implements AfterContentInit {
 
   getColumns() {
     return nh.filter(this.columns, (column) => {
-      return this.filtreColumn(column);
+      return this.filtreColumn(column) && !column.inlineColumn;
     });
   }
 
@@ -78,8 +78,7 @@ export class AsiTable<T> implements AfterContentInit {
   }
 
   private filtreColumn(column: AsiTableColumn): boolean {
-    return (column.showIf == null || column.showIf) && (column.hideIf == null || !column.hideIf)
-      && !column.inlineColumn;
+    return (column.showIf == null || column.showIf) && (column.hideIf == null || !column.hideIf);
   }
 
   getHeaderClass(column: AsiTableColumn) {
