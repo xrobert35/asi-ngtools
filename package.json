@@ -42,7 +42,7 @@
     "core-js": "^2.5.4",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "lodash.clonedeep": "4.5.0",
     "moment": "^2.22.2",
     "prismjs": "^1.6.0",
